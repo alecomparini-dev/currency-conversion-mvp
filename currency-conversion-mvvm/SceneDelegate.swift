@@ -18,8 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let controller = CurrencyConversionViewController()
         win.rootViewController = controller
         win.makeKeyAndVisible()
-        self.window = win
-        
+        self.window = win   
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
