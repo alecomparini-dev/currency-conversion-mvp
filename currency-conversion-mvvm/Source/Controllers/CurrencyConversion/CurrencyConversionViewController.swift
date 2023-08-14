@@ -18,6 +18,16 @@ class CurrencyConversionViewController: UIViewController {
         view = screen
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
+    
+    
+//  MARK: - PRIVATE AREA
+    private func configure() {
+        hideKeyboardOnTap()
+    }
     
     
 }
