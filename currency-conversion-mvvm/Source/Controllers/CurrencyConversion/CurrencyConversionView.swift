@@ -32,21 +32,49 @@ class CurrencyConversionView: UIView {
     
     lazy var symbolCurrency: CurrencySymbolView = {
         let input = InputCurrencySymbol(symbol: "¥", sizeFrame: 70, fontSize: .title1)
-        let lbl = CurrencySymbolView(inputCurrencySymbol: input)
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        return lbl
+        let view = CurrencySymbolView(inputCurrencySymbol: input)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     lazy var codeLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "JPY"
-        lbl.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        var font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
+            font = UIFont(descriptor: descriptor, size: 0)
+        }
+        lbl.font = font
         lbl.textAlignment = .natural
         lbl.textColor = .white
         return lbl
     }()
     
+    lazy var descriptionLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "Yen"
+        lbl.font = UIFont.preferredFont(forTextStyle: .title3)
+        lbl.textAlignment = .natural
+        lbl.textColor = .white
+        return lbl
+    }()
+    
+    lazy var currencyOneButton: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setImage(UIImage(systemName: "arrow.up.forward.app.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 60)), for: .normal)
+        btn.tintColor = .white
+        btn.setTitleColor(.white, for: .normal)
+        btn.layer.borderWidth = 0
+        btn.layer.borderColor = UIColor.white.cgColor
+        btn.layer.cornerRadius = 8
+        return btn
+    }()
+    
+    
+//    private func
     
     
 //  MARK: - PRIVATE AREA
@@ -64,12 +92,16 @@ class CurrencyConversionView: UIView {
         self.addSubview(titleLabel)
         self.addSubview(symbolCurrency)
         self.addSubview(codeLabel)
+        self.addSubview(descriptionLabel)
+        self.addSubview(currencyOneButton)
     }
     
     private func configConstraints() {
         configTitleLabelConstraints()
         configSymbolCurrencyConstraints()
         configCodeLabelConstraints()
+        configDescriptionLabelConstraints()
+        configCurrencyOneButtonConstraints()
     }
     
     private func configTitleLabelConstraints() {
@@ -84,16 +116,32 @@ class CurrencyConversionView: UIView {
         NSLayoutConstraint.activate([
             symbolCurrency.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
             symbolCurrency.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            symbolCurrency.widthAnchor.constraint(equalToConstant: 70),
+            symbolCurrency.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
     
     private func configCodeLabelConstraints() {
         NSLayoutConstraint.activate([
-            codeLabel.topAnchor.constraint(equalTo: self.symbolCurrency.topAnchor, constant: 10),
-            codeLabel.leadingAnchor.constraint(equalTo: self.symbolCurrency.trailingAnchor, constant: 15),
+            codeLabel.topAnchor.constraint(equalTo: self.symbolCurrency.topAnchor, constant: 3),
+            codeLabel.leadingAnchor.constraint(equalTo: self.symbolCurrency.trailingAnchor, constant: 12),
         ])
     }
 
-    
+    private func configDescriptionLabelConstraints() {
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: self.codeLabel.bottomAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: self.codeLabel.leadingAnchor),
+        ])
+    }
+
+    private func configCurrencyOneButtonConstraints() {
+        NSLayoutConstraint.activate([
+            currencyOneButton.centerYAnchor.constraint(equalTo: symbolCurrency.centerYAnchor),
+            currencyOneButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            currencyOneButton.widthAnchor.constraint(equalToConstant: 70),
+            currencyOneButton.heightAnchor.constraint(equalToConstant: 50),
+        ])
+    }
     
 }
