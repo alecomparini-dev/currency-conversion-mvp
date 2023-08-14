@@ -30,17 +30,17 @@ class CurrencyConversionView: UIView {
         return lbl
     }()
     
-    lazy var symbolCurrency: CurrencySymbolView = {
-        let input = InputCurrencySymbol(symbol: "¥", sizeFrame: 70, fontSize: .title1)
+    lazy var symbolCurrency1: CurrencySymbolView = {
+        let input = InputCurrencySymbol(symbol: "د.إ", sizeFrame: 70, fontSize: .title2)
         let view = CurrencySymbolView(inputCurrencySymbol: input)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var codeLabel: UILabel = {
+    lazy var codeLabel1: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "JPY"
+        lbl.text = "AED"
         var font = UIFont.preferredFont(forTextStyle: .largeTitle)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
             font = UIFont(descriptor: descriptor, size: 0)
@@ -51,30 +51,46 @@ class CurrencyConversionView: UIView {
         return lbl
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    lazy var descriptionLabel1: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "Yen"
+        lbl.text = "Dirham dos Emirados Árabes Unidos"
+        lbl.numberOfLines = 1
         lbl.font = UIFont.preferredFont(forTextStyle: .title3)
         lbl.textAlignment = .natural
         lbl.textColor = .white
         return lbl
     }()
     
-    lazy var currencyOneButton: UIButton = {
+    lazy var currencyButton1: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(systemName: "arrow.up.forward.app.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 60)), for: .normal)
+        btn.setImage(UIImage(systemName: "arrow.up.forward.app.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 50)), for: .normal)
         btn.tintColor = .white
         btn.setTitleColor(.white, for: .normal)
-        btn.layer.borderWidth = 0
-        btn.layer.borderColor = UIColor.white.cgColor
-        btn.layer.cornerRadius = 8
         return btn
     }()
     
     
-//    private func
+    lazy var currencyValueTextField: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.text = "1.00"
+        tf.textAlignment = .center
+        tf.font = UIFont.preferredFont(forTextStyle: .title1)
+        tf.attributedPlaceholder = NSMutableAttributedString(string: "Input value", attributes: [.foregroundColor: UIColor.gray ])
+        tf.layer.cornerRadius = 8
+        tf.clipsToBounds = true
+        tf.backgroundColor = .white
+        tf.keyboardType = .decimalPad
+        tf.textColor = UIColor.HEX("#08132b")
+        return tf
+    }()
+    
+    
+//  MARK: - CURRENCY 2
+    
+
     
     
 //  MARK: - PRIVATE AREA
@@ -90,10 +106,11 @@ class CurrencyConversionView: UIView {
     
     private func addElements() {
         self.addSubview(titleLabel)
-        self.addSubview(symbolCurrency)
-        self.addSubview(codeLabel)
-        self.addSubview(descriptionLabel)
-        self.addSubview(currencyOneButton)
+        self.addSubview(symbolCurrency1)
+        self.addSubview(codeLabel1)
+        self.addSubview(descriptionLabel1)
+        self.addSubview(currencyButton1)
+        self.addSubview(currencyValueTextField)
     }
     
     private func configConstraints() {
@@ -102,11 +119,12 @@ class CurrencyConversionView: UIView {
         configCodeLabelConstraints()
         configDescriptionLabelConstraints()
         configCurrencyOneButtonConstraints()
+        configCurrencyValueTextFieldConstraints()
     }
     
     private func configTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             titleLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -15),
         ])
@@ -114,33 +132,43 @@ class CurrencyConversionView: UIView {
 
     private func configSymbolCurrencyConstraints() {
         NSLayoutConstraint.activate([
-            symbolCurrency.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
-            symbolCurrency.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            symbolCurrency.widthAnchor.constraint(equalToConstant: 70),
-            symbolCurrency.heightAnchor.constraint(equalToConstant: 70),
+            symbolCurrency1.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
+            symbolCurrency1.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            symbolCurrency1.widthAnchor.constraint(equalToConstant: 70),
+            symbolCurrency1.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
     
     private func configCodeLabelConstraints() {
         NSLayoutConstraint.activate([
-            codeLabel.topAnchor.constraint(equalTo: self.symbolCurrency.topAnchor, constant: 3),
-            codeLabel.leadingAnchor.constraint(equalTo: self.symbolCurrency.trailingAnchor, constant: 12),
+            codeLabel1.topAnchor.constraint(equalTo: self.symbolCurrency1.topAnchor, constant: 3),
+            codeLabel1.leadingAnchor.constraint(equalTo: self.symbolCurrency1.trailingAnchor, constant: 12),
         ])
     }
 
     private func configDescriptionLabelConstraints() {
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: self.codeLabel.bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.codeLabel.leadingAnchor),
+            descriptionLabel1.topAnchor.constraint(equalTo: self.codeLabel1.bottomAnchor),
+            descriptionLabel1.leadingAnchor.constraint(equalTo: self.codeLabel1.leadingAnchor),
+            descriptionLabel1.trailingAnchor.constraint(equalTo: currencyButton1.leadingAnchor, constant: -5)
         ])
     }
 
     private func configCurrencyOneButtonConstraints() {
         NSLayoutConstraint.activate([
-            currencyOneButton.centerYAnchor.constraint(equalTo: symbolCurrency.centerYAnchor),
-            currencyOneButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            currencyOneButton.widthAnchor.constraint(equalToConstant: 70),
-            currencyOneButton.heightAnchor.constraint(equalToConstant: 50),
+            currencyButton1.centerYAnchor.constraint(equalTo: symbolCurrency1.centerYAnchor),
+            currencyButton1.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            currencyButton1.widthAnchor.constraint(equalToConstant: 50),
+            currencyButton1.heightAnchor.constraint(equalToConstant: 45),
+        ])
+    }
+
+    private func configCurrencyValueTextFieldConstraints() {
+        NSLayoutConstraint.activate([
+            currencyValueTextField.topAnchor.constraint(equalTo: currencyButton1.bottomAnchor, constant: 50),
+            currencyValueTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            currencyValueTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
+            currencyValueTextField.heightAnchor.constraint(equalToConstant: 55),
         ])
     }
     
