@@ -16,7 +16,11 @@
 		022115322A8AA082001E52C1 /* CurrencyConversionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115312A8AA082001E52C1 /* CurrencyConversionView.swift */; };
 		022115372A8AA171001E52C1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115362A8AA171001E52C1 /* UIViewController+Extension.swift */; };
 		022115392A8AA2DF001E52C1 /* CurrencyConversionPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115382A8AA2DF001E52C1 /* CurrencyConversionPreview.swift */; };
-		0221153B2A8AA6AA001E52C1 /* UIColor+Extension+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221153A2A8AA6A9001E52C1 /* UIColor+Extension+Component.swift */; };
+		0221153B2A8AA6AA001E52C1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221153A2A8AA6A9001E52C1 /* UIColor+Extension.swift */; };
+		0221153D2A8AA758001E52C1 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221153C2A8AA758001E52C1 /* Int+Extension.swift */; };
+		0221153F2A8AA7E7001E52C1 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221153E2A8AA7E7001E52C1 /* Float+Extension.swift */; };
+		022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */; };
+		022115442A8AB84F001E52C1 /* InputCurrencySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115432A8AB84F001E52C1 /* InputCurrencySymbol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +46,11 @@
 		022115312A8AA082001E52C1 /* CurrencyConversionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionView.swift; sourceTree = "<group>"; };
 		022115362A8AA171001E52C1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		022115382A8AA2DF001E52C1 /* CurrencyConversionPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionPreview.swift; sourceTree = "<group>"; };
-		0221153A2A8AA6A9001E52C1 /* UIColor+Extension+Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension+Component.swift"; sourceTree = "<group>"; };
+		0221153A2A8AA6A9001E52C1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0221153C2A8AA758001E52C1 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		0221153E2A8AA7E7001E52C1 /* Float+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolView.swift; sourceTree = "<group>"; };
+		022115432A8AB84F001E52C1 /* InputCurrencySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCurrencySymbol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,7 @@
 		0221152D2A8AA007001E52C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				022115402A8AAAFC001E52C1 /* CustomViews */,
 				022115332A8AA0D2001E52C1 /* Previews */,
 				022115302A8AA074001E52C1 /* CurrencyConversion */,
 			);
@@ -140,10 +149,21 @@
 		022115352A8AA149001E52C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0221153A2A8AA6A9001E52C1 /* UIColor+Extension+Component.swift */,
+				0221153C2A8AA758001E52C1 /* Int+Extension.swift */,
+				0221153E2A8AA7E7001E52C1 /* Float+Extension.swift */,
+				0221153A2A8AA6A9001E52C1 /* UIColor+Extension.swift */,
 				022115362A8AA171001E52C1 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		022115402A8AAAFC001E52C1 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */,
+				022115432A8AB84F001E52C1 /* InputCurrencySymbol.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,12 +266,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0221153B2A8AA6AA001E52C1 /* UIColor+Extension+Component.swift in Sources */,
+				0221153B2A8AA6AA001E52C1 /* UIColor+Extension.swift in Sources */,
 				022114FC2A8A5F24001E52C1 /* AppDelegate.swift in Sources */,
+				022115442A8AB84F001E52C1 /* InputCurrencySymbol.swift in Sources */,
 				0221152F2A8AA051001E52C1 /* CurrencyConversionViewController.swift in Sources */,
+				022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */,
 				022114FE2A8A5F24001E52C1 /* SceneDelegate.swift in Sources */,
 				022115392A8AA2DF001E52C1 /* CurrencyConversionPreview.swift in Sources */,
 				022115372A8AA171001E52C1 /* UIViewController+Extension.swift in Sources */,
+				0221153D2A8AA758001E52C1 /* Int+Extension.swift in Sources */,
+				0221153F2A8AA7E7001E52C1 /* Float+Extension.swift in Sources */,
 				022115322A8AA082001E52C1 /* CurrencyConversionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
