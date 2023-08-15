@@ -15,12 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let win = UIWindow(windowScene: windowScene)
-        let controller = CurrencyConversionViewController()
         let nav = NavigationController()
-        nav.setRootViewController(controller)
         win.rootViewController = nav
         win.makeKeyAndVisible()
-        self.window = win   
+        self.window = win
+        let coordinator = CurrencyConversionCoordinator(nav)
+        coordinator.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
