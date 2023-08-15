@@ -1,5 +1,5 @@
 //
-//  InputCurrencySymbol.swift
+//  CurrencySymbolInput.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 14/08/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct InputCurrencySymbol {
+struct CurrencySymbolInput {
     let symbol: String
     let backgroundColor: UIColor
     let sizeFrame: CGFloat
