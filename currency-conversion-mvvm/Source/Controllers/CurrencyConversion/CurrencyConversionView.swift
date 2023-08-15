@@ -169,40 +169,51 @@ class CurrencyConversionView: UIView {
     
     private func addElements() {
         self.addSubview(titleLabel)
+        addCurrencyOneElements()
+        self.addSubview(currencyValueTextField)
+        self.addSubview(separatorView)
+        self.addSubview(invertCurrencyButton)
+        addCurrencyTwoElements()
+        self.addSubview(resultConversionView)
+    }
+    
+    private func addCurrencyOneElements() {
         self.addSubview(symbolCurrency1)
         self.addSubview(codeLabel1)
         self.addSubview(descriptionLabel1)
         self.addSubview(currencyButton1)
-        self.addSubview(currencyValueTextField)
-        
-        self.addSubview(separatorView)
-        self.addSubview(invertCurrencyButton)
-        
+    }
+    
+    private func addCurrencyTwoElements() {
         self.addSubview(symbolCurrency2)
         self.addSubview(codeLabel2)
         self.addSubview(descriptionLabel2)
         self.addSubview(currencyButton2)
-        
-        self.addSubview(resultConversionView)
     }
+    
     
     private func configConstraints() {
         configTitleLabelConstraints()
+        configCurrencyOneConstraints()
+        configCurrencyValueTextFieldConstraints()
+        configSeparatorViewConstraints()
+        configInvertCurrencyButtonConstraints()
+        configCurrencyTwoConstraints()
+        configResultConversionViewConstraints()
+    }
+    
+    private func configCurrencyOneConstraints() {
         configSymbolCurrency1Constraints()
         configCodeLabel1Constraints()
         configDescriptionLabel1Constraints()
         configCurrencyButton1Constraints()
-        configCurrencyValueTextFieldConstraints()
-        
-        configSeparatorViewConstraints()
-        configInvertCurrencyButtonConstraints()
-                
+    }
+    
+    private func configCurrencyTwoConstraints() {
         configSymbolCurrency2Constraints()
         configCodeLabel2Constraints()
         configDescriptionLabel2Constraints()
         configCurrencyButton2Constraints()
-        
-        configResultConversionViewConstraints()
     }
     
     private func configTitleLabelConstraints() {
