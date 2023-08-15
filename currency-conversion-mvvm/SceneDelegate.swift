@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let win = UIWindow(windowScene: windowScene)
         let controller = CurrencyConversionViewController()
-        win.rootViewController = controller
+        let nav = NavigationController()
+        nav.setRootViewController(controller)
+        win.rootViewController = nav
         win.makeKeyAndVisible()
         self.window = win   
     }

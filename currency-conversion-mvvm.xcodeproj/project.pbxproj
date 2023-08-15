@@ -23,6 +23,9 @@
 		022115442A8AB84F001E52C1 /* CurrencySymbolViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115432A8AB84F001E52C1 /* CurrencySymbolViewInput.swift */; };
 		022115482A8BAFF6001E52C1 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115472A8BAFF6001E52C1 /* CurrencyView.swift */; };
 		0221154A2A8BB47D001E52C1 /* CurrencyViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115492A8BB47D001E52C1 /* CurrencyViewInput.swift */; };
+		0221154E2A8BC2FA001E52C1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221154D2A8BC2FA001E52C1 /* Coordinator.swift */; };
+		022115502A8BC364001E52C1 /* CurrencyConversionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221154F2A8BC363001E52C1 /* CurrencyConversionCoordinator.swift */; };
+		022115562A8BC529001E52C1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115552A8BC529001E52C1 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		022115432A8AB84F001E52C1 /* CurrencySymbolViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolViewInput.swift; sourceTree = "<group>"; };
 		022115472A8BAFF6001E52C1 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		022115492A8BB47D001E52C1 /* CurrencyViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewInput.swift; sourceTree = "<group>"; };
+		0221154D2A8BC2FA001E52C1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0221154F2A8BC363001E52C1 /* CurrencyConversionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionCoordinator.swift; sourceTree = "<group>"; };
+		022115552A8BC529001E52C1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,8 @@
 		0221152B2A8A9F5B001E52C1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				022115542A8BC510001E52C1 /* Components */,
+				0221154B2A8BC2D3001E52C1 /* Coordinator */,
 				0221152D2A8AA007001E52C1 /* Controllers */,
 				022115352A8AA149001E52C1 /* Extensions */,
 			);
@@ -186,6 +194,31 @@
 				022115492A8BB47D001E52C1 /* CurrencyViewInput.swift */,
 			);
 			path = Currency;
+			sourceTree = "<group>";
+		};
+		0221154B2A8BC2D3001E52C1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0221154C2A8BC2DB001E52C1 /* Protocol */,
+				0221154F2A8BC363001E52C1 /* CurrencyConversionCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0221154C2A8BC2DB001E52C1 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0221154D2A8BC2FA001E52C1 /* Coordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		022115542A8BC510001E52C1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				022115552A8BC529001E52C1 /* NavigationController.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,12 +326,15 @@
 				022115442A8AB84F001E52C1 /* CurrencySymbolViewInput.swift in Sources */,
 				0221152F2A8AA051001E52C1 /* CurrencyConversionViewController.swift in Sources */,
 				0221154A2A8BB47D001E52C1 /* CurrencyViewInput.swift in Sources */,
+				022115562A8BC529001E52C1 /* NavigationController.swift in Sources */,
 				022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */,
+				0221154E2A8BC2FA001E52C1 /* Coordinator.swift in Sources */,
 				022114FE2A8A5F24001E52C1 /* SceneDelegate.swift in Sources */,
 				022115392A8AA2DF001E52C1 /* CurrencyConversionPreview.swift in Sources */,
 				022115482A8BAFF6001E52C1 /* CurrencyView.swift in Sources */,
 				022115372A8AA171001E52C1 /* UIViewController+Extension.swift in Sources */,
 				0221153D2A8AA758001E52C1 /* Int+Extension.swift in Sources */,
+				022115502A8BC364001E52C1 /* CurrencyConversionCoordinator.swift in Sources */,
 				0221153F2A8AA7E7001E52C1 /* Float+Extension.swift in Sources */,
 				022115322A8AA082001E52C1 /* CurrencyConversionView.swift in Sources */,
 			);
