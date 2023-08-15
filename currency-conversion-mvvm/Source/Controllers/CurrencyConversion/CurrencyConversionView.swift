@@ -31,8 +31,8 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var symbolCurrency1: CurrencySymbolView = {
-        let input = InputCurrencySymbol(symbol: "د.إ", sizeFrame: 70, fontSize: .title2)
-        let view = CurrencySymbolView(inputCurrencySymbol: input)
+        let input = CurrencySymbolInput(symbol: "د.إ", sizeFrame: 70, fontSize: .title2)
+        let view = CurrencySymbolView(currencySymbolInput: input)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -106,8 +106,8 @@ class CurrencyConversionView: UIView {
     
 //  MARK: - CURRENCY 2
     lazy var symbolCurrency2: CurrencySymbolView = {
-        let input = InputCurrencySymbol(symbol: "R$", sizeFrame: 70, fontSize: .title2)
-        let view = CurrencySymbolView(inputCurrencySymbol: input)
+        let input = CurrencySymbolInput(symbol: "R$", sizeFrame: 70, fontSize: .title2)
+        let view = CurrencySymbolView(currencySymbolInput: input)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -146,14 +146,35 @@ class CurrencyConversionView: UIView {
         return btn
     }()
     
+    
     lazy var resultConversionView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var underlineConversionView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.HEX("#ffffff")
         return view
     }()
     
-
+    lazy var resultLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "29,469.54"
+        lbl.numberOfLines = 2
+        var font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
+            font = UIFont(descriptor: descriptor, size: 0)
+        }
+        lbl.font = font
+        lbl.textAlignment = .center
+        lbl.textColor = .white
+        return lbl
+    }()
+    
     
     
 //  MARK: - PRIVATE AREA
@@ -175,6 +196,8 @@ class CurrencyConversionView: UIView {
         self.addSubview(invertCurrencyButton)
         addCurrencyTwoElements()
         self.addSubview(resultConversionView)
+        resultConversionView.addSubview(resultLabel)
+        resultConversionView.addSubview(underlineConversionView)
     }
     
     private func addCurrencyOneElements() {
@@ -200,6 +223,8 @@ class CurrencyConversionView: UIView {
         configInvertCurrencyButtonConstraints()
         configCurrencyTwoConstraints()
         configResultConversionViewConstraints()
+        configUnderlineConversionViewConstraints()
+        configResultLabelConstraints()
     }
     
     private func configCurrencyOneConstraints() {
@@ -268,7 +293,7 @@ class CurrencyConversionView: UIView {
     
     private func configSeparatorViewConstraints() {
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 80),
+            separatorView.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 85),
             separatorView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.8),
             separatorView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 2),
@@ -288,7 +313,7 @@ class CurrencyConversionView: UIView {
 //  MARK: - CURRENCY 2
     private func configSymbolCurrency2Constraints() {
         NSLayoutConstraint.activate([
-            symbolCurrency2.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 145),
+            symbolCurrency2.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 160),
             symbolCurrency2.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             symbolCurrency2.widthAnchor.constraint(equalToConstant: 70),
             symbolCurrency2.heightAnchor.constraint(equalToConstant: 70),
@@ -321,12 +346,31 @@ class CurrencyConversionView: UIView {
     
     private func configResultConversionViewConstraints() {
         NSLayoutConstraint.activate([
-            resultConversionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -80),
-            resultConversionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            resultConversionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-//            resultConversionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -45)
-            resultConversionView.heightAnchor.constraint(equalToConstant: 2)
+            resultConversionView.topAnchor.constraint(equalTo: descriptionLabel2.bottomAnchor),
+            resultConversionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            resultConversionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            resultConversionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
         ])
     }
+    
+    private func configResultLabelConstraints() {
+        NSLayoutConstraint.activate([
+            resultLabel.centerXAnchor.constraint(equalTo: resultConversionView.centerXAnchor),
+            resultLabel.centerYAnchor.constraint(equalTo: resultConversionView.centerYAnchor, constant: -10),
+            resultLabel.widthAnchor.constraint(lessThanOrEqualTo: resultConversionView.widthAnchor, multiplier: 0.7),
+        ])
+    }
+    
+    private func configUnderlineConversionViewConstraints() {
+        NSLayoutConstraint.activate([
+            underlineConversionView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 8),
+            underlineConversionView.leadingAnchor.constraint(equalTo: resultLabel.leadingAnchor, constant: -25),
+            underlineConversionView.trailingAnchor.constraint(equalTo: resultLabel.trailingAnchor, constant: 25),
+            underlineConversionView.heightAnchor.constraint(equalToConstant: 3),
+        ])
+    }
+    
+
     
 }

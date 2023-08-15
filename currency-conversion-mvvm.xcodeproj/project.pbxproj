@@ -20,7 +20,7 @@
 		0221153D2A8AA758001E52C1 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221153C2A8AA758001E52C1 /* Int+Extension.swift */; };
 		0221153F2A8AA7E7001E52C1 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221153E2A8AA7E7001E52C1 /* Float+Extension.swift */; };
 		022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */; };
-		022115442A8AB84F001E52C1 /* InputCurrencySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115432A8AB84F001E52C1 /* InputCurrencySymbol.swift */; };
+		022115442A8AB84F001E52C1 /* CurrencySymbolInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115432A8AB84F001E52C1 /* CurrencySymbolInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		0221153C2A8AA758001E52C1 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		0221153E2A8AA7E7001E52C1 /* Float+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolView.swift; sourceTree = "<group>"; };
-		022115432A8AB84F001E52C1 /* InputCurrencySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCurrencySymbol.swift; sourceTree = "<group>"; };
+		022115432A8AB84F001E52C1 /* CurrencySymbolInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +122,8 @@
 		0221152D2A8AA007001E52C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				022115402A8AAAFC001E52C1 /* CustomViews */,
 				022115332A8AA0D2001E52C1 /* Previews */,
+				022115402A8AAAFC001E52C1 /* CustomViews */,
 				022115302A8AA074001E52C1 /* CurrencyConversion */,
 			);
 			path = Controllers;
@@ -160,10 +160,18 @@
 		022115402A8AAAFC001E52C1 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */,
-				022115432A8AB84F001E52C1 /* InputCurrencySymbol.swift */,
+				022115452A8BA1DD001E52C1 /* CurrencySymbol */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		022115452A8BA1DD001E52C1 /* CurrencySymbol */ = {
+			isa = PBXGroup;
+			children = (
+				022115412A8AAC7D001E52C1 /* CurrencySymbolView.swift */,
+				022115432A8AB84F001E52C1 /* CurrencySymbolInput.swift */,
+			);
+			path = CurrencySymbol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +276,7 @@
 			files = (
 				0221153B2A8AA6AA001E52C1 /* UIColor+Extension.swift in Sources */,
 				022114FC2A8A5F24001E52C1 /* AppDelegate.swift in Sources */,
-				022115442A8AB84F001E52C1 /* InputCurrencySymbol.swift in Sources */,
+				022115442A8AB84F001E52C1 /* CurrencySymbolInput.swift in Sources */,
 				0221152F2A8AA051001E52C1 /* CurrencyConversionViewController.swift in Sources */,
 				022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */,
 				022114FE2A8A5F24001E52C1 /* SceneDelegate.swift in Sources */,
