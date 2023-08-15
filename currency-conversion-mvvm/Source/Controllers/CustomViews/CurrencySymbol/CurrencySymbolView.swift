@@ -9,9 +9,9 @@ import UIKit
 
 class CurrencySymbolView: UIView {
     
-    private let input: CurrencySymbolInput
+    private let input: CurrencySymbolViewInput
     
-    init(currencySymbolInput: CurrencySymbolInput) {
+    init(currencySymbolInput: CurrencySymbolViewInput) {
         self.input = currencySymbolInput
         super.init(frame: .zero)
         configure()
