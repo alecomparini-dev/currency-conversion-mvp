@@ -8,15 +8,15 @@
 import UIKit
 
 class CurrencyConversionCoordinator: Coordinator {
-    var navigationController: UINavigationController
+    var navigationController: NavigationController
     
-    required init(_ navigationController: UINavigationController) {
+    required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        
+        let controller = CurrencyConversionViewController()
+        navigationController.pushViewController(controller)
     }
-    
     
 }

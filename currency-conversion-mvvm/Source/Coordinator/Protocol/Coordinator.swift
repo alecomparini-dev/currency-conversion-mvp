@@ -8,9 +8,9 @@
 import UIKit
 
 protocol Coordinator {
-    var navigationController: UINavigationController { get }
+    var navigationController: NavigationController { get }
     
-    init(_ navigationController: UINavigationController)
+    init(_ navigationController: NavigationController)
     
     func start()
 }

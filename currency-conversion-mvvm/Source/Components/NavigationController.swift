@@ -22,10 +22,6 @@ public final class NavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setRootViewController(_ viewController: UIViewController) {
-        setViewControllers([viewController], animated: true)
-    }
-    
     public func pushViewController(_ viewController: UIViewController) {
         pushViewController(viewController, animated: true)
     }
