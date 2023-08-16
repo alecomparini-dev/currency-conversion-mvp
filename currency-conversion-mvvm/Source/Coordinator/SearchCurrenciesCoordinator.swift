@@ -16,7 +16,6 @@ class SearchCurrenciesCoordinator: Coordinator {
     
     func start() {
         let controller = SearchCurrenciesViewController()
-//        navigationController.pushViewController(controller)
         navigationController.present(controller, animated: true)
     }
     
