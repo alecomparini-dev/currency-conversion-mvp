@@ -20,18 +20,6 @@ class CurrencyConversionCoordinator: Coordinator {
         navigationController.pushViewController(controller)
     }
     
-// SE USAR O WEAK SELF NAO CONSEGUE CHAMAR
-//    func start() {
-//        let controller = CurrencyConversionViewController()
-//
-//        controller.openSearchCurrenciesScreen = {
-//            let coordinator = SearchCurrenciesCoordinator(self.navigationController)
-//            coordinator.start()
-//        }
-//
-//        navigationController.pushViewController(controller)
-//    }
-        
 }
 
 
