@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol SearchCurrenciesViewDelegate: AnyObject {
+    func backPageButtonTapped()
+}
+
 class SearchCurrenciesView: UIView {
+    weak var delegate: SearchCurrenciesViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -27,9 +32,12 @@ class SearchCurrenciesView: UIView {
         btn.tintColor = .white
         btn.contentMode = .scaleAspectFill
         btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(backPageButtonTapped), for: .touchUpInside)
         return btn
     }()
-    
+    @objc private func backPageButtonTapped() {
+        delegate?.backPageButtonTapped()
+    }
     
     
 //  MARK: - PRIVATE AREA

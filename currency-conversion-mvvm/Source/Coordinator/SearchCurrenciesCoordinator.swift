@@ -8,7 +8,9 @@
 import Foundation
 
 class SearchCurrenciesCoordinator: Coordinator {
-    var navigationController: NavigationController
+    var childCoordinators: Coordinator?
+    
+    unowned let navigationController: NavigationController
     
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
