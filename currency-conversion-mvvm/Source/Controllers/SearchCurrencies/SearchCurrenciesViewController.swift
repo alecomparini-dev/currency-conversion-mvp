@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol SearchCurrenciesViewControllerCoordinator: AnyObject {
+    func goToCurrencyConversionVC()
+}
+
 class SearchCurrenciesViewController: UIViewController {
+    
     
     lazy var screen: SearchCurrenciesView = {
         let view = SearchCurrenciesView()
@@ -27,8 +32,20 @@ class SearchCurrenciesViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     private func configure() {
         hideKeyboardOnTap()
+        configDelegate()
     }
     
+    private func configDelegate() {
+        screen.delegate = self
+    }
     
+}
+
+
+//  MARK: - EXTENSION SearchCurrenciesViewDelegate
+extension SearchCurrenciesViewController: SearchCurrenciesViewDelegate {
+    func backPageButtonTapped() {
+        
+    }
     
 }

@@ -7,10 +7,13 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
+    var childCoordinators: Coordinator? { get set }
+    
     var navigationController: NavigationController { get }
     
     init(_ navigationController: NavigationController)
     
     func start()
 }
+

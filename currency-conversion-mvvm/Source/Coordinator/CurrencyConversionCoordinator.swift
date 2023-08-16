@@ -5,10 +5,12 @@
 //  Created by Alessandro Comparini on 15/08/23.
 //
 
-import UIKit
+import Foundation
 
 class CurrencyConversionCoordinator: Coordinator {
-    var navigationController: NavigationController
+    var childCoordinators: Coordinator?
+    
+    unowned let navigationController: NavigationController
     
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
@@ -25,7 +27,7 @@ class CurrencyConversionCoordinator: Coordinator {
 
 //  MARK: - EXTENSION CurrencyConversionViewControllerCoordinator
 extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordinator {
-    func goToSearchCurrencies() {
+    func goToSearchCurrenciesVC() {
         let coordinator = SearchCurrenciesCoordinator(self.navigationController)
         coordinator.start()
     }

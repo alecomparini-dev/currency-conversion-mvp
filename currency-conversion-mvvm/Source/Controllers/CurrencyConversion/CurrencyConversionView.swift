@@ -27,6 +27,7 @@ class CurrencyConversionView: UIView {
     
     
 //  MARK: - LAZY AREA
+    
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +130,9 @@ class CurrencyConversionView: UIView {
         return view
     }()
     
+    
 //  MARK: - PRIVATE AREA
+    
     private func configure() {
         configBackgroundColor()
         addElements()
@@ -210,6 +213,7 @@ class CurrencyConversionView: UIView {
     
     
 //  MARK: - CURRENCY TO
+    
     private func configCurrencyToConstraints() {
         NSLayoutConstraint.activate([
             currencyTo.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 70),
