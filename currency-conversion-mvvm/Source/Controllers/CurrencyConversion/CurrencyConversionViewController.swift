@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrencyConversionViewControllerCoordinator: AnyObject {
-    func openSearchCurrenciesScreen()
+    func goToSearchCurrencies()
 }
 
 class CurrencyConversionViewController: UIViewController {
@@ -46,11 +46,11 @@ class CurrencyConversionViewController: UIViewController {
 //  MARK: - EXTENSION CURRENCY CONVERSION VIEW
 extension CurrencyConversionViewController: CurrencyConversionViewDelegate {
     func currencyOfButtonTapped() {
-        coordinator?.openSearchCurrenciesScreen()
+        coordinator?.goToSearchCurrencies()
     }
     
     func currencyToButtonTapped() {
-        coordinator?.openSearchCurrenciesScreen()
+        coordinator?.goToSearchCurrencies()
     }
     
     

@@ -37,7 +37,7 @@ class CurrencyConversionCoordinator: Coordinator {
 
 //  MARK: - EXTENSION CurrencyConversionViewControllerCoordinator
 extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordinator {
-    func openSearchCurrenciesScreen() {
+    func goToSearchCurrencies() {
         let coordinator = SearchCurrenciesCoordinator(self.navigationController)
         coordinator.start()
     }
