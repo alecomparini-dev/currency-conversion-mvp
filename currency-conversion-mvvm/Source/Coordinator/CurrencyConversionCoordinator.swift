@@ -16,7 +16,31 @@ class CurrencyConversionCoordinator: Coordinator {
     
     func start() {
         let controller = CurrencyConversionViewController()
+        controller.coordinator = self
         navigationController.pushViewController(controller)
     }
     
+// SE USAR O WEAK SELF NAO CONSEGUE CHAMAR
+//    func start() {
+//        let controller = CurrencyConversionViewController()
+//
+//        controller.openSearchCurrenciesScreen = {
+//            let coordinator = SearchCurrenciesCoordinator(self.navigationController)
+//            coordinator.start()
+//        }
+//
+//        navigationController.pushViewController(controller)
+//    }
+        
 }
+
+
+//  MARK: - EXTENSION CurrencyConversionViewControllerCoordinator
+extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordinator {
+    func openSearchCurrenciesScreen() {
+        let coordinator = SearchCurrenciesCoordinator(self.navigationController)
+        coordinator.start()
+    }
+    
+}
+
