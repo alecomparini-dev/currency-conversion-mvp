@@ -13,7 +13,7 @@ struct CardCurrencyView_Preview: PreviewProvider {
         CardCurrencyView()
         .asSwiftUIView
         .frame(height: 100, alignment: .center)
-        
+        .padding(15)
     }
 }
 #endif
