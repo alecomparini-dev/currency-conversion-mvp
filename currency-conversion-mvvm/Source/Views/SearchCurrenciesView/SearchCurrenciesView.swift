@@ -65,7 +65,6 @@ class SearchCurrenciesView: UIView {
     lazy var tableView: UITableView = {
         let tab = UITableView()
         tab.translatesAutoresizingMaskIntoConstraints = false
-        tab.backgroundColor = .red
         tab.separatorStyle = .none
         tab.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         return tab

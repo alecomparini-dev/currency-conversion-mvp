@@ -10,11 +10,8 @@ import SwiftUI
 #if DEBUG
 struct SearchCurrencies_Preview: PreviewProvider {
     static var previews: some View {
-        UINavigationController(
-            rootViewController: SearchCurrenciesViewController()
-        )
-        .asSwiftUIView
-        .edgesIgnoringSafeArea(.all)
+        SearchCurrenciesViewController()
+        .asSwiftUIViewController
     }
 }
 #endif

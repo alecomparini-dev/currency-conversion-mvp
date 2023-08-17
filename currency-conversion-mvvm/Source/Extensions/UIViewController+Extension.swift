@@ -10,6 +10,7 @@ import SwiftUI
 
 //  MARK: - PREVIEW CONTROLLER SWIFTUI
 public extension UIViewController {
+    
     private struct SwiftUIViewControllerWrapper: UIViewControllerRepresentable {
         let viewController: UIViewController
         
@@ -23,10 +24,32 @@ public extension UIViewController {
         ) {}
     }
     
-    var asSwiftUIView: some View {
+    var asSwiftUIViewController: some View {
         SwiftUIViewControllerWrapper(viewController: self)
     }
+    
 }
+
+
+public extension UIView {
+    private struct SwiftUIViewWrapper: UIViewRepresentable {
+        typealias UIViewType = UIView
+        let view: UIView
+        
+        func makeUIView(context: Context) -> UIView {
+            view
+        }
+        
+        func updateUIView(_ uiView: UIView, context: Context) {
+            
+        }
+    }
+    
+    var asSwiftUIView: some View {
+        SwiftUIViewWrapper(view: self)
+    }
+}
+
 
 
 //  MARK: - HIDE KEYBOARD
