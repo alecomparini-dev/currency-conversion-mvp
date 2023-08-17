@@ -32,6 +32,13 @@ class CardCurrencyView: UIView {
     lazy var currencyView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.cornerCurve = .circular
+        view.layer.cornerRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowRadius = 6
+        view.layer.shadowOffset = CGSize(width: 3, height: 5)
         return view
     }()
     
@@ -93,7 +100,7 @@ class CardCurrencyView: UIView {
     private func configSymbolCurrencyConstraints() {
         NSLayoutConstraint.activate([
             symbolCurrency.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor),
-            symbolCurrency.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            symbolCurrency.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             symbolCurrency.widthAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame),
             symbolCurrency.heightAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame),
         ])
