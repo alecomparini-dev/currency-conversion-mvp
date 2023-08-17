@@ -77,7 +77,7 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var invertCurrencyButton: UIButton = {
-        let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: "arrow.up.arrow.down.circle.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40)), for: .normal)
         btn.tintColor = .white.withAlphaComponent(0.5)

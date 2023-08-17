@@ -54,7 +54,7 @@ class CurrencyView: UIView {
     }()
     
     lazy var changeCurrencyButton: UIButton = {
-        let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: input.imageButton)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: input.sizeButton.width)), for: .normal)
         btn.tintColor = .white.withAlphaComponent(0.7)

@@ -32,7 +32,7 @@ class SearchCurrenciesView: UIView {
     
 //  MARK: - LAZY AREA
     lazy var backPageButton: UIButton = {
-        let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: "chevron.left")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
         btn.tintColor = .black
