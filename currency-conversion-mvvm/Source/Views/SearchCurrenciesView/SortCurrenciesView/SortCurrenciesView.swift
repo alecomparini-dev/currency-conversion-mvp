@@ -77,8 +77,6 @@ class SortCurrenciesView: UIView {
         st.distribution = .fillEqually
         return st
     }()
-
-    
     
 //  MARK: - PRIVATE AREA
     

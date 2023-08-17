@@ -10,11 +10,8 @@ import SwiftUI
 #if DEBUG
 struct CurrencyConversion_Preview: PreviewProvider {
     static var previews: some View {
-        UINavigationController(
-            rootViewController: CurrencyConversionViewController()
-        )
-        .asSwiftUIView
-        .edgesIgnoringSafeArea(.all)
+        CurrencyConversionViewController()
+        .asSwiftUIViewController
     }
 }
 #endif
