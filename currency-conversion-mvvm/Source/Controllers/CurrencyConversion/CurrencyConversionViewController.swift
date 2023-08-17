@@ -11,7 +11,7 @@ protocol CurrencyConversionViewControllerCoordinator: AnyObject {
     func goToSearchCurrenciesVC()
 }
 
-class CurrencyConversionViewController: UIViewController {
+class CurrencyConversionViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
     
     lazy var screen: CurrencyConversionView = {
