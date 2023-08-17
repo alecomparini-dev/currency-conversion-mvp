@@ -28,7 +28,7 @@ class SearchCurrenciesView: UIView {
     lazy var backPageButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(systemName: "chevron.left")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 35)), for: .normal)
+        btn.setImage(UIImage(systemName: "chevron.left")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
         btn.tintColor = .white
         btn.contentMode = .scaleAspectFill
         btn.setTitleColor(.white, for: .normal)
@@ -63,9 +63,9 @@ class SearchCurrenciesView: UIView {
     private func configBackPageButtonConstraints() {
         NSLayoutConstraint.activate([
             backPageButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
-            backPageButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            backPageButton.widthAnchor.constraint(equalToConstant: 45),
-            backPageButton.heightAnchor.constraint(equalToConstant: 45),
+            backPageButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            backPageButton.widthAnchor.constraint(equalToConstant: 40),
+            backPageButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
     
