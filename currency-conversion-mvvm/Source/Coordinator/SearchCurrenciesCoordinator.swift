@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchCurrenciesCoordinator: Coordinator {
-    var childCoordinators: Coordinator?
+    var childCoordinators: [Coordinator]? = []
     
     unowned let navigationController: NavigationController
     
@@ -19,6 +19,7 @@ class SearchCurrenciesCoordinator: Coordinator {
     func start() {
         let controller = SearchCurrenciesViewController()
         navigationController.present(controller, animated: true)
+        childCoordinators = nil
     }
     
 }
