@@ -7,9 +7,15 @@
 
 import UIKit
 
+
+//  MARK: - PROTOCOL
+
 protocol SearchCurrenciesViewDelegate: AnyObject {
     func backPageButtonTapped()
 }
+
+
+//  MARK: -
 
 class SearchCurrenciesView: UIView {
     weak var delegate: SearchCurrenciesViewDelegate?
@@ -50,11 +56,18 @@ class SearchCurrenciesView: UIView {
         return search
     }()
     
+    lazy var sortCurrencies: SortCurrenciesView = {
+        let sort = SortCurrenciesView()
+        sort.translatesAutoresizingMaskIntoConstraints = false
+        return sort
+    }()
+    
     lazy var tableView: UITableView = {
         let tab = UITableView()
         tab.translatesAutoresizingMaskIntoConstraints = false
         tab.backgroundColor = .red
         tab.separatorStyle = .none
+        tab.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         return tab
     }()
     
@@ -73,12 +86,14 @@ class SearchCurrenciesView: UIView {
     private func addElements() {
         addSubview(backPageButton)
         addSubview(searchBar)
+        addSubview(sortCurrencies)
         addSubview(tableView)
     }
     
     private func configConstraints() {
         configBackPageButtonConstraints()
         configSearchBarConstraints()
+        configSortCurrenciesConstraints()
         configTableViewConstraints()
     }
     
@@ -100,9 +115,18 @@ class SearchCurrenciesView: UIView {
         ])
     }
     
+    private func configSortCurrenciesConstraints() {
+        NSLayoutConstraint.activate([
+            sortCurrencies.topAnchor.constraint(equalTo: backPageButton.bottomAnchor, constant: 20),
+            sortCurrencies.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            sortCurrencies.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            sortCurrencies.heightAnchor.constraint(equalToConstant: 35),
+        ])
+    }
+    
     private func configTableViewConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: sortCurrencies.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
