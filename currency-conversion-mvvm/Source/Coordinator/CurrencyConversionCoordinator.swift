@@ -18,18 +18,32 @@ class CurrencyConversionCoordinator: Coordinator {
     
     func start() {
         childCoordinators?.append(self)
+        if !validatorFactory().validate() {
+            return
+        }
+        startCurrencyConversion()
+    }
+        
+    
+//  MARK: - PRIVATE AREA
+    private func validatorFactory() -> Validator {
+        defaultValidatorFactory(ofTypeViewController: CurrencyConversionViewController(),
+                                                navigationController: navigationController,
+                                                coordinator: self)
+    }
+    
+    private func startCurrencyConversion() {
         let controller = CurrencyConversionViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller)
     }
-    
 }
 
 
 //  MARK: - EXTENSION CurrencyConversionViewControllerCoordinator
 extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordinator {
     func goToSearchCurrenciesVC() {
-        let coordinator = SearchCurrenciesCoordinator(self.navigationController)
+        let coordinator = SearchCurrenciesCoordinator(navigationController)
         coordinator.start()
         childCoordinators = nil
     }

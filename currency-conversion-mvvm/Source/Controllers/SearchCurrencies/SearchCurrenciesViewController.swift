@@ -11,8 +11,8 @@ protocol SearchCurrenciesViewControllerCoordinator: AnyObject {
     func goToCurrencyConversionVC()
 }
 
-class SearchCurrenciesViewController: UIViewController {
-    
+class SearchCurrenciesViewController: UIViewController, ViewControllerCoordinator {
+    weak var coordinator: SearchCurrenciesViewControllerCoordinator?
     
     lazy var screen: SearchCurrenciesView = {
         let view = SearchCurrenciesView()
@@ -45,7 +45,7 @@ class SearchCurrenciesViewController: UIViewController {
 //  MARK: - EXTENSION SearchCurrenciesViewDelegate
 extension SearchCurrenciesViewController: SearchCurrenciesViewDelegate {
     func backPageButtonTapped() {
-        
+        coordinator?.goToCurrencyConversionVC()
     }
     
 }

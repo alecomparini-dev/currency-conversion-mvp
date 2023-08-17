@@ -23,9 +23,10 @@ public final class NavigationController: UINavigationController {
     }
     
     public func pushViewController(_ viewController: UIViewController) {
-        
         pushViewController(viewController, animated: true)
     }
+    
+    
     
     
     

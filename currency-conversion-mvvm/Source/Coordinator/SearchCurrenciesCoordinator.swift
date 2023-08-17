@@ -17,9 +17,29 @@ class SearchCurrenciesCoordinator: Coordinator {
     }
     
     func start() {
+        childCoordinators?.append(self)
+        childCoordinators?.append(self)
+        let validator = defaultValidatorFactory(ofTypeViewController: SearchCurrenciesViewController(),
+                                                navigationController: navigationController,
+                                                coordinator: self)
+        if !validator.validate() {
+            return
+        }
         let controller = SearchCurrenciesViewController()
-        navigationController.present(controller, animated: true)
-        childCoordinators = nil
+        controller.coordinator = self
+        navigationController.pushViewController(controller)
     }
     
 }
+
+
+extension SearchCurrenciesCoordinator: SearchCurrenciesViewControllerCoordinator {
+    func goToCurrencyConversionVC() {
+        let coordinator = CurrencyConversionCoordinator(navigationController)
+        coordinator.start()
+        childCoordinators = nil
+    }
+    
+    
+}
+
