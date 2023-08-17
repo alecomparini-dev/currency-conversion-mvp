@@ -29,7 +29,7 @@ class SearchCurrenciesView: UIView {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: "chevron.left")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
-        btn.tintColor = .white
+        btn.tintColor = .black
         btn.contentMode = .scaleAspectFill
         btn.setTitleColor(.white, for: .normal)
         btn.addTarget(self, action: #selector(backPageButtonTapped), for: .touchUpInside)
@@ -39,6 +39,25 @@ class SearchCurrenciesView: UIView {
         delegate?.backPageButtonTapped()
     }
     
+    lazy var searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.translatesAutoresizingMaskIntoConstraints = false
+        search.clipsToBounds = true
+        search.layer.cornerRadius = 8
+        search.searchTextField.backgroundColor = .clear
+        search.barTintColor = .white
+        search.placeholder = "Search currency"
+        return search
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tab = UITableView()
+        tab.translatesAutoresizingMaskIntoConstraints = false
+        tab.backgroundColor = .red
+        tab.separatorStyle = .none
+        return tab
+    }()
+    
     
 //  MARK: - PRIVATE AREA
     private func configure() {
@@ -47,25 +66,46 @@ class SearchCurrenciesView: UIView {
         configConstraints()
     }
     
-    
     private func configBackgroundColor() {
-        backgroundColor = .red
+        backgroundColor = .white
     }
     
     private func addElements() {
         addSubview(backPageButton)
+        addSubview(searchBar)
+        addSubview(tableView)
     }
     
     private func configConstraints() {
         configBackPageButtonConstraints()
+        configSearchBarConstraints()
+        configTableViewConstraints()
     }
     
     private func configBackPageButtonConstraints() {
         NSLayoutConstraint.activate([
-            backPageButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
+            backPageButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
             backPageButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
             backPageButton.widthAnchor.constraint(equalToConstant: 40),
             backPageButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
+    private func configSearchBarConstraints() {
+        NSLayoutConstraint.activate([
+            searchBar.centerYAnchor.constraint(equalTo: backPageButton.centerYAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: backPageButton.trailingAnchor, constant: 5),
+            searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            searchBar.heightAnchor.constraint(equalToConstant: 50),
+        ])
+    }
+    
+    private func configTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
     
