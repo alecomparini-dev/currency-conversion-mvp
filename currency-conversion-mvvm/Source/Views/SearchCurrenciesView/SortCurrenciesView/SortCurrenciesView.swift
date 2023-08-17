@@ -34,7 +34,7 @@ class SortCurrenciesView: UIView {
     
     lazy var sortCodeButton: UIButton = {
         let img = UIImage(systemName: "chevron.down")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14))
-        let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.configuration = UIButton.Configuration.plain()
         btn.configuration?.imagePlacement = .trailing
@@ -52,7 +52,7 @@ class SortCurrenciesView: UIView {
     
     lazy var sortDescriptionButton: UIButton = {
         let img = UIImage(systemName: "")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14))
-        let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.configuration = UIButton.Configuration.plain()
         btn.configuration?.imagePlacement = .trailing
