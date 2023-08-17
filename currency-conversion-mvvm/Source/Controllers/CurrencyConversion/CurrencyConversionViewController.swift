@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol CurrencyConversionViewControllerCoordinator: AnyObject {
+    func goToSearchCurrenciesVC()
+}
+
 class CurrencyConversionViewController: UIViewController {
+    weak var coordinator: CurrencyConversionViewControllerCoordinator?
     
     lazy var screen: CurrencyConversionView = {
         let view = CurrencyConversionView()
@@ -25,10 +30,27 @@ class CurrencyConversionViewController: UIViewController {
     
     
 //  MARK: - PRIVATE AREA
+    
     private func configure() {
         hideKeyboardOnTap()
+        configDelegate()
     }
     
+    private func configDelegate() {
+        screen.delegate = self
+    }
     
 }
 
+
+//  MARK: - EXTENSION CURRENCY CONVERSION VIEW
+extension CurrencyConversionViewController: CurrencyConversionViewDelegate {
+    func currencyOfButtonTapped() {
+        coordinator?.goToSearchCurrenciesVC()
+    }
+    
+    func currencyToButtonTapped() {
+        coordinator?.goToSearchCurrenciesVC()
+    }
+       
+}

@@ -27,6 +27,7 @@ class CurrencyConversionView: UIView {
     
     
 //  MARK: - LAZY AREA
+    
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -86,10 +87,10 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var currencyTo: CurrencyView = {
-        let symbolInput = CurrencySymbolViewInput(symbol: "د.إ", sizeFrame: 70, fontSize: .title2)
+        let symbolInput = CurrencySymbolViewInput(symbol: "$", sizeFrame: 70, fontSize: .title2)
         let currencyViewInput = CurrencyViewInput(currentySymbolViewInput: symbolInput,
-                                                  titleCurrency: "AED",
-                                                  subTitleCurrency: "Dirham dos Emirados Árabes Unidos",
+                                                  titleCurrency: "USD",
+                                                  subTitleCurrency: "Dólar Norte Americano",
                                                   imageButton: "arrow.up.forward.app",
                                                   sizeButton: CGSize(width: 40, height: 35))
         let view = CurrencyView(currencyViewInput: currencyViewInput)
@@ -110,7 +111,7 @@ class CurrencyConversionView: UIView {
     lazy var resultLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "29,469.54"
+        lbl.text = "4.54"
         lbl.numberOfLines = 2
         var font = UIFont.preferredFont(forTextStyle: .largeTitle)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
@@ -129,7 +130,9 @@ class CurrencyConversionView: UIView {
         return view
     }()
     
+    
 //  MARK: - PRIVATE AREA
+    
     private func configure() {
         configBackgroundColor()
         addElements()
@@ -192,7 +195,7 @@ class CurrencyConversionView: UIView {
     
     private func configSeparatorViewConstraints() {
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 85),
+            separatorView.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 80),
             separatorView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.8),
             separatorView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 2),
@@ -210,6 +213,7 @@ class CurrencyConversionView: UIView {
     
     
 //  MARK: - CURRENCY TO
+    
     private func configCurrencyToConstraints() {
         NSLayoutConstraint.activate([
             currencyTo.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 70),
@@ -241,7 +245,7 @@ class CurrencyConversionView: UIView {
             underlineConversionView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 8),
             underlineConversionView.leadingAnchor.constraint(equalTo: resultLabel.leadingAnchor, constant: -25),
             underlineConversionView.trailingAnchor.constraint(equalTo: resultLabel.trailingAnchor, constant: 25),
-            underlineConversionView.heightAnchor.constraint(equalToConstant: 3),
+            underlineConversionView.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
     
