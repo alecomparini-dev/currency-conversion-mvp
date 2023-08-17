@@ -29,6 +29,7 @@
 		022115592A8BF4FA001E52C1 /* SearchCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115582A8BF4FA001E52C1 /* SearchCurrenciesViewController.swift */; };
 		0221155B2A8BF53D001E52C1 /* SearchCurrenciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221155A2A8BF53D001E52C1 /* SearchCurrenciesView.swift */; };
 		0221155E2A8BF5E0001E52C1 /* SearchCurrenciesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221155D2A8BF5DF001E52C1 /* SearchCurrenciesCoordinator.swift */; };
+		022115A52A8D9BAE001E52C1 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022115A42A8D9BAE001E52C1 /* UINavigationController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		022115582A8BF4FA001E52C1 /* SearchCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesViewController.swift; sourceTree = "<group>"; };
 		0221155A2A8BF53D001E52C1 /* SearchCurrenciesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesView.swift; sourceTree = "<group>"; };
 		0221155D2A8BF5DF001E52C1 /* SearchCurrenciesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesCoordinator.swift; sourceTree = "<group>"; };
+		022115A42A8D9BAE001E52C1 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				0221153E2A8AA7E7001E52C1 /* Float+Extension.swift */,
 				0221153A2A8AA6A9001E52C1 /* UIColor+Extension.swift */,
 				022115362A8AA171001E52C1 /* UIViewController+Extension.swift */,
+				022115A42A8D9BAE001E52C1 /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				0221154A2A8BB47D001E52C1 /* CurrencyViewInput.swift in Sources */,
 				022115562A8BC529001E52C1 /* NavigationController.swift in Sources */,
 				022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */,
+				022115A52A8D9BAE001E52C1 /* UINavigationController+Extension.swift in Sources */,
 				0221154E2A8BC2FA001E52C1 /* Coordinator.swift in Sources */,
 				022114FE2A8A5F24001E52C1 /* SceneDelegate.swift in Sources */,
 				022115392A8AA2DF001E52C1 /* CurrencyConversionPreview.swift in Sources */,

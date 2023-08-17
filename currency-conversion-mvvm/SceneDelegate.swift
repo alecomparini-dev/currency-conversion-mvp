@@ -18,28 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         win.rootViewController = nav
         win.makeKeyAndVisible()
         self.window = win
-        
-
-        let mainCoordinator = FirstScreenCoordinator(nav)
-        mainCoordinator.start()
-        
-//        let coordinator = CurrencyConversionCoordinator(nav)
-//        coordinator.start()
-    }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
+        let coordinator = CurrencyConversionCoordinator(nav)
+        coordinator.start()
     }
 
 

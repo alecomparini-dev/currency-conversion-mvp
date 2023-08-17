@@ -26,6 +26,8 @@ public final class NavigationController: UINavigationController {
         pushViewController(viewController, animated: true)
     }
     
+    
+//  MARK: - PRIVATE AREA
     private func setup() {
         navigationBar.barStyle = .black
         navigationBar.isHidden = true
@@ -33,18 +35,3 @@ public final class NavigationController: UINavigationController {
     
 }
 
-
-extension UINavigationController {
-    func containsViewController(ofType viewControllerType: UIViewController.Type) -> UIViewController? {
-//        return self.viewControllers.contains { $0.isKind(of: viewControllerType) }
-        return self.viewControllers.first(where: { $0.isKind(of: viewControllerType) })
-    }
-}
-
-
-//extension UINavigationController {
-//    func containsViewController(ofType viewControllerType: UIViewController.Type) {
-//        var newViewControllers = self.viewControllers.filter { !($0 is FirstViewController) }
-//        self.setViewControllers(newViewControllers, animated: true)
-//    }
-//}

@@ -8,7 +8,7 @@
 import Foundation
 
 class CurrencyConversionCoordinator: Coordinator {
-    var childCoordinators: Coordinator?
+    var childCoordinators: [Coordinator]? = []
     
     unowned let navigationController: NavigationController
     
@@ -17,6 +17,7 @@ class CurrencyConversionCoordinator: Coordinator {
     }
     
     func start() {
+        childCoordinators?.append(self)
         let controller = CurrencyConversionViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller)
@@ -30,6 +31,7 @@ extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordin
     func goToSearchCurrenciesVC() {
         let coordinator = SearchCurrenciesCoordinator(self.navigationController)
         coordinator.start()
+        childCoordinators = nil
     }
     
 }
