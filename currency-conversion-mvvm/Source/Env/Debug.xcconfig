@@ -7,5 +7,6 @@
 
 // TYPE_FETCH [file - api - localStorage]
 
-API_BASE_URL =
+API_BASE_URL = http:/$()/api.currencylayer.com
+ACCESS_KEY = 2b005329c06a0bbb773f6f1da65baedd
 TYPE_FETCH = file
