@@ -11,7 +11,7 @@ import UIKit
 class CardCurrencyView: UIView {
     private let input: CardCurrencyInput
     
-    init(cardCurrencyInput: CardCurrencyInput = CardCurrencyInput(currentySymbolViewInput: CurrencySymbolViewInput(symbol: "R$", sizeFrame: 70), titleCurrency: "BRL", subTitleCurrency: "Real")) {
+    init(cardCurrencyInput: CardCurrencyInput = CardCurrencyInput(currentySymbolViewInput: CurrencySymbolViewInput(symbol: "R$", sizeFrame: 50, fontSize: .title3), titleCurrency: "BRL", subTitleCurrency: "Real")) {
         self.input = cardCurrencyInput
         super.init(frame: .null)
         configure()
@@ -46,7 +46,7 @@ class CardCurrencyView: UIView {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = input.titleCurrency
-        var font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        var font = UIFont.preferredFont(forTextStyle: .title2)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
             font = UIFont(descriptor: descriptor, size: 0)
         }
@@ -61,7 +61,7 @@ class CardCurrencyView: UIView {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = input.subTitleCurrency
         lbl.numberOfLines = 1
-        lbl.font = UIFont.preferredFont(forTextStyle: .title3)
+        lbl.font = UIFont.preferredFont(forTextStyle: .body)
         lbl.textAlignment = .natural
         lbl.textColor = .black
         return lbl
@@ -108,7 +108,7 @@ class CardCurrencyView: UIView {
     
     private func configCodeCurrencyLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleCurrencyLabel.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor, constant: -15),
+            titleCurrencyLabel.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor, constant: -12),
             titleCurrencyLabel.leadingAnchor.constraint(equalTo: self.symbolCurrency.trailingAnchor, constant: 10),
         ])
     }
@@ -116,7 +116,7 @@ class CardCurrencyView: UIView {
     private func configDescriptionCurrencyOfLabelConstraints() {
         NSLayoutConstraint.activate([
             subTitleCurrencyLabel.topAnchor.constraint(equalTo: self.titleCurrencyLabel.bottomAnchor),
-            subTitleCurrencyLabel.leadingAnchor.constraint(equalTo: self.titleCurrencyLabel.leadingAnchor, constant: 3 ),
+            subTitleCurrencyLabel.leadingAnchor.constraint(equalTo: self.titleCurrencyLabel.leadingAnchor ),
             subTitleCurrencyLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10 )
         ])
     }

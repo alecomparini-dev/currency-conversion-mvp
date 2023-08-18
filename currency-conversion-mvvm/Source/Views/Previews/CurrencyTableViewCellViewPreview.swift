@@ -12,6 +12,7 @@ struct CurrencyTableViewCellView_Preview: PreviewProvider {
     static var previews: some View {
         CurrencyTableViewCellView()
         .asSwiftUIView
+        .padding(.horizontal, 20)
     }
 }
 #endif
