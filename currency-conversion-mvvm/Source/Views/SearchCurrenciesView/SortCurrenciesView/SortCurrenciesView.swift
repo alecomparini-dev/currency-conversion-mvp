@@ -39,10 +39,10 @@ class SortCurrenciesView: UIView {
         btn.configuration = UIButton.Configuration.plain()
         btn.configuration?.imagePlacement = .trailing
         btn.setImage(img, for: .normal)
-        btn.setTitle("Código", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.tintColor = .black
-        btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        let container = AttributeContainer([NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2)])
+        btn.configuration?.attributedTitle = AttributedString("Sigla", attributes: container)
         btn.addTarget(self, action: #selector(sortCodeButtonTapped), for: .touchUpInside)
         return btn
     }()
@@ -57,10 +57,10 @@ class SortCurrenciesView: UIView {
         btn.configuration = UIButton.Configuration.plain()
         btn.configuration?.imagePlacement = .trailing
         btn.setImage(img, for: .normal)
-        btn.setTitle("Descrição", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.tintColor = .black
-        btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        let container = AttributeContainer([NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2)])
+        btn.configuration?.attributedTitle = AttributedString("Nome", attributes: container)
         btn.addTarget(self, action: #selector(sortDescriptionButtonTapped), for: .touchUpInside)
         return btn
     }()

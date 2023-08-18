@@ -83,8 +83,8 @@ class SearchCurrenciesView: UIView {
     }
     
     private func addElements() {
-        addSubview(backPageButton)
         addSubview(searchBar)
+        addSubview(backPageButton)
         addSubview(sortCurrencies)
         addSubview(tableView)
     }
@@ -96,21 +96,21 @@ class SearchCurrenciesView: UIView {
         configTableViewConstraints()
     }
     
-    private func configBackPageButtonConstraints() {
-        NSLayoutConstraint.activate([
-            backPageButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
-            backPageButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            backPageButton.widthAnchor.constraint(equalToConstant: 40),
-            backPageButton.heightAnchor.constraint(equalToConstant: 40),
-        ])
-    }
-    
     private func configSearchBarConstraints() {
         NSLayoutConstraint.activate([
-            searchBar.centerYAnchor.constraint(equalTo: backPageButton.centerYAnchor),
+            searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             searchBar.leadingAnchor.constraint(equalTo: backPageButton.trailingAnchor, constant: 5),
             searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
             searchBar.heightAnchor.constraint(equalToConstant: 50),
+        ])
+    }
+    
+    private func configBackPageButtonConstraints() {
+        NSLayoutConstraint.activate([
+            backPageButton.centerYAnchor.constraint(equalTo: searchBar.centerYAnchor),
+            backPageButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            backPageButton.widthAnchor.constraint(equalToConstant: 40),
+            backPageButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
     
@@ -118,16 +118,16 @@ class SearchCurrenciesView: UIView {
         NSLayoutConstraint.activate([
             sortCurrencies.topAnchor.constraint(equalTo: backPageButton.bottomAnchor, constant: 20),
             sortCurrencies.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            sortCurrencies.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -60),
-            sortCurrencies.heightAnchor.constraint(equalToConstant: 35),
+            sortCurrencies.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -75),
+            sortCurrencies.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
     
     private func configTableViewConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: sortCurrencies.bottomAnchor, constant: 5),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
