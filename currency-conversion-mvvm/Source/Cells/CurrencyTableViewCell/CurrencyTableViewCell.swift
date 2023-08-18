@@ -12,6 +12,7 @@ class CurrencyTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         addElements()
         configConstraints()
     }
@@ -24,6 +25,7 @@ class CurrencyTableViewCell: UITableViewCell {
 //  MARK: - CREATE ELEMENT SCREEN
     private lazy var screen: CurrencyTableViewCellView = {
         let view = CurrencyTableViewCellView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -38,8 +40,8 @@ class CurrencyTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             screen.topAnchor.constraint(equalTo: super.topAnchor),
             screen.bottomAnchor.constraint(equalTo: super.bottomAnchor),
-            screen.leadingAnchor.constraint(equalTo: super.leadingAnchor),
-            screen.trailingAnchor.constraint(equalTo: super.trailingAnchor),
+            screen.leadingAnchor.constraint(equalTo: super.leadingAnchor, constant: 25),
+            screen.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -20),
         ])
     }
     

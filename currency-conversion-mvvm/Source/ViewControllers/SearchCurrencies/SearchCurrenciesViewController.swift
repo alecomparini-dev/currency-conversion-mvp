@@ -95,7 +95,7 @@ extension SearchCurrenciesViewController: UISearchBarDelegate {
 extension SearchCurrenciesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
     
 }
@@ -109,7 +109,10 @@ extension SearchCurrenciesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
+        
+        return cell ?? UITableViewCell()
     }
     
     
