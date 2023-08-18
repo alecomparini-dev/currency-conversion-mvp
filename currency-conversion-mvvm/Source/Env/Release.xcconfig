@@ -1,0 +1,11 @@
+//
+//  Debug.xcconfig
+//  currency-conversion-mvvm
+//
+//  Created by Alessandro Comparini on 18/08/23.
+//
+
+// TYPE_FETCH [file - api - localStorage]
+
+API_BASE_URL =
+TYPE_FETCH = api
