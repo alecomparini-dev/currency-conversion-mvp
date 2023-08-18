@@ -28,6 +28,19 @@ class CurrencyConversionView: UIView {
     
 //  MARK: - LAZY AREA
     
+    let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -144,18 +157,22 @@ class CurrencyConversionView: UIView {
     }
     
     private func addElements() {
-        addSubview(titleLabel)
-        addSubview(currencyOf)
-        addSubview(currencyValueTextField)
-        addSubview(separatorView)
-        addSubview(invertCurrencyButton)
-        addSubview(currencyTo)
-        addSubview(resultConversionView)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(currencyOf)
+        contentView.addSubview(currencyValueTextField)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(invertCurrencyButton)
+        contentView.addSubview(currencyTo)
+        contentView.addSubview(resultConversionView)
         resultConversionView.addSubview(resultLabel)
         resultConversionView.addSubview(underlineConversionView)
     }
     
     private func configConstraints() {
+        configScrollViewConstraints()
+        configContentViewConstraints()
         configTitleLabelConstraints()
         configCurrencyOfConstraints()
         configCurrencyValueTextFieldConstraints()
@@ -167,28 +184,48 @@ class CurrencyConversionView: UIView {
         configResultLabelConstraints()
     }
     
+    
+    private func configScrollViewConstraints() {
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
+    private func configContentViewConstraints() {
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+    
     private func configCurrencyOfConstraints() {
         NSLayoutConstraint.activate([
             currencyOf.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 60),
-            currencyOf.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            currencyOf.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            currencyOf.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25),
+            currencyOf.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -25),
             currencyOf.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
     private func configTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            titleLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -15),
         ])
     }
     
     private func configCurrencyValueTextFieldConstraints() {
         NSLayoutConstraint.activate([
             currencyValueTextField.topAnchor.constraint(equalTo: currencyOf.bottomAnchor, constant: 50),
-            currencyValueTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            currencyValueTextField.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.7),
+            currencyValueTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            currencyValueTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.7),
             currencyValueTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
@@ -196,8 +233,8 @@ class CurrencyConversionView: UIView {
     private func configSeparatorViewConstraints() {
         NSLayoutConstraint.activate([
             separatorView.topAnchor.constraint(equalTo: currencyValueTextField.bottomAnchor, constant: 80),
-            separatorView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.8),
-            separatorView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            separatorView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.8),
+            separatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
@@ -217,18 +254,18 @@ class CurrencyConversionView: UIView {
     private func configCurrencyToConstraints() {
         NSLayoutConstraint.activate([
             currencyTo.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 70),
-            currencyTo.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            currencyTo.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            currencyTo.heightAnchor.constraint(equalToConstant: 50),
+            currencyTo.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25),
+            currencyTo.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -25),
+            currencyTo.heightAnchor.constraint(equalToConstant: 170),
         ])
     }
     
     private func configResultConversionViewConstraints() {
         NSLayoutConstraint.activate([
             resultConversionView.topAnchor.constraint(equalTo: currencyTo.bottomAnchor),
-            resultConversionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            resultConversionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            resultConversionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            resultConversionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            resultConversionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            resultConversionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50),
         ])
     }
     
