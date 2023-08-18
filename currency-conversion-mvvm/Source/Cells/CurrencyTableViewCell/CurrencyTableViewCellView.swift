@@ -42,7 +42,7 @@ class CurrencyTableViewCellView: UIView {
     }()
     
     lazy var favoriteButton: UIButton = {
-        let img = UIImage(systemName: "heart.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
+        let img = UIImage(systemName: "heart.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 22))
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(img, for: .normal)
@@ -81,27 +81,29 @@ class CurrencyTableViewCellView: UIView {
     
     private func configCardCurrencyViewConstraints() {
         NSLayoutConstraint.activate([
-            cardCurrencyView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
-            cardCurrencyView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            cardCurrencyView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -75),
-            cardCurrencyView.heightAnchor.constraint(equalToConstant: 100),
+            cardCurrencyView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            cardCurrencyView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            cardCurrencyView.trailingAnchor.constraint(equalTo: favoriteView.leadingAnchor, constant: -10),
+            cardCurrencyView.heightAnchor.constraint(equalToConstant: 75),
         ])
     }
     
     private func configFavoriteViewConstraints() {
         NSLayoutConstraint.activate([
             favoriteView.topAnchor.constraint(equalTo: cardCurrencyView.topAnchor),
-            favoriteView.leadingAnchor.constraint(equalTo: cardCurrencyView.trailingAnchor),
             favoriteView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             favoriteView.bottomAnchor.constraint(equalTo: cardCurrencyView.bottomAnchor),
+            favoriteView.widthAnchor.constraint(equalToConstant: 50),
         ])
     }
     
     private func configFavoriteButtonConstraints() {
         NSLayoutConstraint.activate([
-            favoriteButton.centerXAnchor.constraint(equalTo: favoriteView.centerXAnchor),
             favoriteButton.centerYAnchor.constraint(equalTo: favoriteView.centerYAnchor),
+            favoriteButton.centerXAnchor.constraint(equalTo: favoriteView.centerXAnchor),
         ])
     }
+    
+
     
 }
