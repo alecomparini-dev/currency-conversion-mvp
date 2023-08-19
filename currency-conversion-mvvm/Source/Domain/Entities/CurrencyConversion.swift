@@ -9,18 +9,18 @@ import Foundation
 
 class CurrencyConversion {
     private let value: Double
-    private let quoteToCurrencyOf: Double
-    private let quoteToCurrencyTo: Double
+    private let quoteCurrencyOf: Double
+    private let quoteCurrencyTo: Double
     
-    init(value: Double = 1, quoteToCurrencyOf: Double = 1, quoteToCurrencyTo: Double) {
+    init(value: Double = 1, quoteCurrencyOf: Double = 1, quoteCurrencyTo: Double) {
         self.value = value
-        self.quoteToCurrencyOf = quoteToCurrencyOf
-        self.quoteToCurrencyTo = quoteToCurrencyTo
+        self.quoteCurrencyOf = quoteCurrencyOf
+        self.quoteCurrencyTo = quoteCurrencyTo
     }
     
     func conversion() -> Double {
-        if quoteToCurrencyOf == .zero { return .zero }
-        return value * (quoteToCurrencyTo / quoteToCurrencyOf)
+        if quoteCurrencyOf == .zero { return .zero }
+        return value * (quoteCurrencyTo / quoteCurrencyOf)
     }
     
 }
