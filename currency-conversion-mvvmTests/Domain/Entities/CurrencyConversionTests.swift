@@ -78,7 +78,7 @@ extension CurrencyConversionTests {
     func makeSUT(value: Double = 1.0, quoteToCurrencyOf: Double, quoteToCurrencyTo: Double,
                  file: StaticString = #filePath, line: UInt = #line) -> CurrencyConversion {
         
-        let sut = CurrencyConversion(value: value, quoteToCurrencyOf: quoteToCurrencyOf, quoteToCurrencyTo: quoteToCurrencyTo)
+        let sut = CurrencyConversion(value: value, quoteCurrencyOf: quoteToCurrencyOf, quoteCurrencyTo: quoteToCurrencyTo)
         checkMemoryLeak(for: sut)
         return sut
     }

@@ -12,12 +12,10 @@ struct Currencies {
     var name: String
 }
 
-
 struct DollarToCurrencyQuotes {
     var acronym: String
     var quotes: Double
 }
-
 
 
 //Gerenciador de Cache de Taxas de Câmbio --> ESPECIFICO DO USE CASE QUE GRAVA OFF LINE OU RECUPERA OFFLINE
