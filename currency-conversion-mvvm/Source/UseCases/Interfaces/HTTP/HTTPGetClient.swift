@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HTTPGetClient {
-    func get() async throws -> Result<Data?, HTTPError>
+    func get() async throws -> Data
 }
