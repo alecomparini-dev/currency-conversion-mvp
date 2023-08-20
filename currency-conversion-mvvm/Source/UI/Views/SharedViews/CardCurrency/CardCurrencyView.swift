@@ -36,9 +36,9 @@ class CardCurrencyView: UIView {
         view.layer.cornerCurve = .circular
         view.layer.cornerRadius = 12
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 6
-        view.layer.shadowOffset = CGSize(width: 3, height: 5)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowRadius = 5
+        view.layer.shadowOffset = CGSize(width: 2, height: 4)
         return view
     }()
     
