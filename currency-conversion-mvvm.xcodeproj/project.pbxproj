@@ -363,29 +363,28 @@
 			children = (
 				02AE7C2E2A8EB8FD00A2608D /* Previews */,
 				02AE7C312A8EB9EA00A2608D /* SharedViews */,
-				02AE7C2D2A8EB52500A2608D /* CardCurrencyView */,
-				022115CE2A8E8767001E52C1 /* CurrencyConversionView */,
-				022115CF2A8E8776001E52C1 /* SearchCurrenciesView */,
+				022115CE2A8E8767001E52C1 /* CurrencyConversion */,
+				022115CF2A8E8776001E52C1 /* SearchCurrencies */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		022115CE2A8E8767001E52C1 /* CurrencyConversionView */ = {
+		022115CE2A8E8767001E52C1 /* CurrencyConversion */ = {
 			isa = PBXGroup;
 			children = (
 				022115462A8BAA6B001E52C1 /* Currency */,
 				022115312A8AA082001E52C1 /* CurrencyConversionView.swift */,
 			);
-			path = CurrencyConversionView;
+			path = CurrencyConversion;
 			sourceTree = "<group>";
 		};
-		022115CF2A8E8776001E52C1 /* SearchCurrenciesView */ = {
+		022115CF2A8E8776001E52C1 /* SearchCurrencies */ = {
 			isa = PBXGroup;
 			children = (
 				022115D42A8E9682001E52C1 /* SortCurrenciesView */,
 				0221155A2A8BF53D001E52C1 /* SearchCurrenciesView.swift */,
 			);
-			path = SearchCurrenciesView;
+			path = SearchCurrencies;
 			sourceTree = "<group>";
 		};
 		022115D42A8E9682001E52C1 /* SortCurrenciesView */ = {
@@ -440,6 +439,7 @@
 		02A9E7562A90E5CB006935A3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				02E1AAE12A9257D600BF0D51 /* CurrencyConversion */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -510,13 +510,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		02AE7C2D2A8EB52500A2608D /* CardCurrencyView */ = {
+		02AE7C2D2A8EB52500A2608D /* CardCurrency */ = {
 			isa = PBXGroup;
 			children = (
 				02AE7C322A8EBAF000A2608D /* CardCurrencyView.swift */,
 				02AE7C342A8EBB8C00A2608D /* CardCurrencyInput.swift */,
 			);
-			path = CardCurrencyView;
+			path = CardCurrency;
 			sourceTree = "<group>";
 		};
 		02AE7C2E2A8EB8FD00A2608D /* Previews */ = {
@@ -531,6 +531,7 @@
 		02AE7C312A8EB9EA00A2608D /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
+				02AE7C2D2A8EB52500A2608D /* CardCurrency */,
 				022115402A8AAAFC001E52C1 /* CurrencySymbolView */,
 			);
 			path = SharedViews;
@@ -622,6 +623,13 @@
 			children = (
 			);
 			path = URLSession;
+			sourceTree = "<group>";
+		};
+		02E1AAE12A9257D600BF0D51 /* CurrencyConversion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurrencyConversion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
