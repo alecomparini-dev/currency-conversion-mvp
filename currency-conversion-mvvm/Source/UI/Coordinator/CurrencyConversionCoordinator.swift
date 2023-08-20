@@ -28,13 +28,13 @@ class CurrencyConversionCoordinator: Coordinator {
     
 //  MARK: - PRIVATE AREA
     private func validatorFactory() -> Validator {
-        defaultValidatorFactory(ofTypeViewController: CurrencyConversionViewController(),
+        defaultValidatorFactory(ofTypeViewController: CurrencyConversionViewControllerFactory.make(),
                                 navigationController: navigationController,
                                 coordinator: self)
     }
     
     private func startCurrencyConversion() {
-        let controller = CurrencyConversionViewController()
+        let controller = CurrencyConversionViewControllerFactory.make()
         controller.coordinator = self
         navigationController.pushViewController(controller)
     }

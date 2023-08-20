@@ -61,6 +61,7 @@
 		02E1AAEC2A92838500BF0D51 /* ListCurrenciesViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAEB2A92838500BF0D51 /* ListCurrenciesViewModelFactory.swift */; };
 		02E1AAEF2A9283B500BF0D51 /* ListCurrenciesViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAEE2A9283B500BF0D51 /* ListCurrenciesViewControllerFactory.swift */; };
 		02E1AAF12A928A7300BF0D51 /* ViewControllerFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAF02A928A7300BF0D51 /* ViewControllerFactoryProtocol.swift */; };
+		02E1AAF42A92944200BF0D51 /* CurrencyConversionViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAF32A92944200BF0D51 /* CurrencyConversionViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		02E1AAEB2A92838500BF0D51 /* ListCurrenciesViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesViewModelFactory.swift; sourceTree = "<group>"; };
 		02E1AAEE2A9283B500BF0D51 /* ListCurrenciesViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesViewControllerFactory.swift; sourceTree = "<group>"; };
 		02E1AAF02A928A7300BF0D51 /* ViewControllerFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactoryProtocol.swift; sourceTree = "<group>"; };
+		02E1AAF32A92944200BF0D51 /* CurrencyConversionViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,13 +449,13 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
-		02A9E7562A90E5CB006935A3 /* Presentation */ = {
+		02A9E7562A90E5CB006935A3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				02E1AAE12A9257D600BF0D51 /* CurrencyConversionViewModel */,
 				02E1AAE22A92652D00BF0D51 /* ListCurrenciesViewModel */,
-				02E1AAE12A9257D600BF0D51 /* CurrencyConversion */,
 			);
-			path = Presentation;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		02A9E7572A90E5EA006935A3 /* Domain */ = {
@@ -554,7 +556,7 @@
 			children = (
 				02E1AACB2A913C0100BF0D51 /* Repository */,
 				02E1AAC82A9131C200BF0D51 /* Network */,
-				02A9E7562A90E5CB006935A3 /* Presentation */,
+				02A9E7562A90E5CB006935A3 /* ViewModels */,
 			);
 			path = InterfaceAdapters;
 			sourceTree = "<group>";
@@ -637,11 +639,11 @@
 			path = URLSession;
 			sourceTree = "<group>";
 		};
-		02E1AAE12A9257D600BF0D51 /* CurrencyConversion */ = {
+		02E1AAE12A9257D600BF0D51 /* CurrencyConversionViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = CurrencyConversion;
+			path = CurrencyConversionViewModel;
 			sourceTree = "<group>";
 		};
 		02E1AAE22A92652D00BF0D51 /* ListCurrenciesViewModel */ = {
@@ -691,6 +693,7 @@
 			children = (
 				02E1AAF22A928A8700BF0D51 /* Protocol */,
 				02E1AAEE2A9283B500BF0D51 /* ListCurrenciesViewControllerFactory.swift */,
+				02E1AAF32A92944200BF0D51 /* CurrencyConversionViewControllerFactory.swift */,
 			);
 			path = ViewControllerFactories;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				022115422A8AAC7D001E52C1 /* CurrencySymbolView.swift in Sources */,
 				02E1AAD22A913EDE00BF0D51 /* HTTPGetClient.swift in Sources */,
 				022115A52A8D9BAE001E52C1 /* UINavigationController+Extension.swift in Sources */,
+				02E1AAF42A92944200BF0D51 /* CurrencyConversionViewControllerFactory.swift in Sources */,
 				0221154E2A8BC2FA001E52C1 /* Coordinator.swift in Sources */,
 				02E1AAD02A913E4E00BF0D51 /* HTTPPostClient.swift in Sources */,
 				022114FE2A8A5F24001E52C1 /* SceneDelegate.swift in Sources */,
