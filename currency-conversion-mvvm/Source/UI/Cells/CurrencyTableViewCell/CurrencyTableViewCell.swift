@@ -63,6 +63,7 @@ class CurrencyTableViewCell: UITableViewCell {
 //  MARK: - EXTENSION DELEGATE
 
 extension CurrencyTableViewCell: CurrencyTableViewCellViewDelegate {
+    
     func favoriteButtonTapped(_ button: UIButton) {
         if button.currentImage == UIImage(systemName: "heart.fill") {
             button.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -71,7 +72,6 @@ extension CurrencyTableViewCell: CurrencyTableViewCellViewDelegate {
             button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             button.tintColor = screen.getTintColorHeart(.fill)
         }
-
-        
     }
+    
 }
