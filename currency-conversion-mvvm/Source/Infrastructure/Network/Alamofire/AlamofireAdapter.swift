@@ -19,20 +19,19 @@ class AlamofireAdapter: HTTPGetClient {
         let url = URL(string: Environment.variable(.apiBaseUrl) + "/live" )! 
         
         return try await withCheckedThrowingContinuation { continuation in
-            session.request(url,
-                            method: .get,
-                            parameters: ["access_key": Environment.variable(.accessKey)]
-            )
-            .responseData { response in
-                switch(response.result) {
-                    case .success(let data):
-                        continuation.resume(returning: data)
-                    
-                    case .failure:
-                        continuation.resume(throwing: HTTPError.noConnectivity)
-                }
-            }
+            let parameters: Dictionary<String,String> = ["access_key": Environment.variable(.accessKey)]
             
+            session
+                .request(url, method: .get, parameters: parameters)
+                .responseData { response in
+                    switch(response.result) {
+                        case .success(let data):
+                            continuation.resume(returning: data)
+                        
+                        case .failure:
+                            continuation.resume(throwing: HTTPError.noConnectivity)
+                    }
+                }
             
         }
         

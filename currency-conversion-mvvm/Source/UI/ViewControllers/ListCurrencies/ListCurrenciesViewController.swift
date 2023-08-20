@@ -54,7 +54,6 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
         configTableViewDelegate()
-        configViewModelDelegate()
     }
     
     private func configSearchCurrenciesViewDelegate() {
@@ -70,16 +69,8 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         screen.tableView.dataSource = self
     }
     
-    private func configViewModelDelegate() {
-        configListCurrenciesVM()
-    }
-    
-    private func configListCurrenciesVM() {
-        
-    }
-    
     private func fetchCurrencies() {
-        listCurrencies()
+        listCurrenciesVM.listCurrencies()
     }
     
 }
