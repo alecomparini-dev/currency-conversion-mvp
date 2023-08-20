@@ -10,6 +10,7 @@ import UIKit
 protocol CurrencyConversionViewDelegate: AnyObject {
     func currencyOfButtonTapped()
     func currencyToButtonTapped()
+    func invertCurrencyButtonTapped()
 }
 
 class CurrencyConversionView: UIView {
@@ -44,7 +45,7 @@ class CurrencyConversionView: UIView {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "Currency Conversion"
+        lbl.text = "Conversão de Moedas"
         lbl.font = UIFont.preferredFont(forTextStyle: .title1)
         lbl.textAlignment = .center
         lbl.textColor = .white
@@ -52,10 +53,10 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var currencyOf: CurrencyView = {
-        let symbolInput = CurrencySymbolViewInput(symbol: "R$", sizeFrame: 70, fontSize: .title2)
+        let symbolInput = CurrencySymbolViewInput(symbol: "$", sizeFrame: 70, fontSize: .title2)
         let currencyViewInput = CurrencyViewInput(currentySymbolViewInput: symbolInput,
-                                                  titleCurrency: "BRL",
-                                                  subTitleCurrency: "Real",
+                                                  titleCurrency: "USD",
+                                                  subTitleCurrency: "Dólar Norte-Americano",
                                                   imageButton: "arrow.up.forward.app",
                                                   sizeButton: CGSize(width: 40, height: 35))
         let view = CurrencyView(currencyViewInput: currencyViewInput)
@@ -63,9 +64,6 @@ class CurrencyConversionView: UIView {
         view.changeCurrencyButton.addTarget(self, action: #selector(currencyOfButtonTapped), for: .touchUpInside)
         return view
     }()
-    @objc private func currencyOfButtonTapped() {
-        delegate?.currencyOfButtonTapped()
-    }
     
     lazy var currencyValueTextField: UITextField = {
         let tf = UITextField()
@@ -73,7 +71,7 @@ class CurrencyConversionView: UIView {
         tf.text = "1"
         tf.textAlignment = .center
         tf.font = UIFont.preferredFont(forTextStyle: .title1)
-        tf.attributedPlaceholder = NSMutableAttributedString(string: "Input value", attributes: [.foregroundColor: UIColor.gray.withAlphaComponent(0.6) ])
+        tf.attributedPlaceholder = NSMutableAttributedString(string: "Valor", attributes: [.foregroundColor: UIColor.gray.withAlphaComponent(0.6) ])
         tf.layer.cornerRadius = 8
         tf.clipsToBounds = true
         tf.backgroundColor = .white
@@ -96,25 +94,23 @@ class CurrencyConversionView: UIView {
         btn.tintColor = .white.withAlphaComponent(0.5)
         btn.backgroundColor = UIColor.HEX("#0d2959")
         btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(invertCurrencyButtonTapped), for: .touchUpInside)
         return btn
     }()
     
     lazy var currencyTo: CurrencyView = {
-        let symbolInput = CurrencySymbolViewInput(symbol: "$", sizeFrame: 70, fontSize: .title2)
+        let symbolInput = CurrencySymbolViewInput(symbol: "", sizeFrame: 70, fontSize: .title2)
         let currencyViewInput = CurrencyViewInput(currentySymbolViewInput: symbolInput,
-                                                  titleCurrency: "USD",
-                                                  subTitleCurrency: "Dólar Norte Americano",
+                                                  titleCurrency: "Selecione",
+                                                  subTitleCurrency: "a moeda",
                                                   imageButton: "arrow.up.forward.app",
                                                   sizeButton: CGSize(width: 40, height: 35))
-        let view = CurrencyView(currencyViewInput: currencyViewInput)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.changeCurrencyButton.addTarget(self, action: #selector(currencyToButtonTapped), for: .touchUpInside)
-        return view
+        let currencyView = CurrencyView(currencyViewInput: currencyViewInput)
+        currencyView.translatesAutoresizingMaskIntoConstraints = false
+        currencyView.changeCurrencyButton.addTarget(self, action: #selector(currencyToButtonTapped), for: .touchUpInside)
+        return currencyView
     }()
-    @objc private func currencyToButtonTapped() {
-        delegate?.currencyToButtonTapped()
-    }
-    
+
     lazy var resultConversionView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +120,7 @@ class CurrencyConversionView: UIView {
     lazy var resultLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "4.54"
+        lbl.text = ""
         lbl.numberOfLines = 2
         var font = UIFont.preferredFont(forTextStyle: .largeTitle)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
@@ -142,6 +138,16 @@ class CurrencyConversionView: UIView {
         view.backgroundColor = UIColor.HEX("#ffffff")
         return view
     }()
+    
+    lazy var selectCurrencyButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Selecione a Moeda", for: .normal)
+        btn.tintColor = .white.withAlphaComponent(0.7)
+        btn.setTitleColor(.white, for: .normal)
+        return btn
+    }()
+        
     
     
 //  MARK: - PRIVATE AREA
@@ -286,6 +292,20 @@ class CurrencyConversionView: UIView {
         ])
     }
     
+    
+//  MARK: - @OBJC AREA
 
+    @objc private func currencyOfButtonTapped() {
+        delegate?.currencyOfButtonTapped()
+    }
+    
+    @objc private func currencyToButtonTapped() {
+        delegate?.currencyToButtonTapped()
+    }
+    
+    @objc private func invertCurrencyButtonTapped() {
+        delegate?.invertCurrencyButtonTapped()
+    }
+    
     
 }

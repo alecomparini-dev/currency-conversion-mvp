@@ -61,7 +61,7 @@ class CurrencyView: UIView {
         btn.setTitleColor(.white, for: .normal)
         return btn
     }()
-    
+        
     
 //  MARK: - PRIVATE AREA
     private func configure() {
