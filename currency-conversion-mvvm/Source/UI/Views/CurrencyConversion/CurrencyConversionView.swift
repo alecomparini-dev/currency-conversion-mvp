@@ -149,7 +149,6 @@ class CurrencyConversionView: UIView {
     }()
         
     
-    
 //  MARK: - PRIVATE AREA
     
     private func configure() {
@@ -190,7 +189,6 @@ class CurrencyConversionView: UIView {
         configResultLabelConstraints()
     }
     
-    
     private func configScrollViewConstraints() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -215,7 +213,7 @@ class CurrencyConversionView: UIView {
             currencyOf.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 60),
             currencyOf.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25),
             currencyOf.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -25),
-            currencyOf.heightAnchor.constraint(equalToConstant: 50),
+            currencyOf.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
     

@@ -1,5 +1,5 @@
 //
-//  SearchCurrenciesCoordinator.swift
+//  ListCurrenciesCoordinator.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 15/08/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchCurrenciesCoordinator: Coordinator {
+class ListCurrenciesCoordinator: Coordinator {
     var childCoordinators: [Coordinator]? = []
     
     unowned let navigationController: NavigationController
@@ -18,14 +18,22 @@ class SearchCurrenciesCoordinator: Coordinator {
     
     func start() {
         childCoordinators?.append(self)
-        childCoordinators?.append(self)
-        let validator = defaultValidatorFactory(ofTypeViewController: SearchCurrenciesViewController(),
-                                                navigationController: navigationController,
-                                                coordinator: self)
-        if !validator.validate() {
+        if !validatorFactory().validate() {
             return
         }
-        let controller = SearchCurrenciesViewController()
+        startListCurrencies()
+    }
+    
+    
+//  MARK: - PRIVATE AREA
+    private func validatorFactory() -> Validator {
+        defaultValidatorFactory(ofTypeViewController: ListCurrenciesViewControllerFactory.make() ,
+                                navigationController: navigationController,
+                                coordinator: self)
+    }
+    
+    private func startListCurrencies() {
+        let controller = ListCurrenciesViewControllerFactory.make()
         controller.coordinator = self
         navigationController.pushViewController(controller)
     }
@@ -33,7 +41,7 @@ class SearchCurrenciesCoordinator: Coordinator {
 }
 
 
-extension SearchCurrenciesCoordinator: SearchCurrenciesViewControllerCoordinator {
+extension ListCurrenciesCoordinator: ListCurrenciesViewControllerCoordinator {
     func goToCurrencyConversionVC() {
         let coordinator = CurrencyConversionCoordinator(navigationController)
         coordinator.start()

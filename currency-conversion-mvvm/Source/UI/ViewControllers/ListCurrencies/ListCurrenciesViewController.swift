@@ -1,5 +1,5 @@
 //
-//  SearchCurrenciesViewController.swift
+//  ListCurrenciesViewController.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 15/08/23.
@@ -8,20 +8,28 @@
 import UIKit
 
 
-//  MARK: - PROTOCOL
-
-protocol SearchCurrenciesViewControllerCoordinator: AnyObject {
+//  MARK: - PROTOCOL COORDINATOR
+protocol ListCurrenciesViewControllerCoordinator: AnyObject {
     func goToCurrencyConversionVC()
 }
 
 
 //  MARK: - CLASS
-
-class SearchCurrenciesViewController: UIViewController, ViewControllerCoordinator {
-    weak var coordinator: SearchCurrenciesViewControllerCoordinator?
+class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
+    weak var coordinator: ListCurrenciesViewControllerCoordinator?
+    private var listCurrenciesVM: ListCurrenciesViewModelProtocol
     
-    lazy var screen: SearchCurrenciesView = {
-        let view = SearchCurrenciesView()
+    init(listCurrenciesVM: ListCurrenciesViewModelProtocol) {
+        self.listCurrenciesVM = listCurrenciesVM
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    lazy var screen: ListCurrenciesView = {
+        let view = ListCurrenciesView()
         return view
     }()
     
@@ -32,11 +40,11 @@ class SearchCurrenciesViewController: UIViewController, ViewControllerCoordinato
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        fetchCurrencies()
     }
     
     
 //  MARK: - PRIVATE AREA
-    
     private func configure() {
         hideKeyboardOnTap()
         configureDelegates()
@@ -46,6 +54,7 @@ class SearchCurrenciesViewController: UIViewController, ViewControllerCoordinato
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
         configTableViewDelegate()
+        configViewModelDelegate()
     }
     
     private func configSearchCurrenciesViewDelegate() {
@@ -61,13 +70,23 @@ class SearchCurrenciesViewController: UIViewController, ViewControllerCoordinato
         screen.tableView.dataSource = self
     }
     
+    private func configViewModelDelegate() {
+        configListCurrenciesVM()
+    }
+    
+    private func configListCurrenciesVM() {
+        
+    }
+    
+    private func fetchCurrencies() {
+        listCurrencies()
+    }
+    
 }
 
 
-
-//  MARK: - EXTENSION SearchCurrenciesViewDelegate
-
-extension SearchCurrenciesViewController: SearchCurrenciesViewDelegate {
+//  MARK: - EXTENSION ListCurrenciesViewDelegate
+extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
     func backPageButtonTapped() {
         coordinator?.goToCurrencyConversionVC()
     }
@@ -75,9 +94,18 @@ extension SearchCurrenciesViewController: SearchCurrenciesViewDelegate {
 }
 
 
+//  MARK: - EXTENSION ListCurrenciesViewDelegate
+extension ListCurrenciesViewController: ListCurrenciesViewModelProtocol {
+    func listCurrencies() {
+        listCurrenciesVM.listCurrencies()
+    }
+    
+}
+
+
 //  MARK: - EXTENSION UISearchBarDelegate
 
-extension SearchCurrenciesViewController: UISearchBarDelegate {
+extension ListCurrenciesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -92,7 +120,7 @@ extension SearchCurrenciesViewController: UISearchBarDelegate {
 
 //  MARK: - EXTENSION UITableViewDelegate
 
-extension SearchCurrenciesViewController: UITableViewDelegate {
+extension ListCurrenciesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
@@ -103,7 +131,7 @@ extension SearchCurrenciesViewController: UITableViewDelegate {
 
 //  MARK: - EXTENSION UITableViewDataSource
 
-extension SearchCurrenciesViewController: UITableViewDataSource {
+extension ListCurrenciesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
