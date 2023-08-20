@@ -47,12 +47,12 @@ class CurrencyTableViewCellView: UIView {
     }()
     
     lazy var favoriteButton: UIButton = {
-        let img = UIImage(systemName: "heart.fill")
+        let img = UIImage(systemName: "heart")
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(img, for: .normal)
         btn.setTitleColor(.black, for: .normal)
-        btn.tintColor = getTintColorHeart(.fill)
+        btn.tintColor = getTintColorHeart(.normal)
         btn.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         return btn
     }()
