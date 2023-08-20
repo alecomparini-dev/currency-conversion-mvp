@@ -1,5 +1,5 @@
 //
-//  ApiListCurrenciesUseCase.swift
+//  RemoteListCurrenciesUseCase.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 19/08/23.
@@ -7,13 +7,12 @@
 
 import Foundation
 
-class APIListCurrenciesUseCase {
+class RemoteListCurrenciesUseCase {
     
     private let url: URL
-//    private let httpClient: HTTPGetClient
-    private let httpClient: AlamofireAdapter
+    private let httpClient: HTTPGetClient
 
-    init(url: URL, httpClient: AlamofireAdapter) {
+    init(url: URL, httpClient: HTTPGetClient) {
         self.url = url
         self.httpClient = httpClient
     }
