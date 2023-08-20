@@ -10,7 +10,7 @@ import SwiftUI
 #if DEBUG
 struct SearchCurrencies_Preview: PreviewProvider {
     static var previews: some View {
-        SearchCurrenciesViewController()
+        ListCurrenciesViewControllerFactory.make()
         .asSwiftUIViewController
     }
 }
