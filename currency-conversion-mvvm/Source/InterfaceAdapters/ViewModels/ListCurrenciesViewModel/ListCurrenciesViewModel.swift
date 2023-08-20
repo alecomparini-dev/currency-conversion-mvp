@@ -11,9 +11,44 @@ import Foundation
 class ListRemoteCurrenciesViewModel: ListCurrenciesViewModelProtocol {
     
     func listCurrencies() {
-        print("PAUUU VAI CAIR A FOIAAA !!!!!")
+        print("CHAMOUUUUUUUU")
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //  MARK: -

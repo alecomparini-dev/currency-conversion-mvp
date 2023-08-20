@@ -33,6 +33,7 @@ class CurrencyTableViewCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     //  MARK: - LAZY AREA
     lazy var cardCurrencyView: CardCurrencyView = {
         let card = CardCurrencyView()

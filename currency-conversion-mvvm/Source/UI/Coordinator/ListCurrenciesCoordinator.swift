@@ -27,13 +27,13 @@ class ListCurrenciesCoordinator: Coordinator {
     
 //  MARK: - PRIVATE AREA
     private func validatorFactory() -> Validator {
-        defaultValidatorFactory(ofTypeViewController: ListCurrenciesViewControllerFactory.make() ,
+        defaultValidatorFactory(ofTypeViewController: ListCurrenciesControllerFactory.make() ,
                                 navigationController: navigationController,
                                 coordinator: self)
     }
     
     private func startListCurrencies() {
-        let controller = ListCurrenciesViewControllerFactory.make()
+        let controller = ListCurrenciesControllerFactory.make()
         controller.coordinator = self
         navigationController.pushViewController(controller)
     }
