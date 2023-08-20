@@ -35,38 +35,21 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
         hideKeyboardOnTap()
         configDelegate()
         
-        Task {
-            do {
-                try await chamandoCaraio()
-            } catch {
-                print(error)
-            }
-        }
         
+        
+        /*
+         var dateAPI = Date(timeIntervalSince1970: jsonTime as! Double)
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+         dateFormatter.timeZone = TimeZone.current
+         let formattedLocalDate = dateFormatter.string(from: dateAPI)
+         print("FUSO LOCAL -->>>>>", formattedLocalDate)
+         */
     }
     
     private func configDelegate() {
         screen.delegate = self
     }
-    
-    
-    
-    
-    
-    
-    
-    private func chamandoCaraio() async throws {
-        let alamofire = AlamofireAdapter()
-        let url = URL(string: Environment.variable(.apiBaseUrl) + "/live" )!
-        let APIListCurrencies = APIListCurrenciesUseCase(url:url , httpClient: alamofire)
-        
-        let data = try await APIListCurrencies.listCurrencies()
-        
-        print(try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) )
-    }
-    
-    
-    
     
     
 }
