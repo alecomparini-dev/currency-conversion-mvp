@@ -1,5 +1,5 @@
 //
-//  SearchCurrenciesView.swift
+//  ListCurrenciesView.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 15/08/23.
@@ -10,15 +10,15 @@ import UIKit
 
 //  MARK: - PROTOCOL
 
-protocol SearchCurrenciesViewDelegate: AnyObject {
+protocol ListCurrenciesViewDelegate: AnyObject {
     func backPageButtonTapped()
 }
 
 
 //  MARK: -
 
-class SearchCurrenciesView: UIView {
-    weak var delegate: SearchCurrenciesViewDelegate?
+class ListCurrenciesView: UIView {
+    weak var delegate: ListCurrenciesViewDelegate?
     
     init() {
         super.init(frame: .zero)
