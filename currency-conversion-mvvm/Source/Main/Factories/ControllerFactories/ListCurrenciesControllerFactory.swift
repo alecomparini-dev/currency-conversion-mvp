@@ -15,7 +15,7 @@ class ListCurrenciesControllerFactory: ViewControllerFactoryProtocol {
         
         let url = URL(string: Environment.variable(.apiBaseUrl) + "/live" )!
         
-        let listCurrenciesUseCase = RemoteListCurrenciesUseCase(url: url, httpClient: httpClient)
+        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, httpClient: httpClient)
         
         let listCurrenciesVM = ListRemoteCurrenciesViewModel(listCurrenciesUseCase: listCurrenciesUseCase)
         
