@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HTTPGetClient {
-    func get() async throws -> Data
+    func get(to url: URL) async throws -> Data
 }

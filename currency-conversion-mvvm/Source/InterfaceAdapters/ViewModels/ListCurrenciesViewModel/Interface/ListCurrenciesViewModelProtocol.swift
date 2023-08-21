@@ -10,23 +10,26 @@ import Foundation
 
 //  MARK: - PROTOCOL VIEWMODEL
 protocol ListCurrenciesViewModelProtocol: AnyObject {
+    var delegate: ListCurrenciesViewModelDelegate? { get set }
+    func numberOfCurrencies() -> Int
     func listCurrencies()
 }
 
 
+
 //  MARK: - PROTOCOL VIEWMODEL
-protocol searchCurrenciesViewModelProtocol: AnyObject {
+protocol SearchCurrenciesViewModelProtocol: AnyObject {
     func searchCurrencies()
 }
 
 
 //  MARK: - PROTOCOL VIEWMODEL
-protocol sortCurrenciesViewModelProtocol: AnyObject {
+protocol SortCurrenciesViewModelProtocol: AnyObject {
     func sortCurrencies()
 }
 
 
 //  MARK: - PROTOCOL VIEWMODEL
-protocol favoriteCurrencyViewModelProtocol: AnyObject {
+protocol FavoriteCurrencyViewModelProtocol: AnyObject {
     func favoriteCurrency()
 }
