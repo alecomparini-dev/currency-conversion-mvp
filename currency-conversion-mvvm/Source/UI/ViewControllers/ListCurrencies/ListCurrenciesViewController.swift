@@ -19,12 +19,12 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
     
-    private var listCurrenciesVM: any ListCurrenciesViewModelProtocol
+    private var listCurrenciesVM: ListCurrenciesViewModelProtocol
     
     
 //  MARK: - Initializers
     
-    init(listCurrenciesVM: any ListCurrenciesViewModelProtocol) {
+    init(listCurrenciesVM: ListCurrenciesViewModelProtocol) {
         self.listCurrenciesVM = listCurrenciesVM
         super.init(nibName: nil, bundle: nil)
     }
