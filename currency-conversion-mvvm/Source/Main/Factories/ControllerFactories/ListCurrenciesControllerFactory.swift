@@ -11,7 +11,15 @@ class ListCurrenciesControllerFactory: ViewControllerFactoryProtocol {
     typealias T = ListCurrenciesViewController
     
     static func make() -> T {
-        return ListCurrenciesViewController(listCurrenciesVM: ListRemoteCurrenciesViewModel())
+        let httpClient = AlamofireAdapter()
+        
+        let url = URL(string: Environment.variable(.apiBaseUrl) + "/live" )!
+        
+        let listCurrenciesUseCase = RemoteListCurrenciesUseCase(url: url, httpClient: httpClient)
+        
+        let listCurrenciesVM = ListRemoteCurrenciesViewModel(listCurrenciesUseCase: listCurrenciesUseCase)
+        
+        return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM)
     }
     
 }
