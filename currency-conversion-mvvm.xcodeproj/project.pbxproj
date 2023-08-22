@@ -69,7 +69,7 @@
 		02E1AAF92A93968D00BF0D51 /* SearchCurrenciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAF82A93968D00BF0D51 /* SearchCurrenciesViewModel.swift */; };
 		02E1AAFC2A9396B300BF0D51 /* SortCurrenciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAFB2A9396B300BF0D51 /* SortCurrenciesViewModel.swift */; };
 		02E1AAFF2A9396E200BF0D51 /* FavoriteCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AAFE2A9396E200BF0D51 /* FavoriteCurrencyViewModel.swift */; };
-		02E1AB052A939A5000BF0D51 /* RemoteListCurrenciesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AB042A939A5000BF0D51 /* RemoteListCurrenciesUseCase.swift */; };
+		02E1AB052A939A5000BF0D51 /* ListCurrenciesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E1AB042A939A5000BF0D51 /* ListCurrenciesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,7 +148,7 @@
 		02E1AAF82A93968D00BF0D51 /* SearchCurrenciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesViewModel.swift; sourceTree = "<group>"; };
 		02E1AAFB2A9396B300BF0D51 /* SortCurrenciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCurrenciesViewModel.swift; sourceTree = "<group>"; };
 		02E1AAFE2A9396E200BF0D51 /* FavoriteCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCurrencyViewModel.swift; sourceTree = "<group>"; };
-		02E1AB042A939A5000BF0D51 /* RemoteListCurrenciesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListCurrenciesUseCase.swift; sourceTree = "<group>"; };
+		02E1AB042A939A5000BF0D51 /* ListCurrenciesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrenciesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,7 +450,8 @@
 			isa = PBXGroup;
 			children = (
 				022E2F7D2A8FB241008EB753 /* UI */,
-				02A9E7532A9014CC006935A3 /* Infrastructure */,
+				02E1AACA2A9132A900BF0D51 /* Network */,
+				02E1AAC92A9132A100BF0D51 /* Data */,
 				022115C72A8E6B0D001E52C1 /* Validators */,
 			);
 			path = "Frameworks&Drivers";
@@ -459,7 +460,7 @@
 		028E0F012A9522F2007E2ECF /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				02E1AB012A9398A800BF0D51 /* Remote */,
+				028E0F0D2A9536C6007E2ECF /* ListCurrenciesUseCase */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -502,13 +503,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		02A9E7532A9014CC006935A3 /* Infrastructure */ = {
+		028E0F0D2A9536C6007E2ECF /* ListCurrenciesUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				02E1AACA2A9132A900BF0D51 /* Network */,
-				02E1AAC92A9132A100BF0D51 /* Data */,
+				02E1AB042A939A5000BF0D51 /* ListCurrenciesUseCase.swift */,
+				02E1AACC2A913CF400BF0D51 /* RemoteListCurrenciesUseCaseImpl.swift */,
 			);
-			path = Infrastructure;
+			path = ListCurrenciesUseCase;
 			sourceTree = "<group>";
 		};
 		02A9E7562A90E5CB006935A3 /* ViewModels */ = {
@@ -753,31 +754,6 @@
 			path = FavoriteCurrencyViewModel;
 			sourceTree = "<group>";
 		};
-		02E1AB002A93986600BF0D51 /* RemoteListCurrenciesUseCase */ = {
-			isa = PBXGroup;
-			children = (
-				02E1AB032A939A2D00BF0D51 /* Protocol */,
-				02E1AACC2A913CF400BF0D51 /* RemoteListCurrenciesUseCaseImpl.swift */,
-			);
-			path = RemoteListCurrenciesUseCase;
-			sourceTree = "<group>";
-		};
-		02E1AB012A9398A800BF0D51 /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				02E1AB002A93986600BF0D51 /* RemoteListCurrenciesUseCase */,
-			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		02E1AB032A939A2D00BF0D51 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				02E1AB042A939A5000BF0D51 /* RemoteListCurrenciesUseCase.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -916,7 +892,7 @@
 				02AE7C332A8EBAF000A2608D /* CardCurrencyView.swift in Sources */,
 				02E1AAE02A9162F200BF0D51 /* Alamofire.swift in Sources */,
 				022115D12A8E89B0001E52C1 /* CurrencyTableViewCell.swift in Sources */,
-				02E1AB052A939A5000BF0D51 /* RemoteListCurrenciesUseCase.swift in Sources */,
+				02E1AB052A939A5000BF0D51 /* ListCurrenciesUseCase.swift in Sources */,
 				022115482A8BAFF6001E52C1 /* CurrencyView.swift in Sources */,
 				022115372A8AA171001E52C1 /* UIViewController+Extension.swift in Sources */,
 				0221155E2A8BF5E0001E52C1 /* ListCurrenciesCoordinator.swift in Sources */,
