@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RemoteListCurrenciesUseCaseAdapter: AnyObject {
-    func remoteListCurrencies(url: URL, parameters: Dictionary<String,String>) -> [Currency]
+    func remoteListCurrencies() -> [Currency]
 }
 
 
@@ -20,11 +20,14 @@ class RemoteListCurrenciesUseCaseAdapterImpl: RemoteListCurrenciesUseCaseAdapter
         self.http = http
     }
     
-    func remoteListCurrencies(url: URL, parameters: Dictionary<String, String>) -> [Currency] {
+    func remoteListCurrencies() -> [Currency] {
+        let url: URL = URL(string: "")!
+        let parameters: Dictionary<String,String> = ["access_key": Environment.variable(.accessKey)]
+        
         Task {
             let data = try await http.get(url: url, parameters: parameters)
-            print(try! JSONSerialization.jsonObject(with: data))
         }
+        
         return []
     }
     

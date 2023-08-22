@@ -14,7 +14,7 @@ protocol RemoteListCurrenciesUseCaseDelegate: AnyObject {
 
 
 //  MARK: - CLASS
-class RemoteListCurrenciesUseCaseImpl: RemoteListCurrenciesUseCase {
+class RemoteListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
     weak var delegate: RemoteListCurrenciesUseCaseDelegate?
     
     private let url: URL
@@ -26,8 +26,9 @@ class RemoteListCurrenciesUseCaseImpl: RemoteListCurrenciesUseCase {
     }
     
     func listCurrencies() {
-        let currencies = adapter.remoteListCurrencies(url: url, parameters: ["access_key": Environment.variable(.accessKey)])
+//    url: url, parameters: ["access_key": Environment.variable(.accessKey)]
         
+        let currencies = adapter.remoteListCurrencies()
         print("tem que estar vazio", currencies)
     }
     

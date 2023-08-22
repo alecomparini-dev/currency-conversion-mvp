@@ -18,9 +18,9 @@ protocol ListCurrenciesViewModelDelegate: AnyObject {
 class ListRemoteCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     weak var delegate: ListCurrenciesViewModelDelegate?
     
-    private let listCurrenciesUseCase: RemoteListCurrenciesUseCase
+    private let listCurrenciesUseCase: ListCurrenciesUseCase
     
-    init(listCurrenciesUseCase: RemoteListCurrenciesUseCase) {
+    init(listCurrenciesUseCase: ListCurrenciesUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
     }
     
