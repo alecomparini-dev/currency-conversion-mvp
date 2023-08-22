@@ -11,15 +11,15 @@ import Foundation
 
 class RemoteListCurrenciesUseCaseImpl: RemoteListCurrenciesUseCase {
     private let url: URL
-    private let httpClient: HTTPGetClient
+    private let remote: RemoteGetClient
 
-    init(url: URL, httpClient: HTTPGetClient) {
+    init(url: URL, remote: RemoteGetClient) {
         self.url = url
-        self.httpClient = httpClient
+        self.remote = remote
     }
     
-    func listCurrencies() async throws -> Data? {
-        return try await httpClient.get(to: url)
+    func listCurrencies() {
+        remote.get(url: url)
     }
     
 }

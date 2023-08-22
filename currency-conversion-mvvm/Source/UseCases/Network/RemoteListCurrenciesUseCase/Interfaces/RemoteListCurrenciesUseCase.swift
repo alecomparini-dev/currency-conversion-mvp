@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RemoteListCurrenciesUseCase {
-    func listCurrencies() async throws -> Data?
+    func listCurrencies()
 }

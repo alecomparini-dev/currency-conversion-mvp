@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class AlamofireAdapter: HTTPGetClient {
+class Alamofire {
 
     private let session: Session
     
