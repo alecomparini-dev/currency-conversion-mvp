@@ -191,7 +191,12 @@
 		022114FA2A8A5F24001E52C1 /* currency-conversion-mvvm */ = {
 			isa = PBXGroup;
 			children = (
-				0221152B2A8A9F5B001E52C1 /* Source */,
+				02A9E7572A90E5EA006935A3 /* EnterpriseBusenessRules */,
+				022E2F852A8FBC06008EB753 /* ApplicationsBusinessRules */,
+				02E1AAC32A912FE900BF0D51 /* InterfaceAdapters */,
+				028E0EFF2A952283007E2ECF /* Frameworks&Drivers */,
+				02E1AAE82A92835100BF0D51 /* Main */,
+				022115092A8A5F26001E52C1 /* Info.plist */,
 			);
 			path = "currency-conversion-mvvm";
 			sourceTree = "<group>";
@@ -203,18 +208,6 @@
 				02A9E7672A912157006935A3 /* Extension */,
 			);
 			path = "currency-conversion-mvvmTests";
-			sourceTree = "<group>";
-		};
-		0221152B2A8A9F5B001E52C1 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				02A9E7572A90E5EA006935A3 /* EnterpriseBusenessRules */,
-				022E2F852A8FBC06008EB753 /* ApplicationsBusinessRules */,
-				02E1AAC32A912FE900BF0D51 /* InterfaceAdapters */,
-				028E0EFF2A952283007E2ECF /* Frameworks&Drivers */,
-				02E1AAE82A92835100BF0D51 /* Main */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		0221152D2A8AA007001E52C1 /* ViewControllers */ = {
@@ -504,7 +497,6 @@
 				022114FD2A8A5F24001E52C1 /* SceneDelegate.swift */,
 				022115042A8A5F25001E52C1 /* Assets.xcassets */,
 				022115062A8A5F25001E52C1 /* LaunchScreen.storyboard */,
-				022115092A8A5F26001E52C1 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
