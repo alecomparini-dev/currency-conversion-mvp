@@ -8,15 +8,15 @@
 import Foundation
 import Alamofire
 
-class AlamofireAdapter: HTTPGetClient {
+class Alamofire {
+
     private let session: Session
     
     init(session: Session = .default) {
         self.session = session
     }
     
-    func get() async throws -> Data {
-        let url = URL(string: Environment.variable(.apiBaseUrl) + "/live" )! 
+    func get(to url: URL) async throws -> Data {
         
         return try await withCheckedThrowingContinuation { continuation in
             let parameters: Dictionary<String,String> = ["access_key": Environment.variable(.accessKey)]

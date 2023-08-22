@@ -7,11 +7,19 @@
 
 import UIKit
 
-class ListCurrenciesControllerFactory: ViewControllerFactoryProtocol {
+class ListCurrenciesControllerFactory: ViewControllerFactory {
     typealias T = ListCurrenciesViewController
     
     static func make() -> T {
-        return ListCurrenciesViewController(listCurrenciesVM: ListRemoteCurrenciesViewModel())
+        let http = HTTPListCurrencies()
+        
+        let url = makeApiURL(path: "/live")
+        
+        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, remote: http)
+        
+        let listCurrenciesVM = ListRemoteCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
+        
+        return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM)
     }
     
 }

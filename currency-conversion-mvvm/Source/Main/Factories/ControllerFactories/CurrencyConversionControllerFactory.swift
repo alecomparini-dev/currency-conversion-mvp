@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyConversionControllerFactory: ViewControllerFactoryProtocol {
+class CurrencyConversionControllerFactory: ViewControllerFactory {
     typealias T = CurrencyConversionViewController
     
     static func make() -> CurrencyConversionViewController {

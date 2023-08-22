@@ -15,11 +15,16 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 
 
 //  MARK: - CLASS
+
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
-    private var listCurrenciesVM: ListCurrenciesViewModelProtocol
     
-    init(listCurrenciesVM: ListCurrenciesViewModelProtocol) {
+    private var listCurrenciesVM: ListCurrenciesViewModel
+    
+    
+//  MARK: - Initializers
+    
+    init(listCurrenciesVM: ListCurrenciesViewModel) {
         self.listCurrenciesVM = listCurrenciesVM
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,10 +33,15 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         fatalError("init(coder:) has not been implemented")
     }
     
+
+//  MARK: - LAZY SCREEN
     lazy var screen: ListCurrenciesView = {
         let view = ListCurrenciesView()
         return view
     }()
+    
+    
+//  MARK: - LIFE CYCLE
     
     override func loadView() {
         view = screen
@@ -54,6 +64,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
         configTableViewDelegate()
+        configListCurrenciesViewModelDelegate()
     }
     
     private func configSearchCurrenciesViewDelegate() {
@@ -69,6 +80,10 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         screen.tableView.dataSource = self
     }
     
+    private func configListCurrenciesViewModelDelegate() {
+        listCurrenciesVM.delegate = self
+    }
+    
     private func fetchCurrencies() {
         listCurrenciesVM.listCurrencies()
     }
@@ -76,7 +91,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 }
 
 
-//  MARK: - EXTENSION ListCurrenciesViewDelegate
+//  MARK: - EXTENSION ListCurrenciesViewDelegate - [View]
 extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
     func backPageButtonTapped() {
         coordinator?.goToCurrencyConversionVC()
@@ -85,17 +100,30 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 }
 
 
-//  MARK: - EXTENSION ListCurrenciesViewDelegate
-extension ListCurrenciesViewController: ListCurrenciesViewModelProtocol {
-    func listCurrencies() {
-        listCurrenciesVM.listCurrencies()
+//  MARK: - EXTENSION ListCurrenciesViewModelDelegate - [ViewModel]
+extension ListCurrenciesViewController: ListCurrenciesViewModelDelegate {
+    func startLoading() {
+        
     }
+    
+    func finishLoading() {
+        
+    }
+    
+    func successListCurrencies(_ currencies: Any) {
+        
+    }
+    
+    func error() {
+        
+    }
+    
     
 }
 
 
-//  MARK: - EXTENSION UISearchBarDelegate
 
+//  MARK: - EXTENSION UISearchBarDelegate
 extension ListCurrenciesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -110,7 +138,6 @@ extension ListCurrenciesViewController: UISearchBarDelegate {
 
 
 //  MARK: - EXTENSION UITableViewDelegate
-
 extension ListCurrenciesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -121,10 +148,9 @@ extension ListCurrenciesViewController: UITableViewDelegate {
 
 
 //  MARK: - EXTENSION UITableViewDataSource
-
 extension ListCurrenciesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return listCurrenciesVM.numberOfCurrencies()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
