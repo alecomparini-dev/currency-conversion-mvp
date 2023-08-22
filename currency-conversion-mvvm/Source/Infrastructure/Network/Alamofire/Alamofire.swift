@@ -15,12 +15,15 @@ class Alamofire {
     init(session: Session = .default) {
         self.session = session
     }
-    
-    func get(to url: URL) async throws -> Data {
-        
-        return try await withCheckedThrowingContinuation { continuation in
-            let parameters: Dictionary<String,String> = ["access_key": Environment.variable(.accessKey)]
             
+}
+
+
+//  MARK: - EXTENSION HTTPGet
+extension Alamofire: HTTPGet {
+    
+    func get(url: URL, parameters: Dictionary<String,String>) async throws -> Data {
+        return try await withCheckedThrowingContinuation { continuation in
             session
                 .request(url, method: .get, parameters: parameters)
                 .responseData { response in
@@ -28,13 +31,13 @@ class Alamofire {
                         case .success(let data):
                             continuation.resume(returning: data)
                         
-                        case .failure:
-                            continuation.resume(throwing: HTTPError.noConnectivity)
+                        case .failure (let error):
+                            continuation.resume(throwing: error )
                     }
                 }
-            
         }
         
     }
+
     
 }

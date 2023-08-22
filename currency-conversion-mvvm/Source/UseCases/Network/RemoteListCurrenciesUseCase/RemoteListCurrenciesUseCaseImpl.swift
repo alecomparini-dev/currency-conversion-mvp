@@ -7,19 +7,28 @@
 
 import Foundation
 
+//  MARK: - DELEGATE
+protocol RemoteListCurrenciesUseCaseDelegate: AnyObject {
+    
+}
 
 
+//  MARK: - CLASS
 class RemoteListCurrenciesUseCaseImpl: RemoteListCurrenciesUseCase {
+    weak var delegate: RemoteListCurrenciesUseCaseDelegate?
+    
     private let url: URL
-    private let remote: RemoteGetClient
+    private let adapter: RemoteListCurrenciesUseCaseAdapter
 
-    init(url: URL, remote: RemoteGetClient) {
+    init(url: URL, adapter: RemoteListCurrenciesUseCaseAdapter) {
         self.url = url
-        self.remote = remote
+        self.adapter = adapter
     }
     
     func listCurrencies() {
-        remote.get(url: url)
+        let currencies = adapter.remoteListCurrencies(url: url, parameters: ["access_key": Environment.variable(.accessKey)])
+        
+        print("tem que estar vazio", currencies)
     }
     
 }
