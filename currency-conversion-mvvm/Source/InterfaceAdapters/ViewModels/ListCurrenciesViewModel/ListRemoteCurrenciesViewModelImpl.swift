@@ -16,7 +16,7 @@ protocol ListCurrenciesViewModelDelegate: AnyObject {
 
 
 //  MARK: -
-class ListRemoteCurrenciesViewModel: ListCurrenciesViewModelProtocol  {
+class ListRemoteCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     weak var delegate: ListCurrenciesViewModelDelegate?
     
     private let listCurrenciesUseCase: RemoteListCurrenciesUseCase

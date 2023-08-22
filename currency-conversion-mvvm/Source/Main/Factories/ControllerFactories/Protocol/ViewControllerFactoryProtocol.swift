@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ViewControllerFactoryProtocol {
+protocol ViewControllerFactory {
     associatedtype T: UIViewController
     static func make() -> T
 }

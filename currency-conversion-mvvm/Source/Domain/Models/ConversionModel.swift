@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currencies {
+struct Currency {
     var acronym: String
     var name: String
 }

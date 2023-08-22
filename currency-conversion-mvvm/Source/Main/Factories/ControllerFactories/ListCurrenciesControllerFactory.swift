@@ -7,17 +7,17 @@
 
 import UIKit
 
-class ListCurrenciesControllerFactory: ViewControllerFactoryProtocol {
+class ListCurrenciesControllerFactory: ViewControllerFactory {
     typealias T = ListCurrenciesViewController
     
     static func make() -> T {
-        let httpClient = AlamofireAdapter()
+        let http = HTTPListCurrencies()
         
-        let url = URL(string: Environment.variable(.apiBaseUrl) + "/live" )!
+        let url = makeApiURL(path: "/live")
         
-        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, httpClient: httpClient)
+        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, remote: http)
         
-        let listCurrenciesVM = ListRemoteCurrenciesViewModel(listCurrenciesUseCase: listCurrenciesUseCase)
+        let listCurrenciesVM = ListRemoteCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
         
         return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM)
     }
