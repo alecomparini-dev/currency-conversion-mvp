@@ -11,11 +11,13 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
     typealias T = ListCurrenciesViewController
     
     static func make() -> T {
-        let http = HTTPListCurrencies()
+        let httpClient = Alamofire()
+        
+        let remoteUseCaseAdapter = RemoteListCurrenciesUseCaseAdapterImpl(http: httpClient)
         
         let url = makeApiURL(path: "/live")
         
-        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, remote: http)
+        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, adapter: remoteUseCaseAdapter)
         
         let listCurrenciesVM = ListRemoteCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
         

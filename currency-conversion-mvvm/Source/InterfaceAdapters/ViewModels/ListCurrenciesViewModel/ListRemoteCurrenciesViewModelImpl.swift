@@ -7,15 +7,14 @@
 
 import Foundation
 
+//  MARK: - DELEGATE
 protocol ListCurrenciesViewModelDelegate: AnyObject {
     func startLoading()
     func finishLoading()
-    func successListCurrencies(_ currencies: Any)
-    func error()
 }
 
 
-//  MARK: -
+//  MARK: - CLASS
 class ListRemoteCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     weak var delegate: ListCurrenciesViewModelDelegate?
     
@@ -32,8 +31,7 @@ class ListRemoteCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     func listCurrencies() {
         delegate?.startLoading()
         
-        print("CHAMOUUUUUUUU")
-        
+        listCurrenciesUseCase.listCurrencies()        
         
         delegate?.finishLoading()
     }
