@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol ListCurrenciesAdapter: AnyObject {
-    func getCurrencies()
-}
 
 
 //  MARK: -
@@ -28,7 +25,6 @@ class ListCurrenciesAPI: ListCurrenciesAdapter {
         Task {
             let data = try await http.get(url: url, parameters: parameters)
             let currenciesDTO = try JSONDecoder().decode(CurrenciesDTO.self, from: data)
-            print(currenciesDTO)
         }
     }
     

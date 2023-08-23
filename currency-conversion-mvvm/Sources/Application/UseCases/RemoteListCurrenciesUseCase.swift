@@ -1,5 +1,5 @@
 //
-//  RemoteListCurrenciesUseCaseImpl.swift.swift
+//  RemoteListCurrenciesUseCase.swift.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 19/08/23.
@@ -14,7 +14,7 @@ protocol RemoteListCurrenciesUseCaseDelegate: AnyObject {
 
 
 //  MARK: - CLASS
-class RemoteListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
+class RemoteListCurrenciesUseCase: ListCurrenciesUseCase {
     weak var delegate: RemoteListCurrenciesUseCaseDelegate?
     
     private let remoteCurrencies: ListCurrenciesAdapter
