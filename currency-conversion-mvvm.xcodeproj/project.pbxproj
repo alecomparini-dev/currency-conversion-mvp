@@ -201,12 +201,11 @@
 		022114FA2A8A5F24001E52C1 /* currency-conversion-mvvm */ = {
 			isa = PBXGroup;
 			children = (
-				028E0F0A2A953099007E2ECF /* Sources */,
-				022114FB2A8A5F24001E52C1 /* AppDelegate.swift */,
-				022114FD2A8A5F24001E52C1 /* SceneDelegate.swift */,
-				022115042A8A5F25001E52C1 /* Assets.xcassets */,
-				022115062A8A5F25001E52C1 /* LaunchScreen.storyboard */,
-				022115092A8A5F26001E52C1 /* Info.plist */,
+				02A9E7572A90E5EA006935A3 /* Domain */,
+				022E2F852A8FBC06008EB753 /* Application */,
+				02E1AAC32A912FE900BF0D51 /* InterfaceAdapters */,
+				028E0EFF2A952283007E2ECF /* Frameworks&Drivers */,
+				02E1AAE82A92835100BF0D51 /* Main */,
 			);
 			path = "currency-conversion-mvvm";
 			sourceTree = "<group>";
@@ -463,6 +462,18 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		026CF0C22A96C36D00496C15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				022114FB2A8A5F24001E52C1 /* AppDelegate.swift */,
+				022114FD2A8A5F24001E52C1 /* SceneDelegate.swift */,
+				022115042A8A5F25001E52C1 /* Assets.xcassets */,
+				022115062A8A5F25001E52C1 /* LaunchScreen.storyboard */,
+				022115092A8A5F26001E52C1 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		028E0EF32A942557007E2ECF /* URLFactory */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,18 +524,6 @@
 				028E0F212A962280007E2ECF /* Interfaces */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		028E0F0A2A953099007E2ECF /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				02A9E7572A90E5EA006935A3 /* Domain */,
-				022E2F852A8FBC06008EB753 /* Application */,
-				02E1AAC32A912FE900BF0D51 /* InterfaceAdapters */,
-				028E0EFF2A952283007E2ECF /* Frameworks&Drivers */,
-				02E1AAE82A92835100BF0D51 /* Main */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		028E0F0B2A953143007E2ECF /* View */ = {
@@ -766,6 +765,7 @@
 		02E1AAE82A92835100BF0D51 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				026CF0C22A96C36D00496C15 /* Resources */,
 				02E1AAE92A92835C00BF0D51 /* Factories */,
 				022115352A8AA149001E52C1 /* Extensions */,
 				022E2F7E2A8FB25A008EB753 /* Env */,
@@ -1160,7 +1160,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2HCBZJR5K3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "currency-conversion-mvvm/Info.plist";
+				INFOPLIST_FILE = "currency-conversion-mvvm/Main/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1189,7 +1189,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2HCBZJR5K3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "currency-conversion-mvvm/Info.plist";
+				INFOPLIST_FILE = "currency-conversion-mvvm/Main/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
