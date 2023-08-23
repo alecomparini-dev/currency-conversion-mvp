@@ -30,8 +30,16 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     
     func listCurrencies() {
         delegate?.startLoading()
-        listCurrenciesUseCase.execute()
-        delegate?.finishLoading()        
+        Task {
+            do {
+                let currency = try await listCurrenciesUseCase.execute()
+                print(#function, currency)
+            } catch (let error) {
+                print(error.localizedDescription)
+            }
+            delegate?.finishLoading()
+        }
+        
     }
 
 }
