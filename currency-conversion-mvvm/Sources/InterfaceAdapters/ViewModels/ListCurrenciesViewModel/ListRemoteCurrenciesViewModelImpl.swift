@@ -21,7 +21,7 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
     weak var delegate: ListCurrenciesViewModelOutput?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
-    private var currencies = [Currency]()
+    private var currencies = [CurrencyDTO]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
@@ -51,25 +51,14 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
 
 extension ListCurrenciesViewModelImpl: ListCurrenciesTableViewCell {
     func numberOfCurrencies() -> Int { currencies.count  }
+    
+    func symbol(index: Int) -> String { currencies[index].symbol}
+    
+    func title(index: Int) -> String { currencies[index].title }
+    
+    func subTitle(index: Int) -> String { currencies[index].subTitle }
 
-    func acronym(index: Int) -> String { currencies[index].acronym }
-
-    func name(index: Int) -> String { currencies[index].name }
+    func favorite(index: Int) -> Bool { currencies[index].favorite }
+    
 }
 
-//protocol MainThreadOutput: AnyObject {
-//    var block: () -> Void { get set }
-//    func dispatch(block: () -> Void )
-//}
-//
-//struct MainTread {
-//
-//    typealias Block = () -> Void
-//
-//    var mainDispatch: Block?
-//
-//
-//    var dispatch: Block {
-//
-//    }
-//}

@@ -21,9 +21,12 @@ class RemoteListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
         self.remoteCurrenciesAdapter = remoteCurrenciesAdapter
     }
     
-    func execute() async throws -> [Currency] {
-        let currencies = try await remoteCurrenciesAdapter.getCurrencies()
-        return currencies
+    func execute() async throws -> [CurrencyDTO] {
+        let currencies: [Currency] = try await remoteCurrenciesAdapter.getCurrencies()
+        
+        let dto = CurrencyDTO.toDTO(domain: currencies)
+        
+        return dto
     }
     
 }
