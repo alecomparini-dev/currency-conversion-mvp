@@ -21,8 +21,9 @@ class RemoteListCurrenciesUseCaseAdapter: ListCurrenciesUseCaseAdapter {
     
     func getCurrencies() async throws -> [Currency] {
         let data = try await http.get(url: url, parameters: parameters)
-        let currenciesDTO = try JSONDecoder().decode(CurrenciesDTO.self, from: data)
-        return CurrencyMapper.mapDTOToDomain(dto: currenciesDTO)
+        let currenciesCodable = try JSONDecoder().decode(CurrenciesCodable.self, from: data)
+        return currenciesCodable.mapperToDomain()
     }
     
 }
+    

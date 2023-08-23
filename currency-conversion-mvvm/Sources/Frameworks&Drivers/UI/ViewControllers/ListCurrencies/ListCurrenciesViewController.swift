@@ -20,12 +20,13 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
     
     private var listCurrenciesVM: ListCurrenciesViewModel
+    private var listCurrenciesTableView: ListCurrenciesTableViewCell?
     
     
 //  MARK: - Initializers
-    
-    init(listCurrenciesVM: ListCurrenciesViewModel) {
+    init(listCurrenciesVM: ListCurrenciesViewModel, listCurrenciesTableView: ListCurrenciesTableViewCell? = nil) {
         self.listCurrenciesVM = listCurrenciesVM
+        self.listCurrenciesTableView = listCurrenciesTableView
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,21 +50,22 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        fetchCurrencies()
+        initializations()
     }
     
     
 //  MARK: - PRIVATE AREA
-    private func configure() {
+    
+    private func initializations() {
         hideKeyboardOnTap()
         configureDelegates()
+        fetchCurrencies()
+        startAnimationLoading()
     }
     
     private func configureDelegates() {
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
-        configTableViewDelegate()
         configListCurrenciesViewModelDelegate()
     }
     
@@ -88,6 +90,14 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         listCurrenciesVM.listCurrencies()
     }
     
+    private func startAnimationLoading() {
+        screen.loading.startAnimating()
+    }
+    
+    private func reloadTableView() {
+        screen.tableView.reloadData()
+    }
+    
 }
 
 
@@ -101,23 +111,18 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 
 
 //  MARK: - EXTENSION ListCurrenciesViewModelDelegate - [ViewModel]
-extension ListCurrenciesViewController: ListCurrenciesViewModelDelegate {
-    func startLoading() {
-        
+extension ListCurrenciesViewController: ListCurrenciesViewModelOutput {
+    
+    func successListCurrencies() {
+        configTableViewDelegate()
+        reloadTableView()
+        screen.loading.stopAnimating()
     }
     
-    func finishLoading() {
-        
+    func error(title: String, message: String) {
+        print(message)
+        screen.loading.stopAnimating()
     }
-    
-    func successListCurrencies(_ currencies: Any) {
-        
-    }
-    
-    func error() {
-        
-    }
-    
     
 }
 
@@ -150,11 +155,20 @@ extension ListCurrenciesViewController: UITableViewDelegate {
 //  MARK: - EXTENSION UITableViewDataSource
 extension ListCurrenciesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listCurrenciesVM.numberOfCurrencies()
+        return listCurrenciesTableView?.numberOfCurrencies() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
+        
+        guard let listCurrenciesTableView else { return  UITableViewCell() }
+        
+        let input = CurrencyDTO(symbol: listCurrenciesTableView.symbol(index: indexPath.row),
+                                         title: listCurrenciesTableView.title(index: indexPath.row),
+                                         subTitle: listCurrenciesTableView.subTitle(index: indexPath.row),
+                                         favorite: listCurrenciesTableView.favorite(index: indexPath.row))
+        
+        cell?.setup(input)
         
         return cell ?? UITableViewCell()
     }

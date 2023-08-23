@@ -8,7 +8,9 @@
 import UIKit
 import SwiftUI
 
-//  MARK: - PREVIEW CONTROLLER SWIFTUI
+
+//  MARK: - PREVIEW UIVIEWCONTROLLER SWIFTUI
+
 public extension UIViewController {
     
     private struct SwiftUIViewControllerWrapper: UIViewControllerRepresentable {
@@ -29,27 +31,6 @@ public extension UIViewController {
     }
     
 }
-
-
-public extension UIView {
-    private struct SwiftUIViewWrapper: UIViewRepresentable {
-        typealias UIViewType = UIView
-        let view: UIView
-        
-        func makeUIView(context: Context) -> UIView {
-            view
-        }
-        
-        func updateUIView(_ uiView: UIView, context: Context) {
-            
-        }
-    }
-    
-    var asSwiftUIView: some View {
-        SwiftUIViewWrapper(view: self)
-    }
-}
-
 
 
 //  MARK: - HIDE KEYBOARD

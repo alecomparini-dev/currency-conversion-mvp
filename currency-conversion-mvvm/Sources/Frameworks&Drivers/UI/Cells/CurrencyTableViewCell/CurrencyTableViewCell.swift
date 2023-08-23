@@ -28,6 +28,17 @@ class CurrencyTableViewCell: UITableViewCell {
     }()
     
     
+//  MARK: - SETUP CELL
+    
+    func setup(_ input: CurrencyDTO) {
+        setSymbol(input.symbol)
+        setTitle(input.title)
+        setSubTitle(input.subTitle)
+        setFavorite(input.favorite)
+    }
+    
+    
+    
 //  MARK: - PRIVATE AREA
     
     private func configure() {
@@ -57,6 +68,24 @@ class CurrencyTableViewCell: UITableViewCell {
     private func configDelegate() {
         screen.delegate = self
     }
+    
+    private func setSymbol(_ symbol: String) {
+        screen.cardCurrencyView.symbolCurrency.symbolLabel.text = symbol
+    }
+    
+    private func setTitle(_ title: String) {
+        screen.cardCurrencyView.titleCurrencyLabel.text = title
+    }
+    
+    private func setSubTitle(_ subTitle: String) {
+        screen.cardCurrencyView.subTitleCurrencyLabel.text = subTitle
+    }
+    
+    private func setFavorite(_ favorite: Bool) {
+//        screen.cardCurrencyView.symbolCurrency.symbolLabel.text = symbol
+    }
+    
+    
     
 }
 

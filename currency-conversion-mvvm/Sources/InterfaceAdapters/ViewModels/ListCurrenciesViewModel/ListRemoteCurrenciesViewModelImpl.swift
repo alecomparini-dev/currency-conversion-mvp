@@ -8,39 +8,57 @@
 import Foundation
 
 
+
 //  MARK: - DELEGATE
-protocol ListCurrenciesViewModelDelegate: AnyObject {
-    func startLoading()
-    func finishLoading()
+protocol ListCurrenciesViewModelOutput: AnyObject {
+    func successListCurrencies()
+    func error(title: String, message: String)
 }
 
 
 //  MARK: - CLASS
-class ListCurrenciesViewModelImpl: ListCurrenciesViewModel  {
-    weak var delegate: ListCurrenciesViewModelDelegate?
+class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
+    weak var delegate: ListCurrenciesViewModelOutput?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
+    private var currencies = [CurrencyDTO]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
     }
     
-    func numberOfCurrencies() -> Int {
-        return 5
-    }
     
+//  MARK: - PUBLIC FUNCTIONS
     func listCurrencies() {
-        delegate?.startLoading()
         Task {
             do {
-                let currency = try await listCurrenciesUseCase.execute()
-                print(#function, currency)
+                let currencies = try await listCurrenciesUseCase.execute()
+                self.currencies = currencies
             } catch (let error) {
-                print(error.localizedDescription)
+                delegate?.error(title: "Error", message: error.localizedDescription)
             }
-            delegate?.finishLoading()
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                delegate?.successListCurrencies()
+            }
         }
-        
     }
-
 }
+
+
+//  MARK: - EXTENSION - ListCurrenciesTableViewCell
+
+extension ListCurrenciesViewModelImpl: ListCurrenciesTableViewCell {
+    func numberOfCurrencies() -> Int { currencies.count  }
+    
+    func symbol(index: Int) -> String { currencies[index].symbol}
+    
+    func title(index: Int) -> String { currencies[index].title }
+    
+    func subTitle(index: Int) -> String { currencies[index].subTitle }
+
+    func favorite(index: Int) -> Bool { currencies[index].favorite }
+    
+}
+
