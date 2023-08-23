@@ -18,9 +18,9 @@ class RemoteListCurrenciesUseCase: ListCurrenciesUseCase {
     
     weak var delegate: RemoteListCurrenciesUseCaseDelegate?
     
-    private let remoteCurrencies: ListCurrenciesAdapter
+    private let remoteCurrencies: ListCurrenciesUseCaseAdapter
     
-    init(remoteCurrencies: ListCurrenciesAdapter) {
+    init(remoteCurrencies: ListCurrenciesUseCaseAdapter) {
         self.remoteCurrencies = remoteCurrencies
     }
     
