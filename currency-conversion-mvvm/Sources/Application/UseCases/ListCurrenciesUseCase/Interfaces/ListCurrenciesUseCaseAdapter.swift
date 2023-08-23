@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListCurrenciesUseCaseAdapter: AnyObject {
-    func getCurrencies()
+    func getCurrencies() async throws -> [Currency]
 }
