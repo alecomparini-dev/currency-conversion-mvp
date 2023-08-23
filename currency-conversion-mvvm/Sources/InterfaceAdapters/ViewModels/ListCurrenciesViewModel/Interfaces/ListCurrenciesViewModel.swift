@@ -10,13 +10,17 @@ import Foundation
 
 //  MARK: - PROTOCOL VIEWMODEL
 protocol ListCurrenciesViewModel: AnyObject {
-    var delegate: ListCurrenciesViewModelDelegate? { get set }
+    var delegate: ListCurrenciesViewModelOutput? { get set }
     func numberOfCurrencies() -> Int
     func listCurrencies()
 }
 
 
-
+protocol ListCurrenciesTableViewCell: AnyObject {
+    func numberOfCurrencies() -> Int
+    func acronym(index: Int) -> String
+    func name(index: Int) -> String
+}
 
 
 

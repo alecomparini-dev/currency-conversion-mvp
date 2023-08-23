@@ -31,6 +31,16 @@ class ListCurrenciesView: UIView {
     
     
 //  MARK: - LAZY AREA
+    
+    lazy var loading: UIActivityIndicatorView = {
+        let ind = UIActivityIndicatorView()
+        ind.translatesAutoresizingMaskIntoConstraints = false
+        ind.color = UIColor.HEX("#000000")
+        ind.style = .large
+        ind.hidesWhenStopped = true
+        return ind
+    }()
+    
     lazy var backPageButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +80,16 @@ class ListCurrenciesView: UIView {
         return tab
     }()
     
+////  MARK: - PUBLIC AREA
+//    func createTableView() {
+//        let  tab = UITableView()
+//            tab.translatesAutoresizingMaskIntoConstraints = false
+//            tab.separatorStyle = .none
+//            tab.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
+//            return tab
+//        }()
+//    }
+    
     
 //  MARK: - PRIVATE AREA
     private func configure() {
@@ -87,6 +107,7 @@ class ListCurrenciesView: UIView {
         addSubview(backPageButton)
         addSubview(sortCurrencies)
         addSubview(tableView)
+        addSubview(loading)
     }
     
     private func configConstraints() {
@@ -94,6 +115,7 @@ class ListCurrenciesView: UIView {
         configSearchBarConstraints()
         configSortCurrenciesConstraints()
         configTableViewConstraints()
+        configLoadingConstraints()
     }
     
     private func configSearchBarConstraints() {
@@ -131,6 +153,14 @@ class ListCurrenciesView: UIView {
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
+    
+    private func configLoadingConstraints() {
+        NSLayoutConstraint.activate([
+            loading.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 10),
+            loading.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+        ])
+    }
+    
     
     
 }

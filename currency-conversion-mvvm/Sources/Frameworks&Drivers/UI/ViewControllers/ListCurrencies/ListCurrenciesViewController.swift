@@ -49,21 +49,22 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        fetchCurrencies()
+        initializations()
     }
     
     
 //  MARK: - PRIVATE AREA
-    private func configure() {
+    
+    private func initializations() {
         hideKeyboardOnTap()
         configureDelegates()
+        fetchCurrencies()
+        startAnimationLoading()
     }
     
     private func configureDelegates() {
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
-        configTableViewDelegate()
         configListCurrenciesViewModelDelegate()
     }
     
@@ -88,6 +89,14 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         listCurrenciesVM.listCurrencies()
     }
     
+    private func startAnimationLoading() {
+        screen.loading.startAnimating()
+    }
+    
+    private func reloadTableView() {
+        screen.tableView.reloadData()
+    }
+    
 }
 
 
@@ -101,23 +110,18 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 
 
 //  MARK: - EXTENSION ListCurrenciesViewModelDelegate - [ViewModel]
-extension ListCurrenciesViewController: ListCurrenciesViewModelDelegate {
-    func startLoading() {
-        
+extension ListCurrenciesViewController: ListCurrenciesViewModelOutput {
+    
+    func successListCurrencies() {
+        configTableViewDelegate()
+        reloadTableView()
+        screen.loading.stopAnimating()
     }
     
-    func finishLoading() {
-        
+    func error(title: String, message: String) {
+        print(message)
+        screen.loading.stopAnimating()
     }
-    
-    func successListCurrencies(_ currencies: Any) {
-        
-    }
-    
-    func error() {
-        
-    }
-    
     
 }
 
@@ -155,6 +159,11 @@ extension ListCurrenciesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
+        
+        let input = CurrencyTableViewCellDTO(symbol: "",
+                                             title: "",
+                                             subTitle: "")
+        cell?.setup(input)
         
         return cell ?? UITableViewCell()
     }
