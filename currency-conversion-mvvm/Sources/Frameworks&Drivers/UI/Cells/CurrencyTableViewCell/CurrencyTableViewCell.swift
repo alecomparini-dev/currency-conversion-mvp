@@ -27,8 +27,10 @@ class CurrencyTableViewCell: UITableViewCell {
         return view
     }()
     
+    
 //  MARK: - SETUP CELL
-    func setup(_ input: CurrencyTableViewCellDTO) {
+    
+    func setup(_ input: CurrencyDTO) {
         setSymbol(input.symbol)
         setTitle(input.title)
         setSubTitle(input.subTitle)

@@ -23,7 +23,7 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         
         let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: remoteListCurrenciesUseCase)
         
-        return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM)
+        return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM, listCurrenciesTableView: listCurrenciesVM)
     }
     
 }
