@@ -13,13 +13,15 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
     static func make() -> T {
         let httpClient = Alamofire()
         
-        let remoteUseCaseAdapter = RemoteListCurrenciesUseCaseAdapterImpl(http: httpClient)
+        let url = makeApiURL(path: "/list")
         
-        let url = makeApiURL(path: "/live")
+        let parameters = ["access_key": Environment.variable(.accessKey)]
         
-        let listCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(url: url, adapter: remoteUseCaseAdapter)
+        let remoteCurrencies = ListCurrenciesAPI(http: httpClient, url: url, parameters: parameters)
         
-        let listCurrenciesVM = ListRemoteCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
+        let remoteListCurrencies = RemoteListCurrenciesUseCaseImpl(remoteCurrencies: remoteCurrencies)
+        
+        let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: remoteListCurrencies)
         
         return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM)
     }
