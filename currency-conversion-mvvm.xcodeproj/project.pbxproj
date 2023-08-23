@@ -468,7 +468,7 @@
 		028E0F012A9522F2007E2ECF /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				02E1AACC2A913CF400BF0D51 /* RemoteListCurrenciesUseCase.swift */,
+				028E0F1B2A959E68007E2ECF /* ListCurrenciesUseCase */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -528,12 +528,29 @@
 			path = Impl;
 			sourceTree = "<group>";
 		};
-		028E0F182A959C0E007E2ECF /* Interfaces */ = {
+		028E0F1B2A959E68007E2ECF /* ListCurrenciesUseCase */ = {
 			isa = PBXGroup;
 			children = (
 				02E1AB042A939A5000BF0D51 /* ListCurrenciesUseCase.swift */,
+				028E0F1C2A959E89007E2ECF /* Impl */,
 			);
-			path = Interfaces;
+			path = ListCurrenciesUseCase;
+			sourceTree = "<group>";
+		};
+		028E0F1C2A959E89007E2ECF /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				028E0F1D2A959F0A007E2ECF /* RemoteListCurrenciesUseCase */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		028E0F1D2A959F0A007E2ECF /* RemoteListCurrenciesUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				02E1AACC2A913CF400BF0D51 /* RemoteListCurrenciesUseCase.swift */,
+			);
+			path = RemoteListCurrenciesUseCase;
 			sourceTree = "<group>";
 		};
 		02A9E7562A90E5CB006935A3 /* ViewModels */ = {
@@ -551,7 +568,6 @@
 		02A9E7572A90E5EA006935A3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				028E0F182A959C0E007E2ECF /* Interfaces */,
 				02A9E75A2A90E759006935A3 /* Entities */,
 				02A9E75F2A910606006935A3 /* Models */,
 				02A9E7642A911152006935A3 /* Errors */,

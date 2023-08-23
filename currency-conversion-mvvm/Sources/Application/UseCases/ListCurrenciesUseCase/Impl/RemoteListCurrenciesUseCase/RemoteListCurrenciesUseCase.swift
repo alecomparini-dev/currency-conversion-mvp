@@ -15,6 +15,7 @@ protocol RemoteListCurrenciesUseCaseDelegate: AnyObject {
 
 //  MARK: - CLASS
 class RemoteListCurrenciesUseCase: ListCurrenciesUseCase {
+    
     weak var delegate: RemoteListCurrenciesUseCaseDelegate?
     
     private let remoteCurrencies: ListCurrenciesAdapter
@@ -23,8 +24,9 @@ class RemoteListCurrenciesUseCase: ListCurrenciesUseCase {
         self.remoteCurrencies = remoteCurrencies
     }
     
-    func execute() {
+    func execute() async throws -> [Currency] {
         remoteCurrencies.getCurrencies()
+        return []
     }
     
 }
