@@ -19,7 +19,7 @@ class Alamofire {
 }
 
 
-//  MARK: - EXTENSION HTTPGet
+//  MARK: - EXTENSION - HTTPGetClient
 extension Alamofire: HTTPGetClient {
     
     func get(url: URL, parameters: Dictionary<String,String>) async throws -> Data {

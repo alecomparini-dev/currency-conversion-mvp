@@ -8,8 +8,6 @@
 import Foundation
 
 
-
-//  MARK: -
 class RemoteListCurrenciesUseCaseAdapter: ListCurrenciesUseCaseAdapter {
     private let http: HTTPGetClient
     private let url: URL
@@ -21,11 +19,10 @@ class RemoteListCurrenciesUseCaseAdapter: ListCurrenciesUseCaseAdapter {
         self.parameters = parameters
     }
     
-    func getCurrencies() {
-        Task {
-            let data = try await http.get(url: url, parameters: parameters)
-            let currenciesDTO = try JSONDecoder().decode(CurrenciesDTO.self, from: data)
-        }
+    func getCurrencies() async throws -> [Currency] {
+        let data = try await http.get(url: url, parameters: parameters)
+        let currenciesDTO = try JSONDecoder().decode(CurrenciesDTO.self, from: data)
+        return CurrencyMapper.mapDTOToDomain(dto: currenciesDTO)
     }
     
 }

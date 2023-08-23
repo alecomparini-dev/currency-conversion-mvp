@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 //  MARK: - DELEGATE
 protocol RemoteListCurrenciesUseCaseDelegate: AnyObject {
     
@@ -18,15 +19,16 @@ class RemoteListCurrenciesUseCase: ListCurrenciesUseCase {
     
     weak var delegate: RemoteListCurrenciesUseCaseDelegate?
     
-    private let remoteCurrencies: ListCurrenciesUseCaseAdapter
+    private let remoteCurrenciesAdapter: ListCurrenciesUseCaseAdapter
     
-    init(remoteCurrencies: ListCurrenciesUseCaseAdapter) {
-        self.remoteCurrencies = remoteCurrencies
+    init(remoteCurrenciesAdapter: ListCurrenciesUseCaseAdapter) {
+        self.remoteCurrenciesAdapter = remoteCurrenciesAdapter
     }
     
     func execute() async throws -> [Currency] {
-        remoteCurrencies.getCurrencies()
-        return []
+        let currencies = try await remoteCurrenciesAdapter.getCurrencies()
+        print(currencies)
+        return currencies
     }
     
 }
