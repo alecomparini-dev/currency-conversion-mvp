@@ -1,5 +1,5 @@
 //
-//  CurrenciesDTO.swift
+//  CurrenciesCodable.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 22/08/23.
@@ -8,9 +8,9 @@
 import Foundation
 
 
-// MARK: - CurrenciesDTO
+// MARK: - CurrenciesCodable
 
-struct CurrenciesDTO: Codable {
+struct CurrenciesCodable: Codable {
     let success: Bool?
     let terms: String?
     let privacy: String?
@@ -21,6 +21,11 @@ struct CurrenciesDTO: Codable {
         self.terms = terms
         self.privacy = privacy
         self.currencies = currencies
+    }
+    
+    func mapperToDomain() -> [Currency] {
+        guard let currencies = self.currencies else {return []}
+        return currencies.map { Currency(acronym: $0.key , name: $0.value) }
     }
     
 }
