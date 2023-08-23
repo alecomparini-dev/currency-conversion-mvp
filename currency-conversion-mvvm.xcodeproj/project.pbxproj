@@ -765,10 +765,10 @@
 		02E1AAE82A92835100BF0D51 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				026CF0C22A96C36D00496C15 /* Resources */,
 				02E1AAE92A92835C00BF0D51 /* Factories */,
 				022115352A8AA149001E52C1 /* Extensions */,
 				022E2F7E2A8FB25A008EB753 /* Env */,
+				026CF0C22A96C36D00496C15 /* Resources */,
 			);
 			path = Main;
 			sourceTree = "<group>";
