@@ -15,7 +15,7 @@ protocol ListCurrenciesViewModelDelegate: AnyObject {
 
 
 //  MARK: - CLASS
-class ListRemoteCurrenciesViewModelImpl: ListCurrenciesViewModel  {
+class ListCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     weak var delegate: ListCurrenciesViewModelDelegate?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
@@ -30,12 +30,8 @@ class ListRemoteCurrenciesViewModelImpl: ListCurrenciesViewModel  {
     
     func listCurrencies() {
         delegate?.startLoading()
-        
-        listCurrenciesUseCase.listCurrencies()        
-        
-        delegate?.finishLoading()
+        listCurrenciesUseCase.execute()
+        delegate?.finishLoading()        
     }
 
-    
-    
 }
