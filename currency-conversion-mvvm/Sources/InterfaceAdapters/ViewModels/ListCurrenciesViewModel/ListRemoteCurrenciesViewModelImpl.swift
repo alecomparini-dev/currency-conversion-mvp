@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 //  MARK: - DELEGATE
 protocol ListCurrenciesViewModelDelegate: AnyObject {
     func startLoading()

@@ -19,7 +19,7 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         
         let remoteCurrencies = RemoteListCurrenciesUseCaseAdapter(http: httpClient, url: url, parameters: parameters)
         
-        let remoteListCurrencies = RemoteListCurrenciesUseCase(remoteCurrencies: remoteCurrencies)
+        let remoteListCurrencies = RemoteListCurrenciesUseCase(remoteCurrenciesAdapter: remoteCurrencies)
         
         let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: remoteListCurrencies)
         
