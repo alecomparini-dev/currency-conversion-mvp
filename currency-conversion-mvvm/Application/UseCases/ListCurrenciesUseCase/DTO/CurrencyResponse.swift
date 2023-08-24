@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyDTO {
+struct CurrencyResponse {
     var symbol: String
     var title: String
     var subTitle: String

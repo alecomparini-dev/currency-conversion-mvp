@@ -21,7 +21,7 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
     weak var delegate: ListCurrenciesViewModelOutput?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
-    private var currencies = [CurrencyDTO]()
+    private var currencies = [CurrencyResponse]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
