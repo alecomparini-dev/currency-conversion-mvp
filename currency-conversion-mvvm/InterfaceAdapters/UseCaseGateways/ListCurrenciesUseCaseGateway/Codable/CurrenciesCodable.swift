@@ -25,7 +25,7 @@ struct CurrenciesCodable: Codable {
     
     func mapperToDomain() -> [Currency] {
         guard let currencies = self.currencies else {return []}
-        return currencies.map { Currency(acronym: $0.key , name: $0.value) }
+        return currencies.map { Currency(currencyISO: $0.key , name: $0.value) }
     }
     
 }

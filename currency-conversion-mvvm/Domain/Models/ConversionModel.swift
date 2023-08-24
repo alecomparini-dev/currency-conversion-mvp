@@ -8,14 +8,14 @@
 import Foundation
 
 struct Currency {
-    var acronym: String
+    var currencyISO: String
     var name: String
 }
 
 
 struct DollarToCurrencyQuotes {
-    var acronym: String
-    var quotes: Double
+    let acronym: String
+    let quotes: Double
 }
 
 
@@ -23,8 +23,8 @@ struct DollarToCurrencyQuotes {
 
 //Gerenciador de Cache de Taxas de Câmbio --> ESPECIFICO DO USE CASE QUE GRAVA OFF LINE OU RECUPERA OFFLINE
 struct ExchangeRateCacheManager {
-    var quotes: [DollarToCurrencyQuotes]
-    var dateRate: Date
+    let dateRate: Date
+    let quotes: [DollarToCurrencyQuotes]
 }
 
 
