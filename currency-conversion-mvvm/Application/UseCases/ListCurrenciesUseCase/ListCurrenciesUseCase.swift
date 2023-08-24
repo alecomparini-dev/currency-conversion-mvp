@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListCurrenciesUseCase {
-    func execute() async throws -> [CurrencyResponse]
+    func perform() async throws -> [ListCurrencyResponse]
 }

@@ -17,11 +17,11 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         
         let parameters = ["access_key": Environment.variable(.accessKey)]
         
-        let listCurrenciesAPIGateway = ListCurrenciesUseCaseAPIGateway(http: httpClient, url: url, parameters: parameters)
+        let listCurrenciesAPIGateway = ListCurrenciesUseCaseAPIGatewayImpl(http: httpClient, url: url, parameters: parameters)
         
-        let remoteListCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(listCurrenciesAPIGateway: listCurrenciesAPIGateway )
+        let listCurrenciesUseCase = ListCurrenciesUseCaseImpl(listCurrenciesGateway: listCurrenciesAPIGateway )
         
-        let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: remoteListCurrenciesUseCase)
+        let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
         
         return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM, listCurrenciesTableView: listCurrenciesVM)
     }

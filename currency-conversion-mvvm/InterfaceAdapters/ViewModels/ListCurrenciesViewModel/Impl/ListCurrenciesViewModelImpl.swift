@@ -1,5 +1,5 @@
 //
-//  ListRemoteCurrenciesViewModel.swift
+//  ListCurrenciesViewModelImpl.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 20/08/23.
@@ -21,7 +21,7 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
     weak var delegate: ListCurrenciesViewModelOutput?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
-    private var currencies = [CurrencyResponse]()
+    private var currencies = [ListCurrencyResponse]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
@@ -32,7 +32,7 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
     func listCurrencies() {
         Task {
             do {
-                let currencies = try await listCurrenciesUseCase.execute()
+                let currencies = try await listCurrenciesUseCase.perform()
                 self.currencies = currencies
             } catch (let error) {
                 delegate?.error(title: "Error", message: error.localizedDescription)
