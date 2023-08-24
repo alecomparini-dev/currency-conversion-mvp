@@ -9,6 +9,8 @@ import Foundation
 
 protocol ListCurrenciesTableViewCell: AnyObject {
     func numberOfCurrencies() -> Int
+    
+    //TODO: REMOVER
     func symbol(index: Int) -> String
     func title(index: Int) -> String
     func subTitle(index: Int) -> String
