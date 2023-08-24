@@ -11,17 +11,18 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
     typealias T = ListCurrenciesViewController
     
     static func make() -> T {
-        let httpClient = Alamofire()
+//        let httpClient = Alamofire()
+        let httpClient = URLSessionNetwork()
         
         let url = makeApiURL(path: "/list")
         
         let parameters = ["access_key": Environment.variable(.accessKey)]
         
-        let listCurrenciesAPIGateway = ListCurrenciesUseCaseAPIGateway(http: httpClient, url: url, parameters: parameters)
+        let listCurrenciesAPIGateway = RemoteListCurrenciesUseCaseGateway(http: httpClient, url: url, parameters: parameters)
         
-        let remoteListCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(listCurrenciesAPIGateway: listCurrenciesAPIGateway )
+        let listCurrenciesUseCase = ListCurrenciesUseCaseImpl(listCurrenciesGateway: listCurrenciesAPIGateway )
         
-        let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: remoteListCurrenciesUseCase)
+        let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
         
         return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM, listCurrenciesTableView: listCurrenciesVM)
     }

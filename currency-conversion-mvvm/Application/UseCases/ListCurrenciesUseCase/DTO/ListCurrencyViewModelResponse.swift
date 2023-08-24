@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyResponse {
+struct ListCurrencyViewModelResponse {
     var symbol: String
     var title: String
     var subTitle: String

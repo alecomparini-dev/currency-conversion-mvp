@@ -43,7 +43,6 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     
     
 //  MARK: - LIFE CYCLE
-    
     override func loadView() {
         view = screen
     }
@@ -163,7 +162,7 @@ extension ListCurrenciesViewController: UITableViewDataSource {
         
         guard let listCurrenciesTableView else { return  UITableViewCell() }
         
-        let input = CurrencyResponse(symbol: listCurrenciesTableView.symbol(index: indexPath.row),
+        let input = ListCurrencyViewModelResponse(symbol: listCurrenciesTableView.symbol(index: indexPath.row),
                                          title: listCurrenciesTableView.title(index: indexPath.row),
                                          subTitle: NSLocalizedString(listCurrenciesTableView.subTitle(index: indexPath.row), comment: ""),
                                          favorite: listCurrenciesTableView.favorite(index: indexPath.row))

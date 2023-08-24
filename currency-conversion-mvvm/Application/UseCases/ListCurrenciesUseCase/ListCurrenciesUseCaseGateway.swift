@@ -1,4 +1,4 @@
-//
+
 //  ListCurrenciesUseCaseGateway.swift
 //  currency-conversion-mvvm
 //
@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListCurrenciesUseCaseGateway: AnyObject {
-    func getCurrencies() async throws -> [Currency]
+    func getListCurrencies() async throws -> [Currency]
 }
