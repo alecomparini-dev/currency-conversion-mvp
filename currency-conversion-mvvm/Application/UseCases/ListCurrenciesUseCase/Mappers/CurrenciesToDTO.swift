@@ -9,11 +9,11 @@ import Foundation
 
 
 struct CurrenciesMapper {
-    static func toCurrencyDTO(domain: [Currency]) -> [CurrencyDTO] {
-        return domain.map { .init(symbol: "",
-                                  title: $0.acronym,
-                                  subTitle: $0.name,
-                                  favorite: false) }
+    static func toCurrencyResponse(domain: [Currency]) -> [CurrencyResponse] {
+        return domain.map { CurrencyResponse(symbol: "",
+                                             title: $0.acronym,
+                                             subTitle: $0.name,
+                                             favorite: false) }
     }
 
 }
