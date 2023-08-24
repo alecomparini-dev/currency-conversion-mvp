@@ -1,5 +1,5 @@
 //
-//  RemoteListCurrenciesUseCaseAdapter.swift
+//  ListCurrenciesUseCaseAPIGateway.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 21/08/23.
@@ -8,12 +8,12 @@
 import Foundation
 
 
-class RemoteListCurrenciesUseCaseAdapter: ListCurrenciesUseCaseAdapter {
+class ListCurrenciesUseCaseAPIGateway: ListCurrenciesUseCaseGateway {
     private let http: HTTPGetClient
     private let url: URL
     private let parameters: Dictionary<String,String>
     
-    init(http: HTTPGetClient, url: URL, parameters: Dictionary<String, String>) {
+    init(http: HTTPGetClient, url: URL, parameters: Dictionary<String, String>) { 
         self.http = http
         self.url = url
         self.parameters = parameters

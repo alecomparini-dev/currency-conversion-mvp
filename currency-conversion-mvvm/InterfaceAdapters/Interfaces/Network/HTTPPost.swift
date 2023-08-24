@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HTTPPost {
-    func post() async throws -> Result<Data?, HTTPError>
+    func post(url: URL, parameters: Dictionary<String, String>) async throws -> Data
 }
 
