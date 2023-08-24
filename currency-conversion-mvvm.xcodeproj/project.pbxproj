@@ -493,6 +493,21 @@
 			path = pt.lproj;
 			sourceTree = "<group>";
 		};
+		026CF0D72A96DA5100496C15 /* ListCurrencySymbolsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				026CF0D82A96DA8400496C15 /* Interface */,
+			);
+			path = ListCurrencySymbolsUseCase;
+			sourceTree = "<group>";
+		};
+		026CF0D82A96DA8400496C15 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
 		028E0EF32A942557007E2ECF /* URLFactory */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +538,7 @@
 		028E0F012A9522F2007E2ECF /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				026CF0D72A96DA5100496C15 /* ListCurrencySymbolsUseCase */,
 				028E0F1B2A959E68007E2ECF /* ListCurrenciesUseCase */,
 			);
 			path = UseCases;
@@ -564,8 +580,8 @@
 		028E0F1B2A959E68007E2ECF /* ListCurrenciesUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				026CF0A12A96A37E00496C15 /* DTO */,
 				028E0F202A962136007E2ECF /* Interfaces */,
+				026CF0A12A96A37E00496C15 /* DTO */,
 				028E0F1D2A959F0A007E2ECF /* RemoteListCurrenciesUseCase */,
 			);
 			path = ListCurrenciesUseCase;
