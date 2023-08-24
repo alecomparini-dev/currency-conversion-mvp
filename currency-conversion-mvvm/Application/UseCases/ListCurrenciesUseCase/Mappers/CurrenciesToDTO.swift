@@ -9,8 +9,8 @@ import Foundation
 
 
 struct CurrenciesMapper {
-    static func toCurrencyResponse(domain: [Currency]) -> [CurrencyResponse] {
-        return domain.map { CurrencyResponse(symbol: "",
+    static func toListCurrencyResponse(domain: [Currency]) -> [ListCurrencyResponse] {
+        return domain.map { ListCurrencyResponse(symbol: "",
                                              title: $0.acronym,
                                              subTitle: $0.name,
                                              favorite: false) }
