@@ -17,7 +17,7 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         
         let parameters = ["access_key": Environment.variable(.accessKey)]
         
-        let remoteCurrencies = RemoteListCurrenciesUseCaseAdapter(http: httpClient, url: url, parameters: parameters)
+        let remoteCurrencies = ListCurrenciesUseCaseAPIGateway(http: httpClient, url: url, parameters: parameters)
         
         let remoteListCurrenciesUseCase = RemoteListCurrenciesUseCaseImpl(remoteCurrenciesAdapter: remoteCurrencies )
         

@@ -15,16 +15,16 @@ class RemoteListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
     
     weak var delegate: RemoteListCurrenciesUseCaseOutput?
     
-    private let remoteCurrenciesAdapter: ListCurrenciesUseCaseAdapter
+    private let remoteCurrenciesAdapter: ListCurrenciesUseCaseGateway
     
-    init(remoteCurrenciesAdapter: ListCurrenciesUseCaseAdapter) {
+    init(remoteCurrenciesAdapter: ListCurrenciesUseCaseGateway) {
         self.remoteCurrenciesAdapter = remoteCurrenciesAdapter
     }
     
     func execute() async throws -> [CurrencyDTO] {
         let currencies: [Currency] = try await remoteCurrenciesAdapter.getCurrencies()
         
-        let dto = CurrencyDTO.toDTO(domain: currencies)
+        let dto = CurrenciesMapper.toCurrencyDTO(domain: currencies)
         
         return dto
     }
