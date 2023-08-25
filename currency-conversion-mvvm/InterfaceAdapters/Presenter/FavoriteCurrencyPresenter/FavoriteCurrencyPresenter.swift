@@ -1,5 +1,5 @@
 //
-//  FavoriteCurrencyViewModel.swift
+//  FavoriteCurrencyPresenter.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 24/08/23.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol FavoriteCurrencyViewModel: AnyObject {
+protocol FavoriteCurrencyPresenter: AnyObject {
     func favoriteCurrency()
 }

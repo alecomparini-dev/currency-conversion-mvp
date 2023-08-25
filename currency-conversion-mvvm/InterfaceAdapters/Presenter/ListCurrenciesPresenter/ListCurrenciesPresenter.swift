@@ -1,5 +1,5 @@
 //
-//  ListCurrenciesViewModel.swift
+//  ListCurrenciesPresenter.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 20/08/23.
@@ -9,8 +9,8 @@ import Foundation
 
 
 //  MARK: - PROTOCOL VIEWMODEL
-protocol ListCurrenciesViewModel: AnyObject {
-    var delegate: ListCurrenciesViewModelOutput? { get set }
+protocol ListCurrenciesPresenter: AnyObject {
+    var delegate: ListCurrenciesPresenterOutput? { get set }
     func listCurrencies()
 }
 

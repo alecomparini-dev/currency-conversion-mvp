@@ -22,9 +22,9 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         
         let listCurrenciesUseCase = ListCurrenciesUseCaseImpl(listCurrenciesGateway: listCurrenciesAPIGateway )
         
-        let listCurrenciesVM = ListCurrenciesViewModelImpl(listCurrenciesUseCase: listCurrenciesUseCase)
+        let listCurrenciesP = ListCurrenciesPresenterImpl(listCurrenciesUseCase: listCurrenciesUseCase)
         
-        return ListCurrenciesViewController(listCurrenciesVM: listCurrenciesVM, listCurrenciesTableView: listCurrenciesVM)
+        return ListCurrenciesViewController(listCurrenciesP: listCurrenciesP, listCurrenciesTableView: listCurrenciesP)
     }
     
 }
