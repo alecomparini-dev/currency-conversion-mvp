@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ReadFile {
-    func read() async throws -> Data
+    func getData(fileName: String, fileExtension: String) throws -> Data
 }
