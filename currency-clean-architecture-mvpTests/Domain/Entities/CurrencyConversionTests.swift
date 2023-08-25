@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import currency_conversion_mvvm
+@testable import currency_clean_architecture_mvp
 
 final class CurrencyConversionTests: XCTestCase {
 
