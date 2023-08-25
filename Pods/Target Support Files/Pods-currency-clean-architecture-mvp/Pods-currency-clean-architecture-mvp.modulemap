@@ -1,0 +1,6 @@
+framework module Pods_currency_clean_architecture_mvp {
+  umbrella header "Pods-currency-clean-architecture-mvp-umbrella.h"
+
+  export *
+  module * { export * }
+}
