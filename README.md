@@ -1,1 +1,1 @@
-# currency-conversion-mvvm
+# currency-conversion-mvp
