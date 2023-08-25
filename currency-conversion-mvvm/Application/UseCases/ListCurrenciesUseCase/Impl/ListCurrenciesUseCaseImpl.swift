@@ -22,7 +22,9 @@ class ListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
         
         let listCurrencyResponse = CurrenciesMapper.toListCurrencyResponse(domain: currencies)
         
-        return listCurrencyResponse
+        let listSortedBycurrencyISO = listCurrencyResponse.sorted { $0.title < $1.title }
+        
+        return listSortedBycurrencyISO
     }
     
 }
