@@ -42,7 +42,7 @@
 		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
-	<string></string>
+	<string>LaunchScreen.storyboard</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>

@@ -11,8 +11,8 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
     typealias T = ListCurrenciesViewController
     
     static func make() -> T {
-//        let httpClient = Alamofire()
-        let httpClient = URLSessionNetwork()
+        let httpClient = Alamofire()
+//        let httpClient = URLSessionNetwork()
         
         let url = makeApiURL(path: "/list")
         
