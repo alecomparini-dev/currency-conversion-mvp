@@ -80,16 +80,6 @@ class ListCurrenciesView: UIView {
         return tab
     }()
     
-////  MARK: - PUBLIC AREA
-//    func createTableView() {
-//        let  tab = UITableView()
-//            tab.translatesAutoresizingMaskIntoConstraints = false
-//            tab.separatorStyle = .none
-//            tab.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
-//            return tab
-//        }()
-//    }
-    
     
 //  MARK: - PRIVATE AREA
     private func configure() {

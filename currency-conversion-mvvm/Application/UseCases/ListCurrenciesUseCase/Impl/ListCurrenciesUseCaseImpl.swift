@@ -17,12 +17,14 @@ class ListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
         self.listCurrenciesGateway = listCurrenciesGateway
     }
     
-    func perform() async throws -> [ListCurrencyViewModelResponse] {
+    func perform() async throws -> [ListCurrencyPresenterResponse] {
         let currencies: [Currency] = try await listCurrenciesGateway.getListCurrencies()
         
         let listCurrencyResponse = CurrenciesMapper.toListCurrencyResponse(domain: currencies)
         
-        return listCurrencyResponse
+        let listSortedBycurrencyISO = listCurrencyResponse.sorted { $0.title < $1.title }
+        
+        return listSortedBycurrencyISO
     }
     
 }

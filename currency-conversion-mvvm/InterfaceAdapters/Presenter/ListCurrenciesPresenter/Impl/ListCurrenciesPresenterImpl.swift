@@ -1,5 +1,5 @@
 //
-//  ListCurrenciesViewModelImpl.swift
+//  ListCurrenciesPresenterImpl.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 20/08/23.
@@ -10,18 +10,18 @@ import Foundation
 
 
 //  MARK: - DELEGATE
-protocol ListCurrenciesViewModelOutput: AnyObject {
+protocol ListCurrenciesPresenterOutput: AnyObject {
     func successListCurrencies()
     func error(title: String, message: String)
 }
 
 
 //  MARK: - CLASS
-class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
-    weak var delegate: ListCurrenciesViewModelOutput?
+class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
+    weak var delegate: ListCurrenciesPresenterOutput?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
-    private var currencies = [ListCurrencyViewModelResponse]()
+    private var currencies = [ListCurrencyPresenterResponse]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
@@ -34,14 +34,17 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
             do {
                 let currencies = try await listCurrenciesUseCase.perform()
                 self.currencies = currencies
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else {return}
+                    delegate?.successListCurrencies()
+                }
             } catch (let error) {
-                delegate?.error(title: "Error", message: error.localizedDescription)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else {return}
+                    delegate?.error(title: "Error", message: error.localizedDescription)
+                }
             }
             
-            DispatchQueue.main.async { [weak self] in
-                guard let self else {return}
-                delegate?.successListCurrencies()
-            }
         }
     }
 }
@@ -49,7 +52,7 @@ class ListCurrenciesViewModelImpl: ListCurrenciesViewModel {
 
 //  MARK: - EXTENSION - ListCurrenciesTableViewCell
 
-extension ListCurrenciesViewModelImpl: ListCurrenciesTableViewCell {
+extension ListCurrenciesPresenterImpl: ListCurrenciesTableViewCell {
     func numberOfCurrencies() -> Int { currencies.count  }
     
     func symbol(index: Int) -> String { currencies[index].symbol}
