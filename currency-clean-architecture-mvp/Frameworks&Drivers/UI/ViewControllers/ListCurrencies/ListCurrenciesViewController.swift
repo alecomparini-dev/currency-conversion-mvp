@@ -152,6 +152,7 @@ extension ListCurrenciesViewController: UITableViewDelegate {
 
 
 //  MARK: - EXTENSION UITableViewDataSource
+
 extension ListCurrenciesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listCurrenciesTableView?.numberOfCurrencies() ?? 0
@@ -162,10 +163,11 @@ extension ListCurrenciesViewController: UITableViewDataSource {
         
         guard let listCurrenciesTableView else { return  UITableViewCell() }
         
-        let input = ListCurrencyPresenterResponse(symbol: listCurrenciesTableView.symbol(index: indexPath.row),
-                                         title: listCurrenciesTableView.title(index: indexPath.row),
-                                         subTitle: NSLocalizedString(listCurrenciesTableView.subTitle(index: indexPath.row), comment: ""),
-                                         favorite: listCurrenciesTableView.favorite(index: indexPath.row))
+        let input = ListCurrencyPresenterResponse(
+            symbol: listCurrenciesTableView.symbol(index: indexPath.row),
+            title: listCurrenciesTableView.title(index: indexPath.row),
+            subTitle: NSLocalizedString(listCurrenciesTableView.subTitle(index: indexPath.row), comment: ""),
+            favorite: listCurrenciesTableView.favorite(index: indexPath.row))
         
         cell?.setup(input)
         

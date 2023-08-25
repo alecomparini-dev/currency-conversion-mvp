@@ -8,6 +8,13 @@
 import Foundation
 
 
+struct ListCurrenciesOutput {
+    let symbol: String
+    let title: String
+    let subTitle: String
+    let favorite: String
+}
+
 
 //  MARK: - DELEGATE
 protocol ListCurrenciesPresenterOutput: AnyObject {
@@ -21,10 +28,13 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     weak var delegate: ListCurrenciesPresenterOutput?
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
+    private let listSymbolsUseCase: ListCurrencySymbolsUseCase
+    
     private var currencies = [ListCurrencyPresenterResponse]()
     
-    init(listCurrenciesUseCase: ListCurrenciesUseCase) {
+    init(listCurrenciesUseCase: ListCurrenciesUseCase, listSymbolsUseCase: ListCurrencySymbolsUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
+        self.listSymbolsUseCase = listSymbolsUseCase
     }
     
     
@@ -34,19 +44,34 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
             do {
                 let currencies = try await listCurrenciesUseCase.perform()
                 self.currencies = currencies
+                
+                let symbols: [ListCurrencySymbolsPresenterResponse]  = try await listSymbolsUseCase.perform()
+                
+                self.currencies = currencies.map { var currency = $0
+                    if let symbol = symbols.first(where: { $0.title == currency.title } ) {
+                        currency.symbol = symbol.symbol
+                    }
+                    return currency
+                }
+                
+                print(self.currencies)
+                
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     delegate?.successListCurrencies()
                 }
+                
             } catch (let error) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
-                    delegate?.error(title: "Error", message: error.localizedDescription)
+                    delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
                 }
             }
             
         }
     }
+    
+    
 }
 
 
@@ -55,7 +80,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 extension ListCurrenciesPresenterImpl: ListCurrenciesTableViewCell {
     func numberOfCurrencies() -> Int { currencies.count  }
     
-    func symbol(index: Int) -> String { currencies[index].symbol}
+    func symbol(index: Int) -> String { currencies[index].symbol }
     
     func title(index: Int) -> String { currencies[index].title }
     

@@ -27,5 +27,7 @@ class RemoteListCurrenciesUseCaseGateway: ListCurrenciesUseCaseGateway {
         return currenciesCodable.mapperToDomain()
     }
     
+    
+    
 }
     

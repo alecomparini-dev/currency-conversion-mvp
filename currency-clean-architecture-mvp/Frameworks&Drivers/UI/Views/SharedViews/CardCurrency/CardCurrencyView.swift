@@ -11,7 +11,7 @@ import UIKit
 class CardCurrencyView: UIView {
     private let input: CardCurrencyInput
     
-    init(cardCurrencyInput: CardCurrencyInput = CardCurrencyInput(currentySymbolViewInput: CurrencySymbolViewInput(symbol: "R$", sizeFrame: 50, fontSize: .title3), titleCurrency: "BRL", subTitleCurrency: "Real")) {
+    init(cardCurrencyInput: CardCurrencyInput = CardCurrencyInput(currentySymbolViewInput: CurrencySymbolViewInput(symbol: "R$", sizeFrame: 50, fontSize: .body), titleCurrency: "BRL", subTitleCurrency: "Real")) {
         self.input = cardCurrencyInput
         super.init(frame: .null)
         configure()

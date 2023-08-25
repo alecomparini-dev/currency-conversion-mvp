@@ -1,5 +1,5 @@
 //
-//  ListCurrencySymbolsUseCaseFileGatewayImpl.swift
+//  FileListCurrencySymbolsUseCaseGateway.swift
 //  currency-conversion-mvvm
 //
 //  Created by Alessandro Comparini on 23/08/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ListCurrencySymbolsUseCaseFileGatewayImpl: ListCurrencySymbolsUseCaseGateway {
+class FileListCurrencySymbolsUseCaseGateway: ListCurrencySymbolsUseCaseGateway {
     
     private let file: ReadFile
     
@@ -16,11 +16,15 @@ class ListCurrencySymbolsUseCaseFileGatewayImpl: ListCurrencySymbolsUseCaseGatew
     }
     
     func getCurrencySymbols() async throws -> CurrencySymbolsCodable {
-        let data = try await file.read()
+        
+        //TODO: - mudar o local destes nomes -
+        let data = try file.getData(fileName: "CurrencySymbols", fileExtension: "json")
+        
         let currencySymbols = try JSONDecoder().decode(CurrencySymbolsCodable.self, from: data)
-        print(currencySymbols)
+        
         return currencySymbols
     }
+
     
     
 }

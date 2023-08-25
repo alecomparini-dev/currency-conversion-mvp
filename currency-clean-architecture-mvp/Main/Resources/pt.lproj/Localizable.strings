@@ -53,6 +53,8 @@
 "British Pound" = "Libra Esterlina";
 "Georgian Lari" = "Lari";
 "Ghanaian Cedi" = "Cedi";
+"Manx pound" = "Libra Manesa";
+"Jersey Pound" = "Libra de Jérsia";
 "Gibraltar Pound" = "Libra de Gibraltar";
 "Gambian Dalasi" = "Dalasi";
 "Guinean Franc" = "Franco de Guiné";
@@ -63,9 +65,9 @@
 "Croatian Kuna" = "Kuna Croata";
 "Haitian Gourde" = "Gourde";
 "Hungarian Forint" = "Forint";
-"Indonesian Rupiah" = "Rupia";
+"Indonesian Rúpiah" = "Rúpia";
 "Israeli Shekel" = "Novo Shekel Israelense";
-"Indian Rupee" = "Rupia Indiana";
+"Indian Rupee" = "Rúpia Indiana";
 "Iraqi Dinar" = "Dinar Iraquiano";
 "Iranian Rial" = "Rial Iraniano";
 "Icelandic Krona" = "Coroa Islandesa";
@@ -82,7 +84,7 @@
 "Kazakhstani Tenge" = "Tenge";
 "Lao or Laotian Kip" = "Kip";
 "Lebanese Pound" = "Libra Libanesa";
-"Sri Lankan Rupee" = "Rupia do Sri Lanka";
+"Sri Lankan Rupee" = "Rúpia do Sri Lanka";
 "Liberian Dollar" = "Dólar Liberiano";
 "Basotho Loti" = "Loti";
 "Libyan Dinar" = "Dinar da Líbia";
@@ -93,8 +95,8 @@
 "Burmese Kyat" = "Kyat";
 "Mongolian Tughrik" = "Tugrik";
 "Macau Pataca" = "Pataca";
-"Mauritanian Ouguiya" = "Ouguiya";
-"Mauritian Rupee" = "Rupia de Maurício";
+"Mauritanian Ouguiya" = "Uguia Mauritana ";
+"Mauritian Rupee" = "Rúpia de Maurício";
 "Maldivian Rufiyaa" = "Rufiyaa";
 "Malawian Kwacha" = "Kwacha";
 "Mexican Peso" = "Peso Mexicano";
@@ -104,7 +106,7 @@
 "Nigerian Naira" = "Naira";
 "Nicaraguan Cordoba" = "Oro de Cordoba";
 "Norwegian Krone" = "Coroa Norueguesa";
-"Nepalese Rupee" = "Rupia Nepalesa";
+"Nepalese Rupee" = "Rúpia Nepalesa";
 "New Zealand Dollar" = "Dólar Neozelandês";
 "New Taiwan Dollar" = "Dólar de Taiwan";
 "Omani Rial" = "Rial Omani";
@@ -112,7 +114,7 @@
 "Peruvian Sol" = "Novo Sol";
 "Papua New Guinean Kina" = "Kina";
 "Philippine Peso" = "Peso Filipinio";
-"Pakistani Rupee" = "Rupia Paquistanesa";
+"Pakistani Rupee" = "Rúpia Paquistanesa";
 "Polish Zloty" = "Zloty";
 "Paraguayan Guarani" = "Guarani";
 "Qatari Riyal" = "Qatari Rial";
@@ -130,7 +132,6 @@
 "Sierra Leonean Leone" = "Leone";
 "Somali Shilling" = "Shilling Somali";
 "Surinamese Dollar" = "Dólar do Suriname";
-"Sao Tomean Dobra" = "Dobra";
 "Syrian Pound" = "Libra Síria";
 "Swazi Lilangeni" = "Lilangeni";
 "Thai Baht" = "Baht";
@@ -158,3 +159,11 @@
 "South African Rand" = "Rand";
 "Zambian Kwacha" = "Kwacha Zambiano";
 "Zimbabwean Dollar" = "Dólar do Zimbábue";
+"Comorian Franc" = "Franco Comorense";
+"South Sudanese Pound" = "Libra Sul-Sudanesa";
+"São Tomé and Príncipe Dobra" = "Dobra de São Tomé e Príncipe";
+"Uzbekistan Som" = "Som Usbeque";
+"Sovereign Bolivar" = "Bolívar Soberano";
+"CFA Franc BCEAO" = "Franco CFA BCEAO";
+
+"Zambian Kwacha (pre-2013)" = "Kwacha zambiano (pre-2013)";
