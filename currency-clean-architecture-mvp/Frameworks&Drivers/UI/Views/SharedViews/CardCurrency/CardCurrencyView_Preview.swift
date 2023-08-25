@@ -1,6 +1,6 @@
 //
 //  CardCurrencyViewPreview.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 17/08/23.
 //

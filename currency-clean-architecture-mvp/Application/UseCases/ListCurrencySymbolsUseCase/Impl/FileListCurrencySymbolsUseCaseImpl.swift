@@ -1,6 +1,6 @@
 //
 //  FileListCurrencySymbolsUseCaseImpl.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 23/08/23.
 //
@@ -15,7 +15,7 @@ class FileListCurrencySymbolsUseCaseImpl: ListCurrencySymbolsUseCase {
         self.listSymbolsGateway = listSymbolsGateway
     }
     
-    func perform() async throws -> [ListCurrencySymbolsPresenterResponse] {
+    func listSymbols() async throws -> [ListCurrencySymbolsPresenterResponse] {
         let symbols: CurrencySymbolsCodable = try await listSymbolsGateway.getCurrencySymbols()
         
         //MARK: Mapper

@@ -1,6 +1,6 @@
 //
 //  Coordinator.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 15/08/23.
 //

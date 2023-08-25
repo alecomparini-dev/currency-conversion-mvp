@@ -1,6 +1,6 @@
 //
 //  Environment.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 18/08/23.
 //

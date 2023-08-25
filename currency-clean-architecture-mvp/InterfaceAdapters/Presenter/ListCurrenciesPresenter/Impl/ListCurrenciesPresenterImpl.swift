@@ -1,19 +1,12 @@
 //
 //  ListCurrenciesPresenterImpl.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 20/08/23.
 //
 
 import Foundation
 
-
-struct ListCurrenciesOutput {
-    let symbol: String
-    let title: String
-    let subTitle: String
-    let favorite: String
-}
 
 
 //  MARK: - DELEGATE
@@ -42,10 +35,10 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     func listCurrencies() {
         Task {
             do {
-                let currencies = try await listCurrenciesUseCase.perform()
+                let currencies = try await listCurrenciesUseCase.listCurrencies()
                 self.currencies = currencies
                 
-                let symbols: [ListCurrencySymbolsPresenterResponse]  = try await listSymbolsUseCase.perform()
+                let symbols: [ListCurrencySymbolsPresenterResponse] = try await listSymbolsUseCase.listSymbols()
                 
                 self.currencies = currencies.map { var currency = $0
                     if let symbol = symbols.first(where: { $0.title == currency.title } ) {
@@ -53,8 +46,6 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                     }
                     return currency
                 }
-                
-                print(self.currencies)
                 
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
@@ -75,9 +66,9 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 }
 
 
-//  MARK: - EXTENSION - ListCurrenciesTableViewCell
+//  MARK: - EXTENSION - ListCurrenciesPresenterTableView
 
-extension ListCurrenciesPresenterImpl: ListCurrenciesTableViewCell {
+extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterTableView {
     func numberOfCurrencies() -> Int { currencies.count  }
     
     func symbol(index: Int) -> String { currencies[index].symbol }

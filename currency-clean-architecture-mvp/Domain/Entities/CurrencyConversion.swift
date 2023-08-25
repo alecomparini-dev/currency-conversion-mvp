@@ -1,6 +1,6 @@
 //
 //  CurrencyConversion.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 19/08/23.
 //

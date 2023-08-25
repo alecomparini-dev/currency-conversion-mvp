@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		026CF29D2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF20F2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift */; };
-		026CF29E2A98EBEB00496C15 /* ListCurrenciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2102A98EBEB00496C15 /* ListCurrenciesTableViewCell.swift */; };
+		026CF29E2A98EBEB00496C15 /* ListCurrenciesPresenterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2102A98EBEB00496C15 /* ListCurrenciesPresenterTableView.swift */; };
 		026CF29F2A98EBEB00496C15 /* ListCurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2112A98EBEB00496C15 /* ListCurrenciesPresenter.swift */; };
 		026CF2A02A98EBEB00496C15 /* SearchCurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2132A98EBEB00496C15 /* SearchCurrenciesPresenter.swift */; };
 		026CF2A12A98EBEB00496C15 /* SearchCurrenciesPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2142A98EBEB00496C15 /* SearchCurrenciesPresenterImpl.swift */; };
@@ -77,7 +77,7 @@
 		026CF2E22A98EBEB00496C15 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF28E2A98EBEB00496C15 /* Float+Extension.swift */; };
 		026CF2E32A98EBEB00496C15 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2902A98EBEB00496C15 /* Environment.swift */; };
 		026CF2E62A98EBEB00496C15 /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2952A98EBEB00496C15 /* URLFactory.swift */; };
-		026CF2E72A98EBEB00496C15 /* ListCurrenciesViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2972A98EBEB00496C15 /* ListCurrenciesViewModelFactory.swift */; };
+		026CF2E72A98EBEB00496C15 /* ListCurrenciesPresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2972A98EBEB00496C15 /* ListCurrenciesPresenterFactory.swift */; };
 		026CF2E82A98EBEB00496C15 /* CurrencyConversionControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2992A98EBEB00496C15 /* CurrencyConversionControllerFactory.swift */; };
 		026CF2E92A98EBEB00496C15 /* ViewControllerFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF29B2A98EBEB00496C15 /* ViewControllerFactoryProtocol.swift */; };
 		026CF2EA2A98EBEB00496C15 /* ListCurrenciesControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF29C2A98EBEB00496C15 /* ListCurrenciesControllerFactory.swift */; };
@@ -102,7 +102,7 @@
 /* Begin PBXFileReference section */
 		026CF1F42A98EB0900496C15 /* currency-clean-architecture-mvp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "currency-clean-architecture-mvp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		026CF20F2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesPresenterImpl.swift; sourceTree = "<group>"; };
-		026CF2102A98EBEB00496C15 /* ListCurrenciesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesTableViewCell.swift; sourceTree = "<group>"; };
+		026CF2102A98EBEB00496C15 /* ListCurrenciesPresenterTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesPresenterTableView.swift; sourceTree = "<group>"; };
 		026CF2112A98EBEB00496C15 /* ListCurrenciesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesPresenter.swift; sourceTree = "<group>"; };
 		026CF2132A98EBEB00496C15 /* SearchCurrenciesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesPresenter.swift; sourceTree = "<group>"; };
 		026CF2142A98EBEB00496C15 /* SearchCurrenciesPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesPresenterImpl.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		026CF28E2A98EBEB00496C15 /* Float+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		026CF2902A98EBEB00496C15 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		026CF2952A98EBEB00496C15 /* URLFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
-		026CF2972A98EBEB00496C15 /* ListCurrenciesViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesViewModelFactory.swift; sourceTree = "<group>"; };
+		026CF2972A98EBEB00496C15 /* ListCurrenciesPresenterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesPresenterFactory.swift; sourceTree = "<group>"; };
 		026CF2992A98EBEB00496C15 /* CurrencyConversionControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyConversionControllerFactory.swift; sourceTree = "<group>"; };
 		026CF29B2A98EBEB00496C15 /* ViewControllerFactoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerFactoryProtocol.swift; sourceTree = "<group>"; };
 		026CF29C2A98EBEB00496C15 /* ListCurrenciesControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesControllerFactory.swift; sourceTree = "<group>"; };
@@ -262,9 +262,10 @@
 		026CF20D2A98EBEB00496C15 /* ListCurrenciesPresenter */ = {
 			isa = PBXGroup;
 			children = (
+				02BBAD452A994839000D84B3 /* DTO */,
 				026CF20E2A98EBEB00496C15 /* Impl */,
 				026CF2112A98EBEB00496C15 /* ListCurrenciesPresenter.swift */,
-				026CF2102A98EBEB00496C15 /* ListCurrenciesTableViewCell.swift */,
+				026CF2102A98EBEB00496C15 /* ListCurrenciesPresenterTableView.swift */,
 			);
 			path = ListCurrenciesPresenter;
 			sourceTree = "<group>";
@@ -809,7 +810,7 @@
 		026CF2962A98EBEB00496C15 /* PresenterFactories */ = {
 			isa = PBXGroup;
 			children = (
-				026CF2972A98EBEB00496C15 /* ListCurrenciesViewModelFactory.swift */,
+				026CF2972A98EBEB00496C15 /* ListCurrenciesPresenterFactory.swift */,
 			);
 			path = PresenterFactories;
 			sourceTree = "<group>";
@@ -910,6 +911,13 @@
 			children = (
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		02BBAD452A994839000D84B3 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		13DDD0F171F9CEA510DDD61A /* Pods */ = {
@@ -1105,7 +1113,7 @@
 				026CF2A82A98EBEB00496C15 /* FileError.swift in Sources */,
 				026CF2B92A98EBEB00496C15 /* CurrencyConversionView.swift in Sources */,
 				026CF2AB2A98EBEB00496C15 /* HTTPPost.swift in Sources */,
-				026CF29E2A98EBEB00496C15 /* ListCurrenciesTableViewCell.swift in Sources */,
+				026CF29E2A98EBEB00496C15 /* ListCurrenciesPresenterTableView.swift in Sources */,
 				026CF2C92A98EBEB00496C15 /* DefaultValidatorFactory.swift in Sources */,
 				026CF29D2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift in Sources */,
 				026CF2B12A98EBEB00496C15 /* ViewControllerCoordinator.swift in Sources */,
@@ -1139,7 +1147,7 @@
 				026CF2E12A98EBEB00496C15 /* UIViewController+Extension.swift in Sources */,
 				026CF2AC2A98EBEB00496C15 /* HTTPGetClient.swift in Sources */,
 				026CF2C22A98EBEB00496C15 /* CardCurrencyView.swift in Sources */,
-				026CF2E72A98EBEB00496C15 /* ListCurrenciesViewModelFactory.swift in Sources */,
+				026CF2E72A98EBEB00496C15 /* ListCurrenciesPresenterFactory.swift in Sources */,
 				026CF2A92A98EBEB00496C15 /* HTTPError.swift in Sources */,
 				026CF2BF2A98EBEB00496C15 /* CurrencySymbolView.swift in Sources */,
 				026CF2DF2A98EBEB00496C15 /* UIView+Extension.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  CurrencySymbolsCodable.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 23/08/23.
 //

@@ -20,11 +20,11 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
     
     private var listCurrenciesP: ListCurrenciesPresenter
-    private var listCurrenciesTableView: ListCurrenciesTableViewCell?
+    private var listCurrenciesTableView: ListCurrenciesPresenterTableView?
     
     
 //  MARK: - Initializers
-    init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesTableViewCell? = nil) {
+    init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesPresenterTableView? = nil) {
         self.listCurrenciesP = listCurrenciesP
         self.listCurrenciesTableView = listCurrenciesTableView
         super.init(nibName: nil, bundle: nil)
@@ -65,7 +65,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     private func configureDelegates() {
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
-        configListCurrenciesViewModelDelegate()
+        configListCurrenciesPresenterDelegate()
     }
     
     private func configSearchCurrenciesViewDelegate() {
@@ -81,7 +81,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         screen.tableView.dataSource = self
     }
     
-    private func configListCurrenciesViewModelDelegate() {
+    private func configListCurrenciesPresenterDelegate() {
         listCurrenciesP.delegate = self
     }
     
@@ -109,7 +109,7 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 }
 
 
-//  MARK: - EXTENSION ListCurrenciesViewModelDelegate - [ViewModel]
+//  MARK: - EXTENSION ListCurrenciesPresenterDelegate - [Presenter]
 extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
     
     func successListCurrencies() {
