@@ -30,7 +30,7 @@ class CurrencyTableViewCell: UITableViewCell {
     
 //  MARK: - SETUP CELL
     
-    func setup(_ input: ListCurrencyViewModelResponse) {
+    func setup(_ input: ListCurrencyPresenterResponse) {
         setSymbol(input.symbol)
         setTitle(input.title)
         setSubTitle(input.subTitle)

@@ -1,6 +1,6 @@
 //
 //  ListCurrenciesViewController.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 15/08/23.
 //
@@ -19,13 +19,13 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
     
-    private var listCurrenciesVM: ListCurrenciesViewModel
+    private var listCurrenciesP: ListCurrenciesPresenter
     private var listCurrenciesTableView: ListCurrenciesTableViewCell?
     
     
 //  MARK: - Initializers
-    init(listCurrenciesVM: ListCurrenciesViewModel, listCurrenciesTableView: ListCurrenciesTableViewCell? = nil) {
-        self.listCurrenciesVM = listCurrenciesVM
+    init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesTableViewCell? = nil) {
+        self.listCurrenciesP = listCurrenciesP
         self.listCurrenciesTableView = listCurrenciesTableView
         super.init(nibName: nil, bundle: nil)
     }
@@ -82,11 +82,11 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     }
     
     private func configListCurrenciesViewModelDelegate() {
-        listCurrenciesVM.delegate = self
+        listCurrenciesP.delegate = self
     }
     
     private func fetchCurrencies() {
-        listCurrenciesVM.listCurrencies()
+        listCurrenciesP.listCurrencies()
     }
     
     private func startAnimationLoading() {
@@ -110,7 +110,7 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 
 
 //  MARK: - EXTENSION ListCurrenciesViewModelDelegate - [ViewModel]
-extension ListCurrenciesViewController: ListCurrenciesViewModelOutput {
+extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
     
     func successListCurrencies() {
         configTableViewDelegate()
@@ -162,7 +162,7 @@ extension ListCurrenciesViewController: UITableViewDataSource {
         
         guard let listCurrenciesTableView else { return  UITableViewCell() }
         
-        let input = ListCurrencyViewModelResponse(symbol: listCurrenciesTableView.symbol(index: indexPath.row),
+        let input = ListCurrencyPresenterResponse(symbol: listCurrenciesTableView.symbol(index: indexPath.row),
                                          title: listCurrenciesTableView.title(index: indexPath.row),
                                          subTitle: NSLocalizedString(listCurrenciesTableView.subTitle(index: indexPath.row), comment: ""),
                                          favorite: listCurrenciesTableView.favorite(index: indexPath.row))
