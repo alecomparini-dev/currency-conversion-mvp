@@ -10,13 +10,9 @@ import Foundation
 class CurrencyConversionCoordinator: Coordinator {
     var childCoordinators: [Coordinator]? = []
     unowned let navigationController: NavigationController
-    
-    private var passData: String?
-    
-    func passData<D>(data: D) {
-        passData = data as? String
-    }
 
+    var passData: CurrencyConversionDTO?
+    
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
     }
@@ -24,17 +20,26 @@ class CurrencyConversionCoordinator: Coordinator {
     func start() {
         childCoordinators?.append(self)
         
-        if let vc = HasViewControllerBeenPushedValidation<CurrencyConversionViewController>(navigation: navigationController, coordinator: self).validate() {
-            vc.receivedData = passData
-            navigationController.popToViewController(vc, animated: true)
+        if let controller = HasViewControllerBeenPushedValidation<CurrencyConversionViewController>(navigation: navigationController).validate() {
+            receivedDataViewController(controller, passData: self.passData )
+            navigationController.popToViewController(controller, animated: true)
             return
         }
         
         let controller: CurrencyConversionViewController = CurrencyConversionControllerFactory.make()
-        controller.coordinator = self
+        receivedDataViewController(controller, passData: self.passData )
         navigationController.pushViewController(controller)
     }
     
+    
+    
+//  MARK: - PRIVATE AREA
+    
+    private func receivedDataViewController(_ vc: CurrencyConversionViewController, passData: CurrencyConversionDTO?) {
+        vc.coordinator = self
+        guard let passData else { return }
+        vc.receivedData = passData
+    }
     
 }
 

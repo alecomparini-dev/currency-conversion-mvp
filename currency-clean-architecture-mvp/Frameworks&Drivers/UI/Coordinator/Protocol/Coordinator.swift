@@ -15,12 +15,5 @@ protocol Coordinator: AnyObject {
     init(_ navigationController: NavigationController)
     
     func start()
-    
-    func passData<D>(data: D)
 
-}
-
-
-extension Coordinator {
-    func passData<String>(data: String) {}
 }

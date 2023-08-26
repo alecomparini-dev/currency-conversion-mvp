@@ -10,21 +10,15 @@ import UIKit
 
 //  MARK: - PROTOCOL COORDINATOR
 protocol ListCurrenciesViewControllerCoordinator: AnyObject {
-    func goToCurrencyConversionVC()
+    func goToCurrencyConversionVC(dto: CurrencyConversionDTO?)
 }
 
-
-//  MARK: - PROTOCOL DELEGATE
-protocol ListCurrenciesViewControllerDelegate: AnyObject {
-    func getCurrency(_ currency: CurrencyConversionDTO)
-}
 
 
 //  MARK: - CLASS
 
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
-    weak var delegate: ListCurrenciesViewControllerDelegate?
     var receivedData: Any?
     
     private var listCurrenciesP: ListCurrenciesPresenter
@@ -112,10 +106,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
     
     func backPageButtonTapped() {
-        coordinator?.goToCurrencyConversionVC()
-        let currency = CurrencyConversionDTO(
-            symbol: "CARAIO", currencyISO: "CAR", name: "Caralho")
-        delegate?.getCurrency(currency)
+        coordinator?.goToCurrencyConversionVC(dto: nil)
     }
     
 }

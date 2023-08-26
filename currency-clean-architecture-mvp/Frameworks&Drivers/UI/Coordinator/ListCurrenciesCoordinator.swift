@@ -8,7 +8,6 @@
 import Foundation
 
 class ListCurrenciesCoordinator: Coordinator {
-
     var childCoordinators: [Coordinator]? = []
     
     unowned let navigationController: NavigationController
@@ -20,8 +19,8 @@ class ListCurrenciesCoordinator: Coordinator {
     func start() {
         childCoordinators?.append(self)
 
-        if let vc = HasViewControllerBeenPushedValidation<ListCurrenciesViewController>(navigation: navigationController, coordinator: self).validate() {
-            navigationController.popToViewController(vc, animated: true)
+        if let controller = HasViewControllerBeenPushedValidation<ListCurrenciesViewController>(navigation: navigationController).validate() {
+            navigationController.popToViewController(controller, animated: true)
             return
         }
         
@@ -30,11 +29,6 @@ class ListCurrenciesCoordinator: Coordinator {
     
     
 //  MARK: - PRIVATE AREA
-    private func validatorFactory() -> Validator {
-        defaultValidatorFactory(ofTypeViewController: ListCurrenciesControllerFactory.make() ,
-                                navigationController: navigationController,
-                                coordinator: self)
-    }
     
     private func startListCurrencies() {
         let controller = ListCurrenciesControllerFactory.make()
@@ -45,13 +39,12 @@ class ListCurrenciesCoordinator: Coordinator {
 }
 
 
-
 //  MARK: - EXTENSION - ListCurrenciesViewControllerCoordinator
 extension ListCurrenciesCoordinator: ListCurrenciesViewControllerCoordinator {
     
-    func goToCurrencyConversionVC() {
+    func goToCurrencyConversionVC(dto: CurrencyConversionDTO?) {
         let coordinator = CurrencyConversionCoordinator(navigationController)
-        coordinator.passData(data: "VAIIIIIIIIII TOMAR NO CUUUUUUUUUUUUUUUUUUUUUUUUU")
+        coordinator.passData = dto
         coordinator.start()
         childCoordinators = nil
     }

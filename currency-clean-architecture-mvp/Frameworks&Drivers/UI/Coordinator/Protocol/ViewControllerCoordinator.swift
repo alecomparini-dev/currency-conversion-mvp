@@ -9,9 +9,7 @@ import UIKit
 
 protocol ViewControllerCoordinator: AnyObject  {
     associatedtype T
-    associatedtype D
     var coordinator: T? { get set }
-    var receivedData: D? { get set }
 }
 
 

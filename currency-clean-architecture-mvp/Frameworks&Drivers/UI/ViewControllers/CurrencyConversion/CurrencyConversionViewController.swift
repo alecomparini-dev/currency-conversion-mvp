@@ -17,11 +17,18 @@ protocol CurrencyConversionViewControllerCoordinator: AnyObject {
 //  MARK: - CLASS
 
 class CurrencyConversionViewController: UIViewController, ViewControllerCoordinator {
-    
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
-    var receivedData: String?
+    var receivedData: CurrencyConversionDTO?
     
     private var tap: (currencyOf: UITapGestureRecognizer?, currencyTo: UITapGestureRecognizer?)
+    
+    struct TappedControl {
+        enum TypeButton {
+            case currencyOf
+            case currencyTo
+        }
+        static var buttonTapped: TypeButton = .currencyTo
+    }
     
     lazy var screen: CurrencyConversionView = {
         let view = CurrencyConversionView()
@@ -40,12 +47,25 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addTapGestureCurrency()
+        
+        if TappedControl.buttonTapped == .currencyOf {
+            guard let receivedData else {return}
+            screen.currencyOf.symbolCurrency.symbolLabel.text = receivedData.symbol
+            screen.currencyOf.titleCurrencyLabel.text = receivedData.currencyISO
+            screen.currencyOf.subTitleCurrencyLabel.text = receivedData.name
+        }
+        
+        if TappedControl.buttonTapped == .currencyTo {
+            screen.currencyTo.symbolCurrency.symbolLabel.text = receivedData?.symbol ?? "?"
+            screen.currencyTo.titleCurrencyLabel.text = receivedData?.currencyISO ?? "Selecione"
+            screen.currencyTo.subTitleCurrencyLabel.text = receivedData?.name ?? "uma moeda"
+        }
+            
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("RECEBIIIIIIIIIIIIIIIIII:", self.receivedData ?? "")
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,10 +129,12 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     
 //  MARK: - @OBJC AREA
     @objc private func currencyOfTapped() {
+        TappedControl.buttonTapped = .currencyOf
         currencyOfButtonTapped()
     }
     
     @objc private func currencyToTapped() {
+        TappedControl.buttonTapped = .currencyTo
         currencyToButtonTapped()
     }
     
