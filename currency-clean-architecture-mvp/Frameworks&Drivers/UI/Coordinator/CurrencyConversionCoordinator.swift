@@ -11,7 +11,7 @@ class CurrencyConversionCoordinator: Coordinator {
     var childCoordinators: [Coordinator]? = []
     unowned let navigationController: NavigationController
 
-    var passData: CurrencyConversionDTO?
+    var passData: CurrencyConversionVCDTO?
     
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
@@ -35,7 +35,7 @@ class CurrencyConversionCoordinator: Coordinator {
     
 //  MARK: - PRIVATE AREA
     
-    private func receivedDataViewController(_ vc: CurrencyConversionViewController, passData: CurrencyConversionDTO?) {
+    private func receivedDataViewController(_ vc: CurrencyConversionViewController, passData: CurrencyConversionVCDTO?) {
         vc.coordinator = self
         guard let passData else { return }
         vc.receivedData = passData

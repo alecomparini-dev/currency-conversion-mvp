@@ -8,7 +8,6 @@
 import Foundation
 
 
-
 //  MARK: - DELEGATE
 protocol ListCurrenciesPresenterOutput: AnyObject {
     func successListCurrencies()
@@ -23,7 +22,8 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     private let listCurrenciesUseCase: ListCurrenciesUseCase
     private let listSymbolsUseCase: ListCurrencySymbolsUseCase
     
-    private var currencies = [ListCurrencyPresenterResponse]()
+    private var currenciesData = [ListCurrencyPresenterDTO]()
+    var filteredCurrencies = [ListCurrencyPresenterDTO]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase, listSymbolsUseCase: ListCurrencySymbolsUseCase) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
@@ -38,24 +38,27 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                 
                 //TODO: - Passar estas 3 chamadas para o DispatchGroup
                 //Mark: - Get Currencies
-                let currencies = try await listCurrenciesUseCase.listCurrencies()
-                self.currencies = currencies
+                let currencies: [ListCurrencyUseCaseResponse] = try await listCurrenciesUseCase.listCurrencies()
                 
                 //Mark: - Get Symbols
-                let symbols: [ListCurrencySymbolsPresenterResponse] = try await listSymbolsUseCase.listSymbols()
+                let symbols: [ListCurrencySymbolsUseCaseResponse] = try await listSymbolsUseCase.listSymbols()
                 
                 //Mark: - Get Favorites
-                let favorites: [String] = ["favorites ta atoa"]
-                debugPrint(favorites)
-                
+                let favorites: Bool = false
                 
                 //TODO: - UNIR AS 3 CHAMADAS E RETORNAR
-                self.currencies = currencies.map { var currency = $0
-                    if let symbol = symbols.first(where: { $0.currencyISO == currency.title } ) {
-                        currency.symbol = symbol.symbol
+                self.currenciesData = currencies.map { let currency = $0
+                    var dto = ListCurrencyPresenterDTO()
+                    dto.currencyISO = $0.currencyISO
+                    dto.name = currency.name
+                    dto.favorite = favorites
+                    if let symbol = symbols.first(where: { $0.currencyISO == currency.currencyISO } ) {
+                        dto.symbol = symbol.symbol
                     }
-                    return currency
+                    return dto
                 }
+                
+                self.filteredCurrencies = self.currenciesData
                 
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
@@ -76,18 +79,31 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 }
 
 
-//  MARK: - EXTENSION - ListCurrenciesPresenterTableView
+//  MARK: - EXTENSION - ListCurrenciesPresenterDataSource
 
-extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterTableView {
-    func numberOfCurrencies() -> Int { currencies.count  }
+extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterDataSource {
+    func numberOfCurrencies() -> Int { currenciesData.count  }
     
-    func symbol(index: Int) -> String { currencies[index].symbol }
+    func setFilteredCurrencies(_ currencies: [ListCurrencyPresenterDTO] ) {
+        self.filteredCurrencies = currencies
+    }
     
-    func currencyISO(index: Int) -> String { currencies[index].title }
+    func symbol(index: Int) -> String { filteredCurrencies[index].symbol ?? "" }
     
-    func name(index: Int) -> String { currencies[index].subTitle }
-
-    func favorite(index: Int) -> Bool { currencies[index].favorite }
+    func currencyISO(index: Int) -> String { filteredCurrencies[index].currencyISO ?? "" }
+    
+    func name(index: Int) -> String { NSLocalizedString(filteredCurrencies[index].name ?? "", comment: "") }
+    
+    func favorite(index: Int) -> Bool { filteredCurrencies[index].favorite ?? false }
     
 }
+
+
+
+/* ##########################################################################################
+ 
+ TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ AMANHA MUDAR OS PRESENTERS PARA CADA UM FAZER UAM COISA, O PRESETNER QUE CUIDA DOS DATA SOURCE, OUTRO DO SEARCH E OUTRO DO FAVORITE
+
+ */
 

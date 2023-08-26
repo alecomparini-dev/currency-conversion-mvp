@@ -18,7 +18,7 @@ protocol CurrencyConversionViewControllerCoordinator: AnyObject {
 
 class CurrencyConversionViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
-    var receivedData: CurrencyConversionDTO?
+    var receivedData: CurrencyConversionVCDTO?
     
     private var tap: (currencyOf: UITapGestureRecognizer?, currencyTo: UITapGestureRecognizer?)
     

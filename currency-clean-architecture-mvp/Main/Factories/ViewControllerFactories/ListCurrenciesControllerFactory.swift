@@ -22,9 +22,9 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         let listCurrenciesAPIGateway = RemoteListCurrenciesUseCaseGateway(http: httpClient, url: url, parameters: parameters)
         let listCurrenciesUseCase = ListCurrenciesUseCaseImpl(listCurrenciesGateway: listCurrenciesAPIGateway )
 
-        let listCurrenciesP = ListCurrenciesPresenterImpl(listCurrenciesUseCase: listCurrenciesUseCase, listSymbolsUseCase: listSymbolUseCase)
+        let listCurrenciesPR = ListCurrenciesPresenterImpl(listCurrenciesUseCase: listCurrenciesUseCase, listSymbolsUseCase: listSymbolUseCase)
         
-        return ListCurrenciesViewController(listCurrenciesP: listCurrenciesP, listCurrenciesTableView: listCurrenciesP)
+        return ListCurrenciesViewController(listCurrenciesPR: listCurrenciesPR, listCurrenciesDS: listCurrenciesPR)
     }
     
 }
