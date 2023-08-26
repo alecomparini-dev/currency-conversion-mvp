@@ -35,13 +35,23 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     func listCurrencies() {
         Task {
             do {
+                
+                //TODO: - Passar estas 3 chamadas para o DispatchGroup
+                //Mark: - Get Currencies
                 let currencies = try await listCurrenciesUseCase.listCurrencies()
                 self.currencies = currencies
                 
+                //Mark: - Get Symbols
                 let symbols: [ListCurrencySymbolsPresenterResponse] = try await listSymbolsUseCase.listSymbols()
                 
+                //Mark: - Get Favorites
+                let favorites: [String] = ["favorites ta atoa"]
+                debugPrint(favorites)
+                
+                
+                //TODO: - UNIR AS 3 CHAMADAS E RETORNAR
                 self.currencies = currencies.map { var currency = $0
-                    if let symbol = symbols.first(where: { $0.title == currency.title } ) {
+                    if let symbol = symbols.first(where: { $0.currencyISO == currency.title } ) {
                         currency.symbol = symbol.symbol
                     }
                     return currency
@@ -73,9 +83,9 @@ extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterTableView {
     
     func symbol(index: Int) -> String { currencies[index].symbol }
     
-    func title(index: Int) -> String { currencies[index].title }
+    func currencyISO(index: Int) -> String { currencies[index].title }
     
-    func subTitle(index: Int) -> String { currencies[index].subTitle }
+    func name(index: Int) -> String { currencies[index].subTitle }
 
     func favorite(index: Int) -> Bool { currencies[index].favorite }
     

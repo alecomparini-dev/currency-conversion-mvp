@@ -8,6 +8,7 @@
 import Foundation
 
 class ListCurrenciesCoordinator: Coordinator {
+
     var childCoordinators: [Coordinator]? = []
     
     unowned let navigationController: NavigationController
@@ -18,10 +19,13 @@ class ListCurrenciesCoordinator: Coordinator {
     
     func start() {
         childCoordinators?.append(self)
-        if !validatorFactory().validate() {
+
+        if let vc = HasViewControllerBeenPushedValidation<ListCurrenciesViewController>(navigation: navigationController, coordinator: self).validate() {
+            navigationController.popToViewController(vc, animated: true)
             return
         }
-        startListCurrencies()
+        
+        startListCurrencies()   
     }
     
     
@@ -41,9 +45,13 @@ class ListCurrenciesCoordinator: Coordinator {
 }
 
 
+
+//  MARK: - EXTENSION - ListCurrenciesViewControllerCoordinator
 extension ListCurrenciesCoordinator: ListCurrenciesViewControllerCoordinator {
+    
     func goToCurrencyConversionVC() {
         let coordinator = CurrencyConversionCoordinator(navigationController)
+        coordinator.passData(data: "VAIIIIIIIIII TOMAR NO CUUUUUUUUUUUUUUUUUUUUUUUUU")
         coordinator.start()
         childCoordinators = nil
     }

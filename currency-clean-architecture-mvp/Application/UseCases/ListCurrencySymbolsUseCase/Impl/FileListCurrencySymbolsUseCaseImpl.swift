@@ -19,7 +19,7 @@ class FileListCurrencySymbolsUseCaseImpl: ListCurrencySymbolsUseCase {
         let symbols: CurrencySymbolsCodable = try await listSymbolsGateway.getCurrencySymbols()
         
         //MARK: Mapper
-        let presenterResponse = symbols.map { ListCurrencySymbolsPresenterResponse(title: $0.key, symbol: $0.value)  }
+        let presenterResponse = symbols.map { ListCurrencySymbolsPresenterResponse(currencyISO: $0.key, symbol: $0.value)  }
         
         return presenterResponse
     }

@@ -30,13 +30,12 @@ class CurrencyTableViewCell: UITableViewCell {
     
 //  MARK: - SETUP CELL
     
-    func setup(_ input: ListCurrencyPresenterResponse) {
-        setSymbol(input.symbol)
-        setTitle(input.title)
-        setSubTitle(input.subTitle)
-        setFavorite(input.favorite)
+    func setup(_ parameter: CurrencyTableViewCellDTO ) {
+        setSymbol(parameter.symbol)
+        setTitle(parameter.currencyISO)
+        setSubTitle(parameter.name)
+        setFavorite(parameter.favorite)
     }
-    
     
     
 //  MARK: - PRIVATE AREA

@@ -12,7 +12,7 @@ protocol ListCurrenciesPresenterTableView: AnyObject {
     
 
     func symbol(index: Int) -> String
-    func title(index: Int) -> String
-    func subTitle(index: Int) -> String
+    func currencyISO(index: Int) -> String
+    func name(index: Int) -> String
     func favorite(index: Int) -> Bool
 }

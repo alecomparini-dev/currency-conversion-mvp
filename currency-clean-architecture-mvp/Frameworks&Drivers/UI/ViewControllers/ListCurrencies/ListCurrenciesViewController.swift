@@ -14,19 +14,27 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 }
 
 
+//  MARK: - PROTOCOL DELEGATE
+protocol ListCurrenciesViewControllerDelegate: AnyObject {
+    func getCurrency(_ currency: CurrencyConversionDTO)
+}
+
+
 //  MARK: - CLASS
 
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
+    weak var delegate: ListCurrenciesViewControllerDelegate?
+    var receivedData: Any?
     
     private var listCurrenciesP: ListCurrenciesPresenter
-    private var listCurrenciesTableView: ListCurrenciesPresenterTableView?
+    private var listCurrenciesPTableView: ListCurrenciesPresenterTableView?
     
     
 //  MARK: - Initializers
     init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesPresenterTableView? = nil) {
         self.listCurrenciesP = listCurrenciesP
-        self.listCurrenciesTableView = listCurrenciesTableView
+        self.listCurrenciesPTableView = listCurrenciesTableView
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -100,10 +108,14 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 }
 
 
-//  MARK: - EXTENSION ListCurrenciesViewDelegate - [View]
+//  MARK: - EXTENSION ListCurrenciesViewDelegate
 extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
+    
     func backPageButtonTapped() {
         coordinator?.goToCurrencyConversionVC()
+        let currency = CurrencyConversionDTO(
+            symbol: "CARAIO", currencyISO: "CAR", name: "Caralho")
+        delegate?.getCurrency(currency)
     }
     
 }
@@ -154,22 +166,22 @@ extension ListCurrenciesViewController: UITableViewDelegate {
 //  MARK: - EXTENSION UITableViewDataSource
 
 extension ListCurrenciesViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listCurrenciesTableView?.numberOfCurrencies() ?? 0
+        return listCurrenciesPTableView?.numberOfCurrencies() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
         
-        guard let listCurrenciesTableView else { return  UITableViewCell() }
+        guard let listCurrenciesPTableView else { return  UITableViewCell() }
         
-        let input = ListCurrencyPresenterResponse(
-            symbol: listCurrenciesTableView.symbol(index: indexPath.row),
-            title: listCurrenciesTableView.title(index: indexPath.row),
-            subTitle: NSLocalizedString(listCurrenciesTableView.subTitle(index: indexPath.row), comment: ""),
-            favorite: listCurrenciesTableView.favorite(index: indexPath.row))
-        
-        cell?.setup(input)
+        let parameter = CurrencyTableViewCellDTO(symbol: listCurrenciesPTableView.symbol(index: indexPath.row),
+                                                 currencyISO: listCurrenciesPTableView.currencyISO(index: indexPath.row),
+                                                 name: NSLocalizedString(listCurrenciesPTableView.name(index: indexPath.row), comment: ""),
+                                                 favorite: listCurrenciesPTableView.favorite(index: indexPath.row))
+
+        cell?.setup(parameter)
         
         return cell ?? UITableViewCell()
     }

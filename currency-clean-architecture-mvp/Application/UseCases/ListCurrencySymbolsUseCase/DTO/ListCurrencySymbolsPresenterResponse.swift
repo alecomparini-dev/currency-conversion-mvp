@@ -8,6 +8,6 @@
 import Foundation
 
 struct ListCurrencySymbolsPresenterResponse {
-    let title: String
+    let currencyISO: String
     let symbol: String    
 }

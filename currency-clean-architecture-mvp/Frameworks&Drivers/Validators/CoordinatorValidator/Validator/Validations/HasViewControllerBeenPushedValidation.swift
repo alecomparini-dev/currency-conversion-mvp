@@ -7,24 +7,24 @@
 
 import UIKit
 
-class HasViewControllerBeenPushedValidation<T: UIViewController>: Validation
+class HasViewControllerBeenPushedValidation<T: UIViewController>
 where T: ViewControllerCoordinator {
     
     private let navigation: NavigationController
-    private let coordinator: Coordinator
+    private let coordinator: any Coordinator
     
-    init(navigation: NavigationController, coordinator: Coordinator) {
+    init(navigation: NavigationController, coordinator: any Coordinator) {
         self.navigation = navigation
         self.coordinator = coordinator
     }
 
-    func validate() -> Continue {
+    func validate() -> T? {
         if let vc = navigation.containsViewController(ofType: T.self ) as? T {
             vc.coordinator = coordinator as? T.T
-            navigation.popToViewController(vc, animated: true)
-            return false
+//            navigation.popToViewController(vc, animated: true)
+            return vc
         }
-        return true
+        return nil
     }
     
 }

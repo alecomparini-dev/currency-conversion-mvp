@@ -17,7 +17,10 @@ protocol CurrencyConversionViewControllerCoordinator: AnyObject {
 //  MARK: - CLASS
 
 class CurrencyConversionViewController: UIViewController, ViewControllerCoordinator {
+    
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
+    var receivedData: String?
+    
     private var tap: (currencyOf: UITapGestureRecognizer?, currencyTo: UITapGestureRecognizer?)
     
     lazy var screen: CurrencyConversionView = {
@@ -37,6 +40,12 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addTapGestureCurrency()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("RECEBIIIIIIIIIIIIIIIIII:", self.receivedData ?? "")
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
