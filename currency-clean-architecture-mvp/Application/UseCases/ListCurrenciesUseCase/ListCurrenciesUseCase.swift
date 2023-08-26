@@ -1,6 +1,6 @@
 //
 //  ListCurrenciesUseCase.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 21/08/23.
 //
@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListCurrenciesUseCase {
-    func perform() async throws -> [ListCurrencyPresenterResponse]
+    func listCurrencies() async throws -> [ListCurrencyPresenterResponse]
 }

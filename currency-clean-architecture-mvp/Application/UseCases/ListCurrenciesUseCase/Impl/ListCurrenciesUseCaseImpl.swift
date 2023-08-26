@@ -1,6 +1,6 @@
 //
 //  RemoteListCurrenciesUseCaseImpl.swift.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 19/08/23.
 //
@@ -17,7 +17,7 @@ class ListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
         self.listCurrenciesGateway = listCurrenciesGateway
     }
     
-    func perform() async throws -> [ListCurrencyPresenterResponse] {
+    func listCurrencies() async throws -> [ListCurrencyPresenterResponse] {
         let currencies: [Currency] = try await listCurrenciesGateway.getListCurrencies()
         
         let listCurrencyResponse = CurrenciesMapper.toListCurrencyResponse(domain: currencies)

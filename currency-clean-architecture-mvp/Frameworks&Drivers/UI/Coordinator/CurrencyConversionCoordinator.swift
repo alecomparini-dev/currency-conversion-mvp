@@ -1,6 +1,6 @@
 //
 //  CurrencyConversionCoordinator.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 15/08/23.
 //
@@ -9,45 +9,49 @@ import Foundation
 
 class CurrencyConversionCoordinator: Coordinator {
     var childCoordinators: [Coordinator]? = []
-    
     unowned let navigationController: NavigationController
+
+    var passData: CurrencyConversionDTO?
     
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let coordinator = self
-        childCoordinators?.append(coordinator)
-        if !validatorFactory().validate() {
+        childCoordinators?.append(self)
+        
+        if let controller = HasViewControllerBeenPushedValidation<CurrencyConversionViewController>(navigation: navigationController).validate() {
+            receivedDataViewController(controller, passData: self.passData )
+            navigationController.popToViewController(controller, animated: true)
             return
         }
-        startCurrencyConversion()
-    }
         
-    
-//  MARK: - PRIVATE AREA
-    private func validatorFactory() -> Validator {
-        defaultValidatorFactory(ofTypeViewController: CurrencyConversionControllerFactory.make(),
-                                navigationController: navigationController,
-                                coordinator: self)
-    }
-    
-    private func startCurrencyConversion() {
-        let controller = CurrencyConversionControllerFactory.make()
-        controller.coordinator = self
+        let controller: CurrencyConversionViewController = CurrencyConversionControllerFactory.make()
+        receivedDataViewController(controller, passData: self.passData )
         navigationController.pushViewController(controller)
     }
+    
+    
+    
+//  MARK: - PRIVATE AREA
+    
+    private func receivedDataViewController(_ vc: CurrencyConversionViewController, passData: CurrencyConversionDTO?) {
+        vc.coordinator = self
+        guard let passData else { return }
+        vc.receivedData = passData
+    }
+    
 }
 
 
 //  MARK: - EXTENSION CurrencyConversionViewControllerCoordinator
 extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordinator {
+    
     func goToSearchCurrenciesVC() {
         let coordinator = ListCurrenciesCoordinator(navigationController)
         coordinator.start()
         childCoordinators = nil
     }
-    
+        
 }
 

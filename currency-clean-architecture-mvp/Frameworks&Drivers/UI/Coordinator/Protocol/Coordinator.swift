@@ -1,6 +1,6 @@
 //
 //  Coordinator.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 15/08/23.
 //
@@ -15,5 +15,5 @@ protocol Coordinator: AnyObject {
     init(_ navigationController: NavigationController)
     
     func start()
-}
 
+}

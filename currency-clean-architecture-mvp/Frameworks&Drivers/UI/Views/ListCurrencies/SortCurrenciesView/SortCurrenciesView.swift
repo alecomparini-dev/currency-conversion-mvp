@@ -1,6 +1,6 @@
 //
 //  SortCurrenciesView.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro uiarini on 17/08/23.
 //

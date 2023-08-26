@@ -1,6 +1,6 @@
 
 //  ListCurrenciesUseCaseGateway.swift
-//  currency-conversion-mvvm
+//  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 22/08/23.
 //

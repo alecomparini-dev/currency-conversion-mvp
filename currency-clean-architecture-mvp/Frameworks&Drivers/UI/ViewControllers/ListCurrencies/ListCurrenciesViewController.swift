@@ -10,23 +10,25 @@ import UIKit
 
 //  MARK: - PROTOCOL COORDINATOR
 protocol ListCurrenciesViewControllerCoordinator: AnyObject {
-    func goToCurrencyConversionVC()
+    func goToCurrencyConversionVC(dto: CurrencyConversionDTO?)
 }
+
 
 
 //  MARK: - CLASS
 
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
+    var receivedData: Any?
     
     private var listCurrenciesP: ListCurrenciesPresenter
-    private var listCurrenciesTableView: ListCurrenciesTableViewCell?
+    private var listCurrenciesPTableView: ListCurrenciesPresenterTableView?
     
     
 //  MARK: - Initializers
-    init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesTableViewCell? = nil) {
+    init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesPresenterTableView? = nil) {
         self.listCurrenciesP = listCurrenciesP
-        self.listCurrenciesTableView = listCurrenciesTableView
+        self.listCurrenciesPTableView = listCurrenciesTableView
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -65,7 +67,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     private func configureDelegates() {
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
-        configListCurrenciesViewModelDelegate()
+        configListCurrenciesPresenterDelegate()
     }
     
     private func configSearchCurrenciesViewDelegate() {
@@ -81,7 +83,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         screen.tableView.dataSource = self
     }
     
-    private func configListCurrenciesViewModelDelegate() {
+    private func configListCurrenciesPresenterDelegate() {
         listCurrenciesP.delegate = self
     }
     
@@ -100,16 +102,17 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 }
 
 
-//  MARK: - EXTENSION ListCurrenciesViewDelegate - [View]
+//  MARK: - EXTENSION ListCurrenciesViewDelegate
 extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
+    
     func backPageButtonTapped() {
-        coordinator?.goToCurrencyConversionVC()
+        coordinator?.goToCurrencyConversionVC(dto: nil)
     }
     
 }
 
 
-//  MARK: - EXTENSION ListCurrenciesViewModelDelegate - [ViewModel]
+//  MARK: - EXTENSION ListCurrenciesPresenterDelegate - [Presenter]
 extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
     
     func successListCurrencies() {
@@ -154,22 +157,22 @@ extension ListCurrenciesViewController: UITableViewDelegate {
 //  MARK: - EXTENSION UITableViewDataSource
 
 extension ListCurrenciesViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listCurrenciesTableView?.numberOfCurrencies() ?? 0
+        return listCurrenciesPTableView?.numberOfCurrencies() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
         
-        guard let listCurrenciesTableView else { return  UITableViewCell() }
+        guard let listCurrenciesPTableView else { return  UITableViewCell() }
         
-        let input = ListCurrencyPresenterResponse(
-            symbol: listCurrenciesTableView.symbol(index: indexPath.row),
-            title: listCurrenciesTableView.title(index: indexPath.row),
-            subTitle: NSLocalizedString(listCurrenciesTableView.subTitle(index: indexPath.row), comment: ""),
-            favorite: listCurrenciesTableView.favorite(index: indexPath.row))
-        
-        cell?.setup(input)
+        let parameter = CurrencyTableViewCellDTO(symbol: listCurrenciesPTableView.symbol(index: indexPath.row),
+                                                 currencyISO: listCurrenciesPTableView.currencyISO(index: indexPath.row),
+                                                 name: NSLocalizedString(listCurrenciesPTableView.name(index: indexPath.row), comment: ""),
+                                                 favorite: listCurrenciesPTableView.favorite(index: indexPath.row))
+
+        cell?.setup(parameter)
         
         return cell ?? UITableViewCell()
     }

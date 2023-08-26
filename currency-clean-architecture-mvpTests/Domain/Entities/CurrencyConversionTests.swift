@@ -1,6 +1,6 @@
 //
 //  CurrencyConversionTests.swift
-//  currency-conversion-mvvmTests
+//  currency-conversion-mvpTests
 //
 //  Created by Alessandro Comparini on 14/08/23.
 //
