@@ -9,6 +9,7 @@ import Foundation
 
 
 class SearchCurrenciesPresenterImpl: SearchCurrenciesPresenter {
+    
     func searchCurrencies() {
         
     }

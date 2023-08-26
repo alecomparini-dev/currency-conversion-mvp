@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ListCurrenciesPresenterTableView: AnyObject {
+protocol ListCurrenciesPresenterDataSource: AnyObject {
     func numberOfCurrencies() -> Int
     
 

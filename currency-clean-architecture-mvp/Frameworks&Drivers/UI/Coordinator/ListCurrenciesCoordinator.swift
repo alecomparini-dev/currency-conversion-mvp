@@ -42,7 +42,7 @@ class ListCurrenciesCoordinator: Coordinator {
 //  MARK: - EXTENSION - ListCurrenciesViewControllerCoordinator
 extension ListCurrenciesCoordinator: ListCurrenciesViewControllerCoordinator {
     
-    func goToCurrencyConversionVC(dto: CurrencyConversionDTO?) {
+    func goToCurrencyConversionVC(dto: CurrencyConversionVCDTO?) {
         let coordinator = CurrencyConversionCoordinator(navigationController)
         coordinator.passData = dto
         coordinator.start()

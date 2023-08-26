@@ -10,7 +10,7 @@ import UIKit
 
 //  MARK: - PROTOCOL COORDINATOR
 protocol ListCurrenciesViewControllerCoordinator: AnyObject {
-    func goToCurrencyConversionVC(dto: CurrencyConversionDTO?)
+    func goToCurrencyConversionVC(dto: CurrencyConversionVCDTO?)
 }
 
 
@@ -21,14 +21,14 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
     var receivedData: Any?
     
-    private var listCurrenciesP: ListCurrenciesPresenter
-    private var listCurrenciesPTableView: ListCurrenciesPresenterTableView?
+    private var listCurrenciesPR: ListCurrenciesPresenter
+    private var listCurrenciesDataSource: ListCurrenciesPresenterDataSource?
     
     
 //  MARK: - Initializers
-    init(listCurrenciesP: ListCurrenciesPresenter, listCurrenciesTableView: ListCurrenciesPresenterTableView? = nil) {
-        self.listCurrenciesP = listCurrenciesP
-        self.listCurrenciesPTableView = listCurrenciesTableView
+    init(listCurrenciesPR: ListCurrenciesPresenter, listCurrenciesDS: ListCurrenciesPresenterDataSource? = nil) {
+        self.listCurrenciesPR = listCurrenciesPR
+        self.listCurrenciesDataSource = listCurrenciesDS
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -84,11 +84,11 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     }
     
     private func configListCurrenciesPresenterDelegate() {
-        listCurrenciesP.delegate = self
+        listCurrenciesPR.delegate = self
     }
     
     private func fetchCurrencies() {
-        listCurrenciesP.listCurrencies()
+        listCurrenciesPR.listCurrencies()
     }
     
     private func startAnimationLoading() {
@@ -144,6 +144,9 @@ extension ListCurrenciesViewController: UISearchBarDelegate {
 }
 
 
+
+
+
 //  MARK: - EXTENSION UITableViewDelegate
 extension ListCurrenciesViewController: UITableViewDelegate {
     
@@ -159,18 +162,18 @@ extension ListCurrenciesViewController: UITableViewDelegate {
 extension ListCurrenciesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listCurrenciesPTableView?.numberOfCurrencies() ?? 0
+        return listCurrenciesDataSource?.numberOfCurrencies() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
         
-        guard let listCurrenciesPTableView else { return  UITableViewCell() }
+        guard let listCurrenciesDataSource else { return  UITableViewCell() }
         
-        let parameter = CurrencyTableViewCellDTO(symbol: listCurrenciesPTableView.symbol(index: indexPath.row),
-                                                 currencyISO: listCurrenciesPTableView.currencyISO(index: indexPath.row),
-                                                 name: NSLocalizedString(listCurrenciesPTableView.name(index: indexPath.row), comment: ""),
-                                                 favorite: listCurrenciesPTableView.favorite(index: indexPath.row))
+        let parameter = CurrencyTableViewCellDTO(symbol: listCurrenciesDataSource.symbol(index: indexPath.row),
+                                                 currencyISO: listCurrenciesDataSource.currencyISO(index: indexPath.row),
+                                                 name: listCurrenciesDataSource.name(index: indexPath.row),
+                                                 favorite: listCurrenciesDataSource.favorite(index: indexPath.row))
 
         cell?.setup(parameter)
         
