@@ -93,11 +93,11 @@ class CurrencyTableViewCell: UITableViewCell {
 extension CurrencyTableViewCell: CurrencyTableViewCellViewDelegate {
     
     func favoriteButtonTapped(_ button: UIButton) {
-        if button.currentImage == UIImage(systemName: "heart.fill") {
-            button.setImage(UIImage(systemName: "heart"), for: .normal)
+        if button.currentImage == UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteFillButton) {
+            button.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteButton), for: .normal)
             button.tintColor = screen.getTintColorHeart(.normal)
         } else {
-            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            button.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteFillButton), for: .normal)
             button.tintColor = screen.getTintColorHeart(.fill)
         }
     }

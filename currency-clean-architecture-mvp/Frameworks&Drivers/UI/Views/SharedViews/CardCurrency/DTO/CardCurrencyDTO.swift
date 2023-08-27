@@ -1,5 +1,5 @@
 //
-//  CardCurrencyInput.swift
+//  CardCurrencyDTO.swift
 //  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 17/08/23.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CardCurrencyInput {
-    let currentySymbolViewInput: CurrencySymbolViewInput
+struct CardCurrencyDTO {
+    let currentySymbolViewInput: CurrencySymbolViewDTO
     let titleCurrency: String
     let subTitleCurrency: String
 }
