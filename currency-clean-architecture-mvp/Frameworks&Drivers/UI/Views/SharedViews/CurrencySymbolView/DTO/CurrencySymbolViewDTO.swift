@@ -1,5 +1,5 @@
 //
-//  CurrencySymbolViewInput.swift
+//  CurrencySymbolViewDTO.swift
 //  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 14/08/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct CurrencySymbolViewInput {
+struct CurrencySymbolViewDTO {
     let symbol: String
     let backgroundColor: UIColor
     let sizeFrame: CGFloat

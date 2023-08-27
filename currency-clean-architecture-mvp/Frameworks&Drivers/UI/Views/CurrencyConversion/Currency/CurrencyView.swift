@@ -8,10 +8,10 @@
 import UIKit
 
 class CurrencyView: UIView {
-    private let input: CurrencyViewInput
+    private let input: CurrencyViewDTO
     
-    init(currencyViewInput: CurrencyViewInput) {
-        self.input = currencyViewInput
+    init(currencyViewDTO: CurrencyViewDTO) {
+        self.input = currencyViewDTO
         super.init(frame: .zero)
         configure()
     }
@@ -23,7 +23,7 @@ class CurrencyView: UIView {
     
 //  MARK: - LAZY AREA
     lazy var symbolCurrency: CurrencySymbolView = {
-        let view = CurrencySymbolView(currencySymbolInput: input.currentySymbolViewInput)
+        let view = CurrencySymbolView(currencySymbolDTO: input.currentySymbolViewInput)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

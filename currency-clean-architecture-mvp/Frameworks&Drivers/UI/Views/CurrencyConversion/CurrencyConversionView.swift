@@ -45,7 +45,7 @@ class CurrencyConversionView: UIView {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "Conversão de Moedas"
+        lbl.text = K.Screen.CurrencyConversion.titleScreen
         lbl.font = UIFont.preferredFont(forTextStyle: .title1)
         lbl.textAlignment = .center
         lbl.textColor = .white
@@ -53,13 +53,13 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var currencyOf: CurrencyView = {
-        let symbolInput = CurrencySymbolViewInput(symbol: "$", sizeFrame: 70, fontSize: .title2)
-        let currencyViewInput = CurrencyViewInput(currentySymbolViewInput: symbolInput,
-                                                  titleCurrency: "USD",
-                                                  subTitleCurrency: "Dólar Norte-Americano",
-                                                  imageButton: "arrow.up.forward.app",
-                                                  sizeButton: CGSize(width: 40, height: 35))
-        let view = CurrencyView(currencyViewInput: currencyViewInput)
+        let symbolInput = CurrencySymbolViewDTO(symbol: K.Screen.CurrencyConversion.symbolCurrencyOf, sizeFrame: 70, fontSize: .title2)
+        let currencyViewDTO = CurrencyViewDTO(currentySymbolViewInput: symbolInput,
+                                              titleCurrency: K.Screen.CurrencyConversion.titleCurrencyOf,
+                                              subTitleCurrency: K.Screen.CurrencyConversion.subTitleCurrencyOf,
+                                              imageButton: K.Screen.CurrencyConversion.Images.currencyOf,
+                                              sizeButton: CGSize(width: 40, height: 35))
+        let view = CurrencyView(currencyViewDTO: currencyViewDTO)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.changeCurrencyButton.addTarget(self, action: #selector(currencyOfButtonTapped), for: .touchUpInside)
         return view
@@ -68,10 +68,10 @@ class CurrencyConversionView: UIView {
     lazy var currencyValueTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.text = "1"
+        tf.text = K.Screen.CurrencyConversion.currencyValueTextField
         tf.textAlignment = .center
         tf.font = UIFont.preferredFont(forTextStyle: .title1)
-        tf.attributedPlaceholder = NSMutableAttributedString(string: "Valor", attributes: [.foregroundColor: UIColor.gray.withAlphaComponent(0.6) ])
+        tf.attributedPlaceholder = NSMutableAttributedString(string: K.Strings.value, attributes: [.foregroundColor: UIColor.gray.withAlphaComponent(0.6) ])
         tf.layer.cornerRadius = 8
         tf.clipsToBounds = true
         tf.backgroundColor = .white
@@ -90,7 +90,7 @@ class CurrencyConversionView: UIView {
     lazy var invertCurrencyButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(systemName: "arrow.up.arrow.down.circle.fill")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40)), for: .normal)
+        btn.setImage(UIImage(systemName: K.Screen.CurrencyConversion.Images.invertCurrency)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40)), for: .normal)
         btn.tintColor = .white.withAlphaComponent(0.5)
         btn.backgroundColor = UIColor.HEX("#0d2959")
         btn.setTitleColor(.white, for: .normal)
@@ -99,13 +99,13 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var currencyTo: CurrencyView = {
-        let symbolInput = CurrencySymbolViewInput(symbol: "", sizeFrame: 70, fontSize: .title2)
-        let currencyViewInput = CurrencyViewInput(currentySymbolViewInput: symbolInput,
-                                                  titleCurrency: "Selecione",
-                                                  subTitleCurrency: "a moeda",
-                                                  imageButton: "arrow.up.forward.app",
-                                                  sizeButton: CGSize(width: 40, height: 35))
-        let currencyView = CurrencyView(currencyViewInput: currencyViewInput)
+        let symbolInput = CurrencySymbolViewDTO(symbol: K.Screen.CurrencyConversion.symbolCurrencyTo, sizeFrame: 70, fontSize: .title2)
+        let currencyViewDTO = CurrencyViewDTO(currentySymbolViewInput: symbolInput,
+                                              titleCurrency: K.Screen.CurrencyConversion.titleCurrencyTo,
+                                              subTitleCurrency: K.Screen.CurrencyConversion.subTitleCurrencyTo,
+                                              imageButton: K.Screen.CurrencyConversion.Images.currencyTo,
+                                              sizeButton: CGSize(width: 40, height: 35))
+        let currencyView = CurrencyView(currencyViewDTO: currencyViewDTO)
         currencyView.translatesAutoresizingMaskIntoConstraints = false
         currencyView.changeCurrencyButton.addTarget(self, action: #selector(currencyToButtonTapped), for: .touchUpInside)
         return currencyView
@@ -120,7 +120,7 @@ class CurrencyConversionView: UIView {
     lazy var resultLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = ""
+        lbl.text = K.Screen.CurrencyConversion.resultLabel
         lbl.numberOfLines = 2
         var font = UIFont.preferredFont(forTextStyle: .largeTitle)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
@@ -139,15 +139,6 @@ class CurrencyConversionView: UIView {
         return view
     }()
     
-    lazy var selectCurrencyButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Selecione a Moeda", for: .normal)
-        btn.tintColor = .white.withAlphaComponent(0.7)
-        btn.setTitleColor(.white, for: .normal)
-        return btn
-    }()
-        
     
 //  MARK: - PRIVATE AREA
     

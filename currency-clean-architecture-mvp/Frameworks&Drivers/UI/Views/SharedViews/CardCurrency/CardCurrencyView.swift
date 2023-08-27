@@ -9,10 +9,14 @@ import UIKit
 
 
 class CardCurrencyView: UIView {
-    private let input: CardCurrencyInput
+    private let input: CardCurrencyDTO
     
-    init(cardCurrencyInput: CardCurrencyInput = CardCurrencyInput(currentySymbolViewInput: CurrencySymbolViewInput(symbol: "R$", sizeFrame: 50, fontSize: .body), titleCurrency: "BRL", subTitleCurrency: "Real")) {
-        self.input = cardCurrencyInput
+    init(cardCurrencyDTO: CardCurrencyDTO = CardCurrencyDTO(currentySymbolViewInput: CurrencySymbolViewDTO(symbol: K.Strings.empty,
+                                                                                                             sizeFrame: 50,
+                                                                                                             fontSize: .body),
+                                                              titleCurrency: K.Strings.empty,
+                                                              subTitleCurrency: K.Strings.empty)) {
+        self.input = cardCurrencyDTO
         super.init(frame: .null)
         configure()
     }
@@ -24,7 +28,7 @@ class CardCurrencyView: UIView {
     
 //  MARK: - LAZY AREA
     lazy var symbolCurrency: CurrencySymbolView = {
-        let view = CurrencySymbolView(currencySymbolInput: input.currentySymbolViewInput)
+        let view = CurrencySymbolView(currencySymbolDTO: input.currentySymbolViewInput)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

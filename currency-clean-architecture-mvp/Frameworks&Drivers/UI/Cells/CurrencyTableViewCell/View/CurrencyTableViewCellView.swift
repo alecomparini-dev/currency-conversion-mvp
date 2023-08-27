@@ -48,7 +48,7 @@ class CurrencyTableViewCellView: UIView {
     }()
     
     lazy var favoriteButton: UIButton = {
-        let img = UIImage(systemName: "heart")
+        let img = UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteButton)
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(img, for: .normal)

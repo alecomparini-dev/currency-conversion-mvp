@@ -56,9 +56,10 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
         }
         
         if TappedControl.buttonTapped == .currencyTo {
-            screen.currencyTo.symbolCurrency.symbolLabel.text = receivedData?.symbol ?? "?"
-            screen.currencyTo.titleCurrencyLabel.text = receivedData?.currencyISO ?? "Selecione"
-            screen.currencyTo.subTitleCurrencyLabel.text = receivedData?.name ?? "uma moeda"
+            guard let receivedData else {return}
+            screen.currencyTo.symbolCurrency.symbolLabel.text = receivedData.symbol
+            screen.currencyTo.titleCurrencyLabel.text = receivedData.currencyISO
+            screen.currencyTo.subTitleCurrencyLabel.text = receivedData.name
         }
             
 

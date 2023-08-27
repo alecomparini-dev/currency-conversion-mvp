@@ -6,6 +6,7 @@
   
 */
 
+// MARK: - LIST OF CURRENCIES
 "United Arab Emirates Dirham" = "Dirham dos Emirados Árabes Unidos";
 "Afghan Afghani" = "Afegão";
 "Albanian Lek" = "Lek";
@@ -165,5 +166,17 @@
 "Uzbekistan Som" = "Som Usbeque";
 "Sovereign Bolivar" = "Bolívar Soberano";
 "CFA Franc BCEAO" = "Franco CFA BCEAO";
-
 "Zambian Kwacha (pre-2013)" = "Kwacha zambiano (pre-2013)";
+
+
+//  MARK: - CURRENCY CONVERSION SCREEN
+"Select" = "Selecione";
+"a currency" = "uma moeda";
+"Currency Conversion" = "Conversão de Moedas";
+"Value" = "Valor";
+
+
+//  MARK: - LIST CURRENCY SCREEN
+"Acronym" = "Sigla";
+"Name" = "Nome";
+"Search currency" = "Pesquisar moeda";

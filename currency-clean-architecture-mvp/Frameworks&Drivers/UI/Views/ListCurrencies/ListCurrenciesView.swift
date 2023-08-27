@@ -44,7 +44,7 @@ class ListCurrenciesView: UIView {
     lazy var backPageButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(systemName: "chevron.left")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
+        btn.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.backPageButton)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25)), for: .normal)
         btn.tintColor = .black
         btn.contentMode = .scaleAspectFill
         btn.setTitleColor(.white, for: .normal)
@@ -62,7 +62,7 @@ class ListCurrenciesView: UIView {
         search.layer.cornerRadius = 8
         search.searchTextField.backgroundColor = .clear
         search.barTintColor = .white
-        search.placeholder = "Search currency"
+        search.placeholder = K.Screen.ListCurrencies.searchBar
         return search
     }()
     
