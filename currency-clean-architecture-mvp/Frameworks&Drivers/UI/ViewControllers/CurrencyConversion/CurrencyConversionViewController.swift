@@ -47,22 +47,7 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addTapGestureCurrency()
-        
-        if TappedControl.buttonTapped == .currencyOf {
-            guard let receivedData else {return}
-            screen.currencyOf.symbolCurrency.symbolLabel.text = receivedData.symbol
-            screen.currencyOf.titleCurrencyLabel.text = receivedData.currencyISO
-            screen.currencyOf.subTitleCurrencyLabel.text = receivedData.name
-        }
-        
-        if TappedControl.buttonTapped == .currencyTo {
-            guard let receivedData else {return}
-            screen.currencyTo.symbolCurrency.symbolLabel.text = receivedData.symbol
-            screen.currencyTo.titleCurrencyLabel.text = receivedData.currencyISO
-            screen.currencyTo.subTitleCurrencyLabel.text = receivedData.name
-        }
-            
-
+        setCurrencyToUpdate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -120,10 +105,27 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     }
     
     private func removeTapGesture() {
-        if let tapCurrencyOf = tap.currencyOf, let tapCurrencyTo = tap.currencyTo {
+        if let tapCurrencyOf = tap.currencyOf {
             screen.currencyOf.removeGestureRecognizer(tapCurrencyOf)
+        }
+        
+        if let tapCurrencyTo = tap.currencyTo {
             screen.currencyTo.removeGestureRecognizer(tapCurrencyTo)
         }
+    }
+    
+    private func setCurrencyToUpdate() {
+        if TappedControl.buttonTapped == .currencyOf {
+            return updateCurrencyView(screen.currencyOf)
+        }
+        updateCurrencyView(screen.currencyTo)
+    }
+    
+    private func updateCurrencyView(_ currency: CurrencyView) {
+        guard let receivedData else {return}
+        currency.symbolCurrency.symbolLabel.text = receivedData.symbol
+        currency.titleCurrencyLabel.text = receivedData.currencyISO
+        currency.subTitleCurrencyLabel.text = receivedData.name
     }
     
 
