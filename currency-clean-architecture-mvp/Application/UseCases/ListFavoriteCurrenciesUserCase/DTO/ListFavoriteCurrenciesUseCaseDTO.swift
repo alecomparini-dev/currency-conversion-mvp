@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 enum ListFavoriteCurrenciesUseCaseDTO {
     
     struct Output {

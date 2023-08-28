@@ -21,7 +21,8 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
     private let listSymbolsUseCase: ListCurrencySymbolsUseCase
-    private let saveFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?
+    private let addFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?
+    private let listFavoriteCurrenciesUseCase: ListFavoriteCurrenciesUseCase?
     
     private var currenciesData = [ListCurrencyPresenterDTO]()
     private var favoriteCurrencies = [FavoriteCurrencyDTO]()
@@ -29,10 +30,12 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase,
          listSymbolsUseCase: ListCurrencySymbolsUseCase,
-         saveFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?) {
+         addFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?,
+         listFavoriteCurrenciesUseCase: ListFavoriteCurrenciesUseCase? ) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
         self.listSymbolsUseCase = listSymbolsUseCase
-        self.saveFavoriteCurrencyUseCase = saveFavoriteCurrencyUseCase
+        self.addFavoriteCurrencyUseCase = addFavoriteCurrencyUseCase
+        self.listFavoriteCurrenciesUseCase = listFavoriteCurrenciesUseCase
     }
     
     
@@ -43,33 +46,27 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     }
     
     func addFavoriteCurrency(_ currency: FavoriteCurrencyDTO) {
-        if let index = currenciesData.firstIndex(where: {$0.currencyISO == currency.currencyISO}) {
-            currenciesData[index].favorite = true
-            self.favoriteCurrencies.append(currency)
-            saveFavorites()
-        }
+        self.favoriteCurrencies.append(currency)
+        saveFavorites()
     }
     
     func deleteFavoriteCurrency(_ currencyISO: String) {
-        if let index = currenciesData.firstIndex(where: { $0.currencyISO == currencyISO }) {
-            currenciesData[index].favorite = false
-            self.favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
-            saveFavorites()
-        }
-
+        self.favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
+        saveFavorites()
     }
 
     private func saveFavorites() {
+        guard let addFavoriteCurrencyUseCase else {return}
         Task {
             do {
-                try await saveFavoriteCurrencyUseCase?.add(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
+                try await addFavoriteCurrencyUseCase.add(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
+                listCurrencies()
             } catch (let error) {
                 delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
             }
         }
     }
 
-    
     func listCurrencies() {
         Task {
             do {
@@ -82,18 +79,31 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                 let symbols: [ListCurrencySymbolsUseCaseDTO.Output] = try await listSymbolsUseCase.listSymbols()
                 
                 //Mark: - Get Favorites
-                let favorites: Bool = false
+                let favorites: [ListFavoriteCurrenciesUseCaseDTO.Output]? = try await listFavoriteCurrenciesUseCase?.listFavorites()
                 
                 //TODO: - UNIR AS 3 CHAMADAS E RETORNAR
                 self.currenciesData = currencies.map { let currency = $0
                     var dto = ListCurrencyPresenterDTO()
                     dto.currencyISO = $0.currencyISO
                     dto.name = currency.name
-                    dto.favorite = favorites
+                    
                     if let symbol = symbols.first(where: { $0.currencyISO == currency.currencyISO } ) {
                         dto.symbol = symbol.symbol
                     }
+                    
+                    if let fav = favorites?.first(where: { $0.currencyISO == currency.currencyISO }) {
+                        dto.favorite = true
+                        self.favoriteCurrencies.append(FavoriteCurrencyDTO(currencyISO: fav.currencyISO))
+                    }
                     return dto
+                    
+                }
+                .sorted { (currency1, currency2) in
+                    if currency1.favorite == currency2.favorite {
+                        return  (currency1.currencyISO ?? "") < (currency2.currencyISO ?? "")
+                    } else {
+                        return (currency1.favorite ?? false) && !(currency2.favorite ?? false)
+                    }
                 }
                 
                 self.filteredCurrencies = self.currenciesData.map({ var currency = $0

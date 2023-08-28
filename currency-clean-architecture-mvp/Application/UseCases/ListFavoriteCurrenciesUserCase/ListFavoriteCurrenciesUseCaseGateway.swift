@@ -9,6 +9,6 @@ import Foundation
 
 protocol ListFavoriteCurrenciesUseCaseGateway: AnyObject {
     
-    func listAll()
+    func listAll() async throws -> [ListFavoriteCurrenciesUseCaseDTO.Output]
     
 }

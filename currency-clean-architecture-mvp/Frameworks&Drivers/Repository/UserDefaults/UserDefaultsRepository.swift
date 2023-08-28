@@ -25,3 +25,13 @@ class UserDefaultsRepository<T>: AddRepository  {
     }
   
 }
+
+
+//  MARK: - EXTENSION
+extension UserDefaultsRepository: GetAllRepository {
+    
+    func get<T>() async throws -> T? {
+        return userDefaults.value(forKey: mainKey) as? T
+    }
+    
+}
