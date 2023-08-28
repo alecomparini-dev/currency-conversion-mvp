@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0222D6EC2A9CD867000EF7C9 /* AddItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6EB2A9CD867000EF7C9 /* AddItemDTO.swift */; };
 		0222D6EE2A9CDB18000EF7C9 /* DeleteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6ED2A9CDB18000EF7C9 /* DeleteRepository.swift */; };
 		0222D6F12A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6F02A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift */; };
 		0222D6F52A9D18E8000EF7C9 /* DeleteFavoriteCurrencyUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6F42A9D18E8000EF7C9 /* DeleteFavoriteCurrencyUserCase.swift */; };
@@ -120,7 +119,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0222D6EB2A9CD867000EF7C9 /* AddItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDTO.swift; sourceTree = "<group>"; };
 		0222D6ED2A9CDB18000EF7C9 /* DeleteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRepository.swift; sourceTree = "<group>"; };
 		0222D6F02A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCurrencyDTO.swift; sourceTree = "<group>"; };
 		0222D6F42A9D18E8000EF7C9 /* DeleteFavoriteCurrencyUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteCurrencyUserCase.swift; sourceTree = "<group>"; };
@@ -246,14 +244,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0222D6EA2A9CD855000EF7C9 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				0222D6EB2A9CD867000EF7C9 /* AddItemDTO.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
 		0222D6EF2A9CEE56000EF7C9 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,7 +1118,6 @@
 		02BBAD782A9CCFE8000D84B3 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				0222D6EA2A9CD855000EF7C9 /* DTO */,
 				02BBAD7B2A9CD090000D84B3 /* UserDefaultsRepository.swift */,
 			);
 			path = UserDefaults;
@@ -1340,7 +1329,6 @@
 				026CF2CB2A98EBEB00496C15 /* ListCurrencySymbolsUseCase.swift in Sources */,
 				026CF2C42A98EBEB00496C15 /* URLSessionNetwork.swift in Sources */,
 				026CF2D22A98EBEB00496C15 /* ListCurrenciesUseCase.swift in Sources */,
-				0222D6EC2A9CD867000EF7C9 /* AddItemDTO.swift in Sources */,
 				026CF2B22A98EBEB00496C15 /* Coordinator.swift in Sources */,
 				026CF2DD2A98EBEB00496C15 /* UIColor+Extension.swift in Sources */,
 				026CF2A82A98EBEB00496C15 /* FileError.swift in Sources */,

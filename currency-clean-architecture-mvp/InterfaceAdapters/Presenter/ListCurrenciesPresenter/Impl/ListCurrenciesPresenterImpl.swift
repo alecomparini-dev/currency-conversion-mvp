@@ -46,7 +46,20 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
         if let index = currenciesData.firstIndex(where: {$0.currencyISO == currency.currencyISO}) {
             currenciesData[index].favorite = true
             self.favoriteCurrencies.append(currency)
+            saveFavorites()
         }
+    }
+    
+    func deleteFavoriteCurrency(_ currencyISO: String) {
+        if let index = currenciesData.firstIndex(where: { $0.currencyISO == currencyISO }) {
+            currenciesData[index].favorite = false
+            self.favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
+            saveFavorites()
+        }
+
+    }
+
+    private func saveFavorites() {
         Task {
             do {
                 try await saveFavoriteCurrencyUseCase?.add(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
@@ -55,14 +68,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
             }
         }
     }
-    
-    func deleteFavoriteCurrency(_ currencyISO: String) {
-        if let index = currenciesData.firstIndex(where: { $0.currencyISO == currencyISO }) {
-            currenciesData[index].favorite = false
-            self.favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
-        }
 
-    }
     
     func listCurrencies() {
         Task {
