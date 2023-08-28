@@ -10,15 +10,18 @@ import Foundation
 class FileListCurrencySymbolsUseCaseGatewayImpl: ListCurrencySymbolsUseCaseGateway {
     
     private let file: ReadFile
-    
-    init(file: ReadFile) {
+    private let fileName: String
+    private let withExtension: String
+        
+    init(file: ReadFile, fileName: String, withExtension: String) {
         self.file = file
+        self.fileName = fileName
+        self.withExtension = withExtension
     }
     
     func getCurrencySymbols() async throws -> CurrencySymbolsCodable {
         
-        //TODO: - mudar o local destes nomes -
-        let data = try file.getData(fileName: "CurrencySymbols", fileExtension: "json")
+        let data = try file.getData(fileName: fileName, withExtension: withExtension)
         
         let currencySymbols = try JSONDecoder().decode(CurrencySymbolsCodable.self, from: data)
         

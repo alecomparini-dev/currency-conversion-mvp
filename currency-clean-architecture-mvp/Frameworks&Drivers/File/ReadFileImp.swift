@@ -9,7 +9,7 @@ import Foundation
 
 class ReadFileImp: ReadFile {
 
-    func getData(fileName: String, fileExtension: String) throws -> Data {
+    func getData(fileName: String, withExtension fileExtension: String) throws -> Data {
         if let fileUrl = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
             return try Data(contentsOf: fileUrl)
         }

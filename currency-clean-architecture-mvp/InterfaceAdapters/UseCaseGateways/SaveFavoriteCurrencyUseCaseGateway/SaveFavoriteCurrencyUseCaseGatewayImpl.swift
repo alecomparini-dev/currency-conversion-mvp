@@ -10,6 +10,8 @@ import Foundation
 
 class SaveFavoriteCurrencyUseCaseGatewayImpl: SaveFavoriteCurrencyUseCaseGateway {
     
+    
+    
     func save(_ currencyISO: String) {
         
     }
