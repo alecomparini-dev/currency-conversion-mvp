@@ -15,13 +15,12 @@ class FileListCurrencySymbolsUseCaseImpl: ListCurrencySymbolsUseCase {
         self.listSymbolsGateway = listSymbolsGateway
     }
     
-    func listSymbols() async throws -> [ListCurrencySymbolsUseCaseResponse] {
-        let symbols: CurrencySymbolsCodable = try await listSymbolsGateway.getCurrencySymbols()
+    func listSymbols() async throws -> [ListCurrencySymbolsUseCaseDTO.Output] {
+        let symbols: ListCurrencySymbolsUseCaseGatewayDTO.Output = try await listSymbolsGateway.getCurrencySymbols()
         
-        //MARK: Mapper
-        let presenterResponse = symbols.map { ListCurrencySymbolsUseCaseResponse(currencyISO: $0.key, symbol: $0.value)  }
+        let presenterOutput = symbols.currencySymbols.map { ListCurrencySymbolsUseCaseDTO.Output(currencyISO: $0.key, symbol: $0.value)  }
         
-        return presenterResponse
+        return presenterOutput
     }
     
     

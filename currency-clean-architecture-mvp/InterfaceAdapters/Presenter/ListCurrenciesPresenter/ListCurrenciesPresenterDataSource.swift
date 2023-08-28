@@ -9,10 +9,4 @@ import Foundation
 
 protocol ListCurrenciesPresenterDataSource: AnyObject {
     func numberOfCurrencies() -> Int
-    
-
-    func symbol(index: Int) -> String
-    func currencyISO(index: Int) -> String
-    func name(index: Int) -> String
-    func favorite(index: Int) -> Bool
 }

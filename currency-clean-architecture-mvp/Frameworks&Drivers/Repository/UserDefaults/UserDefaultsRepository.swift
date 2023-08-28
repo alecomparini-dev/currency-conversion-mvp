@@ -9,7 +9,7 @@ import Foundation
 
 
 class UserDefaultsRepository<T>: AddRepository  {
-    
+//    po NSHomeDirectory()
     private let userDefaults: UserDefaults
     private let mainKey: String
     
@@ -27,13 +27,11 @@ class UserDefaultsRepository<T>: AddRepository  {
 }
 
 
-//  MARK: - EXTENSION - DeleteRepository
-extension UserDefaultsRepository: DeleteRepository{
+//  MARK: - EXTENSION
+extension UserDefaultsRepository: GetAllRepository {
     
-    func delete(_ id: DeleteItemDTO) async throws -> DeleteItemDTO? {
-        userDefaults.removeObject(forKey: mainKey)
-        return nil
+    func get<T>() async throws -> T? {
+        return userDefaults.value(forKey: mainKey) as? T
     }
     
 }
-

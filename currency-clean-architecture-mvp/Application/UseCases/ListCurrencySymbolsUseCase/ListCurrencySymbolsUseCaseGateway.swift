@@ -9,5 +9,5 @@ import Foundation
 
 protocol ListCurrencySymbolsUseCaseGateway {
     
-    func getCurrencySymbols() async throws -> CurrencySymbolsCodable
+    func getCurrencySymbols() async throws -> ListCurrencySymbolsUseCaseGatewayDTO.Output
 }

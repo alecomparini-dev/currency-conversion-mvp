@@ -14,6 +14,10 @@ struct MainConstants {
         static let withExtension = "json"
     }
     
+    struct FavoriteCurrency {
+        static let mainKey = "Favorite"
+    }
+    
     struct ListCurrencies {
         static let pathList = "/list"
         static let access_key = "access_key"

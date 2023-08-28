@@ -181,6 +181,7 @@ extension ListCurrenciesViewController: UITableViewDataSource {
             } else {
                 listCurrenciesPR.deleteFavoriteCurrency(currencyISO)
             }
+            
         })
         
         return cell

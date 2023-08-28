@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class CurrencyTableViewCell: UITableViewCell {
     typealias completionAlias = (_ currencyISO: String, _ favorite: Bool) -> Void
     static let identifier = String(String(describing: CurrencyTableViewCell.self))
