@@ -1,5 +1,5 @@
 //
-//  SaveFavoriteCurrencyUseCaseGatewayImpl.swift
+//  RepositoryAddFavoriteCurrencyUseCaseGatewayImpl.swift
 //  currency-clean-architecture-mvp
 //
 //  Created by Alessandro Comparini on 28/08/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-class SaveFavoriteCurrencyUseCaseGatewayImpl: SaveFavoriteCurrencyUseCaseGateway {
+class RepositoryAddFavoriteCurrencyUseCaseGatewayImpl: AddFavoriteCurrencyUseCaseGateway {
     
     private let repository: AddRepository
     
@@ -16,7 +16,7 @@ class SaveFavoriteCurrencyUseCaseGatewayImpl: SaveFavoriteCurrencyUseCaseGateway
         self.repository = repository
     }
 
-    func save(_ currencyISO: [String] ) async throws {
+    func add(_ currencyISO: [String] ) async throws {
         try await repository.add(item: currencyISO)
     }
     

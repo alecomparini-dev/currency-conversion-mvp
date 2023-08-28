@@ -19,13 +19,13 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         let listSymbolUseCase = FileListCurrencySymbolsUseCaseImpl(listSymbolsGateway: listSymbolFileGateway)
 
         
-        let addRepository = UserDefaultsRepository<[FavoriteCurrencyDTO]>(mainKey: "Favorite")
-        let saveFavoriteUseCaseGateway = SaveFavoriteCurrencyUseCaseGatewayImpl(repository: addRepository)
-        let saveFavoriteUseCase = SaveFavoriteCurrencyUseCaseImpl(saveFavoriteGateway: saveFavoriteUseCaseGateway)
+        let addRepository = UserDefaultsRepository<[FavoriteCurrencyDTO]>(mainKey: MainConstants.FavoriteCurrency.mainKey)
+        let repositoryAddFavoriteUseCaseGateway = RepositoryAddFavoriteCurrencyUseCaseGatewayImpl(repository: addRepository)
+        let saveFavoriteUseCase = AddFavoriteCurrencyUseCaseImpl(addFavoriteGateway: repositoryAddFavoriteUseCaseGateway)
         
         
-        let httpClient = AlamofireNetwork()
-//        let httpClient = URLSessionNetwork()        
+//        let httpClient = AlamofireNetwork()
+        let httpClient = URLSessionNetwork()
         let url = makeApiURL(path: MainConstants.ListCurrencies.pathList)
         let parameters = [MainConstants.ListCurrencies.access_key: Environment.variable(.accessKey)]
         let listCurrenciesAPIGateway = RemoteListCurrenciesUseCaseGatewayImpl(http: httpClient, url: url, parameters: parameters)

@@ -21,7 +21,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
     private let listSymbolsUseCase: ListCurrencySymbolsUseCase
-    private let saveFavoriteCurrencyUseCase: SaveFavoriteCurrencyUseCase?
+    private let saveFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?
     
     private var currenciesData = [ListCurrencyPresenterDTO]()
     private var favoriteCurrencies = [FavoriteCurrencyDTO]()
@@ -29,7 +29,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase,
          listSymbolsUseCase: ListCurrencySymbolsUseCase,
-         saveFavoriteCurrencyUseCase: SaveFavoriteCurrencyUseCase?) {
+         saveFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
         self.listSymbolsUseCase = listSymbolsUseCase
         self.saveFavoriteCurrencyUseCase = saveFavoriteCurrencyUseCase
@@ -49,7 +49,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
         }
         Task {
             do {
-                try await saveFavoriteCurrencyUseCase?.save(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
+                try await saveFavoriteCurrencyUseCase?.add(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
             } catch (let error) {
                 delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
             }
