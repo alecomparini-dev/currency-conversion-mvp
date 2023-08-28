@@ -70,10 +70,10 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                 
                 //TODO: - Passar estas 3 chamadas para o DispatchGroup
                 //Mark: - Get Currencies
-                let currencies: [ListCurrencyUseCaseResponse] = try await listCurrenciesUseCase.listCurrencies()
+                let currencies: [ListCurrenciesUseCaseDTO.Output] = try await listCurrenciesUseCase.listCurrencies()
                 
                 //Mark: - Get Symbols
-                let symbols: [ListCurrencySymbolsUseCaseResponse] = try await listSymbolsUseCase.listSymbols()
+                let symbols: [ListCurrencySymbolsUseCaseDTO.Output] = try await listSymbolsUseCase.listSymbols()
                 
                 //Mark: - Get Favorites
                 let favorites: Bool = false

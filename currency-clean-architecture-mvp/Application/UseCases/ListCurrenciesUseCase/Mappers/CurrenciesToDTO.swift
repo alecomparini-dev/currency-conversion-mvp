@@ -9,8 +9,8 @@ import Foundation
 
 
 struct CurrenciesMapper {
-    static func toListCurrencyResponse(domain: [Currency]) -> [ListCurrencyUseCaseResponse] {
-        return domain.map { ListCurrencyUseCaseResponse( currencyISO: $0.currencyISO, name: $0.name) }
+    static func toListCurrencyResponse(domain: [Currency]) -> [ListCurrenciesUseCaseDTO.Output] {
+        return domain.map { ListCurrenciesUseCaseDTO.Output( currencyISO: $0.currencyISO, name: $0.name) }
     }
 
 }
