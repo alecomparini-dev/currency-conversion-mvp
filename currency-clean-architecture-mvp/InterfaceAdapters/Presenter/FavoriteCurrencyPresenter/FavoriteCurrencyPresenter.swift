@@ -8,5 +8,7 @@
 import Foundation
 
 protocol FavoriteCurrencyPresenter: AnyObject {
+    
+    
     func favoriteCurrency()
 }

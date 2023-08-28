@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0222D6EC2A9CD867000EF7C9 /* AddItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6EB2A9CD867000EF7C9 /* AddItemDTO.swift */; };
 		0222D6EE2A9CDB18000EF7C9 /* DeleteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6ED2A9CDB18000EF7C9 /* DeleteRepository.swift */; };
+		0222D6F12A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222D6F02A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift */; };
 		026CF29D2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF20F2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift */; };
 		026CF29E2A98EBEB00496C15 /* ListCurrenciesPresenterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2102A98EBEB00496C15 /* ListCurrenciesPresenterDataSource.swift */; };
 		026CF29F2A98EBEB00496C15 /* ListCurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2112A98EBEB00496C15 /* ListCurrenciesPresenter.swift */; };
@@ -119,6 +120,7 @@
 /* Begin PBXFileReference section */
 		0222D6EB2A9CD867000EF7C9 /* AddItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDTO.swift; sourceTree = "<group>"; };
 		0222D6ED2A9CDB18000EF7C9 /* DeleteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRepository.swift; sourceTree = "<group>"; };
+		0222D6F02A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCurrencyDTO.swift; sourceTree = "<group>"; };
 		026CF1F42A98EB0900496C15 /* currency-clean-architecture-mvp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "currency-clean-architecture-mvp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		026CF20F2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesPresenterImpl.swift; sourceTree = "<group>"; };
 		026CF2102A98EBEB00496C15 /* ListCurrenciesPresenterDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesPresenterDataSource.swift; sourceTree = "<group>"; };
@@ -246,6 +248,14 @@
 				0222D6EB2A9CD867000EF7C9 /* AddItemDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		0222D6EF2A9CEE56000EF7C9 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				026CF2322A98EBEB00496C15 /* CurrencyTableViewCellView_Preview.swift */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		026CF1EB2A98EB0900496C15 = {
@@ -462,7 +472,7 @@
 		026CF2302A98EBEB00496C15 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				026CF2322A98EBEB00496C15 /* CurrencyTableViewCellView_Preview.swift */,
+				0222D6EF2A9CEE56000EF7C9 /* Preview */,
 				026CF2312A98EBEB00496C15 /* CurrencyTableViewCellView.swift */,
 			);
 			path = View;
@@ -973,6 +983,7 @@
 			isa = PBXGroup;
 			children = (
 				02BBAD4F2A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift */,
+				0222D6F02A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1314,6 +1325,7 @@
 				026CF2B92A98EBEB00496C15 /* CurrencyConversionView.swift in Sources */,
 				02BBAD482A9951F5000D84B3 /* CurrencyConversionVCDTO.swift in Sources */,
 				026CF2AB2A98EBEB00496C15 /* HTTPPost.swift in Sources */,
+				0222D6F12A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift in Sources */,
 				026CF29E2A98EBEB00496C15 /* ListCurrenciesPresenterDataSource.swift in Sources */,
 				026CF2C92A98EBEB00496C15 /* DefaultValidatorFactory.swift in Sources */,
 				0222D6EE2A9CDB18000EF7C9 /* DeleteRepository.swift in Sources */,

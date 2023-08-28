@@ -18,6 +18,7 @@ class UserDefaultsRepository<T>: AddRepository  {
         self.mainKey = mainKey
     }
     
+    @discardableResult
     func add<T>(item: T) async throws -> T? {
         userDefaults.set(item, forKey: mainKey)
         return item

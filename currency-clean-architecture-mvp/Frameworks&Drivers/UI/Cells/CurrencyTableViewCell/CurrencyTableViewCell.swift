@@ -8,7 +8,11 @@
 import UIKit
 
 class CurrencyTableViewCell: UITableViewCell {
+    typealias completionAlias = (_ currencyISO: String, _ favorite: Bool) -> Void
     static let identifier = String(String(describing: CurrencyTableViewCell.self))
+    
+    private var currencyISO: String?
+    private var action: completionAlias?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,13 +33,14 @@ class CurrencyTableViewCell: UITableViewCell {
     
     
 //  MARK: - SETUP CELL
-    
-    func setup(_ parameter: CurrencyTableViewCellDTO ) {
+    func setup(_ parameter: CurrencyTableViewCellDTO, completion: (completionAlias)? ) {
         setSymbol(parameter.symbol)
         setTitle(parameter.currencyISO)
         setSubTitle(parameter.name)
         setFavorite(parameter.favorite)
+        setActionFavoriteButton(completion)
     }
+    
     
     
 //  MARK: - PRIVATE AREA
@@ -73,6 +78,7 @@ class CurrencyTableViewCell: UITableViewCell {
     }
     
     private func setTitle(_ title: String) {
+        self.currencyISO = title
         screen.cardCurrencyView.titleCurrencyLabel.text = title
     }
     
@@ -81,9 +87,26 @@ class CurrencyTableViewCell: UITableViewCell {
     }
     
     private func setFavorite(_ favorite: Bool) {
-//        screen.cardCurrencyView.symbolCurrency.symbolLabel.text = symbol
+        if favorite {
+            setHeartFill(screen.favoriteButton)
+            return
+        }
+        setHeart(screen.favoriteButton)
     }
     
+    private func setActionFavoriteButton(_ completion: (completionAlias)?) {
+        self.action = completion
+    }
+    
+    private func setHeart(_ button: UIButton) {
+        button.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteButton), for: .normal)
+        button.tintColor = screen.getTintColorHeart(.normal)
+    }
+    
+    private func setHeartFill(_ button: UIButton) {
+        button.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteFillButton), for: .normal)
+        button.tintColor = screen.getTintColorHeart(.fill)
+    }
     
     
 }
@@ -93,13 +116,16 @@ class CurrencyTableViewCell: UITableViewCell {
 extension CurrencyTableViewCell: CurrencyTableViewCellViewDelegate {
     
     func favoriteButtonTapped(_ button: UIButton) {
+        var favorite = true
         if button.currentImage == UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteFillButton) {
-            button.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteButton), for: .normal)
-            button.tintColor = screen.getTintColorHeart(.normal)
+            setHeart(button)
+            favorite = false
         } else {
-            button.setImage(UIImage(systemName: K.Screen.ListCurrencies.Images.favoriteFillButton), for: .normal)
-            button.tintColor = screen.getTintColorHeart(.fill)
+            setHeartFill(button)
         }
+        
+        if let currencyISO {action?(currencyISO, favorite)}
+        
     }
     
 }

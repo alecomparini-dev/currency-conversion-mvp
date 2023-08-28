@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListCurrencyPresenterDTO {   
+struct ListCurrencyPresenterDTO: Hashable {   
     var symbol: String?
     var currencyISO: String?
     var name: String?
