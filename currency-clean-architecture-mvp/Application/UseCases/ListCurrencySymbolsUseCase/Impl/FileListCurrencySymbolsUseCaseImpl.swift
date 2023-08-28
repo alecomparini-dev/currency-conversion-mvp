@@ -16,10 +16,10 @@ class FileListCurrencySymbolsUseCaseImpl: ListCurrencySymbolsUseCase {
     }
     
     func listSymbols() async throws -> [ListCurrencySymbolsUseCaseDTO.Output] {
-        let symbols: CurrencySymbolsCodable = try await listSymbolsGateway.getCurrencySymbols()
+        let symbols: ListCurrencySymbolsUseCaseGatewayDTO.Output = try await listSymbolsGateway.getCurrencySymbols()
         
         //MARK: Mapper
-        let presenterResponse = symbols.map { ListCurrencySymbolsUseCaseDTO.Output(currencyISO: $0.key, symbol: $0.value)  }
+        let presenterResponse = symbols.currencySymbols.map { ListCurrencySymbolsUseCaseDTO.Output(currencyISO: $0.key, symbol: $0.value)  }
         
         return presenterResponse
     }

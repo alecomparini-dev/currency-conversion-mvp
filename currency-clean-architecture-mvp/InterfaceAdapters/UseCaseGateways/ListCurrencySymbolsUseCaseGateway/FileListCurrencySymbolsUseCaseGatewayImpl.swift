@@ -19,13 +19,13 @@ class FileListCurrencySymbolsUseCaseGatewayImpl: ListCurrencySymbolsUseCaseGatew
         self.withExtension = withExtension
     }
     
-    func getCurrencySymbols() async throws -> CurrencySymbolsCodable {
+    func getCurrencySymbols() async throws -> ListCurrencySymbolsUseCaseGatewayDTO.Output {
         
         let data = try file.getData(fileName: fileName, withExtension: withExtension)
         
-        let currencySymbols = try JSONDecoder().decode(CurrencySymbolsCodable.self, from: data)
+        let currencySymbols = try JSONDecoder().decode([String:String] .self, from: data)
         
-        return currencySymbols
+        return ListCurrencySymbolsUseCaseGatewayDTO.Output.init(currencySymbols: currencySymbols)
     }
 
     

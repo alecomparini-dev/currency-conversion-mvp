@@ -1,5 +1,5 @@
 //
-//  ListFavoriteCurrenciesUseCaseOutput.swift
+//  GetAllRepository.swift
 //  currency-clean-architecture-mvp
 //
 //  Created by Alessandro Comparini on 28/08/23.
@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct FavoriteCurrenciesUseCaseOutput {
-    let currencyISO: String
+protocol GetAllRepository: AnyObject {
+    
+    func get<T>() async throws -> T?
+    
 }
+
+

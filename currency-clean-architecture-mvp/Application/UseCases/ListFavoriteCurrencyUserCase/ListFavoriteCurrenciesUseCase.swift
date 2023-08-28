@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListFavoriteCurrenciesUseCase: AnyObject {
-    func listFavorites() async throws -> [FavoriteCurrenciesUseCaseOutput]
+    func listFavorites() async throws -> [ListFavoriteCurrenciesUseCaseDTO.Output]
 }

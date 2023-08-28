@@ -39,7 +39,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 //  MARK: - PUBLIC FUNCTIONS
     
     func getCurrencies() -> [ListCurrencyPresenterDTO] {
-        return currenciesData
+        return filteredCurrencies
     }
     
     func addFavoriteCurrency(_ currency: FavoriteCurrencyDTO) {
@@ -96,7 +96,10 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                     return dto
                 }
                 
-                self.filteredCurrencies = self.currenciesData
+                self.filteredCurrencies = self.currenciesData.map({ var currency = $0
+                    currency.name = NSLocalizedString(currency.name ?? "", comment: "")
+                    return currency
+                })
                 
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
@@ -121,19 +124,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 
 extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterDataSource {
     func numberOfCurrencies() -> Int { currenciesData.count  }
-    
-    func setFilteredCurrencies(_ currencies: [ListCurrencyPresenterDTO] ) {
-        self.filteredCurrencies = currencies
-    }
-    
-    func symbol(index: Int) -> String { filteredCurrencies[index].symbol ?? "" }
-    
-    func currencyISO(index: Int) -> String { filteredCurrencies[index].currencyISO ?? "" }
-    
-    func name(index: Int) -> String { NSLocalizedString(filteredCurrencies[index].name ?? "", comment: "") }
-    
-    func favorite(index: Int) -> Bool { filteredCurrencies[index].favorite ?? false }
-    
+        
 }
 
 
