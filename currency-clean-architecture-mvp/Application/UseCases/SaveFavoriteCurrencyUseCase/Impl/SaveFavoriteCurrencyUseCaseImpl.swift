@@ -15,8 +15,8 @@ class SaveFavoriteCurrencyUseCaseImpl: SaveFavoriteCurrencyUseCase {
         self.saveFavoriteGateway = saveFavoriteGateway
     }
     
-    func save() async throws {
-        
+    func save(_ currenciesISO: [String]) async throws {
+        try await saveFavoriteGateway.save(currenciesISO)
     }
     
     

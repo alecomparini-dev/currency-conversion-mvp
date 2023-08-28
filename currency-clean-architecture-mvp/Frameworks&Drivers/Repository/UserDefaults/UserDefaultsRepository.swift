@@ -8,16 +8,18 @@
 import Foundation
 
 
-class UserDefaultsRepository: AddRepository  {
+class UserDefaultsRepository<T>: AddRepository  {
     
     private let userDefaults: UserDefaults
+    private let mainKey: String
     
-    init(userDefaults: UserDefaults = .standard) {
+    init(mainKey: String, userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
+        self.mainKey = mainKey
     }
     
-    func add(_ item: AddItemDTO) async throws -> AddItemDTO? {
-        userDefaults.set(item.values, forKey: item.key)
+    func add<T>(item: T) async throws -> T? {
+        userDefaults.set(item, forKey: mainKey)
         return item
     }
   
@@ -28,7 +30,7 @@ class UserDefaultsRepository: AddRepository  {
 extension UserDefaultsRepository: DeleteRepository{
     
     func delete(_ id: DeleteItemDTO) async throws -> DeleteItemDTO? {
-        userDefaults.removeObject(forKey: id.key)
+        userDefaults.removeObject(forKey: mainKey)
         return nil
     }
     

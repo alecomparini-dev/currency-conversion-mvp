@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol AddRepository: AnyObject {
-    associatedtype T
+protocol AddRepository {
     
-    func add(_ item: T) async throws -> T?
+    @discardableResult
+    func add<T>(item: T) async throws -> T?
     
 }

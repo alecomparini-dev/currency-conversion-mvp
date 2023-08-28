@@ -8,5 +8,7 @@
 import Foundation
 
 protocol SaveFavoriteCurrencyUseCaseGateway: AnyObject {
-    func save(_ currencyISO: String)
+    
+    func save(_ currencyISO: [String]) async throws
+    
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SaveFavoriteCurrencyUseCase {
-    func save() async throws
+    func save(_ currenciesISO: [String]) async throws
 }

@@ -8,11 +8,10 @@
 import Foundation
 
 struct AddItemDTO {
-    let key: String
     let values: Any
 }
 
 
 struct DeleteItemDTO {
-    let key: String
+    let mainKey: String
 }
