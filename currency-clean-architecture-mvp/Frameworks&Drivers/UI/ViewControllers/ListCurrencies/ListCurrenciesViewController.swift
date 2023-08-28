@@ -14,7 +14,6 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 }
 
 
-
 //  MARK: - CLASS
 
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
@@ -145,8 +144,6 @@ extension ListCurrenciesViewController: UISearchBarDelegate {
 
 
 
-
-
 //  MARK: - EXTENSION UITableViewDelegate
 extension ListCurrenciesViewController: UITableViewDelegate {
     
@@ -168,16 +165,25 @@ extension ListCurrenciesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
         
-        guard let listCurrenciesDataSource else { return  UITableViewCell() }
+        guard let cell else {return UITableViewCell()}
         
-        let parameter = CurrencyTableViewCellDTO(symbol: listCurrenciesDataSource.symbol(index: indexPath.row),
-                                                 currencyISO: listCurrenciesDataSource.currencyISO(index: indexPath.row),
-                                                 name: listCurrenciesDataSource.name(index: indexPath.row),
-                                                 favorite: listCurrenciesDataSource.favorite(index: indexPath.row))
+        let currency = listCurrenciesPR.getCurrencies()[indexPath.row]
+        
+        let parameter = CurrencyTableViewCellDTO(symbol: currency.symbol ?? "",
+                                                 currencyISO: currency.currencyISO ?? "",
+                                                 name: currency.name ?? "",
+                                                 favorite: currency.favorite ?? false)
 
-        cell?.setup(parameter)
+        cell.setup(parameter, completion: { [weak self] currencyISO, favorite in
+            guard let self else {return}
+            if favorite {
+                listCurrenciesPR.addFavoriteCurrency(FavoriteCurrencyDTO(currencyISO: currencyISO ))
+            } else {
+                listCurrenciesPR.deleteFavoriteCurrency(currencyISO)
+            }
+        })
         
-        return cell ?? UITableViewCell()
+        return cell
     }
     
     

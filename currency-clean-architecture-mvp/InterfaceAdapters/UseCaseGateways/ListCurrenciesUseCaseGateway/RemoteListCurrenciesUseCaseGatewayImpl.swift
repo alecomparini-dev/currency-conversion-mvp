@@ -1,5 +1,5 @@
 //
-//  RemoteListCurrenciesUseCaseGateway.swift
+//  RemoteListCurrenciesUseCaseGatewayImpl.swift
 //  currency-conversion-mvp
 //
 //  Created by Alessandro Comparini on 21/08/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-class RemoteListCurrenciesUseCaseGateway: ListCurrenciesUseCaseGateway {
+class RemoteListCurrenciesUseCaseGatewayImpl: ListCurrenciesUseCaseGateway {
     private let http: HTTPGetClient
     private let url: URL
     private let parameters: Dictionary<String,String>

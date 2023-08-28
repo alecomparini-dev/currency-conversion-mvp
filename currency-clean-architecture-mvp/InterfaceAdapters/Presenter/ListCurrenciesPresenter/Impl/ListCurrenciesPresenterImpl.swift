@@ -21,17 +21,49 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
     private let listSymbolsUseCase: ListCurrencySymbolsUseCase
+    private let saveFavoriteCurrencyUseCase: SaveFavoriteCurrencyUseCase?
     
     private var currenciesData = [ListCurrencyPresenterDTO]()
+    private var favoriteCurrencies = [FavoriteCurrencyDTO]()
     var filteredCurrencies = [ListCurrencyPresenterDTO]()
     
-    init(listCurrenciesUseCase: ListCurrenciesUseCase, listSymbolsUseCase: ListCurrencySymbolsUseCase) {
+    init(listCurrenciesUseCase: ListCurrenciesUseCase,
+         listSymbolsUseCase: ListCurrencySymbolsUseCase,
+         saveFavoriteCurrencyUseCase: SaveFavoriteCurrencyUseCase?) {
         self.listCurrenciesUseCase = listCurrenciesUseCase
         self.listSymbolsUseCase = listSymbolsUseCase
+        self.saveFavoriteCurrencyUseCase = saveFavoriteCurrencyUseCase
     }
     
     
 //  MARK: - PUBLIC FUNCTIONS
+    
+    func getCurrencies() -> [ListCurrencyPresenterDTO] {
+        return currenciesData
+    }
+    
+    func addFavoriteCurrency(_ currency: FavoriteCurrencyDTO) {
+        if let index = currenciesData.firstIndex(where: {$0.currencyISO == currency.currencyISO}) {
+            currenciesData[index].favorite = true
+            self.favoriteCurrencies.append(currency)
+        }
+        Task {
+            do {
+                try await saveFavoriteCurrencyUseCase?.save(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
+            } catch (let error) {
+                delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
+            }
+        }
+    }
+    
+    func deleteFavoriteCurrency(_ currencyISO: String) {
+        if let index = currenciesData.firstIndex(where: { $0.currencyISO == currencyISO }) {
+            currenciesData[index].favorite = false
+            self.favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
+        }
+
+    }
+    
     func listCurrencies() {
         Task {
             do {
@@ -98,12 +130,4 @@ extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterDataSource {
     
 }
 
-
-
-/* ##########################################################################################
- 
- TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- AMANHA MUDAR OS PRESENTERS PARA CADA UM FAZER UAM COISA, O PRESETNER QUE CUIDA DOS DATA SOURCE, OUTRO DO SEARCH E OUTRO DO FAVORITE
-
- */
 
