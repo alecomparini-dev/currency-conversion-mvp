@@ -320,16 +320,16 @@
 		026CF1F62A98EB0900496C15 /* currency-clean-architecture-mvp */ = {
 			isa = PBXGroup;
 			children = (
-				026CF2762A98EBEB00496C15 /* Domain */,
-				026CF2642A98EBEB00496C15 /* Application */,
-				026CF20B2A98EBEB00496C15 /* InterfaceAdapters */,
-				026CF22B2A98EBEB00496C15 /* Frameworks&Drivers */,
+				026CF2762A98EBEB00496C15 /* DomainLayer */,
+				026CF2642A98EBEB00496C15 /* ApplicationLayer */,
+				026CF20B2A98EBEB00496C15 /* InterfaceAdaptersLayer */,
+				026CF22B2A98EBEB00496C15 /* DetailLayer */,
 				026CF27D2A98EBEB00496C15 /* Main */,
 			);
 			path = "currency-clean-architecture-mvp";
 			sourceTree = "<group>";
 		};
-		026CF20B2A98EBEB00496C15 /* InterfaceAdapters */ = {
+		026CF20B2A98EBEB00496C15 /* InterfaceAdaptersLayer */ = {
 			isa = PBXGroup;
 			children = (
 				026CF2222A98EBEB00496C15 /* Errors */,
@@ -337,7 +337,7 @@
 				026CF2192A98EBEB00496C15 /* UseCaseGateways */,
 				026CF20C2A98EBEB00496C15 /* Presenter */,
 			);
-			path = InterfaceAdapters;
+			path = InterfaceAdaptersLayer;
 			sourceTree = "<group>";
 		};
 		026CF20C2A98EBEB00496C15 /* Presenter */ = {
@@ -466,7 +466,7 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		026CF22B2A98EBEB00496C15 /* Frameworks&Drivers */ = {
+		026CF22B2A98EBEB00496C15 /* DetailLayer */ = {
 			isa = PBXGroup;
 			children = (
 				026CF22C2A98EBEB00496C15 /* UI */,
@@ -475,7 +475,7 @@
 				02BBAD3E2A991F97000D84B3 /* File */,
 				026CF2592A98EBEB00496C15 /* Validators */,
 			);
-			path = "Frameworks&Drivers";
+			path = DetailLayer;
 			sourceTree = "<group>";
 		};
 		026CF22C2A98EBEB00496C15 /* UI */ = {
@@ -640,8 +640,8 @@
 		026CF2502A98EBEB00496C15 /* CardCurrency */ = {
 			isa = PBXGroup;
 			children = (
+				02EA934C2A9E6A4600F50FA8 /* Preview */,
 				02BBAD562A9B83B8000D84B3 /* DTO */,
-				026CF2512A98EBEB00496C15 /* CardCurrencyView_Preview.swift */,
 				026CF2532A98EBEB00496C15 /* CardCurrencyView.swift */,
 			);
 			path = CardCurrency;
@@ -724,13 +724,13 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
-		026CF2642A98EBEB00496C15 /* Application */ = {
+		026CF2642A98EBEB00496C15 /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
 				026CF2652A98EBEB00496C15 /* Errors */,
 				026CF2672A98EBEB00496C15 /* UseCases */,
 			);
-			path = Application;
+			path = ApplicationLayer;
 			sourceTree = "<group>";
 		};
 		026CF2652A98EBEB00496C15 /* Errors */ = {
@@ -799,14 +799,14 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
-		026CF2762A98EBEB00496C15 /* Domain */ = {
+		026CF2762A98EBEB00496C15 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
 				026CF2772A98EBEB00496C15 /* Models */,
 				026CF2792A98EBEB00496C15 /* Errors */,
 				026CF27B2A98EBEB00496C15 /* Entities */,
 			);
-			path = Domain;
+			path = DomainLayer;
 			sourceTree = "<group>";
 		};
 		026CF2772A98EBEB00496C15 /* Models */ = {
@@ -1158,6 +1158,14 @@
 			children = (
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		02EA934C2A9E6A4600F50FA8 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				026CF2512A98EBEB00496C15 /* CardCurrencyView_Preview.swift */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		13DDD0F171F9CEA510DDD61A /* Pods */ = {
