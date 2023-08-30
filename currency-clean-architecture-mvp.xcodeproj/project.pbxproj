@@ -353,21 +353,21 @@
 			isa = PBXGroup;
 			children = (
 				026CF2222A98EBEB00496C15 /* Errors */,
-				02BBAD3B2A991625000D84B3 /* Interface */,
+				02BBAD3B2A991625000D84B3 /* Interfaces */,
 				026CF2192A98EBEB00496C15 /* UseCaseGateways */,
-				026CF20C2A98EBEB00496C15 /* Presenter */,
+				026CF20C2A98EBEB00496C15 /* Presenters */,
 			);
 			path = InterfaceAdaptersLayer;
 			sourceTree = "<group>";
 		};
-		026CF20C2A98EBEB00496C15 /* Presenter */ = {
+		026CF20C2A98EBEB00496C15 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
 				026CF20D2A98EBEB00496C15 /* ListCurrenciesPresenter */,
 				026CF2122A98EBEB00496C15 /* SearchCurrenciesPresenter */,
 				026CF2152A98EBEB00496C15 /* FavoriteCurrencyPresenter */,
 			);
-			path = Presenter;
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		026CF20D2A98EBEB00496C15 /* ListCurrenciesPresenter */ = {
@@ -506,7 +506,7 @@
 				026CF2392A98EBEB00496C15 /* Components */,
 				026CF2332A98EBEB00496C15 /* Coordinator */,
 				026CF22D2A98EBEB00496C15 /* Cells */,
-				026CF2422A98EBEB00496C15 /* Views */,
+				026CF2422A98EBEB00496C15 /* SharedViews */,
 				026CF23B2A98EBEB00496C15 /* ViewControllers */,
 			);
 			path = UI;
@@ -578,8 +578,8 @@
 		026CF23C2A98EBEB00496C15 /* CurrencyConversion */ = {
 			isa = PBXGroup;
 			children = (
-				02BBAD582A9B9075000D84B3 /* Preview */,
 				02BBAD462A9951DB000D84B3 /* DTO */,
+				02D9D1722A9F94B800D01CD1 /* Views */,
 				026CF23E2A98EBEB00496C15 /* CurrencyConversionViewController.swift */,
 			);
 			path = CurrencyConversion;
@@ -589,29 +589,19 @@
 			isa = PBXGroup;
 			children = (
 				02BBAD4C2A9AA708000D84B3 /* DTO */,
-				026CF2412A98EBEB00496C15 /* ListConversion_Preview.swift */,
+				02D9D1702A9F946500D01CD1 /* Views */,
 				026CF2402A98EBEB00496C15 /* ListCurrenciesViewController.swift */,
 			);
 			path = ListCurrencies;
 			sourceTree = "<group>";
 		};
-		026CF2422A98EBEB00496C15 /* Views */ = {
+		026CF2422A98EBEB00496C15 /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
-				026CF24C2A98EBEB00496C15 /* SharedViews */,
-				026CF2432A98EBEB00496C15 /* CurrencyConversion */,
-				026CF2482A98EBEB00496C15 /* ListCurrencies */,
+				026CF24D2A98EBEB00496C15 /* CurrencySymbolView */,
+				026CF2502A98EBEB00496C15 /* CardCurrency */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		026CF2432A98EBEB00496C15 /* CurrencyConversion */ = {
-			isa = PBXGroup;
-			children = (
-				026CF2452A98EBEB00496C15 /* Currency */,
-				026CF2442A98EBEB00496C15 /* CurrencyConversionView.swift */,
-			);
-			path = CurrencyConversion;
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 		026CF2452A98EBEB00496C15 /* Currency */ = {
@@ -623,30 +613,12 @@
 			path = Currency;
 			sourceTree = "<group>";
 		};
-		026CF2482A98EBEB00496C15 /* ListCurrencies */ = {
-			isa = PBXGroup;
-			children = (
-				026CF2492A98EBEB00496C15 /* SortCurrenciesView */,
-				026CF24B2A98EBEB00496C15 /* ListCurrenciesView.swift */,
-			);
-			path = ListCurrencies;
-			sourceTree = "<group>";
-		};
 		026CF2492A98EBEB00496C15 /* SortCurrenciesView */ = {
 			isa = PBXGroup;
 			children = (
 				026CF24A2A98EBEB00496C15 /* SortCurrenciesView.swift */,
 			);
 			path = SortCurrenciesView;
-			sourceTree = "<group>";
-		};
-		026CF24C2A98EBEB00496C15 /* SharedViews */ = {
-			isa = PBXGroup;
-			children = (
-				026CF24D2A98EBEB00496C15 /* CurrencySymbolView */,
-				026CF2502A98EBEB00496C15 /* CardCurrency */,
-			);
-			path = SharedViews;
 			sourceTree = "<group>";
 		};
 		026CF24D2A98EBEB00496C15 /* CurrencySymbolView */ = {
@@ -990,14 +962,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		02BBAD3B2A991625000D84B3 /* Interface */ = {
+		02BBAD3B2A991625000D84B3 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
 				02BBAD752A9CCB6F000D84B3 /* Repository */,
 				026CF2262A98EBEB00496C15 /* File */,
 				026CF2282A98EBEB00496C15 /* Network */,
 			);
-			path = Interface;
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		02BBAD3C2A99172C000D84B3 /* DTO */ = {
@@ -1180,6 +1152,34 @@
 			children = (
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		02D9D1702A9F946500D01CD1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02D9D1712A9F948100D01CD1 /* Preview */,
+				026CF2492A98EBEB00496C15 /* SortCurrenciesView */,
+				026CF24B2A98EBEB00496C15 /* ListCurrenciesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02D9D1712A9F948100D01CD1 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				026CF2412A98EBEB00496C15 /* ListConversion_Preview.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		02D9D1722A9F94B800D01CD1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02BBAD582A9B9075000D84B3 /* Preview */,
+				026CF2452A98EBEB00496C15 /* Currency */,
+				026CF2442A98EBEB00496C15 /* CurrencyConversionView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		02EA934C2A9E6A4600F50FA8 /* Preview */ = {
