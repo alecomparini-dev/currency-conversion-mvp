@@ -11,6 +11,7 @@ import Foundation
 class URLSessionNetwork {
     
     private let session: URLSession
+    let startTime = Date()
     
     init(session: URLSession = .shared) {
         self.session = session
@@ -22,24 +23,22 @@ class URLSessionNetwork {
 //  MARK: - EXTENSION - HTTPGetClient
 extension URLSessionNetwork: HTTPGetClient {
     
-    func get(url: URL, parameters: Dictionary<String,String>) async throws -> Data {
+    func get(url: URL, parameters: Dictionary<String,String>) async throws -> ResponseDTO {
         
         // TODO: - Extract the code to its own file
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         components.queryItems = parameters.map { (key, value) in
             URLQueryItem(name: key, value: value)
         }
-        
+
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
-        
-        let request = URLRequest(url: components.url!)
-                
+
+        var request = URLRequest(url: components.url!)
+        request.method = .get
+
         let (data, response) = try await session.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
-        else { throw HTTPError.noConnectivity }
-        
-        return data
+                
+        return ResponseDTOFactory.makeResponseDTO(data: data, response as? HTTPURLResponse, startTime)
         
     }
     

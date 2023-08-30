@@ -20,7 +20,8 @@ class RemoteListCurrenciesUseCaseGatewayImpl: ListCurrenciesUseCaseGateway {
     }
     
     func getListCurrencies() async throws -> [Currency] {
-        let data = try await http.get(url: url, parameters: parameters)
+        let response = try await http.get(url: url, parameters: parameters)
+        guard let data = response.data else {return []}
         
         let currenciesCodable = try JSONDecoder().decode(CurrenciesCodable.self, from: data)
         

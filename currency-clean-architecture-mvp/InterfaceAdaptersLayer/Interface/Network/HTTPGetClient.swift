@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HTTPGetClient {
-    func get(url: URL, parameters: Dictionary<String, String>) async throws -> Data
-}
+    var startTime: Date {get}
+    func get(url: URL, parameters: Dictionary<String, String>) async throws -> ResponseDTO}
 
