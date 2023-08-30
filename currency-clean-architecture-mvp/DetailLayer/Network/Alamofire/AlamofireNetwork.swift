@@ -11,26 +11,27 @@ import Alamofire
 class AlamofireNetwork {
 
     private let session: Session
+    let startTime = Date()
     
     init(session: Session = .default) {
         self.session = session
     }
-            
+    
 }
 
 
 //  MARK: - EXTENSION - HTTPGetClient
 extension AlamofireNetwork: HTTPGetClient {
     
-    func get(url: URL, parameters: Dictionary<String,String>) async throws -> Data {
+    func get(url: URL, parameters: Dictionary<String,String>) async throws -> ResponseDTO {
         return try await withCheckedThrowingContinuation { continuation in
             session
                 .request(url, method: .get, parameters: parameters)
-                .responseData { response in
+                .responseData { [weak self] response in
+                    guard let self else {return}
                     switch(response.result) {
                         case .success(let data):
-                            continuation.resume(returning: data)
-                        
+                            continuation.resume(returning: ResponseDTOFactory.makeResponseDTO(data: data, response.response, startTime))
                         case .failure (let error):
                             continuation.resume(throwing: error )
                     }
@@ -39,5 +40,6 @@ extension AlamofireNetwork: HTTPGetClient {
         
     }
 
+    
     
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 protocol HTTPPost {
+    var startTime: Date { get }
     func post(url: URL, parameters: Dictionary<String, String>) async throws -> Data
 }
 

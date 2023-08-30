@@ -442,9 +442,7 @@ extension URLRequest {
 
 extension HTTPURLResponse {
     /// Returns `allHeaderFields` as `HTTPHeaders`.
-    public var headers: HTTPHeaders {
-        (allHeaderFields as? [String: String]).map(HTTPHeaders.init) ?? HTTPHeaders()
-    }
+    public var headers: HTTPHeaders { (allHeaderFields as? [String: String]).map(HTTPHeaders.init) ?? HTTPHeaders() }
 }
 
 extension URLSessionConfiguration {
