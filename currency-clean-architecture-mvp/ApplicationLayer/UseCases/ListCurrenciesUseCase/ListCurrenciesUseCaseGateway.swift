@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListCurrenciesUseCaseGateway: AnyObject {
-    func getListCurrencies() async throws -> [Currency]
+    func listCurrencies() async throws -> [Currency]
 }

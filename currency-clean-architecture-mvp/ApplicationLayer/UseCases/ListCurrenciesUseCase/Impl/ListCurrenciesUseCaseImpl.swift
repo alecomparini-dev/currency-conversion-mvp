@@ -18,7 +18,7 @@ class ListCurrenciesUseCaseImpl: ListCurrenciesUseCase {
     }
     
     func listCurrencies() async throws -> [ListCurrenciesUseCaseDTO.Output] {
-        let currencies: [Currency] = try await listCurrenciesGateway.getListCurrencies()
+        let currencies: [Currency] = try await listCurrenciesGateway.listCurrencies()
         
         let listCurrencyResponse: [ListCurrenciesUseCaseDTO.Output] = CurrenciesMapper.toListCurrencyResponse(domain: currencies)
                 
