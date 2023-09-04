@@ -9,6 +9,7 @@ import Foundation
 
 
 class RemoteListCurrenciesUseCaseGatewayImpl: ListCurrenciesUseCaseGateway {
+    
     private let http: HTTPGetClient
     private let url: URL
     private let parameters: Dictionary<String,String>
@@ -19,7 +20,7 @@ class RemoteListCurrenciesUseCaseGatewayImpl: ListCurrenciesUseCaseGateway {
         self.parameters = parameters
     }
     
-    func getListCurrencies() async throws -> [Currency] {
+    func listCurrencies() async throws -> [Currency] {
         let response = try await http.get(url: url, parameters: parameters)
         guard let data = response.data else {return []}
         
