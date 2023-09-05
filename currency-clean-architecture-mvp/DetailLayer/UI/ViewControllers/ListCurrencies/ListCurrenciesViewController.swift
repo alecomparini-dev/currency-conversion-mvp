@@ -18,6 +18,7 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
+    
     var receivedData: Any?
     
     private var listCurrenciesPR: ListCurrenciesPresenter
@@ -105,7 +106,10 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
     
     func backPageButtonTapped() {
-        coordinator?.goToCurrencyConversionVC(dto: nil)
+        coordinator?.goToCurrencyConversionVC(dto:
+            CurrencyConversionVCDTO(symbol: "R$",
+                                    currencyISO: "BRL", name: "Real")
+        )
     }
     
 }
