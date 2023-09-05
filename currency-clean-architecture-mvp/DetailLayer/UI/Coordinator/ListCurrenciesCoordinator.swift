@@ -44,7 +44,7 @@ extension ListCurrenciesCoordinator: ListCurrenciesViewControllerCoordinator {
     
     func goToCurrencyConversionVC(dto: CurrencyConversionVCDTO?) {
         let coordinator = CurrencyConversionCoordinator(navigationController)
-        coordinator.passData = dto
+        coordinator.receivedData = dto
         coordinator.start()
         childCoordinators = nil
     }

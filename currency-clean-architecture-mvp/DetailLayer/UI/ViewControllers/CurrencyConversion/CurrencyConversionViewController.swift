@@ -18,11 +18,12 @@ protocol CurrencyConversionViewControllerCoordinator: AnyObject {
 
 class CurrencyConversionViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
+    
     var receivedData: CurrencyConversionVCDTO?
     
     private var tap: (currencyOf: UITapGestureRecognizer?, currencyTo: UITapGestureRecognizer?)
     
-    struct TappedControl {
+    private struct TappedControl {
         enum TypeButton {
             case currencyOf
             case currencyTo
