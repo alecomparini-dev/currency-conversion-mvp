@@ -12,12 +12,22 @@ import Foundation
 protocol ListCurrenciesPresenterOutput: AnyObject {
     func successListCurrencies()
     func error(title: String, message: String)
+    func reloadTableView()
 }
 
+
+enum SortingTypes {
+    case currencyISO
+    case name
+}
 
 //  MARK: - CLASS
 class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     weak var delegate: ListCurrenciesPresenterOutput?
+    
+    struct Control {
+        static var sortingTypeSelected: SortingTypes = .currencyISO
+    }
     
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
@@ -25,9 +35,11 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     private let addFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?
     private let listFavoriteCurrenciesUseCase: ListFavoriteCurrenciesUseCase?
     
-    private var currenciesData = [ListCurrencyPresenterDTO]()
     private var favoriteCurrencies = [FavoriteCurrencyDTO]()
-    var filteredCurrencies = [ListCurrencyPresenterDTO]()
+    private var currenciesData = [ListCurrencyPresenterDTO]()
+    
+    //mudar para filtered, quando eu fizer o methodo de filtro
+    var listCurrenciesTableView = [ListCurrencyPresenterDTO]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase,
          listSymbolsUseCase: ListCurrencySymbolsUseCase,
@@ -43,87 +55,122 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 //  MARK: - PUBLIC FUNCTIONS
     
     func getCurrencies() -> [ListCurrencyPresenterDTO] {
-        return filteredCurrencies
+        return currenciesData
     }
     
     func addFavoriteCurrency(_ currency: FavoriteCurrencyDTO) {
-        self.favoriteCurrencies.append(currency)
+        favoriteCurrencies.append(currency)
+        refreshFavoritesCurrenciesData()
         saveFavorites()
     }
     
     func deleteFavoriteCurrency(_ currencyISO: String) {
-        self.favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
+        favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
+        refreshFavoritesCurrenciesData()
         saveFavorites()
     }
 
+    func listCurrencies() {
+        Task {
+            do {
+                //TODO: - Passar estas 3 chamadas para o DispatchGroup
+                let currencies: [ListCurrenciesUseCaseDTO.Output] = try await listCurrenciesUseCase.listCurrencies()
+                let symbols: [ListCurrencySymbolsUseCaseDTO.Output] = try await listSymbolsUseCase.listSymbols()
+                let favorites: [ListFavoriteCurrenciesUseCaseDTO.Output]? = try await listFavoriteCurrenciesUseCase?.listFavorites()
+                
+                //TODO: - UNIR AS 3 CHAMADAS E RETORNAR
+                currenciesData = currencies.map { let currency = $0
+                    var dto = ListCurrencyPresenterDTO()
+                    dto.currencyISO = currency.currencyISO
+                    dto.name = NSLocalizedString(currency.name, comment: "")
+                    
+                    if let symbol = symbols.first(where: { $0.currencyISO == currency.currencyISO } ) {
+                        dto.symbol = symbol.symbol
+                    }
+                    
+                    if let fav = favorites?.first(where: { $0.currencyISO == currency.currencyISO }) {
+                        self.favoriteCurrencies.append(FavoriteCurrencyDTO(currencyISO: fav.currencyISO))
+                    }
+                    
+                    return dto
+                }
+                                
+                refreshFavoritesCurrenciesData()
+                
+                sortedCurrenciesData(by: .currencyISO)
+                
+                successListCurrenciesData()
+                
+            } catch (let error) {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else {return}
+                    delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
+                }
+            }
+            
+        }
+
+    }
+    
+    
+    
+//  MARK: - PRIVATE AREA
+    
+    private func refreshFavoritesCurrenciesData() {
+        currenciesData = currenciesData.map { var filtered = $0
+            if self.favoriteCurrencies.contains(where: { $0.currencyISO == filtered.currencyISO }) {
+                filtered.favorite = true
+            } else {
+                filtered.favorite = false
+            }
+            return filtered
+        }
+    }
+    
     private func saveFavorites() {
         guard let addFavoriteCurrencyUseCase else {return}
         Task {
             do {
-                try await addFavoriteCurrencyUseCase.add(self.favoriteCurrencies.compactMap({ $0.currencyISO }))
-                await listCurrencies()
+                try await addFavoriteCurrencyUseCase.add(favoriteCurrencies.compactMap({ $0.currencyISO }))
+                sortedCurrenciesData(by: Control.sortingTypeSelected)
             } catch (let error) {
                 delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
             }
         }
     }
-
-    func listCurrencies() async {
-        do {
-            
-            //TODO: - Passar estas 3 chamadas para o DispatchGroup
-            //Mark: - Get Currencies
-            let currencies: [ListCurrenciesUseCaseDTO.Output] = try await listCurrenciesUseCase.listCurrencies()
-            
-            //Mark: - Get Symbols
-            let symbols: [ListCurrencySymbolsUseCaseDTO.Output] = try await listSymbolsUseCase.listSymbols()
-            
-            //Mark: - Get Favorites
-            let favorites: [ListFavoriteCurrenciesUseCaseDTO.Output]? = try await listFavoriteCurrenciesUseCase?.listFavorites()
-            
-            //TODO: - UNIR AS 3 CHAMADAS E RETORNAR
-            self.currenciesData = currencies.map { let currency = $0
-                var dto = ListCurrencyPresenterDTO()
-                dto.currencyISO = $0.currencyISO
-                dto.name = currency.name
+    
+    private func sortedCurrenciesData(by selected: SortingTypes) {
+        Control.sortingTypeSelected = selected
+        
+        currenciesData = currenciesData.sorted { (currency1, currency2) in
+            if currency1.favorite == currency2.favorite {
                 
-                if let symbol = symbols.first(where: { $0.currencyISO == currency.currencyISO } ) {
-                    dto.symbol = symbol.symbol
-                }
-                
-                if let fav = favorites?.first(where: { $0.currencyISO == currency.currencyISO }) {
-                    dto.favorite = true
-                    self.favoriteCurrencies.append(FavoriteCurrencyDTO(currencyISO: fav.currencyISO))
-                }
-                return dto
-                
-            }
-            .sorted { (currency1, currency2) in
-                if currency1.favorite == currency2.favorite {
+                if Control.sortingTypeSelected == .currencyISO {
                     return  (currency1.currencyISO ?? "") < (currency2.currencyISO ?? "")
-                } else {
-                    return (currency1.favorite ?? false) && !(currency2.favorite ?? false)
                 }
-            }
-            
-            self.filteredCurrencies = self.currenciesData.map({ var currency = $0
-                currency.name = NSLocalizedString(currency.name ?? "", comment: "")
-                return currency
-            })
-            
-            
-        } catch (let error) {
-            DispatchQueue.main.async { [weak self] in
-                guard let self else {return}
-                delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
+                return  (currency1.name ?? "") < (currency2.name ?? "")
+                
+            } else {
+                return (currency1.favorite ?? false) && !(currency2.favorite ?? false)
             }
         }
         
+        reloadTablaView()
+        
+    }
+    
+    private func reloadTablaView() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            delegate?.reloadTableView()
+        }
+    }
+    
+    private func successListCurrenciesData() {
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
             delegate?.successListCurrencies()
         }
-
     }
     
     

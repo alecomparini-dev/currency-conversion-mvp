@@ -11,7 +11,7 @@ import Foundation
 //  MARK: - PROTOCOL PRESENTER
 protocol ListCurrenciesPresenter: AnyObject {
     var delegate: ListCurrenciesPresenterOutput? { get set }
-    func listCurrencies() async
+    func listCurrencies()
     func getCurrencies() -> [ListCurrencyPresenterDTO]
     func addFavoriteCurrency(_ currencyISO: FavoriteCurrencyDTO)
     func deleteFavoriteCurrency(_ currencyISO: String)
