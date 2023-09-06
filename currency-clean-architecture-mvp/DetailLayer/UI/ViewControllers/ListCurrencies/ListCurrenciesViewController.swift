@@ -169,7 +169,7 @@ extension ListCurrenciesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell
         
-        guard let cell else {return UITableViewCell()}
+        guard let cell else { return UITableViewCell() }
         
         let currency = listCurrenciesPR.getCurrencies()[indexPath.row]
         

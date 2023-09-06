@@ -1,14 +1,11 @@
-//
-//  ListCurrenciesCoordinator.swift
-//  currency-conversion-mvp
-//
+
 //  Created by Alessandro Comparini on 15/08/23.
 //
 
 import Foundation
 
 class ListCurrenciesCoordinator: Coordinator {
-    var childCoordinators: [Coordinator]? = []
+    var childCoordinator: Coordinator?
     
     unowned let navigationController: NavigationController
     
@@ -16,24 +13,12 @@ class ListCurrenciesCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    
     func start() {
-        childCoordinators?.append(self)
-
-        if let controller = HasViewControllerBeenPushedValidation<ListCurrenciesViewController>(navigation: navigationController).validate() {
-            navigationController.popToViewController(controller, animated: true)
-            return
-        }
-        
-        startListCurrencies()   
-    }
-    
-    
-//  MARK: - PRIVATE AREA
-    
-    private func startListCurrencies() {
-        let controller = ListCurrenciesControllerFactory.make()
+        childCoordinator = self
+        var controller: ListCurrenciesViewController = ListCurrenciesControllerFactory.make()
+        controller = navigationController.pushViewController(controller)
         controller.coordinator = self
-        navigationController.pushViewController(controller)
     }
     
 }
@@ -46,7 +31,7 @@ extension ListCurrenciesCoordinator: ListCurrenciesViewControllerCoordinator {
         let coordinator = CurrencyConversionCoordinator(navigationController)
         coordinator.receivedData = dto
         coordinator.start()
-        childCoordinators = nil
+        childCoordinator = nil
     }
     
     
