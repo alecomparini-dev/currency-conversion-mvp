@@ -105,8 +105,8 @@ class CardCurrencyView: UIView {
         NSLayoutConstraint.activate([
             symbolCurrency.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor),
             symbolCurrency.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            symbolCurrency.widthAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame),
-            symbolCurrency.heightAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame),
+            symbolCurrency.widthAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame ?? .zero),
+            symbolCurrency.heightAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame ?? .zero),
         ])
     }
     

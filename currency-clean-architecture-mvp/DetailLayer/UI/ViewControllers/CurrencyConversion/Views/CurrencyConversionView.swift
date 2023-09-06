@@ -53,10 +53,8 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var currencyOf: CurrencyView = {
-        let symbolInput = CurrencySymbolViewDTO(symbol: K.Screen.CurrencyConversion.symbolCurrencyOf, sizeFrame: 70, fontSize: .title2)
+        let symbolInput = CurrencySymbolViewDTO(sizeFrame: 70)
         let currencyViewDTO = CurrencyViewDTO(currentySymbolViewInput: symbolInput,
-                                              titleCurrency: K.Screen.CurrencyConversion.titleCurrencyOf,
-                                              subTitleCurrency: K.Screen.CurrencyConversion.subTitleCurrencyOf,
                                               imageButton: K.Screen.CurrencyConversion.Images.currencyOf,
                                               sizeButton: CGSize(width: 40, height: 35))
         let view = CurrencyView(currencyViewDTO: currencyViewDTO)
@@ -99,10 +97,8 @@ class CurrencyConversionView: UIView {
     }()
     
     lazy var currencyTo: CurrencyView = {
-        let symbolInput = CurrencySymbolViewDTO(symbol: K.Screen.CurrencyConversion.symbolCurrencyTo, sizeFrame: 70, fontSize: .title2)
+        let symbolInput = CurrencySymbolViewDTO(sizeFrame: 70)
         let currencyViewDTO = CurrencyViewDTO(currentySymbolViewInput: symbolInput,
-                                              titleCurrency: K.Screen.CurrencyConversion.titleCurrencyTo,
-                                              subTitleCurrency: K.Screen.CurrencyConversion.subTitleCurrencyTo,
                                               imageButton: K.Screen.CurrencyConversion.Images.currencyTo,
                                               sizeButton: CGSize(width: 40, height: 35))
         let currencyView = CurrencyView(currencyViewDTO: currencyViewDTO)

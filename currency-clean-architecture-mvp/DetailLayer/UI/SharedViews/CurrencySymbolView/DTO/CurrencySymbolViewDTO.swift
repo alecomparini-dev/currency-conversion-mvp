@@ -8,14 +8,15 @@
 import UIKit
 
 struct CurrencySymbolViewDTO {
-    let symbol: String
-    let backgroundColor: UIColor
-    let sizeFrame: CGFloat
-    let fontSize: UIFont.TextStyle
+    var symbol: String
+    var backgroundColor: UIColor
+    var sizeFrame: CGFloat
+    var fontSize: UIFont.TextStyle
     
-    init(symbol: String, backgroundColor: UIColor = UIColor.HEX("#08132b"),
-              sizeFrame: CGFloat = 50,
-              fontSize: UIFont.TextStyle = .title2) {
+    init(symbol: String = "",
+         backgroundColor: UIColor = UIColor.HEX("#08132b"),
+         sizeFrame: CGFloat = 50,
+         fontSize: UIFont.TextStyle = .title2) {
         self.symbol = symbol
         self.backgroundColor = backgroundColor
         self.sizeFrame = sizeFrame

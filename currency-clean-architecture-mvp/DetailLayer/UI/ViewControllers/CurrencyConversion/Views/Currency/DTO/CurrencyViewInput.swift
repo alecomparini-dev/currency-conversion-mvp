@@ -8,9 +8,9 @@
 import UIKit
 
 struct CurrencyViewDTO {
-    let currentySymbolViewInput: CurrencySymbolViewDTO
-    let titleCurrency: String
-    let subTitleCurrency: String
-    let imageButton: String
-    let sizeButton: CGSize
+    var currentySymbolViewInput: CurrencySymbolViewDTO?
+    var titleCurrency: String?
+    var subTitleCurrency: String?
+    var imageButton: String?
+    var sizeButton: CGSize?
 }
