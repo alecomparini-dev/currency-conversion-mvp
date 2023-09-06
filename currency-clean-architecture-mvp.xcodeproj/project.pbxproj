@@ -107,8 +107,6 @@
 		02BBAD742A9CC613000D84B3 /* Main+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD732A9CC613000D84B3 /* Main+Constants.swift */; };
 		02BBAD772A9CCB8B000D84B3 /* AddRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD762A9CCB8B000D84B3 /* AddRepository.swift */; };
 		02BBAD7C2A9CD090000D84B3 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD7B2A9CD090000D84B3 /* UserDefaultsRepository.swift */; };
-		02CB165E2AA8A483007A28AB /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 02CB165C2AA8A483007A28AB /* Release.xcconfig */; };
-		02CB165F2AA8A483007A28AB /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 02CB165D2AA8A483007A28AB /* Debug.xcconfig */; };
 		BEE1F5A53584F3D9DA2DA5BF /* Pods_currency_clean_architecture_mvp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E484E8887F8F138411EA5245 /* Pods_currency_clean_architecture_mvp.framework */; };
 /* End PBXBuildFile section */
 
@@ -1236,8 +1234,6 @@
 			files = (
 				02BBAD5F2A9B9798000D84B3 /* Localizable.strings in Resources */,
 				02BBAD432A992630000D84B3 /* CurrencySymbols.json in Resources */,
-				02CB165F2AA8A483007A28AB /* Debug.xcconfig in Resources */,
-				02CB165E2AA8A483007A28AB /* Release.xcconfig in Resources */,
 				026CF30A2A99128300496C15 /* LaunchScreen.storyboard in Resources */,
 				026CF2D72A98EBEB00496C15 /* Assets.xcassets in Resources */,
 				026CF2DA2A98EBEB00496C15 /* Localizable.strings in Resources */,
@@ -1439,6 +1435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1499,6 +1496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
