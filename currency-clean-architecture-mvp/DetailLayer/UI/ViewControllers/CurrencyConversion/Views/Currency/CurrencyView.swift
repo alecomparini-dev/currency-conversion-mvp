@@ -8,10 +8,10 @@
 import UIKit
 
 class CurrencyView: UIView {
-    private let input: CurrencyViewDTO
+    private let currencyViewDTO: CurrencyViewDTO?
     
-    init(currencyViewDTO: CurrencyViewDTO) {
-        self.input = currencyViewDTO
+    init(currencyViewDTO: CurrencyViewDTO?) {
+        self.currencyViewDTO = currencyViewDTO
         super.init(frame: .zero)
         configure()
     }
@@ -23,7 +23,7 @@ class CurrencyView: UIView {
     
 //  MARK: - LAZY AREA
     lazy var symbolCurrency: CurrencySymbolView = {
-        let view = CurrencySymbolView(currencySymbolDTO: input.currentySymbolViewInput)
+        let view = CurrencySymbolView(currencySymbolDTO: currencyViewDTO?.currentySymbolViewInput)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -31,7 +31,7 @@ class CurrencyView: UIView {
     lazy var titleCurrencyLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = input.titleCurrency
+        lbl.text = currencyViewDTO?.titleCurrency ?? ""
         var font = UIFont.preferredFont(forTextStyle: .largeTitle)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
             font = UIFont(descriptor: descriptor, size: 0)
@@ -45,7 +45,7 @@ class CurrencyView: UIView {
     lazy var subTitleCurrencyLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = input.subTitleCurrency
+        lbl.text = currencyViewDTO?.subTitleCurrency ?? K.Strings.empty
         lbl.numberOfLines = 1
         lbl.font = UIFont.preferredFont(forTextStyle: .title3)
         lbl.textAlignment = .natural
@@ -56,9 +56,10 @@ class CurrencyView: UIView {
     lazy var changeCurrencyButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(systemName: input.imageButton)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: input.sizeButton.width)), for: .normal)
+        btn.setImage(UIImage(systemName: currencyViewDTO?.imageButton ?? K.Strings.empty)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: currencyViewDTO?.sizeButton.width ?? .zero)), for: .normal)
         btn.tintColor = .white.withAlphaComponent(0.7)
         btn.setTitleColor(.white, for: .normal)
+        btn.isUserInteractionEnabled = false
         return btn
     }()
         
@@ -87,8 +88,8 @@ class CurrencyView: UIView {
         NSLayoutConstraint.activate([
             symbolCurrency.topAnchor.constraint(equalTo: self.topAnchor),
             symbolCurrency.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            symbolCurrency.widthAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame),
-            symbolCurrency.heightAnchor.constraint(equalToConstant: input.currentySymbolViewInput.sizeFrame),
+            symbolCurrency.widthAnchor.constraint(equalToConstant: currencyViewDTO?.currentySymbolViewInput.sizeFrame ?? .zero),
+            symbolCurrency.heightAnchor.constraint(equalToConstant: currencyViewDTO?.currentySymbolViewInput.sizeFrame ?? .zero),
         ])
     }
     
@@ -111,8 +112,8 @@ class CurrencyView: UIView {
         NSLayoutConstraint.activate([
             changeCurrencyButton.centerYAnchor.constraint(equalTo: symbolCurrency.centerYAnchor),
             changeCurrencyButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            changeCurrencyButton.widthAnchor.constraint(equalToConstant: input.sizeButton.width),
-            changeCurrencyButton.heightAnchor.constraint(equalToConstant: input.sizeButton.height),
+            changeCurrencyButton.widthAnchor.constraint(equalToConstant: currencyViewDTO?.sizeButton.width ?? .zero),
+            changeCurrencyButton.heightAnchor.constraint(equalToConstant: currencyViewDTO?.sizeButton.height ?? .zero),
         ])
     }
 }

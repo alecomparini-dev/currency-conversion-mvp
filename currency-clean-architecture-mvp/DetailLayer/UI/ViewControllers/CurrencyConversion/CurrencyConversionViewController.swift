@@ -19,16 +19,19 @@ protocol CurrencyConversionViewControllerCoordinator: AnyObject {
 class CurrencyConversionViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
     
+    private var currencyOf: CurrencyConversionVCDTO?
+    private var currencyTo: CurrencyConversionVCDTO?
+    
     var receivedData: CurrencyConversionVCDTO?
     
     private var tap: (currencyOf: UITapGestureRecognizer?, currencyTo: UITapGestureRecognizer?)
     
-    private struct TappedControl {
-        enum TypeButton {
+    private struct Control {
+        enum CurrencyType {
             case currencyOf
             case currencyTo
         }
-        static var buttonTapped: TypeButton = .currencyTo
+        static var selectedCurrency: CurrencyType = .currencyTo
     }
     
     lazy var screen: CurrencyConversionView = {
@@ -48,7 +51,7 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addTapGestureCurrency()
-        setCurrencyToUpdate()
+        refreshSelectedCurrency()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,10 +118,12 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
         }
     }
     
-    private func setCurrencyToUpdate() {
-        if TappedControl.buttonTapped == .currencyOf {
+    private func refreshSelectedCurrency() {
+        if Control.selectedCurrency == .currencyOf {
+            currencyOf = receivedData
             return updateCurrencyView(screen.currencyOf)
         }
+        currencyTo = receivedData
         updateCurrencyView(screen.currencyTo)
     }
     
@@ -133,12 +138,12 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     
 //  MARK: - @OBJC AREA
     @objc private func currencyOfTapped() {
-        TappedControl.buttonTapped = .currencyOf
+        Control.selectedCurrency = .currencyOf
         currencyOfButtonTapped()
     }
     
     @objc private func currencyToTapped() {
-        TappedControl.buttonTapped = .currencyTo
+        Control.selectedCurrency = .currencyTo
         currencyToButtonTapped()
     }
     

@@ -57,6 +57,9 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     func getCurrencies() -> [ListCurrencyPresenterDTO] {
         return currenciesData
     }
+    func getCurrencyBy(index: Int) -> ListCurrencyPresenterDTO {
+        return currenciesData[index]
+    }
     
     func addFavoriteCurrency(_ currency: FavoriteCurrencyDTO) {
         favoriteCurrencies.append(currency)
@@ -70,7 +73,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
         saveFavorites()
     }
 
-    func listCurrencies() {
+    func fetchCurrencies() {
         Task {
             do {
                 //TODO: - Passar estas 3 chamadas para o DispatchGroup
