@@ -6,6 +6,6 @@ target 'currency-clean-architecture-mvp' do
   use_frameworks!
 
   # Pods for currency-clean-architecture-mvp
-  pod 'Alamofire'
+  pod 'Alamofire', '5.7.1'
   
 end

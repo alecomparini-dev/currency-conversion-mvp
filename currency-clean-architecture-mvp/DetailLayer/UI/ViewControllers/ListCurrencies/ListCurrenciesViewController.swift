@@ -95,10 +95,6 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         screen.loading.startAnimating()
     }
     
-    private func reloadTableView() {
-        screen.tableView.reloadData()
-    }
-    
 }
 
 
@@ -117,6 +113,10 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 
 //  MARK: - EXTENSION ListCurrenciesPresenterDelegate - [Presenter]
 extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
+
+    func reloadTableView() {
+        screen.tableView.reloadData()
+    }
     
     func successListCurrencies() {
         configTableViewDelegate()
