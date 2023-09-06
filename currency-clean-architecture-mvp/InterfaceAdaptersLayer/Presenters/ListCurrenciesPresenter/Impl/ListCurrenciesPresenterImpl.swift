@@ -78,20 +78,16 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                 let symbols: [ListCurrencySymbolsUseCaseDTO.Output] = try await listSymbolsUseCase.listSymbols()
                 let favorites: [ListFavoriteCurrenciesUseCaseDTO.Output]? = try await listFavoriteCurrenciesUseCase?.listFavorites()
                 
-                //TODO: - UNIR AS 3 CHAMADAS E RETORNAR
                 currenciesData = currencies.map { let currency = $0
                     var dto = ListCurrencyPresenterDTO()
                     dto.currencyISO = currency.currencyISO
                     dto.name = NSLocalizedString(currency.name, comment: "")
-                    
                     if let symbol = symbols.first(where: { $0.currencyISO == currency.currencyISO } ) {
                         dto.symbol = symbol.symbol
                     }
-                    
                     if let fav = favorites?.first(where: { $0.currencyISO == currency.currencyISO }) {
                         self.favoriteCurrencies.append(FavoriteCurrencyDTO(currencyISO: fav.currencyISO))
                     }
-                    
                     return dto
                 }
                                 
