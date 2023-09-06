@@ -8,9 +8,9 @@
 import UIKit
 
 class CurrencyView: UIView {
-    private let currencyViewDTO: CurrencyViewDTO?
+    private let currencyViewDTO: CurrencyViewDTO
     
-    init(currencyViewDTO: CurrencyViewDTO?) {
+    init(currencyViewDTO: CurrencyViewDTO) {
         self.currencyViewDTO = currencyViewDTO
         super.init(frame: .zero)
         configure()
@@ -23,7 +23,7 @@ class CurrencyView: UIView {
     
 //  MARK: - LAZY AREA
     lazy var symbolCurrency: CurrencySymbolView = {
-        let view = CurrencySymbolView(currencySymbolDTO: currencyViewDTO?.currentySymbolViewInput)
+        let view = CurrencySymbolView(currencySymbolDTO: currencyViewDTO.currentySymbolViewInput)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -31,7 +31,7 @@ class CurrencyView: UIView {
     lazy var titleCurrencyLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = currencyViewDTO?.titleCurrency ?? ""
+        lbl.text = currencyViewDTO.titleCurrency
         var font = UIFont.preferredFont(forTextStyle: .largeTitle)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
             font = UIFont(descriptor: descriptor, size: 0)
@@ -45,7 +45,7 @@ class CurrencyView: UIView {
     lazy var subTitleCurrencyLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = currencyViewDTO?.subTitleCurrency ?? K.Strings.empty
+        lbl.text = currencyViewDTO.subTitleCurrency
         lbl.numberOfLines = 1
         lbl.font = UIFont.preferredFont(forTextStyle: .title3)
         lbl.textAlignment = .natural
@@ -56,7 +56,7 @@ class CurrencyView: UIView {
     lazy var changeCurrencyButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(UIImage(systemName: currencyViewDTO?.imageButton ?? K.Strings.empty)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: currencyViewDTO?.sizeButton.width ?? .zero)), for: .normal)
+        btn.setImage(UIImage(systemName: currencyViewDTO.imageButton ?? K.Strings.empty)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: currencyViewDTO.sizeButton?.width ?? .zero)), for: .normal)
         btn.tintColor = .white.withAlphaComponent(0.7)
         btn.setTitleColor(.white, for: .normal)
         btn.isUserInteractionEnabled = false
@@ -88,8 +88,8 @@ class CurrencyView: UIView {
         NSLayoutConstraint.activate([
             symbolCurrency.topAnchor.constraint(equalTo: self.topAnchor),
             symbolCurrency.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            symbolCurrency.widthAnchor.constraint(equalToConstant: currencyViewDTO?.currentySymbolViewInput.sizeFrame ?? .zero),
-            symbolCurrency.heightAnchor.constraint(equalToConstant: currencyViewDTO?.currentySymbolViewInput.sizeFrame ?? .zero),
+            symbolCurrency.widthAnchor.constraint(equalToConstant: currencyViewDTO.currentySymbolViewInput?.sizeFrame ?? .zero),
+            symbolCurrency.heightAnchor.constraint(equalToConstant: currencyViewDTO.currentySymbolViewInput?.sizeFrame ?? .zero),
         ])
     }
     
@@ -112,8 +112,8 @@ class CurrencyView: UIView {
         NSLayoutConstraint.activate([
             changeCurrencyButton.centerYAnchor.constraint(equalTo: symbolCurrency.centerYAnchor),
             changeCurrencyButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            changeCurrencyButton.widthAnchor.constraint(equalToConstant: currencyViewDTO?.sizeButton.width ?? .zero),
-            changeCurrencyButton.heightAnchor.constraint(equalToConstant: currencyViewDTO?.sizeButton.height ?? .zero),
+            changeCurrencyButton.widthAnchor.constraint(equalToConstant: currencyViewDTO.sizeButton?.width ?? .zero),
+            changeCurrencyButton.heightAnchor.constraint(equalToConstant: currencyViewDTO.sizeButton?.height ?? .zero),
         ])
     }
 }

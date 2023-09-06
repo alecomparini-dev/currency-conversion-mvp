@@ -69,6 +69,7 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     private func configure() {
         hideKeyboardOnTap()
         configDelegate()
+        configInitialCurrencies()
         /*
          var dateAPI = Date(timeIntervalSince1970: jsonTime as! Double)
          let dateFormatter = DateFormatter()
@@ -77,6 +78,22 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
          let formattedLocalDate = dateFormatter.string(from: dateAPI)
          print("FUSO LOCAL -->>>>>", formattedLocalDate)
          */
+    }
+    
+    private func configInitialCurrencies() {
+        let currencyOf = CurrencyConversionVCDTO(
+            symbol: K.Screen.CurrencyConversion.symbolCurrencyOf,
+            currencyISO: K.Screen.CurrencyConversion.titleCurrencyOf,
+            name: K.Screen.CurrencyConversion.subTitleCurrencyOf)
+        self.currencyOf = currencyOf
+        updateCurrencyView(screen.currencyOf, currencyOf)
+        
+        let currencyTo = CurrencyConversionVCDTO(
+            symbol: K.Screen.CurrencyConversion.symbolCurrencyTo,
+            currencyISO: K.Screen.CurrencyConversion.titleCurrencyTo,
+            name: K.Screen.CurrencyConversion.subTitleCurrencyTo)
+        self.currencyTo = currencyTo
+        updateCurrencyView(screen.currencyTo, currencyTo)
     }
     
     private func configDelegate() {
@@ -119,21 +136,20 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     }
     
     private func refreshSelectedCurrency() {
+        guard let receivedData else {return}
         if Control.selectedCurrency == .currencyOf {
             currencyOf = receivedData
-            return updateCurrencyView(screen.currencyOf)
+            return updateCurrencyView(screen.currencyOf, receivedData)
         }
         currencyTo = receivedData
-        updateCurrencyView(screen.currencyTo)
+        updateCurrencyView(screen.currencyTo, receivedData)
     }
-    
-    private func updateCurrencyView(_ currency: CurrencyView) {
-        guard let receivedData else {return}
-        currency.symbolCurrency.symbolLabel.text = receivedData.symbol
-        currency.titleCurrencyLabel.text = receivedData.currencyISO
-        currency.subTitleCurrencyLabel.text = receivedData.name
+
+    private func updateCurrencyView(_ currencyView: CurrencyView, _ currencyDTO: CurrencyConversionVCDTO ) {
+        currencyView.symbolCurrency.symbolLabel.text = currencyDTO.symbol
+        currencyView.titleCurrencyLabel.text = currencyDTO.currencyISO
+        currencyView.subTitleCurrencyLabel.text = currencyDTO.name
     }
-    
 
     
 //  MARK: - @OBJC AREA
@@ -162,7 +178,13 @@ extension CurrencyConversionViewController: CurrencyConversionViewDelegate {
     }
     
     func invertCurrencyButtonTapped() {
-        print("Invert Currencies")
+        let currencyChange = currencyOf
+        currencyOf = currencyTo
+        currencyTo = currencyChange
+        guard let currencyOf, let currencyTo else {return}
+        updateCurrencyView(screen.currencyOf, currencyOf)
+        updateCurrencyView(screen.currencyTo, currencyTo)
+        
     }
     
 }
