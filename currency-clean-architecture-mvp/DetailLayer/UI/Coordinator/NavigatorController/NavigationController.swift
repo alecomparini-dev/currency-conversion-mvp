@@ -22,12 +22,15 @@ public final class NavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func pushViewController(_ viewController: UIViewController) {
+    @discardableResult
+    public func pushViewController<T>(_ viewController: UIViewController) -> T {
+        if let controller = self.viewControllers.first(where: { $0.isKind(of: type(of: viewController))  }) {
+            popToViewController(controller, animated: true)
+            return controller as! T
+        }
         pushViewController(viewController, animated: true)
+        return viewController as! T
     }
-    
-    
-    
     
     
 //  MARK: - PRIVATE AREA
@@ -37,4 +40,3 @@ public final class NavigationController: UINavigationController {
     }
     
 }
-

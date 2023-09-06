@@ -111,10 +111,6 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                     return currency
                 })
                 
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else {return}
-                    delegate?.successListCurrencies()
-                }
                 
             } catch (let error) {
                 DispatchQueue.main.async { [weak self] in
@@ -122,6 +118,12 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                     delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
                 }
             }
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                delegate?.successListCurrencies()
+            }
+
             
         }
     }

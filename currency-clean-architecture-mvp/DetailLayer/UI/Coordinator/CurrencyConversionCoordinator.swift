@@ -8,7 +8,7 @@
 import Foundation
 
 class CurrencyConversionCoordinator: Coordinator {
-    var childCoordinators: [Coordinator]? = []
+    var childCoordinator: Coordinator?
     unowned let navigationController: NavigationController
 
     var receivedData: CurrencyConversionVCDTO?
@@ -18,29 +18,13 @@ class CurrencyConversionCoordinator: Coordinator {
     }
     
     func start() {
-        childCoordinators?.append(self)
-        
-        if let controller = HasViewControllerBeenPushedValidation<CurrencyConversionViewController>(navigation: navigationController).validate() {
-            receivedDataViewController(controller, receivedData: self.receivedData )
-            navigationController.popToViewController(controller, animated: true)
-            return
-        }
-        
-        let controller: CurrencyConversionViewController = CurrencyConversionControllerFactory.make()
-        receivedDataViewController(controller, receivedData: self.receivedData )
-        navigationController.pushViewController(controller)
+        childCoordinator = self
+        var controller: CurrencyConversionViewController = CurrencyConversionControllerFactory.make()
+        controller = navigationController.pushViewController(controller)
+        controller.coordinator = self
+        controller.receivedData = receivedData
     }
-    
-    
-    
-//  MARK: - PRIVATE AREA
-    
-    private func receivedDataViewController(_ vc: CurrencyConversionViewController, receivedData: CurrencyConversionVCDTO?) {
-        vc.coordinator = self
-        guard let receivedData else { return }
-        vc.receivedData = receivedData
-    }
-    
+        
 }
 
 
@@ -50,7 +34,7 @@ extension CurrencyConversionCoordinator: CurrencyConversionViewControllerCoordin
     func goToSearchCurrenciesVC() {
         let coordinator = ListCurrenciesCoordinator(navigationController)
         coordinator.start()
-        childCoordinators = nil
+        childCoordinator = nil
     }
         
 }
