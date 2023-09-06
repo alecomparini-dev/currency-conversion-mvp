@@ -88,7 +88,11 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     }
     
     private func fetchCurrencies() {
-        listCurrenciesPR.listCurrencies()
+        Task {
+            await listCurrenciesPR.listCurrencies()
+            configTableViewDelegate()
+            reloadTableView()
+        }
     }
     
     private func startAnimationLoading() {
@@ -119,7 +123,6 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
     
     func successListCurrencies() {
-        configTableViewDelegate()
         reloadTableView()
         screen.loading.stopAnimating()
     }
