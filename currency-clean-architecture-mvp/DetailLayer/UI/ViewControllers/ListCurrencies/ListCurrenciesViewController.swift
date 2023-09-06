@@ -18,9 +18,7 @@ protocol ListCurrenciesViewControllerCoordinator: AnyObject {
 
 class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator {
     weak var coordinator: ListCurrenciesViewControllerCoordinator?
-    
-    var receivedData: Any?
-    
+        
     private var listCurrenciesPR: ListCurrenciesPresenter
     private var listCurrenciesDataSource: ListCurrenciesPresenterDataSource?
     
@@ -88,7 +86,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     }
     
     private func fetchCurrencies() {
-        listCurrenciesPR.listCurrencies()
+        listCurrenciesPR.fetchCurrencies()
     }
     
     private func startAnimationLoading() {
@@ -102,10 +100,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
     
     func backPageButtonTapped() {
-        coordinator?.goToCurrencyConversionVC(dto:
-            CurrencyConversionVCDTO(symbol: "R$",
-                                    currencyISO: "BRL", name: "Real")
-        )
+        coordinator?.goToCurrencyConversionVC(dto: nil)
     }
     
 }
@@ -164,6 +159,14 @@ extension ListCurrenciesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listCurrenciesDataSource?.numberOfCurrencies() ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currency = listCurrenciesPR.getCurrencyBy(index: indexPath.row)
+        let currencyDTO = CurrencyConversionVCDTO(symbol: currency.symbol ?? "" ,
+                                                  currencyISO: currency.currencyISO ?? "",
+                                                  name: currency.name ?? "" )
+        coordinator?.goToCurrencyConversionVC(dto: currencyDTO)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

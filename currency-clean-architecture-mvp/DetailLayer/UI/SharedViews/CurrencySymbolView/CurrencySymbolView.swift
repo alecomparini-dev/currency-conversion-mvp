@@ -9,10 +9,10 @@ import UIKit
 
 class CurrencySymbolView: UIView {
     
-    private let input: CurrencySymbolViewDTO
+    private let currencySymbolDTO: CurrencySymbolViewDTO?
     
-    init(currencySymbolDTO: CurrencySymbolViewDTO) {
-        self.input = currencySymbolDTO
+    init(currencySymbolDTO: CurrencySymbolViewDTO?) {
+        self.currencySymbolDTO = currencySymbolDTO
         super.init(frame: .zero)
         configure()
     }
@@ -24,9 +24,9 @@ class CurrencySymbolView: UIView {
     
 //  MARK: - LAZY AREA
     lazy var symbolView: UIView = {
-        let v = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: input.sizeFrame, height: input.sizeFrame)))
-        v.backgroundColor = input.backgroundColor
-        v.layer.cornerRadius = input.sizeFrame/2
+        let v = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: currencySymbolDTO?.sizeFrame ?? .zero, height: currencySymbolDTO?.sizeFrame ?? .zero)))
+        v.backgroundColor = currencySymbolDTO?.backgroundColor ?? .white
+        v.layer.cornerRadius = (currencySymbolDTO?.sizeFrame ?? .zero)/2  
         v.clipsToBounds = true
         return v
     }()
@@ -34,9 +34,9 @@ class CurrencySymbolView: UIView {
     lazy var symbolLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = input.symbol
+        lbl.text = currencySymbolDTO?.symbol ?? K.Strings.empty
         lbl.textColor = .white
-        var font = UIFont.preferredFont(forTextStyle: input.fontSize)
+        var font = UIFont.preferredFont(forTextStyle: currencySymbolDTO?.fontSize ?? .body)
         if let descriptor = font.fontDescriptor.withSymbolicTraits(.traitBold) {
             font = UIFont(descriptor: descriptor, size: 0)
         }
