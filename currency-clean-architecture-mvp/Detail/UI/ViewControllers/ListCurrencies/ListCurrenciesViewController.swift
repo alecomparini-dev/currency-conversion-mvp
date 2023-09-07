@@ -66,6 +66,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         configSearchCurrenciesViewDelegate()
         configSearchBarDelegate()
         configListCurrenciesPresenterDelegate()
+        configSortDelegate()
     }
     
     private func configSearchCurrenciesViewDelegate() {
@@ -83,6 +84,10 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     
     private func configListCurrenciesPresenterDelegate() {
         listCurrenciesPR.delegate = self
+    }
+    
+    private func configSortDelegate() {
+        screen.sortCurrencies.delegate = self
     }
     
     private func fetchCurrencies() {
@@ -120,7 +125,6 @@ extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
     }
     
     func error(title: String, message: String) {
-        print(message)
         screen.loading.stopAnimating()
     }
     
@@ -128,15 +132,30 @@ extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
 
 
 
-//  MARK: - EXTENSION UISearchBarDelegate
+//  MARK: - EXTENSION - UISearchBarDelegate
 extension ListCurrenciesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        listCurrenciesPR.filterCurrencies(searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+}
+
+
+
+//  MARK: - EXTENSION - SortCurrenciesViewDelegate
+extension ListCurrenciesViewController: SortCurrenciesViewDelegate {
+    func sortCodeButtonTapped() {
+        
+        listCurrenciesPR.sortByAcronym()
+    }
+    
+    func sortDescriptionButtonTapped() {
+        listCurrenciesPR.sortByName()
     }
     
 }
@@ -174,7 +193,7 @@ extension ListCurrenciesViewController: UITableViewDataSource {
         
         guard let cell else { return UITableViewCell() }
         
-        let currency = listCurrenciesPR.getCurrencies()[indexPath.row]
+        let currency = listCurrenciesPR.getCurrencyBy(index: indexPath.row)
         
         let parameter = CurrencyTableViewCellDTO(symbol: currency.symbol ?? "",
                                                  currencyISO: currency.currencyISO ?? "",

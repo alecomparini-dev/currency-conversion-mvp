@@ -332,16 +332,16 @@
 		026CF1F62A98EB0900496C15 /* currency-clean-architecture-mvp */ = {
 			isa = PBXGroup;
 			children = (
-				026CF2762A98EBEB00496C15 /* DomainLayer */,
-				026CF2642A98EBEB00496C15 /* ApplicationLayer */,
-				026CF20B2A98EBEB00496C15 /* InterfaceAdaptersLayer */,
-				026CF22B2A98EBEB00496C15 /* DetailLayer */,
+				026CF2762A98EBEB00496C15 /* Domain */,
+				026CF2642A98EBEB00496C15 /* Application */,
+				026CF20B2A98EBEB00496C15 /* InterfaceAdapters */,
+				026CF22B2A98EBEB00496C15 /* Detail */,
 				026CF27D2A98EBEB00496C15 /* Main */,
 			);
 			path = "currency-clean-architecture-mvp";
 			sourceTree = "<group>";
 		};
-		026CF20B2A98EBEB00496C15 /* InterfaceAdaptersLayer */ = {
+		026CF20B2A98EBEB00496C15 /* InterfaceAdapters */ = {
 			isa = PBXGroup;
 			children = (
 				026CF2222A98EBEB00496C15 /* Errors */,
@@ -349,7 +349,7 @@
 				026CF2192A98EBEB00496C15 /* UseCaseGateways */,
 				026CF20C2A98EBEB00496C15 /* Presenters */,
 			);
-			path = InterfaceAdaptersLayer;
+			path = InterfaceAdapters;
 			sourceTree = "<group>";
 		};
 		026CF20C2A98EBEB00496C15 /* Presenters */ = {
@@ -479,7 +479,7 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		026CF22B2A98EBEB00496C15 /* DetailLayer */ = {
+		026CF22B2A98EBEB00496C15 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				026CF22C2A98EBEB00496C15 /* UI */,
@@ -487,7 +487,7 @@
 				02BBAD412A991FBB000D84B3 /* Repository */,
 				02BBAD3E2A991F97000D84B3 /* File */,
 			);
-			path = DetailLayer;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		026CF22C2A98EBEB00496C15 /* UI */ = {
@@ -649,13 +649,13 @@
 			path = URLSession;
 			sourceTree = "<group>";
 		};
-		026CF2642A98EBEB00496C15 /* ApplicationLayer */ = {
+		026CF2642A98EBEB00496C15 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				026CF2652A98EBEB00496C15 /* Errors */,
 				026CF2672A98EBEB00496C15 /* UseCases */,
 			);
-			path = ApplicationLayer;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		026CF2652A98EBEB00496C15 /* Errors */ = {
@@ -724,14 +724,14 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
-		026CF2762A98EBEB00496C15 /* DomainLayer */ = {
+		026CF2762A98EBEB00496C15 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				026CF2772A98EBEB00496C15 /* Models */,
 				026CF2792A98EBEB00496C15 /* Errors */,
 				026CF27B2A98EBEB00496C15 /* Entities */,
 			);
-			path = DomainLayer;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		026CF2772A98EBEB00496C15 /* Models */ = {

@@ -78,6 +78,7 @@ class SortCurrenciesView: UIView {
         return st
     }()
     
+    
 //  MARK: - PRIVATE AREA
     
     private func configure() {

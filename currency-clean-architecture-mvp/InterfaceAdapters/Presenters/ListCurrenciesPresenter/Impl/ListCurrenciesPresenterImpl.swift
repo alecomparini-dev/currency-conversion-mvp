@@ -8,6 +8,15 @@
 import Foundation
 
 
+public enum SortingTypes {
+    case currencyISOAscending
+    case currencyISODescending
+    case nameAscending
+    case nameDescending
+}
+
+
+
 //  MARK: - DELEGATE
 protocol ListCurrenciesPresenterOutput: AnyObject {
     func successListCurrencies()
@@ -16,30 +25,23 @@ protocol ListCurrenciesPresenterOutput: AnyObject {
 }
 
 
-enum SortingTypes {
-    case currencyISO
-    case name
-}
-
 //  MARK: - CLASS
 class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     weak var delegate: ListCurrenciesPresenterOutput?
+    private var filteredText = ""
     
     struct Control {
-        static var sortingTypeSelected: SortingTypes = .currencyISO
+        static var sortingTypeSelected: SortingTypes = .currencyISOAscending
     }
-    
     
     private let listCurrenciesUseCase: ListCurrenciesUseCase
     private let listSymbolsUseCase: ListCurrencySymbolsUseCase
     private let addFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?
     private let listFavoriteCurrenciesUseCase: ListFavoriteCurrenciesUseCase?
     
-    private var favoriteCurrencies = [FavoriteCurrencyDTO]()
     private var currenciesData = [ListCurrencyPresenterDTO]()
-    
-    //mudar para filtered, quando eu fizer o methodo de filtro
-    var listCurrenciesTableView = [ListCurrencyPresenterDTO]()
+    private var favoriteCurrencies = [FavoriteCurrencyDTO]()
+    private var filteredCurrencies = [ListCurrencyPresenterDTO]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase,
          listSymbolsUseCase: ListCurrencySymbolsUseCase,
@@ -55,22 +57,55 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 //  MARK: - PUBLIC FUNCTIONS
     
     func getCurrencies() -> [ListCurrencyPresenterDTO] {
-        return currenciesData
+        return filteredText.isEmpty ? currenciesData : filteredCurrencies
     }
+    
     func getCurrencyBy(index: Int) -> ListCurrencyPresenterDTO {
-        return currenciesData[index]
+        return getCurrencies()[index]
+    }
+    
+    func filterCurrencies(_ text: String) {
+        filteredText = text
+        self.filteredCurrencies = currenciesData.filter({
+            ($0.currencyISO?.lowercased().contains(text.lowercased()) ?? false) ||
+            ($0.name?.lowercased().contains(text.lowercased()) ?? false) 
+            
+        })
+        reloadTablaView()
+    }
+    
+    func sortByAcronym() {
+        if Control.sortingTypeSelected == .currencyISOAscending {
+            sortedCurrenciesData(by: .currencyISODescending)
+        } else {
+            sortedCurrenciesData(by: .currencyISOAscending)
+        }
+        filterCurrencies(filteredText)
+    }
+    
+    func sortByName() {
+        if Control.sortingTypeSelected == .nameAscending {
+            sortedCurrenciesData(by: .nameDescending)
+        } else {
+            sortedCurrenciesData(by: .nameAscending)
+        }
+        filterCurrencies(filteredText)
     }
     
     func addFavoriteCurrency(_ currency: FavoriteCurrencyDTO) {
         favoriteCurrencies.append(currency)
         refreshFavoritesCurrenciesData()
         saveFavorites()
+        sortedCurrenciesData(by: Control.sortingTypeSelected)
+        filterCurrencies(filteredText)
     }
     
     func deleteFavoriteCurrency(_ currencyISO: String) {
         favoriteCurrencies.removeAll(where: {$0.currencyISO == currencyISO} )
         refreshFavoritesCurrenciesData()
         saveFavorites()
+        sortedCurrenciesData(by: Control.sortingTypeSelected)
+        filterCurrencies(filteredText)
     }
 
     func fetchCurrencies() {
@@ -96,7 +131,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                                 
                 refreshFavoritesCurrenciesData()
                 
-                sortedCurrenciesData(by: .currencyISO)
+                sortedCurrenciesData(by: .currencyISOAscending)
                 
                 successListCurrenciesData()
                 
@@ -131,7 +166,6 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
         Task {
             do {
                 try await addFavoriteCurrencyUseCase.add(favoriteCurrencies.compactMap({ $0.currencyISO }))
-                sortedCurrenciesData(by: Control.sortingTypeSelected)
             } catch (let error) {
                 delegate?.error(title: "Error", message: "Error: \(error.localizedDescription)" )
             }
@@ -140,14 +174,24 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     private func sortedCurrenciesData(by selected: SortingTypes) {
         Control.sortingTypeSelected = selected
-        
+
         currenciesData = currenciesData.sorted { (currency1, currency2) in
+            
             if currency1.favorite == currency2.favorite {
                 
-                if Control.sortingTypeSelected == .currencyISO {
+                if Control.sortingTypeSelected == .currencyISOAscending {
                     return  (currency1.currencyISO ?? "") < (currency2.currencyISO ?? "")
                 }
-                return  (currency1.name ?? "") < (currency2.name ?? "")
+                
+                if Control.sortingTypeSelected == .currencyISODescending {
+                    return  (currency1.currencyISO ?? "") > (currency2.currencyISO ?? "")
+                }
+                
+                if Control.sortingTypeSelected == .nameAscending {
+                    return  (currency1.name ?? "") < (currency2.name ?? "")
+                }
+
+                return  (currency1.name ?? "") > (currency2.name ?? "")
                 
             } else {
                 return (currency1.favorite ?? false) && !(currency2.favorite ?? false)
@@ -179,7 +223,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
 //  MARK: - EXTENSION - ListCurrenciesPresenterDataSource
 
 extension ListCurrenciesPresenterImpl: ListCurrenciesPresenterDataSource {
-    func numberOfCurrencies() -> Int { currenciesData.count  }
+    func numberOfCurrencies() -> Int { getCurrencies().count  }
         
 }
 
