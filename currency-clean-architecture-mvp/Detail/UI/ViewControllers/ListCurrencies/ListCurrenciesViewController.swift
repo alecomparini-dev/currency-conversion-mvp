@@ -113,7 +113,28 @@ extension ListCurrenciesViewController: ListCurrenciesViewDelegate {
 
 //  MARK: - EXTENSION ListCurrenciesPresenterDelegate - [Presenter]
 extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
+    
+    func sortingType(_ type: SortingTypes) {
+        screen.sortCurrencies.sortCodeButton.setImage(UIImage(), for: .normal)
+        screen.sortCurrencies.sortNameButton.setImage(UIImage(), for: .normal)
+        let imgChevronDown = UIImage(systemName: K.Screen.ListCurrencies.Images.sortAcronymButtonDown)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14))
+        let imgChevronUp = UIImage(systemName: K.Screen.ListCurrencies.Images.sortAcronymButtonUp)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14))
 
+        switch type {
+            case .currencyISOAscending:
+                screen.sortCurrencies.sortCodeButton.setImage(imgChevronDown, for: .normal)
+            
+            case .currencyISODescending:
+                screen.sortCurrencies.sortCodeButton.setImage(imgChevronUp, for: .normal)
+            
+            case .nameAscending:
+                screen.sortCurrencies.sortNameButton.setImage(imgChevronDown, for: .normal)
+            
+            case .nameDescending:
+                screen.sortCurrencies.sortNameButton.setImage(imgChevronUp, for: .normal)
+        }
+    }
+    
     func reloadTableView() {
         screen.tableView.reloadData()
     }
@@ -131,7 +152,6 @@ extension ListCurrenciesViewController: ListCurrenciesPresenterOutput {
 }
 
 
-
 //  MARK: - EXTENSION - UISearchBarDelegate
 extension ListCurrenciesViewController: UISearchBarDelegate {
     
@@ -146,11 +166,9 @@ extension ListCurrenciesViewController: UISearchBarDelegate {
 }
 
 
-
 //  MARK: - EXTENSION - SortCurrenciesViewDelegate
 extension ListCurrenciesViewController: SortCurrenciesViewDelegate {
     func sortCodeButtonTapped() {
-        
         listCurrenciesPR.sortByAcronym()
     }
     
@@ -159,7 +177,6 @@ extension ListCurrenciesViewController: SortCurrenciesViewDelegate {
     }
     
 }
-
 
 
 //  MARK: - EXTENSION UITableViewDelegate

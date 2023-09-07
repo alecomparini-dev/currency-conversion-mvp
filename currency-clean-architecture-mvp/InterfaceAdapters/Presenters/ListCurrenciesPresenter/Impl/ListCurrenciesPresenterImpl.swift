@@ -16,12 +16,12 @@ public enum SortingTypes {
 }
 
 
-
 //  MARK: - DELEGATE
 protocol ListCurrenciesPresenterOutput: AnyObject {
     func successListCurrencies()
     func error(title: String, message: String)
     func reloadTableView()
+    func sortingType(_ type: SortingTypes)
 }
 
 
@@ -174,7 +174,10 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
     private func sortedCurrenciesData(by selected: SortingTypes) {
         Control.sortingTypeSelected = selected
-
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.sortingType(selected)
+        }
+        
         currenciesData = currenciesData.sorted { (currency1, currency2) in
             
             if currency1.favorite == currency2.favorite {

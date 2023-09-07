@@ -33,7 +33,7 @@ class SortCurrenciesView: UIView {
 //  MARK: - LAZY AREA
     
     lazy var sortCodeButton: UIButton = {
-        let img = UIImage(systemName: K.Screen.ListCurrencies.Images.sortCodeButton)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14))
+        let img = UIImage(systemName: K.Screen.ListCurrencies.Images.sortAcronymButtonDown)?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14))
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.configuration = UIButton.Configuration.plain()
