@@ -44,7 +44,8 @@ struct K {
             
             struct Images {
                 static let backPageButton = "chevron.left"
-                static let sortCodeButton = "chevron.down"
+                static let sortAcronymButtonDown = "chevron.down"
+                static let sortAcronymButtonUp = "chevron.up"
                 static let favoriteButton = "heart"
                 static let favoriteFillButton = "heart.fill"
             }
