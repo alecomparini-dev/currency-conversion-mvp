@@ -58,11 +58,28 @@ class ListCurrenciesView: UIView {
     lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
         search.translatesAutoresizingMaskIntoConstraints = false
+        search.searchBarStyle = .prominent
+        
         search.clipsToBounds = true
-        search.layer.cornerRadius = 8
-        search.searchTextField.backgroundColor = .clear
         search.barTintColor = .white
         search.placeholder = K.Screen.ListCurrencies.searchBar
+
+        search.searchTextField.textColor = .black
+        search.searchTextField.backgroundColor = .white
+        search.searchTextField.leftView?.tintColor = .gray
+        
+        search.searchTextField.clearButtonMode = .whileEditing
+        let clearButton = search.searchTextField.value(forKey: "_clearButton") as! UIButton
+        let img = clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        clearButton.setImage(img, for: .normal)
+        clearButton.tintColor = .gray.withAlphaComponent(0.6)
+
+        let att: [NSAttributedString.Key: Any] = [.foregroundColor : UIColor.gray]
+        search.searchTextField.attributedPlaceholder = NSAttributedString (
+            string:  K.Screen.ListCurrencies.searchBar,
+            attributes: att
+        )
+        
         return search
     }()
     
@@ -76,6 +93,7 @@ class ListCurrenciesView: UIView {
         let tab = UITableView()
         tab.translatesAutoresizingMaskIntoConstraints = false
         tab.separatorStyle = .none
+        tab.backgroundColor = .white
         tab.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
         return tab
     }()

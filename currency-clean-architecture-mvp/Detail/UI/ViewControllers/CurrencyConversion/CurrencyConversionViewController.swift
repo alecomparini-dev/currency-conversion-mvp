@@ -5,6 +5,16 @@
 //  Created by Alessandro Comparini on 14/08/23.
 //
 
+/*
+ var dateAPI = Date(timeIntervalSince1970: jsonTime as! Double)
+ let dateFormatter = DateFormatter()
+ dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+ dateFormatter.timeZone = TimeZone.current
+ let formattedLocalDate = dateFormatter.string(from: dateAPI)
+ print("FUSO LOCAL -->>>>>", formattedLocalDate)
+ */
+
+
 import UIKit
 
 
@@ -70,14 +80,6 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
         hideKeyboardOnTap()
         configDelegate()
         configInitialCurrencies()
-        /*
-         var dateAPI = Date(timeIntervalSince1970: jsonTime as! Double)
-         let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-         dateFormatter.timeZone = TimeZone.current
-         let formattedLocalDate = dateFormatter.string(from: dateAPI)
-         print("FUSO LOCAL -->>>>>", formattedLocalDate)
-         */
     }
     
     private func configInitialCurrencies() {
