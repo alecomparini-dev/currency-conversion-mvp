@@ -34,6 +34,10 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
 
 //  MARK: - LAZY SCREEN
     lazy var screen: ListCurrenciesView = {
@@ -56,6 +60,7 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
 //  MARK: - PRIVATE AREA
     
     private func initializations() {
+
         hideKeyboardOnTap()
         configureDelegates()
         fetchCurrencies()

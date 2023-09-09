@@ -10,7 +10,7 @@ import SwiftUI
 #if DEBUG
 struct CurrencyConversion_Preview: PreviewProvider {
     static var previews: some View {
-        CurrencyConversionViewController()
+        CurrencyConversionControllerFactory.make()
         .asSwiftUIViewController
     }
 }

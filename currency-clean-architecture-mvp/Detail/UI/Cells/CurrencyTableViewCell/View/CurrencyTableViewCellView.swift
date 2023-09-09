@@ -44,6 +44,7 @@ class CurrencyTableViewCellView: UIView {
     lazy var favoriteView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -98,8 +99,8 @@ class CurrencyTableViewCellView: UIView {
     private func configCardCurrencyViewConstraints() {
         NSLayoutConstraint.activate([
             cardCurrencyView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            cardCurrencyView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            cardCurrencyView.trailingAnchor.constraint(equalTo: favoriteView.leadingAnchor, constant: -10),
+            cardCurrencyView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            cardCurrencyView.trailingAnchor.constraint(equalTo: favoriteView.leadingAnchor),
             cardCurrencyView.heightAnchor.constraint(equalToConstant: 75),
         ])
     }
@@ -107,16 +108,21 @@ class CurrencyTableViewCellView: UIView {
     private func configFavoriteViewConstraints() {
         NSLayoutConstraint.activate([
             favoriteView.topAnchor.constraint(equalTo: cardCurrencyView.topAnchor),
-            favoriteView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            favoriteView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 2),
             favoriteView.bottomAnchor.constraint(equalTo: cardCurrencyView.bottomAnchor),
-            favoriteView.widthAnchor.constraint(equalToConstant: 40),
+            favoriteView.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
     
     private func configFavoriteButtonConstraints() {
         NSLayoutConstraint.activate([
-            favoriteButton.centerYAnchor.constraint(equalTo: favoriteView.centerYAnchor),
-            favoriteButton.centerXAnchor.constraint(equalTo: favoriteView.centerXAnchor),
+            favoriteButton.topAnchor.constraint(equalTo: favoriteView.topAnchor),
+            favoriteButton.leadingAnchor.constraint(equalTo: favoriteView.leadingAnchor),
+            favoriteButton.trailingAnchor.constraint(equalTo: favoriteView.trailingAnchor),
+            favoriteButton.bottomAnchor.constraint(equalTo: favoriteView.bottomAnchor),
+//
+//            favoriteButton.centerYAnchor.constraint(equalTo: favoriteView.centerYAnchor),
+//            favoriteButton.centerXAnchor.constraint(equalTo: favoriteView.centerXAnchor),
         ])
     }
     

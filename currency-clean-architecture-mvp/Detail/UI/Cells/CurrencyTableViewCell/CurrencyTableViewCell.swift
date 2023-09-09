@@ -66,8 +66,8 @@ class CurrencyTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             screen.topAnchor.constraint(equalTo: super.topAnchor),
             screen.bottomAnchor.constraint(equalTo: super.bottomAnchor),
-            screen.leadingAnchor.constraint(equalTo: super.leadingAnchor, constant: 25),
-            screen.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -20),
+            screen.leadingAnchor.constraint(equalTo: super.leadingAnchor),
+            screen.trailingAnchor.constraint(equalTo: super.trailingAnchor),
         ])
     }
     
