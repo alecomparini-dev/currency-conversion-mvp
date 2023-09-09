@@ -69,7 +69,7 @@
 		026CF2D22A98EBEB00496C15 /* ListCurrenciesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2732A98EBEB00496C15 /* ListCurrenciesUseCase.swift */; };
 		026CF2D32A98EBEB00496C15 /* CurrenciesToDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2752A98EBEB00496C15 /* CurrenciesToDTO.swift */; };
 		026CF2D52A98EBEB00496C15 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF27A2A98EBEB00496C15 /* DomainError.swift */; };
-		026CF2D62A98EBEB00496C15 /* CurrencyConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF27C2A98EBEB00496C15 /* CurrencyConversion.swift */; };
+		026CF2D62A98EBEB00496C15 /* ConversionEntityImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF27C2A98EBEB00496C15 /* ConversionEntityImpl.swift */; };
 		026CF2D72A98EBEB00496C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 026CF27F2A98EBEB00496C15 /* Assets.xcassets */; };
 		026CF2D92A98EBEB00496C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2832A98EBEB00496C15 /* AppDelegate.swift */; };
 		026CF2DA2A98EBEB00496C15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 026CF2842A98EBEB00496C15 /* Localizable.strings */; };
@@ -89,6 +89,13 @@
 		026CF3032A9900BA00496C15 /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF2FF2A9900BA00496C15 /* TestExtension.swift */; };
 		026CF3042A9900BA00496C15 /* CurrencyConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CF3022A9900BA00496C15 /* CurrencyConversionTests.swift */; };
 		026CF30A2A99128300496C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 026CF3092A99128200496C15 /* LaunchScreen.storyboard */; };
+		02A792402AAB543D00B84437 /* CurrencyConversionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A7923F2AAB543D00B84437 /* CurrencyConversionPresenter.swift */; };
+		02A792422AAB54CA00B84437 /* CurrencyConversionPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A792412AAB54CA00B84437 /* CurrencyConversionPresenterImpl.swift */; };
+		02A792452AAB55A000B84437 /* conversionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A792442AAB55A000B84437 /* conversionDTO.swift */; };
+		02A7924A2AAB61B400B84437 /* ConversionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A792492AAB61B400B84437 /* ConversionUseCase.swift */; };
+		02A7924D2AAB61E600B84437 /* ConversionUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A7924C2AAB61E600B84437 /* ConversionUseCaseDTO.swift */; };
+		02A7924F2AAB622200B84437 /* ConversionUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A7924E2AAB622200B84437 /* ConversionUseCaseImpl.swift */; };
+		02A792522AAB630700B84437 /* ConversionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A792512AAB630700B84437 /* ConversionEntity.swift */; };
 		02BBAD402A991FAF000D84B3 /* ReadFileImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD3F2A991FAF000D84B3 /* ReadFileImp.swift */; };
 		02BBAD432A992630000D84B3 /* CurrencySymbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 02BBAD422A992630000D84B3 /* CurrencySymbols.json */; };
 		02BBAD482A9951F5000D84B3 /* CurrencyConversionVCDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD472A9951F5000D84B3 /* CurrencyConversionVCDTO.swift */; };
@@ -184,7 +191,7 @@
 		026CF2732A98EBEB00496C15 /* ListCurrenciesUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCurrenciesUseCase.swift; sourceTree = "<group>"; };
 		026CF2752A98EBEB00496C15 /* CurrenciesToDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrenciesToDTO.swift; sourceTree = "<group>"; };
 		026CF27A2A98EBEB00496C15 /* DomainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
-		026CF27C2A98EBEB00496C15 /* CurrencyConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyConversion.swift; sourceTree = "<group>"; };
+		026CF27C2A98EBEB00496C15 /* ConversionEntityImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionEntityImpl.swift; sourceTree = "<group>"; };
 		026CF27F2A98EBEB00496C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		026CF2832A98EBEB00496C15 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		026CF2852A98EBEB00496C15 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -206,6 +213,13 @@
 		026CF2FF2A9900BA00496C15 /* TestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
 		026CF3022A9900BA00496C15 /* CurrencyConversionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyConversionTests.swift; sourceTree = "<group>"; };
 		026CF3092A99128200496C15 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		02A7923F2AAB543D00B84437 /* CurrencyConversionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionPresenter.swift; sourceTree = "<group>"; };
+		02A792412AAB54CA00B84437 /* CurrencyConversionPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionPresenterImpl.swift; sourceTree = "<group>"; };
+		02A792442AAB55A000B84437 /* conversionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conversionDTO.swift; sourceTree = "<group>"; };
+		02A792492AAB61B400B84437 /* ConversionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionUseCase.swift; sourceTree = "<group>"; };
+		02A7924C2AAB61E600B84437 /* ConversionUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionUseCaseDTO.swift; sourceTree = "<group>"; };
+		02A7924E2AAB622200B84437 /* ConversionUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionUseCaseImpl.swift; sourceTree = "<group>"; };
+		02A792512AAB630700B84437 /* ConversionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionEntity.swift; sourceTree = "<group>"; };
 		02BBAD3F2A991FAF000D84B3 /* ReadFileImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadFileImp.swift; sourceTree = "<group>"; };
 		02BBAD422A992630000D84B3 /* CurrencySymbols.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrencySymbols.json; sourceTree = "<group>"; };
 		02BBAD472A9951F5000D84B3 /* CurrencyConversionVCDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionVCDTO.swift; sourceTree = "<group>"; };
@@ -355,6 +369,7 @@
 		026CF20C2A98EBEB00496C15 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				02A7923D2AAB541100B84437 /* CurrencyConversionPresenter */,
 				026CF20D2A98EBEB00496C15 /* ListCurrenciesPresenter */,
 				026CF2122A98EBEB00496C15 /* SearchCurrenciesPresenter */,
 				026CF2152A98EBEB00496C15 /* FavoriteCurrencyPresenter */,
@@ -669,6 +684,7 @@
 		026CF2672A98EBEB00496C15 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				02A792462AAB618600B84437 /* ConversionUseCase */,
 				026CF26D2A98EBEB00496C15 /* ListCurrenciesUseCase */,
 				026CF2682A98EBEB00496C15 /* ListCurrencySymbolsUseCase */,
 				02BBAD602A9CBB44000D84B3 /* AddFavoriteCurrencyUseCase */,
@@ -755,7 +771,8 @@
 		026CF27B2A98EBEB00496C15 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				026CF27C2A98EBEB00496C15 /* CurrencyConversion.swift */,
+				02A792502AAB62E600B84437 /* Impl */,
+				02A792512AAB630700B84437 /* ConversionEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -893,6 +910,66 @@
 				026CF3022A9900BA00496C15 /* CurrencyConversionTests.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		02A7923D2AAB541100B84437 /* CurrencyConversionPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				02A792432AAB552000B84437 /* DTO */,
+				02A7923E2AAB542F00B84437 /* Impl */,
+				02A7923F2AAB543D00B84437 /* CurrencyConversionPresenter.swift */,
+			);
+			path = CurrencyConversionPresenter;
+			sourceTree = "<group>";
+		};
+		02A7923E2AAB542F00B84437 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				02A792412AAB54CA00B84437 /* CurrencyConversionPresenterImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		02A792432AAB552000B84437 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				02A792442AAB55A000B84437 /* conversionDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		02A792462AAB618600B84437 /* ConversionUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				02A792482AAB619F00B84437 /* DTO */,
+				02A792472AAB619700B84437 /* Impl */,
+				02A792492AAB61B400B84437 /* ConversionUseCase.swift */,
+			);
+			path = ConversionUseCase;
+			sourceTree = "<group>";
+		};
+		02A792472AAB619700B84437 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				02A7924E2AAB622200B84437 /* ConversionUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		02A792482AAB619F00B84437 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				02A7924C2AAB61E600B84437 /* ConversionUseCaseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		02A792502AAB62E600B84437 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				026CF27C2A98EBEB00496C15 /* ConversionEntityImpl.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		02BBAD3B2A991625000D84B3 /* Interfaces */ = {
@@ -1316,6 +1393,7 @@
 				026CF2E82A98EBEB00496C15 /* CurrencyConversionControllerFactory.swift in Sources */,
 				0231891E2A9EB89B004BBD50 /* ResponseDTO.swift in Sources */,
 				026CF2A52A98EBEB00496C15 /* FileListCurrencySymbolsUseCaseGatewayImpl.swift in Sources */,
+				02A792522AAB630700B84437 /* ConversionEntity.swift in Sources */,
 				026CF2A12A98EBEB00496C15 /* SearchCurrenciesPresenterImpl.swift in Sources */,
 				026CF2EA2A98EBEB00496C15 /* ListCurrenciesControllerFactory.swift in Sources */,
 				026CF2BC2A98EBEB00496C15 /* SortCurrenciesView.swift in Sources */,
@@ -1329,10 +1407,13 @@
 				026CF2B92A98EBEB00496C15 /* CurrencyConversionView.swift in Sources */,
 				02BBAD482A9951F5000D84B3 /* CurrencyConversionVCDTO.swift in Sources */,
 				026CF2AB2A98EBEB00496C15 /* HTTPPost.swift in Sources */,
+				02A7924A2AAB61B400B84437 /* ConversionUseCase.swift in Sources */,
 				0222D6F12A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift in Sources */,
 				026CF29E2A98EBEB00496C15 /* ListCurrenciesPresenterDataSource.swift in Sources */,
+				02A792402AAB543D00B84437 /* CurrencyConversionPresenter.swift in Sources */,
 				0222D6EE2A9CDB18000EF7C9 /* DeleteRepository.swift in Sources */,
 				02BBAD502A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift in Sources */,
+				02A792422AAB54CA00B84437 /* CurrencyConversionPresenterImpl.swift in Sources */,
 				026CF29D2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift in Sources */,
 				02BBAD6B2A9CBE90000D84B3 /* DollarToCurrencyRate.swift in Sources */,
 				026CF2B12A98EBEB00496C15 /* ViewControllerCoordinator.swift in Sources */,
@@ -1358,13 +1439,15 @@
 				026CF2BE2A98EBEB00496C15 /* CurrencySymbolViewDTO.swift in Sources */,
 				023A5F942A9D25A300C62DE2 /* ListCurrencySymbolsUseCaseGatewayDTO.swift in Sources */,
 				026CF2A22A98EBEB00496C15 /* FavoriteCurrencyPresenterImpl.swift in Sources */,
+				02A7924D2AAB61E600B84437 /* ConversionUseCaseDTO.swift in Sources */,
 				026CF2B62A98EBEB00496C15 /* CurrencyConversionViewController.swift in Sources */,
 				026CF2CD2A98EBEB00496C15 /* ListCurrencySymbolsUseCaseGateway.swift in Sources */,
+				02A7924F2AAB622200B84437 /* ConversionUseCaseImpl.swift in Sources */,
 				026CF2E92A98EBEB00496C15 /* ViewControllerFactoryProtocol.swift in Sources */,
 				02BBAD7C2A9CD090000D84B3 /* UserDefaultsRepository.swift in Sources */,
 				02BBAD4E2A9AA729000D84B3 /* ListCurrencyVCDTO.swift in Sources */,
 				02BBAD532A9B76EF000D84B3 /* UI+Constants.swift in Sources */,
-				026CF2D62A98EBEB00496C15 /* CurrencyConversion.swift in Sources */,
+				026CF2D62A98EBEB00496C15 /* ConversionEntityImpl.swift in Sources */,
 				026CF2AE2A98EBEB00496C15 /* CurrencyTableViewCellView.swift in Sources */,
 				02BBAD742A9CC613000D84B3 /* Main+Constants.swift in Sources */,
 				026CF2D52A98EBEB00496C15 /* DomainError.swift in Sources */,
@@ -1385,6 +1468,7 @@
 				026CF2E02A98EBEB00496C15 /* UINavigationController+Extension.swift in Sources */,
 				023A5F8E2A9D235400C62DE2 /* GetAllRepository.swift in Sources */,
 				026CF2CF2A98EBEB00496C15 /* ListCurrencyUseCaseDTO.swift in Sources */,
+				02A792452AAB55A000B84437 /* conversionDTO.swift in Sources */,
 				02BBAD772A9CCB8B000D84B3 /* AddRepository.swift in Sources */,
 				026CF2C12A98EBEB00496C15 /* CardCurrencyDTO.swift in Sources */,
 				026CF2D92A98EBEB00496C15 /* AppDelegate.swift in Sources */,
@@ -1567,7 +1651,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Main;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.CurrencyConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1598,7 +1682,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Main;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.CurrencyConversion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

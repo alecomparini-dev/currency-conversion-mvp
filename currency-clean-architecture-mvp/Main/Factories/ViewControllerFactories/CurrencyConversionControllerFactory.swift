@@ -11,6 +11,13 @@ class CurrencyConversionControllerFactory: ViewControllerFactory {
     typealias T = CurrencyConversionViewController
     
     static func make() -> CurrencyConversionViewController {
-        return CurrencyConversionViewController()
+        
+        let conversionEntity = ConversionEntityImpl()
+        
+        let conversionUseCase = ConversionUseCaseImpl(conversionEntity: conversionEntity)
+        
+        let currencyConversionPR = CurrencyConversionPresenterImpl(conversionUseCase: conversionUseCase)
+        
+        return CurrencyConversionViewController(currencyConversionPR: currencyConversionPR)
     }
 }
