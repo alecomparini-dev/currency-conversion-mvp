@@ -10,6 +10,5 @@
 
 
 //MY ENVIRONMENT VARIABLES
-API_BASE_URL = http:/$()/mentoria.codandocommoa.com.br
-UID_FIREBASE = CodandoComMoa
-DEFAULT_THEME = 1
+API_BASE_URL = http:/$()/api.currencylayer.com
+ACCESS_KEY = 2b005329c06a0bbb773f6f1da65baedd

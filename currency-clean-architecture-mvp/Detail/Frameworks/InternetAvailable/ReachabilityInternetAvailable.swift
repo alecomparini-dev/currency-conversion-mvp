@@ -14,7 +14,7 @@ public class ReachabilityInternetAvailable: InternetAvailable  {
     private let reachability: Reachability?
     
     public init(reachability: Reachability) {
-        self.reachability = try? Reachability()
+        self.reachability = try! Reachability()
     }
     
     deinit {

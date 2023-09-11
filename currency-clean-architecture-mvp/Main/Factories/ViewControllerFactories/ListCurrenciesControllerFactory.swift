@@ -27,11 +27,11 @@ class ListCurrenciesControllerFactory: ViewControllerFactory {
         let listSymbolUseCase = FileListCurrencySymbolsUseCaseImpl(listSymbolsGateway: listSymbolFileGateway)
 
         
-        let addRepository = UserDefaultsRepository<[FavoriteCurrencyDTO]>(mainKey: MainConstants.FavoriteCurrency.mainKey)
+        let addRepository = try! UserDefaultsProviderRepository(mainKey: MainConstants.FavoriteCurrency.mainKey)
         let repositoryAddFavoriteUseCaseGateway = RepositoryAddFavoriteCurrencyUseCaseGatewayImpl(repository: addRepository)
         let addFavoriteUseCase = AddFavoriteCurrencyUseCaseImpl(addFavoriteGateway: repositoryAddFavoriteUseCaseGateway)
 
-        let getRepository = UserDefaultsRepository<[Any]>(mainKey: MainConstants.FavoriteCurrency.mainKey)
+        let getRepository = try! UserDefaultsProviderRepository(mainKey: MainConstants.FavoriteCurrency.mainKey)
         let repositoryListFavoriteUseCaseGateway = RepositoryListFavoriteCurrenciesUseCaseGatewayImpl(repository: getRepository)
         let listFavoriteCurrenciesUseCase = ListFavoriteCurrenciesUseCaseImpl(listFavoriteGateway: repositoryListFavoriteUseCaseGateway)
 

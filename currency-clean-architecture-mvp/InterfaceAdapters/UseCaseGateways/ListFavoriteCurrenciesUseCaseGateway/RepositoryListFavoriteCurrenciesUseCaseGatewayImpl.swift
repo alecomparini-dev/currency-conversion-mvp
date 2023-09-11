@@ -9,14 +9,14 @@ import Foundation
 
 class RepositoryListFavoriteCurrenciesUseCaseGatewayImpl: ListFavoriteCurrenciesUseCaseGateway {
     
-    private let repository: GetAllRepository
+    private let repository: FetchRepository
     
-    init(repository: GetAllRepository) {
+    init(repository: FetchRepository) {
         self.repository = repository
     }
     
     func listAll() async throws -> [ListFavoriteCurrenciesUseCaseDTO.Output] {
-        guard let favorites: [String] = try await repository.get() else { return []  }
+        let favorites: [String] = try await repository.fetch()
         return favorites.map({ ListFavoriteCurrenciesUseCaseDTO.Output(currencyISO: $0) })
     }
     
