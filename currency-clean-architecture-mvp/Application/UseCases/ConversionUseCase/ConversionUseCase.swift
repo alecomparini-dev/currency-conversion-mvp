@@ -9,7 +9,5 @@ import Foundation
 
 
 protocol ConversionUseCase: AnyObject {
-    
     func conversion(input: ConversionUseCaseDTO.Input) -> ConversionUseCaseDTO.Output
-    
 }

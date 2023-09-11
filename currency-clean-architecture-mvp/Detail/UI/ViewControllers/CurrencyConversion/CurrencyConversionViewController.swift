@@ -169,18 +169,18 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
         guard let receivedData else {return}
         if Control.selectedCurrency == .currencyOf {
             currencyOf = receivedData
-            return setCurrencyView(screen.currencyOf, receivedData)
+            setCurrencyView(screen.currencyOf, receivedData)
+        } else {
+            currencyTo = receivedData
+            setCurrencyView(screen.currencyTo, receivedData)
         }
-        currencyTo = receivedData
-        setCurrencyView(screen.currencyTo, receivedData)
+        calculateConversion()
     }
 
     private func setCurrencyView(_ currencyView: CurrencyView, _ currencyDTO: CurrencyConversionVCDTO ) {
         currencyView.symbolCurrency.symbolLabel.text = currencyDTO.symbol
         currencyView.titleCurrencyLabel.text = currencyDTO.currencyISO
         currencyView.subTitleCurrencyLabel.text = currencyDTO.name
-        
-        calculateConversion()
     }
     
     private func calculateConversion() {
@@ -191,6 +191,7 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
         let input = ConversionDTO(currencyISOOf: currencyOf,
                                   currencyISOTo: currencyTo,
                                   value: value)
+        
         currencyConversionPR.conversion(input)
     }
     
@@ -227,7 +228,7 @@ extension CurrencyConversionViewController: CurrencyConversionViewDelegate {
         guard let currencyOf, let currencyTo else {return}
         setCurrencyView(screen.currencyOf, currencyOf)
         setCurrencyView(screen.currencyTo, currencyTo)
-        
+        calculateConversion()
     }
     
 }

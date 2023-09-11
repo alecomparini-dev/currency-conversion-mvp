@@ -16,7 +16,10 @@ class ConversionUseCaseImpl: ConversionUseCase {
     }
     
     func conversion(input: ConversionUseCaseDTO.Input) -> ConversionUseCaseDTO.Output {
-            
+        
+        
+        
+        
         let quoteCurrencyOf: Double = 1
         let quoteCurrencyTo: Double = 4.9843
         let value: Double = input.value

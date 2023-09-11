@@ -10,14 +10,14 @@ import Foundation
 
 class RepositoryAddFavoriteCurrencyUseCaseGatewayImpl: AddFavoriteCurrencyUseCaseGateway {
     
-    private let repository: AddRepository
+    private let repository: InsertRepository
     
-    init(repository: AddRepository) {
+    init(repository: InsertRepository) {
         self.repository = repository
     }
 
     func add(_ currencyISO: [String] ) async throws {
-        try await repository.add(item: currencyISO)
+        try await repository.insert(currencyISO)
     }
     
     
