@@ -1717,7 +1717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1772,7 +1772,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1784,7 +1784,7 @@
 		};
 		026CF2092A98EB0B00496C15 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1B8C4D263B488E0E2EFED90 /* Pods-currency-clean-architecture-mvp.debug.xcconfig */;
+			baseConfigurationReference = 02CB165D2AA8A483007A28AB /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1815,7 +1815,7 @@
 		};
 		026CF20A2A98EB0B00496C15 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF0B482ED208EFC6ED0EE7DF /* Pods-currency-clean-architecture-mvp.release.xcconfig */;
+			baseConfigurationReference = 02CB165C2AA8A483007A28AB /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
