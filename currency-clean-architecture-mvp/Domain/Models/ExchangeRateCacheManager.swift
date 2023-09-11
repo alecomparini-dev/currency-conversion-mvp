@@ -10,5 +10,5 @@ import Foundation
 //Gerenciador de Cache de Taxas de Câmbio --> ESPECIFICO DO USE CASE QUE GRAVA OFF LINE OU RECUPERA OFFLINE
 struct ExchangeRateCacheManager {
     let dateQuotes: Date
-    let rates: [DollarToCurrencyRate]
+    let rates: [CurrencyRate]
 }
