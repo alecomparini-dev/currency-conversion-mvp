@@ -8,9 +8,7 @@
 import Foundation
 
 protocol GetAllRepository: AnyObject {
-    
     func get<T>() async throws -> T?
-    
 }
 
 

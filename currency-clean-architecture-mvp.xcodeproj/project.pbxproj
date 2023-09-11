@@ -101,8 +101,9 @@
 		02B70FFC2AAF5AE900C6A4AF /* ListQuotesUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B70FFB2AAF5AE900C6A4AF /* ListQuotesUseCaseImpl.swift */; };
 		02B70FFE2AAF5B5000C6A4AF /* ListQuotesUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B70FFD2AAF5B5000C6A4AF /* ListQuotesUseCaseDTO.swift */; };
 		02B710022AAF65BF00C6A4AF /* CheckInternetAvailableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B710012AAF65BF00C6A4AF /* CheckInternetAvailableUseCase.swift */; };
-		02B710062AAF673300C6A4AF /* SystemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B710052AAF673300C6A4AF /* SystemConfiguration.swift */; };
+		02B710062AAF673300C6A4AF /* SystemConfigurationInternetAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B710052AAF673300C6A4AF /* SystemConfigurationInternetAvailable.swift */; };
 		02B7100A2AAF684B00C6A4AF /* InternetAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B710092AAF684B00C6A4AF /* InternetAvailable.swift */; };
+		02B7100C2AAF823E00C6A4AF /* ReachabilityInternetAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B7100B2AAF823E00C6A4AF /* ReachabilityInternetAvailable.swift */; };
 		02BBAD402A991FAF000D84B3 /* ReadFileImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD3F2A991FAF000D84B3 /* ReadFileImp.swift */; };
 		02BBAD432A992630000D84B3 /* CurrencySymbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 02BBAD422A992630000D84B3 /* CurrencySymbols.json */; };
 		02BBAD482A9951F5000D84B3 /* CurrencyConversionVCDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD472A9951F5000D84B3 /* CurrencyConversionVCDTO.swift */; };
@@ -232,8 +233,9 @@
 		02B70FFB2AAF5AE900C6A4AF /* ListQuotesUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuotesUseCaseImpl.swift; sourceTree = "<group>"; };
 		02B70FFD2AAF5B5000C6A4AF /* ListQuotesUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuotesUseCaseDTO.swift; sourceTree = "<group>"; };
 		02B710012AAF65BF00C6A4AF /* CheckInternetAvailableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternetAvailableUseCase.swift; sourceTree = "<group>"; };
-		02B710052AAF673300C6A4AF /* SystemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemConfiguration.swift; sourceTree = "<group>"; };
+		02B710052AAF673300C6A4AF /* SystemConfigurationInternetAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemConfigurationInternetAvailable.swift; sourceTree = "<group>"; };
 		02B710092AAF684B00C6A4AF /* InternetAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetAvailable.swift; sourceTree = "<group>"; };
+		02B7100B2AAF823E00C6A4AF /* ReachabilityInternetAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityInternetAvailable.swift; sourceTree = "<group>"; };
 		02BBAD3F2A991FAF000D84B3 /* ReadFileImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadFileImp.swift; sourceTree = "<group>"; };
 		02BBAD422A992630000D84B3 /* CurrencySymbols.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrencySymbols.json; sourceTree = "<group>"; };
 		02BBAD472A9951F5000D84B3 /* CurrencyConversionVCDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionVCDTO.swift; sourceTree = "<group>"; };
@@ -1051,7 +1053,8 @@
 		02B710042AAF66EF00C6A4AF /* InternetAvailable */ = {
 			isa = PBXGroup;
 			children = (
-				02B710052AAF673300C6A4AF /* SystemConfiguration.swift */,
+				02B710052AAF673300C6A4AF /* SystemConfigurationInternetAvailable.swift */,
+				02B7100B2AAF823E00C6A4AF /* ReachabilityInternetAvailable.swift */,
 			);
 			path = InternetAvailable;
 			sourceTree = "<group>";
@@ -1517,7 +1520,7 @@
 				0222D6EE2A9CDB18000EF7C9 /* DeleteRepository.swift in Sources */,
 				02BBAD502A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift in Sources */,
 				02B710022AAF65BF00C6A4AF /* CheckInternetAvailableUseCase.swift in Sources */,
-				02B710062AAF673300C6A4AF /* SystemConfiguration.swift in Sources */,
+				02B710062AAF673300C6A4AF /* SystemConfigurationInternetAvailable.swift in Sources */,
 				02A792422AAB54CA00B84437 /* CurrencyConversionPresenterImpl.swift in Sources */,
 				026CF29D2A98EBEB00496C15 /* ListCurrenciesPresenterImpl.swift in Sources */,
 				02BBAD6B2A9CBE90000D84B3 /* CurrencyQuotes.swift in Sources */,
@@ -1559,6 +1562,7 @@
 				02BBAD742A9CC613000D84B3 /* Main+Constants.swift in Sources */,
 				026CF2D52A98EBEB00496C15 /* DomainError.swift in Sources */,
 				026CF2B52A98EBEB00496C15 /* CurrencyConversion_Preview.swift in Sources */,
+				02B7100C2AAF823E00C6A4AF /* ReachabilityInternetAvailable.swift in Sources */,
 				023A5F922A9D24C500C62DE2 /* ListFavoriteCurrenciesUseCaseGateway.swift in Sources */,
 				026CF2BD2A98EBEB00496C15 /* ListCurrenciesView.swift in Sources */,
 				026CF2C02A98EBEB00496C15 /* CardCurrencyView_Preview.swift in Sources */,

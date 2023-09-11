@@ -8,8 +8,6 @@
 import Foundation
 
 protocol AddRepository {
-    
     @discardableResult
     func add<T>(item: T) async throws -> T?
-    
 }
