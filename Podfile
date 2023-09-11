@@ -7,5 +7,7 @@ target 'currency-clean-architecture-mvp' do
 
   # Pods for currency-clean-architecture-mvp
   pod 'Alamofire', '5.7.1'
+  pod 'ReachabilitySwift'
+  pod 'RealmSwift', '~> 10.42'
   
 end
