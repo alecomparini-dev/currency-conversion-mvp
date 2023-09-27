@@ -24,7 +24,8 @@ class ListCurrenciesViewController: UIViewController, ViewControllerCoordinator 
     
     
 //  MARK: - Initializers
-    init(listCurrenciesPR: ListCurrenciesPresenter, listCurrenciesDS: ListCurrenciesPresenterDataSource? = nil) {
+    init(listCurrenciesPR: ListCurrenciesPresenter, 
+         listCurrenciesDS: ListCurrenciesPresenterDataSource? = nil) {
         self.listCurrenciesPR = listCurrenciesPR
         self.listCurrenciesDataSource = listCurrenciesDS
         super.init(nibName: nil, bundle: nil)

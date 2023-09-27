@@ -1,7 +1,3 @@
-//
-//  UserDefaultsRepository.swift
-//  currency-clean-architecture-mvp
-//
 //  Created by Alessandro Comparini on 28/08/23.
 //  po NSHomeDirectory()
 //
@@ -36,7 +32,10 @@ extension UserDefaultsProviderRepository: InsertRepository {
 extension UserDefaultsProviderRepository: FetchRepository {
     
     func fetch<T>() async throws -> [T] {
-        return userDefaults.value(forKey: mainKey) as! [T]
+        if let result = userDefaults.value(forKey: mainKey) as? [T] {
+            return result
+        }
+        return []
     }
     
 }
