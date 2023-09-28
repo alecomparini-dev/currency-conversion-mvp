@@ -4,5 +4,6 @@
 import Foundation
 
 protocol ListQuotesUseCase: AnyObject {
-    func listQuotes()
+    func listQuotes(currencyReferency: String) async throws -> [ListQuotesUseCaseDTO.Output]
+    func getQuotesByCurrency(currencyReferency: String, listCurrency: [String]) async throws -> [ListQuotesUseCaseDTO.Output]
 }

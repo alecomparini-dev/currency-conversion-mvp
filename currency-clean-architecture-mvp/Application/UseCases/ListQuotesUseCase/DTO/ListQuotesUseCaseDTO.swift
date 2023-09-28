@@ -11,7 +11,8 @@ enum ListQuotesUseCaseDTO {
     }
     
     struct Output {
-//        let currenc
+        var currencyISO: String?
+        var quotes: Double?
     }
 
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct CurrencyQuotes {
-    let currencyReference: Currency
-    let currencyISO: Currency
+    let currencyReference: String
+    let currencyISO: String
     let quotes: Double
 }

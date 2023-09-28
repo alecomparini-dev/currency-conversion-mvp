@@ -4,9 +4,21 @@
 import Foundation
 
 class ListQuotesUseCaseImpl: ListQuotesUseCase {
+    private let listQuotesGateway: ListQuotesUseCaseGateway
     
-    func listQuotes() {
-        
+    init(listQuotesGateway: ListQuotesUseCaseGateway) {
+        self.listQuotesGateway = listQuotesGateway
     }
     
+    func listQuotes(currencyReferency: String = "USD") async throws -> [ListQuotesUseCaseDTO.Output] {
+        
+        return []
+    }
+    
+
+    func getQuotesByCurrency(currencyReferency: String, listCurrency: [String]) async throws -> [ListQuotesUseCaseDTO.Output] {
+        
+        return []
+    }
+
 }
