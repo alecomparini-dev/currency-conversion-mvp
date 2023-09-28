@@ -9,6 +9,10 @@ import Foundation
 
 
 struct MainConstants {
+    static let access_key = "access_key"
+    static let pathList = "/list"
+    static let pathLive = "/live"
+    
     struct ListSymbolFile {
         static let fileName = "CurrencySymbols"
         static let withExtension = "json"
@@ -18,8 +22,4 @@ struct MainConstants {
         static let mainKey = "Favorite"
     }
     
-    struct ListCurrencies {
-        static let pathList = "/list"
-        static let access_key = "access_key"
-    }
 }

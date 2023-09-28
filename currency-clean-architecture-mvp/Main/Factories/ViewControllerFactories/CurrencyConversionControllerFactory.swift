@@ -14,7 +14,16 @@ class CurrencyConversionControllerFactory: ViewControllerFactory {
         
         let conversionEntity = ConversionEntityImpl()
         
-        let conversionUseCase = ConversionUseCaseImpl(conversionEntity: conversionEntity)
+        let httpClient = URLSessionFactory.make()
+        let url = makeApiURL(path: MainConstants.pathLive)
+        let parameters = [MainConstants.access_key: Environment.variable(.accessKey)]
+        
+        let listQuotesGateway = RemoteListQuotesUseCaseGatewayImpl(http: httpClient, url: url, parameters: parameters)
+        
+        let listQuotesUseCase = ListQuotesUseCaseImpl(listQuotesGateway: listQuotesGateway)
+        
+        let conversionUseCase = ConversionUseCaseImpl(conversionEntity: conversionEntity,
+                                                      listQuotes: listQuotesUseCase)
         
         let currencyConversionPR = CurrencyConversionPresenterImpl(conversionUseCase: conversionUseCase)
         

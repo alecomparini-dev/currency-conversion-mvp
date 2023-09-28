@@ -13,27 +13,26 @@ class RemoteListQuotesUseCaseGatewayImpl: ListQuotesUseCaseGateway {
         self.url = url
         self.parameters = parameters
     }
-    
-
-    func listQuotes() async throws -> [CurrencyQuotes] {
-        let responseDTO: ResponseDTO = try await http.get(url: url, parameters: parameters)
-        
-        print(responseDTO)
-        
-        return []
-    }
 
     
-    func getQuotesByCurrency(currencyReferency: String, listCurrency: [String]) async throws -> [CurrencyQuotes] {
-        
-        parameters.updateValue(listCurrency.joined(separator: ","), forKey: "currencies")
+    func listQuotesByCurrencies(currencyReference: String, currencies: [String]) async throws -> [CurrencyQuotes] {
+        parameters.updateValue(currencyReference, forKey: "souce")
+
+        if !currencies.isEmpty {
+            parameters.updateValue(currencies.joined(separator: ","), forKey: "currencies")
+        }
         
         let responseDTO: ResponseDTO = try await http.get(url: url, parameters: parameters)
         
         guard let data = responseDTO.data else {return []}
         
+        return try makeMapperQuotesCodable(data)
+    }
+
+    
+//  MARK: - PRIVATE AREA
+    private func makeMapperQuotesCodable(_ data: Data) throws -> [CurrencyQuotes] {
         let quotesCodable = try JSONDecoder().decode(QuotesCodable.self, from: data)
-        
         return quotesCodable.mapperToDomain()
     }
     

@@ -10,15 +10,15 @@ class ListQuotesUseCaseImpl: ListQuotesUseCase {
         self.listQuotesGateway = listQuotesGateway
     }
     
-    func listQuotes(currencyReferency: String = "USD") async throws -> [ListQuotesUseCaseDTO.Output] {
-        
-        return []
+    func listQuotes(currencyReference: String) async throws -> [ListQuotesUseCaseDTO.Output] {
+        return try await listQuotesByCurrencies(currencyReference: currencyReference, currencies: [])
     }
     
 
-    func getQuotesByCurrency(currencyReferency: String, listCurrency: [String]) async throws -> [ListQuotesUseCaseDTO.Output] {
+    func listQuotesByCurrencies(currencyReference: String, currencies: [String]) async throws -> [ListQuotesUseCaseDTO.Output] {
+        let currencyQuotes: [CurrencyQuotes] = try await listQuotesGateway.listQuotesByCurrencies(currencyReference: currencyReference, currencies: currencies)
         
-        return []
+        return CurrencyQuotesMapper.toOutputDTO(currencyQuotes: currencyQuotes)
     }
-
+    
 }

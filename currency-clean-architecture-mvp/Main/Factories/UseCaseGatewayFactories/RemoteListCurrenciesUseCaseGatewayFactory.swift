@@ -13,9 +13,9 @@ class RemoteListCurrenciesUseCaseGatewayFactory {
 //        let httpClient = AlamofireFactory.make()
         let httpClient = URLSessionFactory.make()
         
-        let url = makeApiURL(path: MainConstants.ListCurrencies.pathList)
+        let url = makeApiURL(path: MainConstants.pathList)
         
-        let parameters = [MainConstants.ListCurrencies.access_key: Environment.variable(.accessKey)]
+        let parameters = [MainConstants.access_key: Environment.variable(.accessKey)]
         
         return RemoteListCurrenciesUseCaseGatewayImpl(http: httpClient, url: url, parameters: parameters)
         

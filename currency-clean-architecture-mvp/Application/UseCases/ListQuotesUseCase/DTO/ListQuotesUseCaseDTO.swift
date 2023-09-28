@@ -6,9 +6,7 @@ import Foundation
 
 enum ListQuotesUseCaseDTO {
 
-    struct Input {
-        let currencyReference: String = "USD"
-    }
+    struct Input {}
     
     struct Output {
         var currencyISO: String?
