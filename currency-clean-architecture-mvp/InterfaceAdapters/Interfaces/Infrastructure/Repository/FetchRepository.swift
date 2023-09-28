@@ -8,5 +8,7 @@
 import Foundation
 
 protocol FetchRepository: AnyObject {
+    
+    @discardableResult
     func fetch<T>() async throws -> [T]
 }

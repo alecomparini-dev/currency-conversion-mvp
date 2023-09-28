@@ -33,9 +33,22 @@ class CurrencyConversionPresenterImpl: CurrencyConversionPresenter {
                                                currencyTo: conversionDTO.currencyISOTo,
                                                value: Double(conversionDTO.value)!)
         
-        let dto = conversionUseCase.conversion(input: input)
         
-        delegate?.successConversion(String(dto.conversionResult))
+        Task {
+            do {
+                let dto = try await conversionUseCase.conversion(input: input)
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.successConversion(String(dto.conversionResult))
+                }
+            } catch let error {
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.error(title: "Error Conversion", message: error.localizedDescription)
+                }
+            }
+        }
+        
+        
+        
     }
     
     

@@ -9,7 +9,9 @@ import Foundation
 
 class RepositoryAddFavoriteCurrencyUseCaseGatewayFactory {
     static func make() -> RepositoryAddFavoriteCurrencyUseCaseGatewayImpl {
+        
         let addRepository = try! UserDefaultsProviderRepository(mainKey: MainConstants.FavoriteCurrency.mainKey)
+        
         return RepositoryAddFavoriteCurrencyUseCaseGatewayImpl(repository: addRepository)
     }
 }
