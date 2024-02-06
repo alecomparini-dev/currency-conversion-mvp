@@ -37,8 +37,11 @@ class CurrencyConversionPresenterImpl: CurrencyConversionPresenter {
         Task {
             do {
                 let dto = try await conversionUseCase.conversion(input: input)
+                
+                let formatConvertion = formatConvertion(dto.conversionResult)
+                
                 DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.successConversion(String(dto.conversionResult))
+                    self?.delegate?.successConversion(formatConvertion)
                 }
             } catch let error {
                 DispatchQueue.main.async { [weak self] in
@@ -66,6 +69,15 @@ class CurrencyConversionPresenterImpl: CurrencyConversionPresenter {
         }
 
         return nil
+    }
+    
+    private func formatConvertion(_ number: Double) -> String {
+        let format = NumberFormatter()
+        format.numberStyle = .decimal
+        format.minimumFractionDigits = 2
+        format.maximumFractionDigits = 2
+        
+        return format.string(from: number as NSNumber) ?? ""
     }
     
 }

@@ -12,8 +12,8 @@ import Foundation
 protocol ListCurrenciesPresenter: AnyObject {
     var delegate: ListCurrenciesPresenterOutput? { get set }
     func fetchCurrencies()
-    func getCurrencies() -> [ListCurrencyPresenterDTO]
-    func getCurrencyBy(index: Int) -> ListCurrencyPresenterDTO
+    func getCurrencies() -> [CurrencyPresenterDTO]
+    func getCurrencyBy(index: Int) -> CurrencyPresenterDTO
     func filterCurrencies(_ text: String)
     func sortByAcronym()
     func sortByName()

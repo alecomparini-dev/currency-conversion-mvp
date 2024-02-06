@@ -30,7 +30,6 @@ class CurrencyConversionViewController: UIViewController, ViewControllerCoordina
     weak var coordinator: CurrencyConversionViewControllerCoordinator?
     private let currencyConversionPR: CurrencyConversionPresenter
     
-        
     private var currencyOf: CurrencyConversionVCDTO?
     private var currencyTo: CurrencyConversionVCDTO?
     
@@ -238,7 +237,7 @@ extension CurrencyConversionViewController: CurrencyConversionViewDelegate {
 //  MARK: - EXTENSION - CurrencyConversionPresenterOutput
 extension CurrencyConversionViewController: CurrencyConversionPresenterOutput {
     func successConversion(_ conversionResult: String) {
-        screen.resultLabel.text = conversionResult
+        screen.resultLabel.text = "\(currencyTo?.symbol ?? "") \(conversionResult)"
     }
     
     func error(title: String, message: String) {

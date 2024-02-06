@@ -11,11 +11,13 @@ import UIKit
 class CardCurrencyView: UIView {
     private let input: CardCurrencyDTO
     
-    init(cardCurrencyDTO: CardCurrencyDTO = CardCurrencyDTO(currentySymbolViewInput: CurrencySymbolViewDTO(symbol: K.Strings.empty,
-                                                                                                             sizeFrame: 50,
-                                                                                                             fontSize: .body),
-                                                              titleCurrency: K.Strings.empty,
-                                                              subTitleCurrency: K.Strings.empty)) {
+    init(cardCurrencyDTO: CardCurrencyDTO = CardCurrencyDTO(
+        currentySymbolViewInput: CurrencySymbolViewDTO(
+            symbol: K.Strings.empty,
+            sizeFrame: 50,
+            fontSize: .body),
+        titleCurrency: K.Strings.empty,
+        subTitleCurrency: K.Strings.empty)) {
         self.input = cardCurrencyDTO
         super.init(frame: .null)
         configure()
@@ -37,7 +39,7 @@ class CardCurrencyView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerCurve = .circular
+//        view.layer.cornerCurve = .circular
         view.layer.cornerRadius = 12
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.3
