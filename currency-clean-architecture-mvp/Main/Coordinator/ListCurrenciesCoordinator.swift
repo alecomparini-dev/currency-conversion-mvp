@@ -13,7 +13,6 @@ class ListCurrenciesCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    
     func start() {
         childCoordinator = self
         var controller: ListCurrenciesViewController = ListCurrenciesControllerFactory.make()

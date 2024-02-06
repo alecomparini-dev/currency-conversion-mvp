@@ -208,6 +208,7 @@ extension ListCurrenciesViewController: UITableViewDataSource {
         let currencyDTO = CurrencyConversionVCDTO(symbol: currency.symbol ?? "" ,
                                                   currencyISO: currency.currencyISO ?? "",
                                                   name: currency.name ?? "" )
+        
         coordinator?.goToCurrencyConversionVC(dto: currencyDTO)
     }
     

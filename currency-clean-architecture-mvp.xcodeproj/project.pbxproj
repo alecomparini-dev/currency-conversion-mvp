@@ -124,7 +124,7 @@
 		02BBAD482A9951F5000D84B3 /* CurrencyConversionVCDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD472A9951F5000D84B3 /* CurrencyConversionVCDTO.swift */; };
 		02BBAD4B2A9952CC000D84B3 /* CurrencyTableViewCellDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD4A2A9952CC000D84B3 /* CurrencyTableViewCellDTO.swift */; };
 		02BBAD4E2A9AA729000D84B3 /* ListCurrencyVCDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD4D2A9AA729000D84B3 /* ListCurrencyVCDTO.swift */; };
-		02BBAD502A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD4F2A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift */; };
+		02BBAD502A9AA887000D84B3 /* CurrencyPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD4F2A9AA887000D84B3 /* CurrencyPresenterDTO.swift */; };
 		02BBAD532A9B76EF000D84B3 /* UI+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD522A9B76EF000D84B3 /* UI+Constants.swift */; };
 		02BBAD5F2A9B9798000D84B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02BBAD5D2A9B9798000D84B3 /* Localizable.strings */; };
 		02BBAD622A9CBB68000D84B3 /* AddFavoriteCurrencyUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBAD612A9CBB68000D84B3 /* AddFavoriteCurrencyUseCaseImpl.swift */; };
@@ -272,7 +272,7 @@
 		02BBAD472A9951F5000D84B3 /* CurrencyConversionVCDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConversionVCDTO.swift; sourceTree = "<group>"; };
 		02BBAD4A2A9952CC000D84B3 /* CurrencyTableViewCellDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCellDTO.swift; sourceTree = "<group>"; };
 		02BBAD4D2A9AA729000D84B3 /* ListCurrencyVCDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyVCDTO.swift; sourceTree = "<group>"; };
-		02BBAD4F2A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyPresenterDTO.swift; sourceTree = "<group>"; };
+		02BBAD4F2A9AA887000D84B3 /* CurrencyPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPresenterDTO.swift; sourceTree = "<group>"; };
 		02BBAD522A9B76EF000D84B3 /* UI+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Constants.swift"; sourceTree = "<group>"; };
 		02BBAD5E2A9B9798000D84B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		02BBAD612A9CBB68000D84B3 /* AddFavoriteCurrencyUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteCurrencyUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -596,7 +596,6 @@
 			isa = PBXGroup;
 			children = (
 				02BBAD512A9B76D2000D84B3 /* Helpers */,
-				026CF2332A98EBEB00496C15 /* Coordinator */,
 				026CF22D2A98EBEB00496C15 /* Cells */,
 				026CF2422A98EBEB00496C15 /* SharedViews */,
 				026CF23B2A98EBEB00496C15 /* ViewControllers */,
@@ -869,6 +868,7 @@
 		026CF27D2A98EBEB00496C15 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				026CF2332A98EBEB00496C15 /* Coordinator */,
 				02BBAD722A9CC604000D84B3 /* Helpers */,
 				026CF2932A98EBEB00496C15 /* Factories */,
 				026CF2882A98EBEB00496C15 /* Extensions */,
@@ -1226,7 +1226,7 @@
 		02BBAD452A994839000D84B3 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				02BBAD4F2A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift */,
+				02BBAD4F2A9AA887000D84B3 /* CurrencyPresenterDTO.swift */,
 				0222D6F02A9CFE4E000EF7C9 /* FavoriteCurrencyDTO.swift */,
 			);
 			path = DTO;
@@ -1654,7 +1654,7 @@
 				026CF29E2A98EBEB00496C15 /* ListCurrenciesPresenterDataSource.swift in Sources */,
 				02A792402AAB543D00B84437 /* CurrencyConversionPresenter.swift in Sources */,
 				0222D6EE2A9CDB18000EF7C9 /* DeleteRepository.swift in Sources */,
-				02BBAD502A9AA887000D84B3 /* ListCurrencyPresenterDTO.swift in Sources */,
+				02BBAD502A9AA887000D84B3 /* CurrencyPresenterDTO.swift in Sources */,
 				02B710022AAF65BF00C6A4AF /* CheckInternetAvailableUseCase.swift in Sources */,
 				02B710062AAF673300C6A4AF /* SystemConfigurationInternetAvailable.swift in Sources */,
 				02B7100F2AAF94E800C6A4AF /* InsertRepository.swift in Sources */,

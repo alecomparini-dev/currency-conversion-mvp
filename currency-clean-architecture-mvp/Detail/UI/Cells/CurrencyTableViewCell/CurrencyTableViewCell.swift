@@ -1,17 +1,13 @@
-//
-//  CurrencyTableViewCell.swift
-//  currency-conversion-mvp
-//
 //  Created by Alessandro Comparini on 17/08/23.
 //
 
 import UIKit
 
 
-
 class CurrencyTableViewCell: UITableViewCell {
-    typealias completionAlias = (_ currencyISO: String, _ favorite: Bool) -> Void
     static let identifier = String(String(describing: CurrencyTableViewCell.self))
+    
+    typealias completionAlias = (_ currencyISO: String, _ favorite: Bool) -> Void
     
     private var currencyISO: String?
     private var action: completionAlias?
@@ -42,7 +38,6 @@ class CurrencyTableViewCell: UITableViewCell {
         setFavorite(parameter.favorite)
         setActionFavoriteButton(completion)
     }
-    
     
     
 //  MARK: - PRIVATE AREA
@@ -126,7 +121,7 @@ extension CurrencyTableViewCell: CurrencyTableViewCellViewDelegate {
             setHeartFill(button)
         }
         
-        if let currencyISO {action?(currencyISO, favorite)}
+        if let currencyISO { action?(currencyISO, favorite) }
         
     }
     

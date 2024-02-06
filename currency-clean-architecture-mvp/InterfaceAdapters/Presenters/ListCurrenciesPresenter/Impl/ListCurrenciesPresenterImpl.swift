@@ -39,9 +39,9 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     private let addFavoriteCurrencyUseCase: AddFavoriteCurrencyUseCase?
     private let listFavoriteCurrenciesUseCase: ListFavoriteCurrenciesUseCase?
     
-    private var currenciesData = [ListCurrencyPresenterDTO]()
+    private var currenciesData = [CurrencyPresenterDTO]()
+    private var filteredCurrencies = [CurrencyPresenterDTO]()
     private var favoriteCurrencies = [FavoriteCurrencyDTO]()
-    private var filteredCurrencies = [ListCurrencyPresenterDTO]()
     
     init(listCurrenciesUseCase: ListCurrenciesUseCase,
          listSymbolsUseCase: ListCurrencySymbolsUseCase,
@@ -56,11 +56,11 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     
 //  MARK: - PUBLIC FUNCTIONS
     
-    func getCurrencies() -> [ListCurrencyPresenterDTO] {
+    func getCurrencies() -> [CurrencyPresenterDTO] {
         return filteredText.isEmpty ? currenciesData : filteredCurrencies
     }
     
-    func getCurrencyBy(index: Int) -> ListCurrencyPresenterDTO {
+    func getCurrencyBy(index: Int) -> CurrencyPresenterDTO {
         return getCurrencies()[index]
     }
     
@@ -71,7 +71,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
             ($0.name?.lowercased().contains(text.lowercased()) ?? false) 
             
         })
-        reloadTablaView()
+        reloadTableView()
     }
     
     func sortByAcronym() {
@@ -117,7 +117,7 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
                 let favorites: [ListFavoriteCurrenciesUseCaseDTO.Output]? = try await listFavoriteCurrenciesUseCase?.listFavorites()
                 
                 currenciesData = currencies.map { let currency = $0
-                    var dto = ListCurrencyPresenterDTO()
+                    var dto = CurrencyPresenterDTO()
                     dto.currencyISO = currency.currencyISO
                     dto.name = NSLocalizedString(currency.name, comment: "")
                     if let symbol = symbols.first(where: { $0.currencyISO == currency.currencyISO } ) {
@@ -201,11 +201,11 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
             }
         }
         
-        reloadTablaView()
+        reloadTableView()
         
     }
     
-    private func reloadTablaView() {
+    private func reloadTableView() {
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
             delegate?.reloadTableView()
