@@ -75,7 +75,7 @@ class CurrencyConversionPresenterImpl: CurrencyConversionPresenter {
         let format = NumberFormatter()
         format.numberStyle = .decimal
         format.minimumFractionDigits = 2
-        format.maximumFractionDigits = 2
+        format.maximumFractionDigits = 4
         
         return format.string(from: number as NSNumber) ?? ""
     }

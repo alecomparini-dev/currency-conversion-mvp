@@ -67,9 +67,13 @@ class ListCurrenciesPresenterImpl: ListCurrenciesPresenter {
     func filterCurrencies(_ text: String) {
         filteredText = text
         self.filteredCurrencies = currenciesData.filter({
-            ($0.currencyISO?.lowercased().contains(text.lowercased()) ?? false) ||
-            ($0.name?.lowercased().contains(text.lowercased()) ?? false) 
+            let currencyISO = $0.currencyISO?.lowercased() ?? ""
             
+            let currencyName = $0.name?.lowercased().folding(options: .diacriticInsensitive, locale: nil) ?? ""
+            
+            let text = text.lowercased().folding(options: .diacriticInsensitive, locale: nil)
+            
+            return (currencyISO.contains(text)) || (currencyName.contains(text.lowercased()))
         })
         reloadTableView()
     }
