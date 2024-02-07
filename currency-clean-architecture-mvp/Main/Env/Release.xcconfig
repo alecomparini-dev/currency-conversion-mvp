@@ -1,0 +1,14 @@
+//
+//  Debug.xcconfig
+//  MentoriaCodandoComMoa
+//
+//  Created by Alessandro Comparini on 05/09/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+//MY ENVIRONMENT VARIABLES
+API_BASE_URL = http:/$()/api.currencylayer.com
+ACCESS_KEY = 2b005329c06a0bbb773f6f1da65baedd
