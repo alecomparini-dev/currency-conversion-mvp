@@ -73,12 +73,10 @@ https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/3bd9
 - Repository
 
 #### TESTE UNITÁRIOS
-- XCTest
+- Ainda não foram criados os testes unitários
 
 #### OUTROS
 - Depedency Injection
 - Princípios do SOLID
 - Clean Code (em estudo)
 
-
-<br>
