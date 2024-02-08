@@ -10,8 +10,8 @@
 
 #### # Obrigatórias
 - [x] As taxas de câmbio disponíveis devem ser obtidas da chamada de API Supported
-Currencies (/list)
-- [x] A cotação atual deve ser obtida da chamada de API Real-time Rates (/live)
+Currencies [(/list)](https://currencylayer.com/documentation) 
+- [x] A cotação atual deve ser obtida da chamada de API Real-time Rates [(/live)](https://currencylayer.com/documentation)
 - [x] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
   - Concluida em partes, não foi criado erros específicos, porém os tratamentos de erro estão em todas as funções. Fluxos alternativos como busca vazia ok.
 
