@@ -5,8 +5,7 @@
 //  Created by Alessandro Comparini on 18/08/23.
 //
 //
-//API_BASE_URL = http:/$()/api.currencylayer.com
-//ACCESS_KEY = 2b005329c06a0bbb773f6f1da65baedd
+
 
 import Foundation
 
