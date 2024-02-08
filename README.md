@@ -7,7 +7,7 @@
 </h3>
 
 ## FEATURES
-> Este foi um desafio encontrato na internet, onde um banco solicitou em uma entrevista técnica, o seguinte desafio.
+> Este foi um desafio encontrato na internet, onde a empresa, solicitou em uma entrevista técnica, o seguinte desafio.
 
 #### # Requisitos Obrigatórias:
 - [x] As taxas de câmbio disponíveis devem ser obtidas da chamada de API Supported
