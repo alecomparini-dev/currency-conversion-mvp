@@ -9,7 +9,7 @@
 ## FEATURES
 > Este foi um desafio encontrato na internet, onde a empresa, solicitou em uma entrevista técnica, o seguinte desafio.
 
-#### # Requisitos Obrigatórios:
+#### # REQUISITOS OBRIGATÓRIOS:
 - [x] As taxas de câmbio disponíveis devem ser obtidas da chamada de API Supported
 Currencies [(/list)](https://currencylayer.com/documentation) 
 - [x] A cotação atual deve ser obtida da chamada de API Real-time Rates [(/live)](https://currencylayer.com/documentation)
@@ -24,7 +24,7 @@ Currencies [(/list)](https://currencylayer.com/documentation)
     - Uma lista das moedas disponíveis para conversão, mostrando código e nome da moeda.
 - [x] A listagem de moedas deve ser mostrada obrigatoriamente em uma tela diferente da tela de conversão.
 
-#### # Requisitos Opcionais (não necessário, porém contam pontos):
+#### # REQUISITOS OPCIONAIS (não necessário, porém contam pontos):
 - [x] Funcionalidade de busca na lista de moedas por nome ou sigla da moeda ("dólar" ou "USD").
 - [x] Ordenação da lista de moedas por nome ou código.
 - [ ] Realizar a persistência local da lista de moedas e taxas para permitir o uso do app no caso de falta de internet.
