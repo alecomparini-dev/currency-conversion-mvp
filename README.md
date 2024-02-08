@@ -52,6 +52,7 @@ https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/3bd9
   - UserDefaults para gravar as moedas favoritas
   - URLSession para as chamadas remotas
   - Foi utilizado o arquivo Env para armazenar a url base e a chave da API ***(Estou ciente que esta informação deverá ficar na esteira de deploy)***
+  - Também foi utilizado os arquivos Localizable.strings para inglês -> português
 - Não foi criado módulos para este projeto, foi utilizado um único target, porém foi separado os diretórios para seguir o padrão do clean architecture.
 
 #### DEPENDÊNCIAS: 
