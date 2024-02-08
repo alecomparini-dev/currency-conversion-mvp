@@ -1,7 +1,7 @@
 
 <h3 align="center">
   <br>
-  <img src="https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/7c394686-cd06-4bc9-8da3-dc0c3715681c" height="300" >
+  <img src="https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/7c394686-cd06-4bc9-8da3-dc0c3715681c" height="250" >
   
 
   <br>
