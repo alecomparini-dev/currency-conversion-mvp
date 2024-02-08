@@ -7,7 +7,7 @@
 </h3>
 
 ## FEATURES
-> Este foi um desafio encontrato na internet de um banco brasileiro, que foi solicitado em testes de contratação. Abaixo seguem algumas features obrigatórias e opcionais que este desafio tinha.
+> Este foi um desafio encontrato na internet, onde um banco solicitou este teste em uma entrevista técnica. Abaixo seguem algumas features obrigatórias e opcionais que estavam no desafio.
 
 #### # Obrigatórias:
 - [x] As taxas de câmbio disponíveis devem ser obtidas da chamada de API Supported
