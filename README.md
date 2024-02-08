@@ -7,6 +7,7 @@
 </h3>
 
 ## FEATURES
+> Este foi um desafio encontrato na internet de um banco brasileiro, que foi solicitado em testes de contratação. Abaixo seguem algumas features obrigatórias e opcionais que este desafio tinha.
 
 #### # Obrigatórias
 - [x] As taxas de câmbio disponíveis devem ser obtidas da chamada de API Supported
@@ -16,11 +17,11 @@ Currencies [(/list)](https://currencylayer.com/documentation)
   - Concluida em partes, não foi criado erros específicos, porém os tratamentos de erro estão em todas as funções. Fluxos alternativos como busca vazia ok.
 
 #### # Opcionais:
-- [x] 5 Vidas Diárias
-- [x] 10 Dicas Diárias
-- [x] 5 Revelações de letras Diárias
-- [x] Renovação Automática das Ajudas todos os dias 00:00
-- [ ] Comprar Vidas, Dicas e Revelações
-- [ ] Assistir Anúncios para ganhar Vidas, Dicas e Revelações
+- [x] Funcionalidade de busca na lista de moedas por nome ou sigla da moeda ("dólar" ou "USD").
+- [x] Ordenação da lista de moedas por nome ou código.
+- [ ] Realizar a persistência local da lista de moedas e taxas para permitir o uso do app no caso de falta de internet.
+- [x] Adicionar a capacidade de favoritar uma moeda para que ela sempre apareça no topo da lista.
+- [ ] Desenvolver testes unitários e/ou funcionais.
+- [x] Desenvolver o app seguindo a arquitetura MVVM.
 
 <br>
