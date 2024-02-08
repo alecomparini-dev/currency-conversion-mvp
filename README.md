@@ -1,9 +1,7 @@
 
 <h3 align="center">
   <br>
-  <img src="https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/7c394686-cd06-4bc9-8da3-dc0c3715681c" height="250" >
-  
-
+  <img src="https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/7c394686-cd06-4bc9-8da3-dc0c3715681c" height="250">
   <br>
 </h3>
 
@@ -50,18 +48,17 @@ https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/3bd9
 
 ---
 ## DESENVOLVIMENTO
-
+- Neste projeto foi utilizado:
+  - UserDefaults para gravar as moedas favoritas
+  - URLSession para as chamadas remotas
+  - Foi utilizado o arquivo Env para armazenar a url base e a chave da API ***(Estou ciente que esta informação deverá ficar na esteira de deploy)***
+- Não foi criado módulos para este projeto, foi utilizado um único target, porém foi separado os diretórios para seguir o padrão do clean architecture.
 
 #### DEPENDÊNCIAS: 
-- SDKs PRÓPRIOS:
-  - **CustomComponentsSDK** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
-    > Responsável por todos os componentes visuais utilizados na camada de UI dos meus Projetos.
-  - **DataStorageSDK** ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
-  - **AuthenticationSDK** ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
-  
+  - Nenhuma depêndencia externa
  
 - #### Gerenciador de Dependência:
-  - SPM(Swift Package Manager)
+  - Apesar de possuir no projeto o podFile, foi incluido somente para demonstrar que o projeto está preparado para usar o Alamofire ou o URLSession para chamadas remotas, quanto o UserDefaults como Realm para armazenamento, mostrando assim que o projeto está preparado para mudanças sem afetar o seu comportamento.
 
 #### ARQUITETURA
 - MVVM-C
