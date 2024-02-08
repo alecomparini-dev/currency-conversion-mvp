@@ -33,7 +33,7 @@ Currencies [(/list)](https://currencylayer.com/documentation)
 - [x] Desenvolver o app seguindo a arquitetura MVVM.
 
 #### # Observações:
-- [x] Evite utilizar bibliotecas externas ao máximo possível.
-- [x] Caso opte por usar bibliotecas externas, prefira o CocoaPods como gerenciador de dependências.
+- Evite utilizar bibliotecas externas ao máximo possível.
+- Caso opte por usar bibliotecas externas, prefira o CocoaPods como gerenciador de dependências.
 - O app deve consumir a API CurrencyLayer. Para utilizar a API será necessário fazer um cadastro no plano gratuito para obter uma chave de acesso. Como o plano gratuito da API apresenta apenas as taxas de câmbio em relação ao dólar americano (USD), caso o usuário deseje fazer uma conversão entre quaisquer outras duas moedas, será necessário primeiro
 converter a moeda de origem para dólar e então de dólar para a moeda desejada.
