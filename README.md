@@ -9,7 +9,7 @@
 ## FEATURES
 > Este foi um desafio encontrato na internet, onde a empresa, solicitou em uma entrevista técnica, o seguinte desafio.
 
-#### # Requisitos Obrigatórias:
+#### # Requisitos Obrigatórios:
 - [x] As taxas de câmbio disponíveis devem ser obtidas da chamada de API Supported
 Currencies [(/list)](https://currencylayer.com/documentation) 
 - [x] A cotação atual deve ser obtida da chamada de API Real-time Rates [(/live)](https://currencylayer.com/documentation)
