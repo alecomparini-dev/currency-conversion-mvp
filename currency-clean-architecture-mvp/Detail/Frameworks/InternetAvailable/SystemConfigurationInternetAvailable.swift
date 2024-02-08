@@ -13,7 +13,6 @@ public class SystemConfigurationInternetAvailable: InternetAvailable  {
 
     public init() {}
     
-    
     public func isInternetAvailable() -> Bool {
         var zeroAddress = sockaddr()
         zeroAddress.sa_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))

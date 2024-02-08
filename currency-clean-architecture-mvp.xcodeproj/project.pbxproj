@@ -284,8 +284,6 @@
 		02BBAD702A9CC0B4000D84B3 /* RepositoryAddFavoriteCurrencyUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAddFavoriteCurrencyUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		02BBAD732A9CC613000D84B3 /* Main+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+Constants.swift"; sourceTree = "<group>"; };
 		02BBAD762A9CCB8B000D84B3 /* AddRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRepository.swift; sourceTree = "<group>"; };
-		02CB165C2AA8A483007A28AB /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		02CB165D2AA8A483007A28AB /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		02DDEC8C2AC4C7AD00863E0F /* QuotesCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesCodable.swift; sourceTree = "<group>"; };
 		02DDEC8F2AC5BBE500863E0F /* CurrencyQuotesToOutputDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyQuotesToOutputDTO.swift; sourceTree = "<group>"; };
 		BF0B482ED208EFC6ED0EE7DF /* Pods-currency-clean-architecture-mvp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-currency-clean-architecture-mvp.release.xcconfig"; path = "Target Support Files/Pods-currency-clean-architecture-mvp/Pods-currency-clean-architecture-mvp.release.xcconfig"; sourceTree = "<group>"; };
@@ -918,8 +916,6 @@
 			isa = PBXGroup;
 			children = (
 				026CF2902A98EBEB00496C15 /* Environment.swift */,
-				02CB165D2AA8A483007A28AB /* Debug.xcconfig */,
-				02CB165C2AA8A483007A28AB /* Release.xcconfig */,
 			);
 			path = Env;
 			sourceTree = "<group>";
@@ -1217,8 +1213,6 @@
 			isa = PBXGroup;
 			children = (
 				02BBAD782A9CCFE8000D84B3 /* UserDefaults */,
-				02BBAD7A2A9CD043000D84B3 /* Realm */,
-				02BBAD792A9CD03D000D84B3 /* CoreData */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1356,20 +1350,6 @@
 				02B710142AAF9F5500C6A4AF /* UserDefaultsProviderRepository.swift */,
 			);
 			path = UserDefaults;
-			sourceTree = "<group>";
-		};
-		02BBAD792A9CD03D000D84B3 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		02BBAD7A2A9CD043000D84B3 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Realm;
 			sourceTree = "<group>";
 		};
 		02CB165B2AA8A0F2007A28AB /* NavigatorController */ = {
