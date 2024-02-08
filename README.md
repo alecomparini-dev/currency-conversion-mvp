@@ -37,3 +37,12 @@ Currencies [(/list)](https://currencylayer.com/documentation)
 - Caso opte por usar bibliotecas externas, prefira o CocoaPods como gerenciador de dependências.
 - O app deve consumir a API CurrencyLayer. Para utilizar a API será necessário fazer um cadastro no plano gratuito para obter uma chave de acesso. Como o plano gratuito da API apresenta apenas as taxas de câmbio em relação ao dólar americano (USD), caso o usuário deseje fazer uma conversão entre quaisquer outras duas moedas, será necessário primeiro
 converter a moeda de origem para dólar e então de dólar para a moeda desejada.
+
+---
+## PREVIEW APP
+
+<br>
+
+https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/3bd92186-6cbf-46b2-b556-2b5e9a5b7afd
+
+<br>
