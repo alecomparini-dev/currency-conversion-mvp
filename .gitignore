@@ -49,6 +49,7 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+Pods-currency-clean-architecture-mvp.debug.xcconfig
 
 # CocoaPods
 #
