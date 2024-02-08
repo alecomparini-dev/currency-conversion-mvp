@@ -47,3 +47,40 @@ converter a moeda de origem para dólar e então de dólar para a moeda desejada
 https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/3bd92186-6cbf-46b2-b556-2b5e9a5b7afd
 
 <br>
+
+---
+## DESENVOLVIMENTO
+
+
+#### DEPENDÊNCIAS: 
+- SDKs PRÓPRIOS:
+  - **CustomComponentsSDK** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
+    > Responsável por todos os componentes visuais utilizados na camada de UI dos meus Projetos.
+  - **DataStorageSDK** ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
+  - **AuthenticationSDK** ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
+  
+ 
+- #### Gerenciador de Dependência:
+  - SPM(Swift Package Manager)
+
+#### ARQUITETURA
+- MVVM-C
+- Clean Architecture
+
+#### PATTERNS (em estudo)
+- Strategy
+- Builder
+- Factory
+- Adapter
+- Repository
+
+#### TESTE UNITÁRIOS
+- XCTest
+
+#### OUTROS
+- Depedency Injection
+- Princípios do SOLID
+- Clean Code (em estudo)
+
+
+<br>
