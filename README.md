@@ -74,7 +74,7 @@ https://github.com/alecomparini-dev/currency-conversion-mvp/assets/76792477/3bd9
 - Repository
 
 #### TESTE UNITÁRIOS
-- Não foram feitos testes unitários para este projeto. Exemplo de testes unitários [veja neste projeto](https://github.com/alecomparini-dev/Hangman)
+- Não foram feitos testes unitários para este projeto. Exemplo de testes unitários [aqui](https://github.com/alecomparini-dev/Hangman)
 
 #### OUTROS
 - Depedency Injection
