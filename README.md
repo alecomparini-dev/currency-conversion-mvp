@@ -5,6 +5,7 @@
   <br>
 </h3>
 
+---
 ## FEATURES
 > Este foi um teste encontrato na internet, onde a empresa solicitou em uma entrevista técnica o seguinte desafio.
 
